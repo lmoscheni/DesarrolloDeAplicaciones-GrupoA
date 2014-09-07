@@ -7,7 +7,6 @@ import java.util.Date;
 import junit.framework.TestCase;
 import ar.edu.unq.desapp.grupoa.Voucher;
 import ar.edu.unq.desapp.grupoa.builders.VoucherBuilder;
-import ar.edu.unq.desapp.grupoa.mocks.Operation;
 
 /**
  * Test voucher builder

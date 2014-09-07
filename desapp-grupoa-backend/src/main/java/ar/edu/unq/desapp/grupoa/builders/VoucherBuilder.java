@@ -2,8 +2,8 @@ package ar.edu.unq.desapp.grupoa.builders;
 
 import java.util.Date;
 
+import ar.edu.unq.desapp.grupoa.Operation;
 import ar.edu.unq.desapp.grupoa.Voucher;
-import ar.edu.unq.desapp.grupoa.mocks.Operation;
 
 /**
  * Class voucher builder

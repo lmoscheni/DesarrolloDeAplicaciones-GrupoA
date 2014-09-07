@@ -3,7 +3,7 @@ package ar.edu.unq.desapp.grupoa.builders;
 import java.util.Date;
 
 import ar.edu.unq.desapp.grupoa.AInvoive;
-import ar.edu.unq.desapp.grupoa.mocks.Operation;
+import ar.edu.unq.desapp.grupoa.Operation;
 
 
 /**
