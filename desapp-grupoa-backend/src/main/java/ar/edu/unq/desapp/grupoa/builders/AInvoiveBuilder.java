@@ -3,8 +3,16 @@ package ar.edu.unq.desapp.grupoa.builders;
 import java.util.Date;
 
 import ar.edu.unq.desapp.grupoa.AInvoive;
-import ar.edu.unq.desapp.grupoa.Voucher;
 import ar.edu.unq.desapp.grupoa.mocks.Operation;
+
+
+/**
+ * Class a invoive builder
+ * 
+ * @author Skalic Julian and Leandro Moscheni
+ * @version 1.0
+ * 
+ */
 
 public class AInvoiveBuilder {
 
@@ -21,6 +29,8 @@ public class AInvoiveBuilder {
     private int amount;
 
     private Operation operation;
+    
+    private String concept;
 
     private int taxed;
 
@@ -31,7 +41,7 @@ public class AInvoiveBuilder {
     private int IVA;
 
     public AInvoive build() {
-        return new AInvoive(dateOfIssue, socialReason, cuit, amount, operation, taxed, noTaxed, IIBBPerception, IVA);
+        return new AInvoive(dateOfIssue, socialReason, cuit, amount, operation, concept, taxed, noTaxed, IIBBPerception, IVA);
     }
 
     public AInvoiveBuilder withDate(Date date) {
@@ -59,6 +69,11 @@ public class AInvoiveBuilder {
         return this;
     }
 
+    public AInvoiveBuilder withConcept(String concept) {
+        this.concept = concept;
+        return this;
+    }
+    
     public AInvoiveBuilder withTaxed(int taxed) {
         this.taxed = taxed;
         return this;

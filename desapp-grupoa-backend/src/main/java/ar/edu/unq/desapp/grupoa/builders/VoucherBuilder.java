@@ -25,13 +25,14 @@ public class VoucherBuilder {
 
     private String cuit;
 
-    // private Category concept;
+    private String concept;
+    
     private int amount;
 
     private Operation operation;
 
     public Voucher build() {
-        return new Voucher(dateOfIssue, socialReason, cuit, amount, operation);
+        return new Voucher(dateOfIssue, socialReason, cuit, amount, operation, concept);
     }
 
     public VoucherBuilder withDate(Date date) {
@@ -56,6 +57,11 @@ public class VoucherBuilder {
 
     public VoucherBuilder withOperation(Operation operation) {
         this.operation = operation;
+        return this;
+    }
+    
+    public VoucherBuilder withConcept(String concept) {
+        this.concept = concept;
         return this;
     }
 }

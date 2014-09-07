@@ -20,26 +20,38 @@ public class Voucher {
 
     private String cuit;
 
-    // private Category concept;
+    private String concept;
+   
     private int amount;
 
     private Operation operation;
 
     // Constructor
-    public Voucher(Date dateOfIssue, String socialReason, String cuit, int amount, Operation operation) {
+    public Voucher(Date dateOfIssue, String socialReason, String cuit, int amount, Operation operation, String concept) {
         this.amount = amount;
         this.dateOfIssue = dateOfIssue;
         this.socialReason = socialReason;
         this.cuit = cuit;
         this.operation = operation;
+        this.concept = concept;
     }
 
     // ***********************************************************************************************************
     // Getters and setters
     // ***********************************************************************************************************
 
+    
+    
     public Date getDateOfIssue() {
         return dateOfIssue;
+    }
+
+    public String getConcept() {
+        return concept;
+    }
+
+    public void setConcept(String concept) {
+        this.concept = concept;
     }
 
     public void setDateOfIssue(Date dateOfIssue) {

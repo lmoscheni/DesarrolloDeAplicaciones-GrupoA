@@ -8,6 +8,15 @@ import ar.edu.unq.desapp.grupoa.builders.AInvoiveBuilder;
 import ar.edu.unq.desapp.grupoa.mocks.Operation;
 import junit.framework.TestCase;
 
+
+/**
+ * Test a invoive builder
+ * 
+ * @author Skalic Julian and Leandro Moscheni
+ * @version 1.0
+ * 
+ */
+
 public class AInvoiveBuilderTest extends TestCase {
 
     public void testBuildVoucherWithAmount() {
@@ -42,6 +51,12 @@ public class AInvoiveBuilderTest extends TestCase {
         assertEquals(mockOperation, ainvoive.getOperation());
     }
 
+    public void testBuildVoucherConcept() {
+
+        AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withConcept("ventas 28/04").build();
+        assertEquals("ventas 28/04", ainvoive.getConcept());
+    }
+    
     public void testBuildVoucherWithSocialReason() {
 
         AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withSocialReason("A reason").build();
