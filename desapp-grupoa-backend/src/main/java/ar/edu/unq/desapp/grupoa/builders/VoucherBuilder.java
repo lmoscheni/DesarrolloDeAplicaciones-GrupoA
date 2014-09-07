@@ -6,7 +6,7 @@ import ar.edu.unq.desapp.grupoa.Voucher;
 import ar.edu.unq.desapp.grupoa.mocks.Operation;
 
 /**
- * Class builder
+ * Class voucher builder
  * 
  * @author Skalic Julian and Leandro Moscheni
  * @version 1.0

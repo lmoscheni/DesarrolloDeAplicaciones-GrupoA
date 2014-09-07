@@ -5,7 +5,7 @@ import java.util.Date;
 import ar.edu.unq.desapp.grupoa.mocks.Operation;
 
 /**
- * Class
+ * Class voucher
  * 
  * @author Skalic Julian and Leandro Moscheni
  * @version 1.0
