@@ -42,10 +42,10 @@ public class VoucherBuilderTest extends TestCase {
 
     public void testBuildVoucherOperation() {
 
-        Operation mockOperation = mock(Operation.class);
+        BillType mockBillType = mock(BillType.class);
 
-        Voucher voucher = VoucherBuilder.aVoucher().withOperation(mockOperation).build();
-        assertEquals(mockOperation, voucher.getOperation());
+        Voucher voucher = VoucherBuilder.aVoucher().withBillType(mockBillType).build();
+        assertEquals(mockBillType, voucher.getBillType());
     }
 
     public void testBuildVoucherSocialReason() {

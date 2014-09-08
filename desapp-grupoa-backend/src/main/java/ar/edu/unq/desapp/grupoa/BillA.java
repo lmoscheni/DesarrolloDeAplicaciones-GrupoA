@@ -1,16 +1,16 @@
 package ar.edu.unq.desapp.grupoa;
 
-import java.util.Date;
+import ar.edu.unq.desapp.grupoa.Voucher;
 
 /**
- * Class a invoive
+ * Class billA
  * 
  * @author Skalic Julian and Leandro Moscheni
  * @version 1.0
  * 
  */
 
-public class AInvoive extends Voucher {
+public class BillA extends BillType {
 
     private int taxed;
 
@@ -20,12 +20,10 @@ public class AInvoive extends Voucher {
 
     private int IVA;
 
-    public AInvoive(){}
+    public BillA(){}
     
-    public AInvoive(Date dateOfIssue, String socialReason, String cuit, int amount, Operation operation, Category concept, int taxed,
-            int noTaxed, int IIBBPerception, int IVA) {
-
-        super(dateOfIssue, socialReason, cuit, amount, operation, concept);
+    public BillA(int taxed, int noTaxed, int IIBBPerception, int IVA) {
+        
         this.taxed = taxed;
         this.noTaxed = noTaxed;
         this.IIBBPerception = IIBBPerception;
@@ -72,15 +70,15 @@ public class AInvoive extends Voucher {
     // Methods of class a invoive
     // ******************************************************************************************************
 
-    private int calculatePorsentaje(int porsentaje) {
-        return ((porsentaje * this.getAmount()) / 100);
+    private int calculatePorsentaje(int amount,int porsentaje) {
+        return ((porsentaje * amount) / 100);
     }
 
-    public int getFinalAmount() {
+    public int calculateFinalAmount(Voucher voucher) {
 
         int finalAmount = 0;
-        int amount = this.getAmount();
-        finalAmount = amount + this.taxed + this.noTaxed + this.IIBBPerception + calculatePorsentaje(this.IVA);
+        int amount = voucher.getAmount();
+        finalAmount = amount + this.taxed + this.noTaxed + this.IIBBPerception + calculatePorsentaje(amount,this.IVA);
         return finalAmount;
     }
 

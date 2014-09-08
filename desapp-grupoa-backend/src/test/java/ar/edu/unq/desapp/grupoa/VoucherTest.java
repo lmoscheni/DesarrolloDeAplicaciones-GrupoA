@@ -1,6 +1,6 @@
 package ar.edu.unq.desapp.grupoa;
 
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 import java.util.Date;
 
@@ -58,12 +58,12 @@ public class VoucherTest extends TestCase {
     
     public void testGetAndSetOperation(){
         
-        Operation mockOperation = mock(Operation.class);
+        BillType mockBillType = mock(BillType.class);
         
         Voucher voucher = new Voucher();
-        voucher.setOperation(mockOperation);
+        voucher.setBillType(mockBillType);;
         
-        assertEquals(mockOperation, voucher.getOperation());
+        assertEquals(mockBillType, voucher.getBillType());
     }
     
     public void testGetAndSetCategory(){
@@ -81,9 +81,12 @@ public class VoucherTest extends TestCase {
     // ***********************************************************************************************************
     
     public void testGetFinalAmount() {
+        
+        BillType mockBillType = mock(BillType.class);
+        when(mockBillType.calculateFinalAmount(any(Voucher.class))).thenReturn(100);
 
-        Voucher voucher = VoucherBuilder.aVoucher().withAmount(100).build();
-
+        Voucher voucher = VoucherBuilder.aVoucher().withAmount(100).withBillType(mockBillType).build();
+        
         assertEquals(100, voucher.getFinalAmount());
     }
 }

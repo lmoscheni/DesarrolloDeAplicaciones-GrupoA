@@ -22,16 +22,16 @@ public class Voucher {
    
     private int amount;
 
-    private Operation operation;
+    private BillType billType;
 
     public Voucher(){}
 
-    public Voucher(Date dateOfIssue, String socialReason, String cuit, int amount, Operation operation, Category concept) {
+    public Voucher(Date dateOfIssue, String socialReason, String cuit, int amount, BillType billType, Category concept) {
         this.amount = amount;
         this.dateOfIssue = dateOfIssue;
         this.socialReason = socialReason;
         this.cuit = cuit;
-        this.operation = operation;
+        this.billType = billType;
         this.concept = concept;
     }
 
@@ -81,12 +81,12 @@ public class Voucher {
         this.amount = amount;
     }
 
-    public Operation getOperation() {
-        return operation;
+    public BillType getBillType() {
+        return billType;
     }
 
-    public void setOperation(Operation operation) {
-        this.operation = operation;
+    public void setBillType(BillType billType) {
+        this.billType = billType;
     }
 
     // ***********************************************************************************************************
@@ -94,6 +94,6 @@ public class Voucher {
     // ***********************************************************************************************************
 
     public int getFinalAmount() {
-        return this.amount;
+        return this.billType.calculateFinalAmount(this);
     }
 }

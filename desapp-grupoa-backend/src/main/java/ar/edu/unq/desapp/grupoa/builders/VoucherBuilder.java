@@ -2,8 +2,8 @@ package ar.edu.unq.desapp.grupoa.builders;
 
 import java.util.Date;
 
+import ar.edu.unq.desapp.grupoa.BillType;
 import ar.edu.unq.desapp.grupoa.Category;
-import ar.edu.unq.desapp.grupoa.Operation;
 import ar.edu.unq.desapp.grupoa.Voucher;
 
 /**
@@ -30,10 +30,10 @@ public class VoucherBuilder {
     
     private int amount;
 
-    private Operation operation;
+    private BillType billType;
 
     public Voucher build() {
-        return new Voucher(dateOfIssue, socialReason, cuit, amount, operation, concept);
+        return new Voucher(dateOfIssue, socialReason, cuit, amount, billType, concept);
     }
 
     public VoucherBuilder withDate(Date date) {
@@ -56,8 +56,8 @@ public class VoucherBuilder {
         return this;
     }
 
-    public VoucherBuilder withOperation(Operation operation) {
-        this.operation = operation;
+    public VoucherBuilder withBillType(BillType billType) {
+        this.billType = billType;
         return this;
     }
     

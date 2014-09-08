@@ -1,7 +1,9 @@
 package ar.edu.unq.desapp.grupoa;
 
-import ar.edu.unq.desapp.grupoa.builders.AInvoiveBuilder;
+
+import ar.edu.unq.desapp.grupoa.builders.BillABuilder;
 import junit.framework.TestCase;
+import static org.mockito.Mockito.*;
 
 /**
  * Test a invoive
@@ -11,7 +13,7 @@ import junit.framework.TestCase;
  * 
  */
 
-public class AInvoiveTest extends TestCase {
+public class BillATest extends TestCase {
 
     //*****************************************************************************************************
     // Test getters and setters
@@ -19,34 +21,34 @@ public class AInvoiveTest extends TestCase {
     
     public void testGetAndSetTaxed(){
         
-        AInvoive ainvoive = new AInvoive();
-        ainvoive.setTaxed(10);
+        BillA billA = new BillA();
+        billA.setTaxed(10);
         
-        assertEquals(10, ainvoive.getTaxed());
+        assertEquals(10, billA.getTaxed());
     }
     
     public void testGetAndSetNoTaxed(){
         
-        AInvoive ainvoive = new AInvoive();
-        ainvoive.setNoTaxed(10);
+        BillA billA = new BillA();
+        billA.setNoTaxed(10);
         
-        assertEquals(10, ainvoive.getNoTaxed());
+        assertEquals(10, billA.getNoTaxed());
     }
 
     public void testGetAndSetIIBBPerception(){
     
-        AInvoive ainvoive = new AInvoive();
-        ainvoive.setIIBBPerception(10);
+        BillA billA = new BillA();
+        billA.setIIBBPerception(10);
     
-        assertEquals(10, ainvoive.getIIBBPerception());
+        assertEquals(10, billA.getIIBBPerception());
     }
 
     public void testGetAndSetIVA(){
         
-        AInvoive ainvoive = new AInvoive();
-        ainvoive.setIVA(10);
+        BillA billA = new BillA();
+        billA.setIVA(10);
     
-        assertEquals(10, ainvoive.getIVA());
+        assertEquals(10, billA.getIVA());
     }
     
     //*****************************************************************************************************
@@ -57,11 +59,14 @@ public class AInvoiveTest extends TestCase {
         
     }
     
-    public void testGetFinalAmount() {
+    public void testCalculateFinalAmount() {
 
-        AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withAmount(100).withTaxed(10).withNoTaxed(5)
+        Voucher mockVoucher = mock(Voucher.class);
+        when(mockVoucher.getAmount()).thenReturn(100);
+        
+        BillA billA = BillABuilder.aBillA().withTaxed(10).withNoTaxed(5)
                 .withIIBBPerception(3).withIVA(10).build();
 
-        assertEquals(128, ainvoive.getFinalAmount());
+        assertEquals(128, billA.calculateFinalAmount(mockVoucher));
     }
 }
