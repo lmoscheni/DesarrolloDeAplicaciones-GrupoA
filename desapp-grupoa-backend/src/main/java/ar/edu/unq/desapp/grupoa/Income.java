@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoa;
 
+
 public class Income extends Operation {
 
     public Income(int amount, Category category, Shift shift) {

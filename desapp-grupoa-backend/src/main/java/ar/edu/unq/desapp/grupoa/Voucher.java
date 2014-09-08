@@ -24,7 +24,8 @@ public class Voucher {
 
     private Operation operation;
 
-    // Constructor
+    public Voucher(){}
+
     public Voucher(Date dateOfIssue, String socialReason, String cuit, int amount, Operation operation, String concept) {
         this.amount = amount;
         this.dateOfIssue = dateOfIssue;
