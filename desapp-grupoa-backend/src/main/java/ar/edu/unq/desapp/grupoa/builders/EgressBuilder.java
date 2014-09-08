@@ -1,8 +1,8 @@
 package ar.edu.unq.desapp.grupoa.builders;
 
-import mocks.Shift;
 import ar.edu.unq.desapp.grupoa.Category;
 import ar.edu.unq.desapp.grupoa.Egress;
+import ar.edu.unq.desapp.grupoa.Shift;
 
 public class EgressBuilder {
 
