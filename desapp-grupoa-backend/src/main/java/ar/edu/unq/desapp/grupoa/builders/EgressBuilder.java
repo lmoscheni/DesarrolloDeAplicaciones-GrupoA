@@ -6,7 +6,7 @@ import ar.edu.unq.desapp.grupoa.Shift;
 
 public class EgressBuilder {
 
-    public static EgressBuilder aOperation() {
+    public static EgressBuilder aEgress() {
         return new EgressBuilder();
     }
     

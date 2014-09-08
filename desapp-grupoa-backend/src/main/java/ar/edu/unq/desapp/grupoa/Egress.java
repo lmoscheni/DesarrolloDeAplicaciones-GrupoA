@@ -2,6 +2,8 @@ package ar.edu.unq.desapp.grupoa;
 
 public class Egress extends Operation {
 
+    public Egress(){}
+    
     public Egress(int amount, Category category, Shift shift) {
         super(amount, category, shift); 
     }

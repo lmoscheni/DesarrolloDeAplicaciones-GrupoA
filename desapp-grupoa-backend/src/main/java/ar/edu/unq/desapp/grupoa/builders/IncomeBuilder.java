@@ -6,7 +6,7 @@ import ar.edu.unq.desapp.grupoa.Shift;
 
 public class IncomeBuilder {
 
-    public static IncomeBuilder aOperation() {
+    public static IncomeBuilder aIncome() {
         return new IncomeBuilder();
     }
     
