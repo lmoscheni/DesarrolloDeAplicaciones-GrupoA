@@ -1,9 +1,4 @@
 package ar.edu.unq.desapp.grupoa;
-
-import mocks.Category;
-import mocks.PaymentType;
-import mocks.Shift;
-
 /**
  * Class operation
  * 
