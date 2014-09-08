@@ -4,6 +4,14 @@ import ar.edu.unq.desapp.grupoa.builders.IncomeBuilder;
 import junit.framework.TestCase;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test income builder
+ * 
+ * @author Skalic Julian and Leandro Moscheni
+ * @version 1.0
+ * 
+ */
+
 public class IncomeBuilderTest extends TestCase {
 
     public void testBuildIncomeAmount() {

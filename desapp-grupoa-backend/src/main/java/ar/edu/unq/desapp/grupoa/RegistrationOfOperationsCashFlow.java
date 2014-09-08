@@ -32,11 +32,15 @@ public class RegistrationOfOperationsCashFlow {
     }
     
     //********************************************************************************************************
-    //Methods of clas RegistrationOfOperationsCashFlow
+    //Methods of class RegistrationOfOperationsCashFlow
     //********************************************************************************************************
     
     public void registrateOperation(Operation mockOperation) {
            this.operations.add(mockOperation);
+    }
+    
+    public void concolidationOfAccounts(){
+        
     }
 
 }

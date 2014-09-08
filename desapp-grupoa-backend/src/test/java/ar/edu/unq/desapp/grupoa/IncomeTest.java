@@ -3,6 +3,14 @@ package ar.edu.unq.desapp.grupoa;
 import junit.framework.TestCase;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test income
+ * 
+ * @author Skalic Julian and Leandro Moscheni
+ * @version 1.0
+ * 
+ */
+
 public class IncomeTest extends TestCase {
 
     // ***********************************************************************************************************
