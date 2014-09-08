@@ -13,6 +13,46 @@ import junit.framework.TestCase;
 
 public class AInvoiveTest extends TestCase {
 
+    //*****************************************************************************************************
+    // Test getters and setters
+    //*****************************************************************************************************
+    
+    public void testGetTaxed(){
+        
+        AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withTaxed(100).build();
+        
+        assertEquals(100, ainvoive.getTaxed());
+    }
+    
+    public void testGetNoTaxed(){
+        
+        AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withNoTaxed(100).build();
+        
+        assertEquals(100, ainvoive.getNoTaxed());
+    }
+    
+    public void testGetIIBBPerception(){
+    
+        AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withIIBBPerception(100).build();
+    
+        assertEquals(100, ainvoive.getIIBBPerception());
+    }
+
+    public void testGetIVA(){
+    
+        AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withIVA(10).build();
+    
+        assertEquals(100, ainvoive.getIVA());
+    }
+    
+    //*****************************************************************************************************
+    // Test of methods
+    //*****************************************************************************************************
+    
+    public void testCalculatePorsentaje(){
+        
+    }
+    
     public void testGetFinalAmount() {
 
         AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withAmount(100).withTaxed(10).withNoTaxed(5)

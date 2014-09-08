@@ -20,6 +20,8 @@ public class AInvoive extends Voucher {
 
     private int IVA;
 
+    public AInvoive(){}
+    
     public AInvoive(Date dateOfIssue, String socialReason, String cuit, int amount, Operation operation, String concept, int taxed,
             int noTaxed, int IIBBPerception, int IVA) {
 
