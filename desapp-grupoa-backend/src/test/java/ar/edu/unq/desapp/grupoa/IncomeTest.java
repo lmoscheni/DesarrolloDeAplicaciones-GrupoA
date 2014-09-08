@@ -37,7 +37,7 @@ public class IncomeTest extends TestCase {
     
     public void testGetAndSetShift(){
         
-        Shift mockShift = mock(Shift.class);
+        Shift mockShift = Shift.EVENING;
         
         Income income = new Income();
         income.setShift(mockShift);

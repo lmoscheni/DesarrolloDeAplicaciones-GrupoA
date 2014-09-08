@@ -29,11 +29,11 @@ public class EgressTest extends TestCase {
     
     public void testGetAndSetShift(){
         
-        Shift mockShift = mock(Shift.class);
+        Shift mockShift = Shift.EVENING;
         
         Egress egress = new Egress();
-        egress.setShift(mockShift);
-        
+        egress.setShift(Shift.EVENING);
+         
         assertEquals(mockShift, egress.getShift());
     }
     

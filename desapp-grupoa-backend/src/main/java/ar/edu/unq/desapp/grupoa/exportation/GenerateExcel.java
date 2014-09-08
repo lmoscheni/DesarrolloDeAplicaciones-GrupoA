@@ -1,10 +1,18 @@
 package ar.edu.unq.desapp.grupoa.exportation;
+import java.io.File;
 import java.io.FileOutputStream;
-import java.util.Vector;
 import java.util.StringTokenizer;
- 
+import java.util.Vector;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
  
 /**
  * Para generar una hoja Excel Simple
@@ -40,6 +48,10 @@ public class GenerateExcel {
     public static void crearExcel(Vector v, String namesheet, String filename)
             throws Exception {
         try {
+            File f = new File(filename);
+            if(f.exists()){
+                f.delete();
+            }
             Workbook wb = new HSSFWorkbook();
             CreationHelper createHelper = wb.getCreationHelper();
             Sheet sheet = wb.createSheet(namesheet);
@@ -97,7 +109,7 @@ public class GenerateExcel {
  
             //Datos a escribir
             Vector v = new Vector();
-            v.addElement("IDENTIFICADOR ,ID_CODIGO ,ESTADO ,DESCRIPCION");
+            v.addElement("IDENTIFIC,ID_CODIGO ,ESTADO ,DESCRIPCION");
             v.addElement("34567,CODIGO_00,Critica,Esto es un texto muy largo \r\n Esto es un texto muy largo");
             v.addElement("34568,CODIGO_01,Baja,Esto es un texto muy largo \r\n Esto es un texto muy largo");
             v.addElement("34569,CODIGO_02,Media,Esto es un texto muy largo \r\n Esto es un texto muy largo");

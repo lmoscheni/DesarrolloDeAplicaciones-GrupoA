@@ -32,7 +32,7 @@ public class IncomeBuilderTest extends TestCase {
     
     public void testBuildIncomeShift() {
 
-        Shift mockShift = mock(Shift.class);
+        Shift mockShift = Shift.EVENING;
         
         Income income = IncomeBuilder.aIncome().withShift(mockShift).build();
         

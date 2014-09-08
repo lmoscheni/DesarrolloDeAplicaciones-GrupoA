@@ -32,7 +32,7 @@ public class EgressBuilderTest extends TestCase{
     
     public void testBuildIncomeShift() {
 
-        Shift mockShift = mock(Shift.class);
+        Shift mockShift = Shift.EVENING;
         
         Egress egress = EgressBuilder.aEgress().withShift(mockShift).build();
         
