@@ -52,8 +52,10 @@ public class AInvoiveBuilderTest extends TestCase {
 
     public void testBuildVoucherConcept() {
 
-        AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withConcept("ventas 28/04").build();
-        assertEquals("ventas 28/04", ainvoive.getConcept());
+        Category mockConcept = mock(Category.class);
+        
+        AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withConcept(mockConcept).build();
+        assertEquals(mockConcept, ainvoive.getConcept());
     }
     
     public void testBuildVoucherWithSocialReason() {

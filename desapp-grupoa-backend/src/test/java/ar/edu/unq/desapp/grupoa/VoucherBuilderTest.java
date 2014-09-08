@@ -56,7 +56,9 @@ public class VoucherBuilderTest extends TestCase {
     
     public void testBuildVoucherConcept() {
 
-        Voucher voucher = VoucherBuilder.aVoucher().withConcept("ventas 28/04").build();
-        assertEquals("ventas 28/04", voucher.getConcept());
+        Category mockConcept = mock(Category.class);
+        
+        Voucher voucher = VoucherBuilder.aVoucher().withConcept(mockConcept).build();
+        assertEquals(mockConcept, voucher.getConcept());
     }
 }

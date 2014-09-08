@@ -17,32 +17,36 @@ public class AInvoiveTest extends TestCase {
     // Test getters and setters
     //*****************************************************************************************************
     
-    public void testGetTaxed(){
+    public void testGetAndSetTaxed(){
         
-        AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withTaxed(100).build();
+        AInvoive ainvoive = new AInvoive();
+        ainvoive.setTaxed(10);
         
-        assertEquals(100, ainvoive.getTaxed());
+        assertEquals(10, ainvoive.getTaxed());
     }
     
-    public void testGetNoTaxed(){
+    public void testGetAndSetNoTaxed(){
         
-        AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withNoTaxed(100).build();
+        AInvoive ainvoive = new AInvoive();
+        ainvoive.setNoTaxed(10);
         
-        assertEquals(100, ainvoive.getNoTaxed());
-    }
-    
-    public void testGetIIBBPerception(){
-    
-        AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withIIBBPerception(100).build();
-    
-        assertEquals(100, ainvoive.getIIBBPerception());
+        assertEquals(10, ainvoive.getNoTaxed());
     }
 
-    public void testGetIVA(){
+    public void testGetAndSetIIBBPerception(){
     
-        AInvoive ainvoive = AInvoiveBuilder.aAInvoive().withIVA(10).build();
+        AInvoive ainvoive = new AInvoive();
+        ainvoive.setIIBBPerception(10);
     
-        assertEquals(100, ainvoive.getIVA());
+        assertEquals(10, ainvoive.getIIBBPerception());
+    }
+
+    public void testGetAndSetIVA(){
+        
+        AInvoive ainvoive = new AInvoive();
+        ainvoive.setIVA(10);
+    
+        assertEquals(10, ainvoive.getIVA());
     }
     
     //*****************************************************************************************************

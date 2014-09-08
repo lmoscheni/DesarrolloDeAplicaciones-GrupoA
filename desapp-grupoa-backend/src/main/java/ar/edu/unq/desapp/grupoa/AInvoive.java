@@ -22,7 +22,7 @@ public class AInvoive extends Voucher {
 
     public AInvoive(){}
     
-    public AInvoive(Date dateOfIssue, String socialReason, String cuit, int amount, Operation operation, String concept, int taxed,
+    public AInvoive(Date dateOfIssue, String socialReason, String cuit, int amount, Operation operation, Category concept, int taxed,
             int noTaxed, int IIBBPerception, int IVA) {
 
         super(dateOfIssue, socialReason, cuit, amount, operation, concept);

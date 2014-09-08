@@ -15,6 +15,8 @@ public abstract class Operation {
     private Category category;
     private Shift shift;
     
+    public Operation(){}
+    
     public Operation(int amount, Category category, Shift shift){
         this.amount = amount;
         this.category = category;

@@ -18,7 +18,7 @@ public class Voucher {
 
     private String cuit;
 
-    private String concept;
+    private Category concept;
    
     private int amount;
 
@@ -26,7 +26,7 @@ public class Voucher {
 
     public Voucher(){}
 
-    public Voucher(Date dateOfIssue, String socialReason, String cuit, int amount, Operation operation, String concept) {
+    public Voucher(Date dateOfIssue, String socialReason, String cuit, int amount, Operation operation, Category concept) {
         this.amount = amount;
         this.dateOfIssue = dateOfIssue;
         this.socialReason = socialReason;
@@ -45,11 +45,11 @@ public class Voucher {
         return dateOfIssue;
     }
 
-    public String getConcept() {
+    public Category getConcept() {
         return concept;
     }
 
-    public void setConcept(String concept) {
+    public void setConcept(Category concept) {
         this.concept = concept;
     }
 
