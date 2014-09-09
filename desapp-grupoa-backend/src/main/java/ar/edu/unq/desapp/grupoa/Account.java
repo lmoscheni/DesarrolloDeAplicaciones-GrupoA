@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoa;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Account {
@@ -45,14 +46,23 @@ public class Account {
         this.name = name;
     }
     
+
     public double getAccrued() {
         return 0.0;
+    }
+    
+    public Date getCuurently(){
+        return null;
     }
 
     // ***********************************************************************************************************
     // Methods of account
     // ***********************************************************************************************************
 
+    public boolean isBankAccount(){
+        return false;
+    }
+    
     public void increaseBalance(double amount) {
         this.balance += amount;
     }

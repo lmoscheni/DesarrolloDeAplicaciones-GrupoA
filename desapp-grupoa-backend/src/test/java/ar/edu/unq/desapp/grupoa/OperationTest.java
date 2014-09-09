@@ -1,10 +1,13 @@
 package ar.edu.unq.desapp.grupoa;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
+import java.util.Date;
+
 import junit.framework.TestCase;
-
-
 import ar.edu.unq.desapp.grupoa.builders.OperationBuilder;
-import static org.mockito.Mockito.*;
 
 /**
  * Test operation
@@ -56,6 +59,16 @@ public class OperationTest extends TestCase {
         operation.setOperationType(mockOperationType);
 
         assertEquals(mockOperationType, operation.getOperationType());
+    }
+    
+    public void testGetAndSetDateOperation(){
+        
+        Date mockDate = mock(Date.class);
+        
+        Operation operation = new Operation();
+        operation.setDateOperation(mockDate);
+        
+        assertEquals(mockDate, operation.getDateOperation());
     }
 
     // ***********************************************************************************************************

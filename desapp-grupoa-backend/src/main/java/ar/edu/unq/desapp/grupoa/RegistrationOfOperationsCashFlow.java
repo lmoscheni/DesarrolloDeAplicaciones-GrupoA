@@ -49,6 +49,17 @@ public class RegistrationOfOperationsCashFlow {
         this.operations.add(mockOperation);
     }
 
+    public void transferAccruedToBalance(){
+        
+        for(Account account : this.accounts){
+            if(account.isBankAccount() && account.getCuurently().compareTo(new Date()) <= 0){
+                double tranfer = account.getAccrued();
+                account.decreaseBalance(tranfer);
+                account.setBalance(account.getBalance() + tranfer);
+            }
+        }
+    }
+    
     public void concolidationOfAccounts() {
         double available = 0.0;
         double accrued = 0.0;

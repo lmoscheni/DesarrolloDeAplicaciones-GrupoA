@@ -47,10 +47,24 @@ public class AccountTest extends TestCase {
         assertEquals("Cuenta1", account.getName());
     }
     
+    public void testGetAccrued(){
+        
+        Account account = new Account();
+        
+        assertEquals(0.0, account.getAccrued());
+    }
+    
     // ***********************************************************************************************************
     // Test methods
     // ***********************************************************************************************************
 
+    public void testIsBankAccount(){
+        
+        Account account = new Account();
+        
+        assertFalse(account.isBankAccount());
+    }
+    
     public void testIncreaseBalance() {
 
         Account account = new Account();

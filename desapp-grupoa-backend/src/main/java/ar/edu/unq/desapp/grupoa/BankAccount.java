@@ -10,14 +10,27 @@ public class BankAccount extends Account {
     
     public BankAccount() {
         super();
-        accrued = 0.0;
+        this.accrued = 0.0;
+        this.currently = new Date();
+    }
+
+    public double getAccrued() {
+        return this.accrued;
+    }
+    
+    public Date getCurrently(){
+        return this.currently;
     }
     
     public void increaseBalance(double amount) {
-        accrued += amount;
+        this.accrued += amount;
     }
 
     public void decreaseBalance(double amount) {
         accrued -= amount;
+    }
+    
+    public boolean isBankAccount(){
+        return true;
     }
 }
