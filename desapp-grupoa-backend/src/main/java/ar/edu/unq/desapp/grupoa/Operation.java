@@ -10,7 +10,7 @@ package ar.edu.unq.desapp.grupoa;
 
 public class Operation {
 
-    private int amount;
+    private double amount;
 
     private Category category;
 
@@ -21,7 +21,7 @@ public class Operation {
     public Operation() {
     }
 
-    public Operation(int amount, Category category, Shift shift, OperationType operationType) {
+    public Operation(double amount, Category category, Shift shift, OperationType operationType) {
         this.amount = amount;
         this.category = category;
         this.shift = shift;
@@ -32,11 +32,11 @@ public class Operation {
     // Getters and setters
     // ******************************************************************************************************
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

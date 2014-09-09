@@ -19,7 +19,7 @@ public class OperationBuilder {
         return new OperationBuilder();
     }
 
-    private int amount;
+    private double amount;
 
     private Category category;
 
@@ -31,7 +31,7 @@ public class OperationBuilder {
         return new Operation(amount, category, shift, operationType);
     }
 
-    public OperationBuilder withAmount(int amount) {
+    public OperationBuilder withAmount(double amount) {
         this.amount = amount;
         return this;
     }
