@@ -1,13 +1,17 @@
 package ar.edu.unq.desapp.grupoa;
 
 import static org.mockito.Mockito.mock;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import junit.framework.TestCase;
 
 public class RegistrationOfOperationsCashFlowTest extends TestCase {
 
     public void testRegistrateOperation() {
-
-        RegistrationOfOperationsCashFlow system = new RegistrationOfOperationsCashFlow();
+        List<Account> accounts = new ArrayList<Account>();
+        RegistrationOfOperationsCashFlow system = new RegistrationOfOperationsCashFlow(accounts);
         Operation mockOperation = mock(Operation.class);
 
         system.registrateOperation(mockOperation);
