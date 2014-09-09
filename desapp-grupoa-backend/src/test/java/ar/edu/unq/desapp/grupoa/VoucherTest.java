@@ -50,10 +50,10 @@ public class VoucherTest extends TestCase {
     public void testGetAndSetAmount() {
 
         Voucher voucher = new Voucher();
-        voucher.setAmount(100);
+        voucher.setAmount(100.0);
         ;
 
-        assertEquals(100, voucher.getAmount());
+        assertEquals(100.0, voucher.getAmount());
     }
 
     public void testGetAndSetOperation() {
@@ -84,10 +84,10 @@ public class VoucherTest extends TestCase {
     public void testGetFinalAmount() {
 
         BillType mockBillType = mock(BillType.class);
-        when(mockBillType.calculateFinalAmount(any(Voucher.class))).thenReturn(100);
+        when(mockBillType.calculateFinalAmount(any(Voucher.class))).thenReturn(100.0);
 
         Voucher voucher = VoucherBuilder.aVoucher().withAmount(100).withBillType(mockBillType).build();
 
-        assertEquals(100, voucher.getFinalAmount());
+        assertEquals(100.0, voucher.getFinalAmount());
     }
 }

@@ -28,7 +28,7 @@ public class VoucherBuilder {
 
     private Category concept;
 
-    private int amount;
+    private double amount;
 
     private BillType billType;
 
@@ -51,7 +51,7 @@ public class VoucherBuilder {
         return this;
     }
 
-    public VoucherBuilder withAmount(int amount) {
+    public VoucherBuilder withAmount(double amount) {
         this.amount = amount;
         return this;
     }

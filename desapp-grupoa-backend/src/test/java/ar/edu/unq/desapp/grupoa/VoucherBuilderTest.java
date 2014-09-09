@@ -20,9 +20,9 @@ public class VoucherBuilderTest extends TestCase {
 
     public void testBuildVoucherAmount() {
 
-        Voucher voucher = VoucherBuilder.aVoucher().withAmount(100).build();
+        Voucher voucher = VoucherBuilder.aVoucher().withAmount(100.0).build();
 
-        assertEquals(100, voucher.getAmount());
+        assertEquals(100.0, voucher.getAmount());
     }
 
     public void testBuildVoucherCuit() {

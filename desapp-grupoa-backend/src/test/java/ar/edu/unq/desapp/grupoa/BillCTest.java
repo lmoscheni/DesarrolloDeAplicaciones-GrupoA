@@ -9,11 +9,11 @@ public class BillCTest extends TestCase {
     public void testCalculateFinalAmount() {
 
         Voucher mockVoucher = mock(Voucher.class);
-        when(mockVoucher.getAmount()).thenReturn(100);
+        when(mockVoucher.getAmount()).thenReturn(100.0);
 
         BillC billC = new BillC();
 
-        assertEquals(100, billC.calculateFinalAmount(mockVoucher));
+        assertEquals(100.0, billC.calculateFinalAmount(mockVoucher));
     }
 
 }

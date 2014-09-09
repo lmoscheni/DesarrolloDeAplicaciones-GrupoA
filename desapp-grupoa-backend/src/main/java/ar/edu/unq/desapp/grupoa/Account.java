@@ -8,6 +8,8 @@ public class Account {
     protected double balance;
 
     protected List<Operation> operations;
+    
+    protected String name;
 
     public Account() {
         this.balance = 0;
@@ -32,6 +34,15 @@ public class Account {
 
     public void setOperations(List<Operation> operations) {
         this.operations = operations;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     // ***********************************************************************************************************

@@ -21,33 +21,33 @@ public class BillATest extends TestCase {
     public void testGetAndSetTaxed() {
 
         BillA billA = new BillA();
-        billA.setTaxed(10);
+        billA.setTaxed(10.0);
 
-        assertEquals(10, billA.getTaxed());
+        assertEquals(10.0, billA.getTaxed());
     }
 
     public void testGetAndSetNoTaxed() {
 
         BillA billA = new BillA();
-        billA.setNoTaxed(10);
+        billA.setNoTaxed(10.0);
 
-        assertEquals(10, billA.getNoTaxed());
+        assertEquals(10.0, billA.getNoTaxed());
     }
 
     public void testGetAndSetIIBBPerception() {
 
         BillA billA = new BillA();
-        billA.setIIBBPerception(10);
+        billA.setIIBBPerception(10.0);
 
-        assertEquals(10, billA.getIIBBPerception());
+        assertEquals(10.0, billA.getIIBBPerception());
     }
 
     public void testGetAndSetIVA() {
 
         BillA billA = new BillA();
-        billA.setIVA(10);
+        billA.setIVA(10.0);
 
-        assertEquals(10, billA.getIVA());
+        assertEquals(10.0, billA.getIVA());
     }
 
     // *****************************************************************************************************
@@ -61,10 +61,10 @@ public class BillATest extends TestCase {
     public void testCalculateFinalAmount() {
 
         Voucher mockVoucher = mock(Voucher.class);
-        when(mockVoucher.getAmount()).thenReturn(100);
+        when(mockVoucher.getAmount()).thenReturn(100.0);
 
         BillA billA = BillABuilder.aBillA().withTaxed(10).withNoTaxed(5).withIIBBPerception(3).withIVA(10).build();
 
-        assertEquals(128, billA.calculateFinalAmount(mockVoucher));
+        assertEquals(128.0, billA.calculateFinalAmount(mockVoucher));
     }
 }

@@ -24,9 +24,9 @@ public class AccountTest extends TestCase {
     public void testGetAnsSetBalance() {
 
         Account account = new Account();
-        account.setBalance(100);
+        account.setBalance(100.0);
 
-        assertEquals(100, account.getBalance());
+        assertEquals(100.0, account.getBalance());
     }
 
     public void testGetAndSetOperations() {
@@ -39,6 +39,14 @@ public class AccountTest extends TestCase {
         assertEquals(mockListOperations, account.getOperations());
     }
 
+    public void testGetAndSetName(){
+        
+        Account account = new Account();
+        account.setName("Cuenta1");
+        
+        assertEquals("Cuenta1", account.getName());
+    }
+    
     // ***********************************************************************************************************
     // Test methods
     // ***********************************************************************************************************
@@ -47,23 +55,23 @@ public class AccountTest extends TestCase {
 
         Account account = new Account();
 
-        assertEquals(0, account.getBalance());
+        assertEquals(0.0, account.getBalance());
 
-        account.increaseBalance(100);
+        account.increaseBalance(100.0);
 
-        assertEquals(100, account.getBalance());
+        assertEquals(100.0, account.getBalance());
     }
 
     public void testDecreaseBalance() {
 
         Account account = new Account();
 
-        assertEquals(0, account.getBalance());
+        assertEquals(0.0, account.getBalance());
 
-        account.increaseBalance(100);
-        account.decreaseBalance(50);
+        account.increaseBalance(100.0);
+        account.decreaseBalance(50.0);
 
-        assertEquals(50, account.getBalance());
+        assertEquals(50.0, account.getBalance());
     }
 
     public void testRegistrateOperation() {

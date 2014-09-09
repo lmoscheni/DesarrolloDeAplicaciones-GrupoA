@@ -2,7 +2,6 @@ package ar.edu.unq.desapp.grupoa;
 
 import junit.framework.TestCase;
 
-import org.junit.Test;
 
 import ar.edu.unq.desapp.grupoa.builders.OperationBuilder;
 import static org.mockito.Mockito.*;
@@ -24,9 +23,9 @@ public class OperationTest extends TestCase {
     public void testGetAndSetAmount() {
 
         Operation operation = new Operation();
-        operation.setAmount(100);
+        operation.setAmount(100.0);
 
-        assertEquals(100, operation.getAmount());
+        assertEquals(100.0, operation.getAmount());
     }
 
     public void testGetAndSetCategory() {

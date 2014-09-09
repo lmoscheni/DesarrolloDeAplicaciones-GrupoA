@@ -39,7 +39,7 @@ public class BillA extends BillType {
         return taxed;
     }
 
-    public void setTaxed(int taxed) {
+    public void setTaxed(double taxed) {
         this.taxed = taxed;
     }
 
@@ -47,7 +47,7 @@ public class BillA extends BillType {
         return noTaxed;
     }
 
-    public void setNoTaxed(int noTaxed) {
+    public void setNoTaxed(double noTaxed) {
         this.noTaxed = noTaxed;
     }
 
@@ -55,7 +55,7 @@ public class BillA extends BillType {
         return IIBBPerception;
     }
 
-    public void setIIBBPerception(int iIBBPerception) {
+    public void setIIBBPerception(double iIBBPerception) {
         IIBBPerception = iIBBPerception;
     }
 
@@ -63,7 +63,7 @@ public class BillA extends BillType {
         return IVA;
     }
 
-    public void setIVA(int iVA) {
+    public void setIVA(double iVA) {
         IVA = iVA;
     }
 

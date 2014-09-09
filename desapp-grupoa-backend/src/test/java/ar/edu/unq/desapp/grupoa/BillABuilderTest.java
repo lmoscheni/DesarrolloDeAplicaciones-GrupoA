@@ -15,29 +15,29 @@ public class BillABuilderTest extends TestCase {
 
     public void testBuildVoucherWithTaxed() {
 
-        BillA billA = BillABuilder.aBillA().withTaxed(10).build();
+        BillA billA = BillABuilder.aBillA().withTaxed(10.0).build();
 
-        assertEquals(10, billA.getTaxed());
+        assertEquals(10.0, billA.getTaxed());
     }
 
     public void testBuildVoucherWithNoTaxed() {
 
-        BillA billA = BillABuilder.aBillA().withNoTaxed(3).build();
+        BillA billA = BillABuilder.aBillA().withNoTaxed(3.0).build();
 
-        assertEquals(3, billA.getNoTaxed());
+        assertEquals(3.0, billA.getNoTaxed());
     }
 
     public void testBuildVoucherWithIIBBPerception() {
 
-        BillA billA = BillABuilder.aBillA().withIIBBPerception(5).build();
+        BillA billA = BillABuilder.aBillA().withIIBBPerception(5.0).build();
 
-        assertEquals(5, billA.getIIBBPerception());
+        assertEquals(5.0, billA.getIIBBPerception());
     }
 
     public void testBuildVoucherWithIVA() {
 
-        BillA billA = BillABuilder.aBillA().withIVA(10).build();
+        BillA billA = BillABuilder.aBillA().withIVA(10.0).build();
 
-        assertEquals(10, billA.getIVA());
+        assertEquals(10.0, billA.getIVA());
     }
 }

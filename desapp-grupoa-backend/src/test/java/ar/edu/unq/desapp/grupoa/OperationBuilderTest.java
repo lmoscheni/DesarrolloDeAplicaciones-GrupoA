@@ -16,9 +16,9 @@ public class OperationBuilderTest extends TestCase {
 
     public void testBuildVoucherWithAmount() {
 
-        Operation operation = OperationBuilder.aOperation().withAmount(100).build();
+        Operation operation = OperationBuilder.aOperation().withAmount(100.0).build();
 
-        assertEquals(100, operation.getAmount());
+        assertEquals(100.0, operation.getAmount());
     }
 
     public void testBuildVoucherWithCategory() {

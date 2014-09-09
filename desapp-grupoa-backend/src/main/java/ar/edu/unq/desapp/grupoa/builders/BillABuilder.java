@@ -16,34 +16,34 @@ public class BillABuilder {
         return new BillABuilder();
     }
 
-    private int taxed;
+    private double taxed;
 
-    private int noTaxed;
+    private double noTaxed;
 
-    private int IIBBPerception;
+    private double IIBBPerception;
 
-    private int IVA;
+    private double IVA;
 
     public BillA build() {
         return new BillA(taxed, noTaxed, IIBBPerception, IVA);
     }
 
-    public BillABuilder withTaxed(int taxed) {
+    public BillABuilder withTaxed(double taxed) {
         this.taxed = taxed;
         return this;
     }
 
-    public BillABuilder withNoTaxed(int noTaxed) {
+    public BillABuilder withNoTaxed(double noTaxed) {
         this.noTaxed = noTaxed;
         return this;
     }
 
-    public BillABuilder withIIBBPerception(int IIBBPerception) {
+    public BillABuilder withIIBBPerception(double IIBBPerception) {
         this.IIBBPerception = IIBBPerception;
         return this;
     }
 
-    public BillABuilder withIVA(int IVA) {
+    public BillABuilder withIVA(double IVA) {
         this.IVA = IVA;
         return this;
     }
