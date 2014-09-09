@@ -1,5 +1,7 @@
 package ar.edu.unq.desapp.grupoa;
 
+import java.util.Date;
+
 /**
  * Class operation
  * 
@@ -18,6 +20,8 @@ public class Operation {
 
     private OperationType operationType;
 
+    private Date dateOperation;
+    
     public Operation() {
     }
 
@@ -26,6 +30,7 @@ public class Operation {
         this.category = category;
         this.shift = shift;
         this.operationType = operationType;
+        this.dateOperation = new Date();
     }
 
     // ******************************************************************************************************
@@ -64,6 +69,14 @@ public class Operation {
         this.operationType = operationType;
     }
 
+    public Date getDateOperation() {
+        return dateOperation;
+    }
+
+    public void setDateOperation(Date dateOperation) {
+        this.dateOperation = dateOperation;
+    }
+    
     // ******************************************************************************************************
     // Methods
     // ******************************************************************************************************

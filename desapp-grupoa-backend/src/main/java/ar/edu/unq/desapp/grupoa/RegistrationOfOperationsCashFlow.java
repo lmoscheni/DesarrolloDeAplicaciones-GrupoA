@@ -3,6 +3,9 @@ package ar.edu.unq.desapp.grupoa;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Vector;
+
+import ar.edu.unq.desapp.grupoa.exportation.GenerateExcel;
 
 /**
  * Class RegistrationOfOperationsCashFlow
@@ -54,6 +57,31 @@ public class RegistrationOfOperationsCashFlow {
             accrued += account.getAccrued();
         }
         this.consolidations.add(new Consolidation(available, accrued, new Date()));
+    }
+    
+    public Vector datesOperetionExport(){ 
+    
+        Vector dates = new Vector();
+        dates.add("Date, Type, Category, Subcategory, Shift, Apply to, Amount");
+        for(Operation operation: this.operations){
+            String dateString = "";
+            dateString = operation.getDateOperation().toString() + ", " + operation.getOperationType().getClass().toString() +
+                    ", " + operation.getCategory().getName() + ", " + " " + ", " + operation.getShift().toString() +
+                    ", " + " " + ", " + operation.getAmount();
+            dates.add(dateString);
+        }
+        return dates;
+    }
+    
+    public void exportOperations(){
+        
+        Vector vectorDates = this.datesOperetionExport();
+        String path = "./operations_" + new Date().toString() + ".xls";
+        try {
+            GenerateExcel.crearExcel(vectorDates, "Operations", path);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
