@@ -10,7 +10,7 @@ package ar.edu.unq.desapp.grupoa;
 
 public class BillType {
 
-    public int calculateFinalAmount(Voucher voucher) {
+    public double calculateFinalAmount(Voucher voucher) {
         return voucher.getAmount();
     }
 

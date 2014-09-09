@@ -12,18 +12,18 @@ import ar.edu.unq.desapp.grupoa.Voucher;
 
 public class BillA extends BillType {
 
-    private int taxed;
+    private double taxed;
 
-    private int noTaxed;
+    private double noTaxed;
 
-    private int IIBBPerception;
+    private double IIBBPerception;
 
-    private int IVA;
+    private double IVA;
 
     public BillA() {
     }
 
-    public BillA(int taxed, int noTaxed, int IIBBPerception, int IVA) {
+    public BillA(double taxed, double noTaxed, double IIBBPerception, double IVA) {
 
         this.taxed = taxed;
         this.noTaxed = noTaxed;
@@ -35,7 +35,7 @@ public class BillA extends BillType {
     // Getters and setters
     // ******************************************************************************************************
 
-    public int getTaxed() {
+    public double getTaxed() {
         return taxed;
     }
 
@@ -43,7 +43,7 @@ public class BillA extends BillType {
         this.taxed = taxed;
     }
 
-    public int getNoTaxed() {
+    public double getNoTaxed() {
         return noTaxed;
     }
 
@@ -51,7 +51,7 @@ public class BillA extends BillType {
         this.noTaxed = noTaxed;
     }
 
-    public int getIIBBPerception() {
+    public double getIIBBPerception() {
         return IIBBPerception;
     }
 
@@ -59,7 +59,7 @@ public class BillA extends BillType {
         IIBBPerception = iIBBPerception;
     }
 
-    public int getIVA() {
+    public double getIVA() {
         return IVA;
     }
 
@@ -71,14 +71,14 @@ public class BillA extends BillType {
     // Methods of class a invoive
     // ******************************************************************************************************
 
-    private int calculatePorsentaje(int amount, int porsentaje) {
-        return ((porsentaje * amount) / 100);
+    private double calculatePorsentaje(double amount, double porsentaje) {
+        return ((porsentaje * amount) / 100.0);
     }
 
-    public int calculateFinalAmount(Voucher voucher) {
+    public double calculateFinalAmount(Voucher voucher) {
 
-        int finalAmount = 0;
-        int amount = voucher.getAmount();
+        double finalAmount = 0;
+        double amount = voucher.getAmount();
         finalAmount = amount + this.taxed + this.noTaxed + this.IIBBPerception + calculatePorsentaje(amount, this.IVA);
         return finalAmount;
     }

@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Account {
 
-    private int balance;
+    protected double balance;
 
-    private List<Operation> operations;
+    protected List<Operation> operations;
 
     public Account() {
         this.balance = 0;
@@ -18,11 +18,11 @@ public class Account {
     // Getters and setters
     // ***********************************************************************************************************
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -38,11 +38,11 @@ public class Account {
     // Methods of account
     // ***********************************************************************************************************
 
-    public void increaseBalance(int amount) {
+    public void increaseBalance(double amount) {
         this.balance += amount;
     }
 
-    public void decreaseBalance(int amount) {
+    public void decreaseBalance(double amount) {
         this.balance -= amount;
     }
 

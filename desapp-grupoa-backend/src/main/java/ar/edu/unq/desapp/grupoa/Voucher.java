@@ -20,14 +20,14 @@ public class Voucher {
 
     private Category concept;
 
-    private int amount;
+    private double amount;
 
     private BillType billType;
 
     public Voucher() {
     }
 
-    public Voucher(Date dateOfIssue, String socialReason, String cuit, int amount, BillType billType, Category concept) {
+    public Voucher(Date dateOfIssue, String socialReason, String cuit, double amount, BillType billType, Category concept) {
         this.amount = amount;
         this.dateOfIssue = dateOfIssue;
         this.socialReason = socialReason;
@@ -72,11 +72,11 @@ public class Voucher {
         this.cuit = cuit;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -92,7 +92,7 @@ public class Voucher {
     // Methods of class Voucher
     // ***********************************************************************************************************
 
-    public int getFinalAmount() {
+    public double getFinalAmount() {
         return this.billType.calculateFinalAmount(this);
     }
 }
