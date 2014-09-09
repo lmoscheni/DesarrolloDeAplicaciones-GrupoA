@@ -44,6 +44,10 @@ public class Account {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public double getAccrued() {
+        return 0.0;
+    }
 
     // ***********************************************************************************************************
     // Methods of account

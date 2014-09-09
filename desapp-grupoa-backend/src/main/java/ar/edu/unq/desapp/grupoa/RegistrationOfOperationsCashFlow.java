@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoa;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,10 +14,16 @@ import java.util.List;
 
 public class RegistrationOfOperationsCashFlow {
 
-    private List<Operation> operations;
+    protected List<Operation> operations;
+    protected List<Voucher> vouchers;
+    protected List<Consolidation> consolidations;
+    protected List<Account> accounts;
 
-    public RegistrationOfOperationsCashFlow() {
+    public RegistrationOfOperationsCashFlow(List<Account> accounts) {
         this.operations = new ArrayList<Operation>();
+        this.vouchers = new ArrayList<Voucher>();
+        this.consolidations = new ArrayList<Consolidation>();
+        this.accounts = new ArrayList<Account>();
     }
 
     // ********************************************************************************************************
@@ -40,7 +47,13 @@ public class RegistrationOfOperationsCashFlow {
     }
 
     public void concolidationOfAccounts() {
-
+        double available = 0.0;
+        double accrued = 0.0;
+        for (Account account : this.accounts) {
+            available += account.getBalance();
+            accrued += account.getAccrued();
+        }
+        this.consolidations.add(new Consolidation(available, accrued, new Date()));
     }
 
 }
