@@ -23,7 +23,7 @@ public class RegistrationOfOperationsCashFlow {
         this.operations = new ArrayList<Operation>();
         this.vouchers = new ArrayList<Voucher>();
         this.consolidations = new ArrayList<Consolidation>();
-        this.accounts = new ArrayList<Account>();
+        this.accounts = accounts;
     }
 
     // ********************************************************************************************************
