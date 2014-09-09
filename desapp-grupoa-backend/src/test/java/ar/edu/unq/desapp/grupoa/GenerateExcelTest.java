@@ -18,7 +18,7 @@ public class GenerateExcelTest extends TestCase {
 
     public void testExportExcel() throws Exception {
 
-        String excelFile = "/home/julian/Escritorio/demo.xls";
+        String excelFile = "./demo.xls";
         List fila1 = new ArrayList<String>();
         fila1.add("Nombre");
         fila1.add("Apellido");
