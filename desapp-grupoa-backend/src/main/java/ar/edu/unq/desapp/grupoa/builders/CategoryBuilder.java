@@ -17,7 +17,7 @@ public class CategoryBuilder {
     }
 
     private String name;
-    
+
     public Category build() {
         return new Category(name);
     }

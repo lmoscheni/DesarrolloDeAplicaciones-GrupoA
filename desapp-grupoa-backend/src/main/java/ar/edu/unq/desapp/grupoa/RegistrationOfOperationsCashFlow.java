@@ -14,14 +14,14 @@ import java.util.List;
 public class RegistrationOfOperationsCashFlow {
 
     private List<Operation> operations;
-    
-    public RegistrationOfOperationsCashFlow(){
+
+    public RegistrationOfOperationsCashFlow() {
         this.operations = new ArrayList<Operation>();
     }
-    
-    //********************************************************************************************************
-    //Getters and setters
-    //********************************************************************************************************
+
+    // ********************************************************************************************************
+    // Getters and setters
+    // ********************************************************************************************************
 
     public List<Operation> getOperations() {
         return operations;
@@ -30,17 +30,17 @@ public class RegistrationOfOperationsCashFlow {
     public void setOperations(List<Operation> operations) {
         this.operations = operations;
     }
-    
-    //********************************************************************************************************
-    //Methods of class RegistrationOfOperationsCashFlow
-    //********************************************************************************************************
-    
+
+    // ********************************************************************************************************
+    // Methods of class RegistrationOfOperationsCashFlow
+    // ********************************************************************************************************
+
     public void registrateOperation(Operation mockOperation) {
-           this.operations.add(mockOperation);
+        this.operations.add(mockOperation);
     }
-    
-    public void concolidationOfAccounts(){
-        
+
+    public void concolidationOfAccounts() {
+
     }
 
 }

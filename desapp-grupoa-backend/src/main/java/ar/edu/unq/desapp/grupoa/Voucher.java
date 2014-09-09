@@ -19,12 +19,13 @@ public class Voucher {
     private String cuit;
 
     private Category concept;
-   
+
     private int amount;
 
     private BillType billType;
 
-    public Voucher(){}
+    public Voucher() {
+    }
 
     public Voucher(Date dateOfIssue, String socialReason, String cuit, int amount, BillType billType, Category concept) {
         this.amount = amount;
@@ -39,8 +40,6 @@ public class Voucher {
     // Getters and setters
     // ***********************************************************************************************************
 
-    
-    
     public Date getDateOfIssue() {
         return dateOfIssue;
     }

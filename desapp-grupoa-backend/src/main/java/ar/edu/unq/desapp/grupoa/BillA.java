@@ -20,10 +20,11 @@ public class BillA extends BillType {
 
     private int IVA;
 
-    public BillA(){}
-    
+    public BillA() {
+    }
+
     public BillA(int taxed, int noTaxed, int IIBBPerception, int IVA) {
-        
+
         this.taxed = taxed;
         this.noTaxed = noTaxed;
         this.IIBBPerception = IIBBPerception;
@@ -70,7 +71,7 @@ public class BillA extends BillType {
     // Methods of class a invoive
     // ******************************************************************************************************
 
-    private int calculatePorsentaje(int amount,int porsentaje) {
+    private int calculatePorsentaje(int amount, int porsentaje) {
         return ((porsentaje * amount) / 100);
     }
 
@@ -78,7 +79,7 @@ public class BillA extends BillType {
 
         int finalAmount = 0;
         int amount = voucher.getAmount();
-        finalAmount = amount + this.taxed + this.noTaxed + this.IIBBPerception + calculatePorsentaje(amount,this.IVA);
+        finalAmount = amount + this.taxed + this.noTaxed + this.IIBBPerception + calculatePorsentaje(amount, this.IVA);
         return finalAmount;
     }
 

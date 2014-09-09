@@ -15,84 +15,84 @@ import junit.framework.TestCase;
  * 
  */
 
-public class AccountTest extends TestCase{
+public class AccountTest extends TestCase {
 
     // ***********************************************************************************************************
     // Test Getters and setters
     // ***********************************************************************************************************
-    
-    public void testGetAnsSetBalance(){
-        
+
+    public void testGetAnsSetBalance() {
+
         Account account = new Account();
         account.setBalance(100);
-        
+
         assertEquals(100, account.getBalance());
     }
-    
-    public void testGetAndSetOperations(){
-        
+
+    public void testGetAndSetOperations() {
+
         List<Operation> mockListOperations = mock(ArrayList.class);
-        
+
         Account account = new Account();
         account.setOperations(mockListOperations);
-        
+
         assertEquals(mockListOperations, account.getOperations());
     }
-    
+
     // ***********************************************************************************************************
     // Test methods
     // ***********************************************************************************************************
-    
-    public void testIncreaseBalance(){
-        
+
+    public void testIncreaseBalance() {
+
         Account account = new Account();
-        
+
         assertEquals(0, account.getBalance());
-        
+
         account.increaseBalance(100);
-        
+
         assertEquals(100, account.getBalance());
     }
-    
-    public void testDecreaseBalance(){
-        
+
+    public void testDecreaseBalance() {
+
         Account account = new Account();
-        
+
         assertEquals(0, account.getBalance());
-        
+
         account.increaseBalance(100);
         account.decreaseBalance(50);
-        
+
         assertEquals(50, account.getBalance());
     }
-    
-    public void testRegistrateOperation(){
-        
+
+    public void testRegistrateOperation() {
+
         Operation mockOperation = mock(Operation.class);
-        
+
         Account account = new Account();
-        
+
         assertEquals(0, account.getOperations().size());
-        
+
         account.registrateOperation(mockOperation);
-        
+
         assertEquals(1, account.getOperations().size());
     }
-    
-    public void testDeleteOperation(){
-        
+
+    public void testDeleteOperation() {
+
         Operation mockOperation = mock(Operation.class);
-        
+
         Account account = new Account();
-        
+
         assertEquals(0, account.getOperations().size());
-        
+
         account.registrateOperation(mockOperation);
-        
+
         assertEquals(1, account.getOperations().size());
-        
+
         account.deleteOperation(mockOperation);
-        
+
         assertEquals(0, account.getOperations().size());
     }
 }

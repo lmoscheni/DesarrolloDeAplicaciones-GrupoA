@@ -6,17 +6,18 @@ import java.util.List;
 public class Account {
 
     private int balance;
+
     private List<Operation> operations;
-    
-    public Account(){
+
+    public Account() {
         this.balance = 0;
         this.operations = new ArrayList<Operation>();
     }
-    
+
     // ***********************************************************************************************************
     // Getters and setters
     // ***********************************************************************************************************
-    
+
     public int getBalance() {
         return balance;
     }
@@ -32,27 +33,27 @@ public class Account {
     public void setOperations(List<Operation> operations) {
         this.operations = operations;
     }
-    
+
     // ***********************************************************************************************************
     // Methods of account
     // ***********************************************************************************************************
-    
+
     public void increaseBalance(int amount) {
         this.balance += amount;
     }
 
-    public void decreaseBalance(int amount){
+    public void decreaseBalance(int amount) {
         this.balance -= amount;
     }
 
-    public void registrateOperation(Operation operation){
+    public void registrateOperation(Operation operation) {
         this.operations.add(operation);
         operation.applyOperation(this);
     }
-    
-    public void deleteOperation(Operation operation){
+
+    public void deleteOperation(Operation operation) {
         this.operations.remove(operation);
         this.balance -= operation.getAmount();
     }
-    
+
 }

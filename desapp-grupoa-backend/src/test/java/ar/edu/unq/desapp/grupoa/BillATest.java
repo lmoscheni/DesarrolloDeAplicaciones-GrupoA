@@ -1,6 +1,5 @@
 package ar.edu.unq.desapp.grupoa;
 
-
 import ar.edu.unq.desapp.grupoa.builders.BillABuilder;
 import junit.framework.TestCase;
 import static org.mockito.Mockito.*;
@@ -15,57 +14,56 @@ import static org.mockito.Mockito.*;
 
 public class BillATest extends TestCase {
 
-    //*****************************************************************************************************
+    // *****************************************************************************************************
     // Test getters and setters
-    //*****************************************************************************************************
-    
-    public void testGetAndSetTaxed(){
-        
+    // *****************************************************************************************************
+
+    public void testGetAndSetTaxed() {
+
         BillA billA = new BillA();
         billA.setTaxed(10);
-        
+
         assertEquals(10, billA.getTaxed());
     }
-    
-    public void testGetAndSetNoTaxed(){
-        
+
+    public void testGetAndSetNoTaxed() {
+
         BillA billA = new BillA();
         billA.setNoTaxed(10);
-        
+
         assertEquals(10, billA.getNoTaxed());
     }
 
-    public void testGetAndSetIIBBPerception(){
-    
+    public void testGetAndSetIIBBPerception() {
+
         BillA billA = new BillA();
         billA.setIIBBPerception(10);
-    
+
         assertEquals(10, billA.getIIBBPerception());
     }
 
-    public void testGetAndSetIVA(){
-        
+    public void testGetAndSetIVA() {
+
         BillA billA = new BillA();
         billA.setIVA(10);
-    
+
         assertEquals(10, billA.getIVA());
     }
-    
-    //*****************************************************************************************************
+
+    // *****************************************************************************************************
     // Test of methods
-    //*****************************************************************************************************
-    
-    public void testCalculatePorsentaje(){
-        
+    // *****************************************************************************************************
+
+    public void testCalculatePorsentaje() {
+
     }
-    
+
     public void testCalculateFinalAmount() {
 
         Voucher mockVoucher = mock(Voucher.class);
         when(mockVoucher.getAmount()).thenReturn(100);
-        
-        BillA billA = BillABuilder.aBillA().withTaxed(10).withNoTaxed(5)
-                .withIIBBPerception(3).withIVA(10).build();
+
+        BillA billA = BillABuilder.aBillA().withTaxed(10).withNoTaxed(5).withIIBBPerception(3).withIVA(10).build();
 
         assertEquals(128, billA.calculateFinalAmount(mockVoucher));
     }

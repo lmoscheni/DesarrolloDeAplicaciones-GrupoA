@@ -1,4 +1,5 @@
 package ar.edu.unq.desapp.grupoa.exportation;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.StringTokenizer;
@@ -13,22 +14,26 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
- 
+
 /**
  * Para generar una hoja Excel Simple
- *
+ * 
  * @author jose
- *
+ * 
  */
 public class GenerateExcel {
- 
+
     /**
      * Para escribir el contenido de una celda.
-     *
-     * @param row Row.
-     * @param i posicion en la fila.
-     * @param value texto a escribir.
-     * @param style estilo de la celda.
+     * 
+     * @param row
+     *            Row.
+     * @param i
+     *            posicion en la fila.
+     * @param value
+     *            texto a escribir.
+     * @param style
+     *            estilo de la celda.
      */
     public static void createCell(Row row, int positionOfRow, String text, CellStyle style) {
         Cell cell = row.createCell(positionOfRow);
@@ -37,19 +42,23 @@ public class GenerateExcel {
         if (style != null)
             cell.setCellStyle(style);
     }
-    //-------------
- 
+
+    // -------------
+
     /**
      * Crea una hoja Excel con el contenido especificado.
-     * @param v Vector con los datos a escribir en la hoja.
-     * @param namesheet nombre de la hoja.
-     * @param filename path del fichero donde se escribe.
+     * 
+     * @param v
+     *            Vector con los datos a escribir en la hoja.
+     * @param namesheet
+     *            nombre de la hoja.
+     * @param filename
+     *            path del fichero donde se escribe.
      */
-    public static void crearExcel(Vector v, String namesheet, String filename)
-            throws Exception {
+    public static void crearExcel(Vector v, String namesheet, String filename) throws Exception {
         try {
             File f = new File(filename);
-            if(f.exists()){
+            if (f.exists()) {
                 f.delete();
             }
             Workbook wb = new HSSFWorkbook();
@@ -63,7 +72,8 @@ public class GenerateExcel {
                 int j = 0;
                 while (st.hasMoreTokens()) {
                     String token = st.nextToken();
-                    // para la cabecera, la primera fila, aplicamos un estilo (negrita y color de fondo azul)
+                    // para la cabecera, la primera fila, aplicamos un estilo
+                    // (negrita y color de fondo azul)
                     if (i == 0) {
                         CellStyle style = wb.createCellStyle();
                         style.setFillForegroundColor(IndexedColors.BLUE_GREY.getIndex());
@@ -76,51 +86,54 @@ public class GenerateExcel {
                         createCell(row, j, token, style);
                     } else
                         createCell(row, j, token, null);
- 
+
                     j = j + 1;
- 
+
                 }
- 
+
             }
- 
-            // Asignar automaticamente el tamaño de las celdas en funcion del contenido
+
+            // Asignar automaticamente el tamaño de las celdas en funcion del
+            // contenido
             for (int i = 0; i < filas; i++) {
                 sheet.autoSizeColumn((short) i);
             }
- 
+
             // Escribir el fichero.
             FileOutputStream fileOut = new FileOutputStream(filename);
             wb.write(fileOut);
             fileOut.close();
- 
-        } catch (Exception e)
-        {
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     // ------------------
- 
+
     /**
      * Para probar el correcto funcionamiento de la clase.
-     * @param args argumentos de entrada.
+     * 
+     * @param args
+     *            argumentos de entrada.
      */
     public static void main(String[] args) {
         try {
- 
-            //Datos a escribir
+
+            // Datos a escribir
             Vector v = new Vector();
             v.addElement("IDENTIFIC,ID_CODIGO ,ESTADO ,DESCRIPCION");
             v.addElement("34567,CODIGO_00,Critica,Esto es un texto muy largo \r\n Esto es un texto muy largo");
             v.addElement("34568,CODIGO_01,Baja,Esto es un texto muy largo \r\n Esto es un texto muy largo");
             v.addElement("34569,CODIGO_02,Media,Esto es un texto muy largo \r\n Esto es un texto muy largo");
- 
+
             // Generar el fichero
             GenerateExcel.crearExcel(v, "Ejemplo", "/home/julian/Escritorio/demo.xls");
- 
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     // ----
- 
+
 }

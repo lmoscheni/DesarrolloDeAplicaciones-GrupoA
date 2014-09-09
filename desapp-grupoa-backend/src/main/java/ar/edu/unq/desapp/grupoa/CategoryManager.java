@@ -12,17 +12,17 @@ import java.util.List;
  */
 
 public class CategoryManager {
-    
+
     private List<Category> categorys;
-    
+
     public CategoryManager() {
         categorys = new ArrayList<Category>();
     }
-    
+
     // ***********************************************************************************************************
     // Getters and setters
     // ***********************************************************************************************************
-    
+
     public List<Category> getCategorys() {
         return categorys;
     }
@@ -38,10 +38,10 @@ public class CategoryManager {
     public void addCategory(Category anCategory) {
         this.categorys.add(anCategory);
     }
-    
+
     public void addSubcategory(Category category, String subcategory) {
-        for(Category c : this.categorys){
-            if(c.getName().equals(category.getName())){
+        for (Category c : this.categorys) {
+            if (c.getName().equals(category.getName())) {
                 c.addSubcategory(subcategory);
             }
         }

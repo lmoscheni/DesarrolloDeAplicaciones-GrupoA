@@ -3,7 +3,6 @@ package ar.edu.unq.desapp.grupoa;
 import ar.edu.unq.desapp.grupoa.builders.BillABuilder;
 import junit.framework.TestCase;
 
-
 /**
  * Test a invoive builder
  * 
@@ -23,7 +22,7 @@ public class BillABuilderTest extends TestCase {
 
     public void testBuildVoucherWithNoTaxed() {
 
-        BillA billA= BillABuilder.aBillA().withNoTaxed(3).build();
+        BillA billA = BillABuilder.aBillA().withNoTaxed(3).build();
 
         assertEquals(3, billA.getNoTaxed());
     }

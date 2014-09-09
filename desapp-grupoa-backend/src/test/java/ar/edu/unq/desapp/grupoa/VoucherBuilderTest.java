@@ -53,11 +53,11 @@ public class VoucherBuilderTest extends TestCase {
         Voucher voucher = VoucherBuilder.aVoucher().withSocialReason("A reason").build();
         assertEquals("A reason", voucher.getSocialReason());
     }
-    
+
     public void testBuildVoucherConcept() {
 
         Category mockConcept = mock(Category.class);
-        
+
         Voucher voucher = VoucherBuilder.aVoucher().withConcept(mockConcept).build();
         assertEquals(mockConcept, voucher.getConcept());
     }

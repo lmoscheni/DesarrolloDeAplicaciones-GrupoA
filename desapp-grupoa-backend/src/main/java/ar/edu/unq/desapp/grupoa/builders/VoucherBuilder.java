@@ -27,7 +27,7 @@ public class VoucherBuilder {
     private String cuit;
 
     private Category concept;
-    
+
     private int amount;
 
     private BillType billType;
@@ -60,7 +60,7 @@ public class VoucherBuilder {
         this.billType = billType;
         return this;
     }
-    
+
     public VoucherBuilder withConcept(Category concept) {
         this.concept = concept;
         return this;

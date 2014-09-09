@@ -11,25 +11,25 @@ public class EgressTest extends TestCase {
     // ***********************************************************************************************************
     // Test of methods
     // ***********************************************************************************************************
-    
-    public void testIsIncome(){
-        
+
+    public void testIsIncome() {
+
         Egress egress = new Egress();
-        
+
         assertEquals(false, egress.isIncome());
     }
-    
-    public void testChargeOperation(){
-        
+
+    public void testChargeOperation() {
+
         Egress egress = new Egress();
-        
+
         Account mockAccount = mock(Account.class);
         Operation mockOperation = mock(Operation.class);
-        
+
         egress.chargeOperation(mockOperation, mockAccount);
-        
+
         verify(mockAccount, times(1)).increaseBalance(anyInt());
         verify(mockOperation, times(1)).getAmount();
-        
+
     }
 }

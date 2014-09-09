@@ -11,8 +11,8 @@ package ar.edu.unq.desapp.grupoa;
 public abstract class OperationType {
 
     public abstract void chargeOperation(Operation operation, Account account);
-    
-    public boolean isIncome(){
+
+    public boolean isIncome() {
         return false;
     }
 }

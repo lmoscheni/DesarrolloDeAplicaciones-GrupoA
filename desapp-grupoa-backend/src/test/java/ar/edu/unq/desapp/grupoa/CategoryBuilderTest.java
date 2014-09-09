@@ -11,7 +11,7 @@ import ar.edu.unq.desapp.grupoa.builders.CategoryBuilder;
  * 
  */
 
-public class CategoryBuilderTest extends TestCase{
+public class CategoryBuilderTest extends TestCase {
 
     public void testBuildVoucherName() {
 

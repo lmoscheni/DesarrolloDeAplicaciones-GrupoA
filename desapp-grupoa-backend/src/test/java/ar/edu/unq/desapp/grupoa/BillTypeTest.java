@@ -12,15 +12,15 @@ import junit.framework.TestCase;
  * 
  */
 
-public class BillTypeTest extends TestCase{
+public class BillTypeTest extends TestCase {
 
-    public void testCalculateFinalAmount(){
-        
+    public void testCalculateFinalAmount() {
+
         Voucher mockVoucher = mock(Voucher.class);
         when(mockVoucher.getAmount()).thenReturn(100);
-        
+
         BillType billType = new BillType();
-        
+
         assertEquals(100, billType.calculateFinalAmount(mockVoucher));
     }
 

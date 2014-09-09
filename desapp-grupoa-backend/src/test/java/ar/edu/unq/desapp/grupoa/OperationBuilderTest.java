@@ -12,7 +12,7 @@ import static org.mockito.Mockito.*;
  * 
  */
 
-public class OperationBuilderTest extends TestCase{
+public class OperationBuilderTest extends TestCase {
 
     public void testBuildVoucherWithAmount() {
 
@@ -24,7 +24,7 @@ public class OperationBuilderTest extends TestCase{
     public void testBuildVoucherWithCategory() {
 
         Category mockCategory = mock(Category.class);
-        
+
         Operation operation = OperationBuilder.aOperation().withCategory(mockCategory).build();
 
         assertEquals(mockCategory, operation.getCategory());
@@ -33,18 +33,18 @@ public class OperationBuilderTest extends TestCase{
     public void testBuildVoucherWithShift() {
 
         Shift mockShift = Shift.EVENING;
-        
+
         Operation operation = OperationBuilder.aOperation().withShift(mockShift).build();
-        
+
         assertEquals(mockShift, operation.getShift());
     }
 
     public void testBuildVoucherOperationType() {
 
         OperationType mockOperationType = mock(OperationType.class);
-        
+
         Operation operation = OperationBuilder.aOperation().withOperationType(mockOperationType).build();
-        
+
         assertEquals(mockOperationType, operation.getOperationType());
     }
 }

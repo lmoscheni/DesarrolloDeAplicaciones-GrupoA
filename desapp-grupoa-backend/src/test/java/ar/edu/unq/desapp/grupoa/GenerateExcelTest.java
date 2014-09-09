@@ -14,10 +14,10 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
 import ar.edu.unq.desapp.grupoa.exportation.GenerateExcel;
 
-public class GenerateExcelTest extends TestCase{
+public class GenerateExcelTest extends TestCase {
 
-    public void testExportExcel() throws Exception{
-        
+    public void testExportExcel() throws Exception {
+
         String excelFile = "/home/julian/Escritorio/demo.xls";
         List fila1 = new ArrayList<String>();
         fila1.add("Nombre");
@@ -30,45 +30,45 @@ public class GenerateExcelTest extends TestCase{
         List filas = new ArrayList<ArrayList>();
         filas.add(fila1);
         filas.add(fila2);
-        
+
         Vector v = new Vector();
         Vector vTest = new Vector();
         v.addElement("Nombre,Apellido,Edad");
         v.addElement("Julian,Skalic,22");
-        
+
         GenerateExcel.crearExcel(v, "Ejemplo", excelFile);
-        
+
         FileInputStream input = new FileInputStream(excelFile);
         POIFSFileSystem fs = new POIFSFileSystem(input);
         HSSFWorkbook wb = new HSSFWorkbook(fs);
         HSSFSheet sheet = wb.getSheetAt(0);
         HSSFRow row;
-        String s = "";    
-        
+        String s = "";
+
         for (int i = 0; i <= sheet.getLastRowNum(); i++) {
             row = sheet.getRow(i);
             int numberRows = row.getLastCellNum();
             for (int j = 0; j < numberRows; j++) {
-                if(2 != j){
-                    s = s + row.getCell(j).getStringCellValue()+",";
-                }else{
+                if (2 != j) {
+                    s = s + row.getCell(j).getStringCellValue() + ",";
+                } else {
                     s = s + row.getCell(j).getStringCellValue();
                 }
-                
+
             }
             vTest.addElement(s);
             s = "";
         }
-        
-        for(int x = 0; x < v.size(); x++){
- 
+
+        for (int x = 0; x < v.size(); x++) {
+
             String[] s1 = vTest.get(x).toString().split(" ,");
             ArrayList s2 = (ArrayList) filas.get(x);
-            
-            for(int k = 0; k < s1.length; k++){
+
+            for (int k = 0; k < s1.length; k++) {
                 assertEquals(s2.get(k), s1[k]);
             }
         }
     }
-        
+
 }

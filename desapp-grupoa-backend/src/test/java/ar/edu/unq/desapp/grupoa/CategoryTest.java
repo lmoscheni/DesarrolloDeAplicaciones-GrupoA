@@ -7,39 +7,39 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
-public class CategoryTest extends TestCase{
+public class CategoryTest extends TestCase {
 
     // ***********************************************************************************************************
     // Test Getters and setters
     // ***********************************************************************************************************
-    
-    public void testGetAndSetName(){
-        
+
+    public void testGetAndSetName() {
+
         Category category = new Category();
         category.setName("Juli");
-        
+
         assertEquals("Juli", category.getName());
     }
-    
-    public void testGetAndSetSubcategories(){
-        
+
+    public void testGetAndSetSubcategories() {
+
         List<Category> mockListSubcategory = mock(ArrayList.class);
-        
+
         Category category = new Category();
         category.setSubcategorys(mockListSubcategory);
-        
+
         assertEquals(mockListSubcategory, category.getSubcategorys());
     }
-    
+
     // ***********************************************************************************************************
     // Test methods
     // ***********************************************************************************************************
-    
-    public void testAddSubcategory(){
-        
+
+    public void testAddSubcategory() {
+
         Category category = new Category();
         category.addSubcategory("Venta");
-        
+
         assertEquals(1, category.getSubcategorys().size());
     }
 }

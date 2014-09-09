@@ -12,14 +12,15 @@ import java.util.List;
  */
 
 public class Category {
-    
+
     public String name;
+
     public List<Category> subcategorys;
-    
-    public Category(){
+
+    public Category() {
         this.subcategorys = new ArrayList<Category>();
     }
-    
+
     public Category(String anName) {
         name = anName;
         subcategorys = new ArrayList<Category>();
@@ -28,7 +29,7 @@ public class Category {
     // ***********************************************************************************************************
     // Getters and setters
     // ***********************************************************************************************************
-    
+
     public String getName() {
         return name;
     }
@@ -44,15 +45,14 @@ public class Category {
     public void setSubcategorys(List<Category> subcategorys) {
         this.subcategorys = subcategorys;
     }
-    
+
     // ***********************************************************************************************************
     // Methods of class Voucher
     // ***********************************************************************************************************
-    
+
     public void addSubcategory(String name) {
         this.subcategorys.add(new Category(name));
-        
+
     }
 
-    
 }

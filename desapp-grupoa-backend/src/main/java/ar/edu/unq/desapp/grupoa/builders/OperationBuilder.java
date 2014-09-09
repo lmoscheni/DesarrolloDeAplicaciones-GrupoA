@@ -20,8 +20,11 @@ public class OperationBuilder {
     }
 
     private int amount;
+
     private Category category;
+
     private Shift shift;
+
     private OperationType operationType;
 
     public Operation build() {
@@ -48,4 +51,3 @@ public class OperationBuilder {
         return this;
     }
 }
-

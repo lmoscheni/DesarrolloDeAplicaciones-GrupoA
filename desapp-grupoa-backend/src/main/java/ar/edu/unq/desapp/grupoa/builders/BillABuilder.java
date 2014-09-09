@@ -2,7 +2,6 @@ package ar.edu.unq.desapp.grupoa.builders;
 
 import ar.edu.unq.desapp.grupoa.BillA;
 
-
 /**
  * Class a invoive builder
  * 
