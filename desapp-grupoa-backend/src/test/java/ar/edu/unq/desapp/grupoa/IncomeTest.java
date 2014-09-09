@@ -14,38 +14,6 @@ import static org.mockito.Mockito.*;
 public class IncomeTest extends TestCase {
 
     // ***********************************************************************************************************
-    // Test Getters and setters
-    // ***********************************************************************************************************
-    
-    public void testGetAndSetAmount(){
-        
-        Income income = new Income();
-        income.setAmount(100);
-        
-        assertEquals(100, income.getAmount());
-    }
-    
-    public void testGetAndSetCategory(){
-        
-        Category mockCategory = mock(Category.class);
-        
-        Income income = new Income();
-        income.setCategory(mockCategory);
-        
-        assertEquals(mockCategory, income.getCategory());
-    }
-    
-    public void testGetAndSetShift(){
-        
-        Shift mockShift = Shift.EVENING;
-        
-        Income income = new Income();
-        income.setShift(mockShift);
-        
-        assertEquals(mockShift, income.getShift());
-    }
-    
-    // ***********************************************************************************************************
     // Test of methods
     // ***********************************************************************************************************
     
@@ -56,16 +24,19 @@ public class IncomeTest extends TestCase {
         assertEquals(true, income.isIncome());
     }
     
-    public void testIsEgress(){
+    
+    public void testChargeOperation(){
         
         Income income = new Income();
         
-        assertEquals(false, income.isEgress());
-    }
-    
-    public void testPerformOperation(){
+        Account mockAccount = mock(Account.class);
+        Operation mockOperation = mock(Operation.class);
         
-        assertTrue(true);
+        income.chargeOperation(mockOperation, mockAccount);
+        
+        verify(mockAccount, times(1)).increaseBalance(anyInt());
+        verify(mockOperation, times(1)).getAmount();
+        
     }
     
 }

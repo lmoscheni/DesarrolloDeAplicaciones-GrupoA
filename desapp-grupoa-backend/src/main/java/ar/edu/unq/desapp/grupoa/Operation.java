@@ -9,18 +9,20 @@ package ar.edu.unq.desapp.grupoa;
  * 
  */
 
-public abstract class Operation {
+public class Operation {
 
     private int amount;
     private Category category;
     private Shift shift;
+    private OperationType operationType;
     
     public Operation(){}
     
-    public Operation(int amount, Category category, Shift shift){
+    public Operation(int amount, Category category, Shift shift, OperationType operationType){
         this.amount = amount;
         this.category = category;
         this.shift = shift;
+        this.operationType = operationType;
     }
 
     //******************************************************************************************************
@@ -51,12 +53,23 @@ public abstract class Operation {
         this.shift = shift;
     }
 
+    public OperationType getOperationType() {
+        return operationType;
+    }
+
+    public void setOperationType(OperationType operationType) {
+        this.operationType = operationType;
+    }
+    
     //******************************************************************************************************
     //Methods
     //******************************************************************************************************
 
-    public abstract void performOperation(PaymentType paymentType);
-    public abstract boolean isIncome();
-    public abstract boolean isEgress();
+    public void applyOperation(Account account) {
+
+        this.operationType.chargeOperation(this, account);
+    }
+
+    
 
 }

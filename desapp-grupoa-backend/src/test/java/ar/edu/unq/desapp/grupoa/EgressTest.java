@@ -1,42 +1,13 @@
 package ar.edu.unq.desapp.grupoa;
 
+import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import junit.framework.TestCase;
 
 public class EgressTest extends TestCase {
 
- // ***********************************************************************************************************
-    // Test Getters and setters
-    // ***********************************************************************************************************
-    
-    public void testGetAndSetAmount(){
-        
-        Egress egress = new Egress();
-        egress.setAmount(100);
-        
-        assertEquals(100, egress.getAmount());
-    }
-    
-    public void testGetAndSetCategory(){
-        
-        Category mockCategory = mock(Category.class);
-        
-        Egress egress= new Egress();
-        egress.setCategory(mockCategory);
-        
-        assertEquals(mockCategory, egress.getCategory());
-    }
-    
-    public void testGetAndSetShift(){
-        
-        Shift mockShift = Shift.EVENING;
-        
-        Egress egress = new Egress();
-        egress.setShift(Shift.EVENING);
-         
-        assertEquals(mockShift, egress.getShift());
-    }
-    
     // ***********************************************************************************************************
     // Test of methods
     // ***********************************************************************************************************
@@ -48,15 +19,17 @@ public class EgressTest extends TestCase {
         assertEquals(false, egress.isIncome());
     }
     
-    public void testIsEgress(){
+    public void testChargeOperation(){
         
         Egress egress = new Egress();
         
-        assertEquals(true, egress.isEgress());
-    }
-    
-    public void testPerformOperation(){
+        Account mockAccount = mock(Account.class);
+        Operation mockOperation = mock(Operation.class);
         
-        assertTrue(true);
+        egress.chargeOperation(mockOperation, mockAccount);
+        
+        verify(mockAccount, times(1)).increaseBalance(anyInt());
+        verify(mockOperation, times(1)).getAmount();
+        
     }
 }
