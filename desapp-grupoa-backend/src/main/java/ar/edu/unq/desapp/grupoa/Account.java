@@ -51,7 +51,7 @@ public class Account {
         return 0.0;
     }
     
-    public Date getCuurently(){
+    public Date getCurrently(){
         return null;
     }
 

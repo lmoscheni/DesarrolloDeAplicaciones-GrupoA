@@ -49,10 +49,21 @@ public class RegistrationOfOperationsCashFlow {
         this.operations.add(mockOperation);
     }
 
+    public boolean isAccrued(Account account){
+        
+        int days = account.getCurrently().getDay() - (new Date().getDay());
+        if(days == 0){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+    
     public void transferAccruedToBalance(){
         
         for(Account account : this.accounts){
-            if(account.isBankAccount() && account.getCuurently().compareTo(new Date()) <= 0){
+            if(account.isBankAccount() && this.isAccrued(account)){
                 double tranfer = account.getAccrued();
                 account.decreaseBalance(tranfer);
                 account.setBalance(account.getBalance() + tranfer);
