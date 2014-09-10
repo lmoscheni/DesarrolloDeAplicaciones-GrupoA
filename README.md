@@ -3,4 +3,4 @@ DesarrolloDeAplicaciones-GrupoA
 
 Skalic Julian and Leandro Moscheni
 
-Aim: System of flow of cash and analysis of expenses.
+Aim: System of flow cash and analysis of expenses.
