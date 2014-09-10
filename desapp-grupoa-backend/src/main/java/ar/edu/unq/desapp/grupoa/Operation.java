@@ -21,7 +21,7 @@ public class Operation {
     private OperationType operationType;
 
     private Date dateOperation;
-    
+
     public Operation() {
     }
 
@@ -76,7 +76,7 @@ public class Operation {
     public void setDateOperation(Date dateOperation) {
         this.dateOperation = dateOperation;
     }
-    
+
     // ******************************************************************************************************
     // Methods
     // ******************************************************************************************************

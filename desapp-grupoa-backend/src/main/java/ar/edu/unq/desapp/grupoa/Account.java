@@ -4,12 +4,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Class account
+ * 
+ * @author Skalic Julian and Leandro Moscheni
+ * @version 1.0
+ * 
+ */
+
 public class Account {
 
     protected double balance;
 
     protected List<Operation> operations;
-    
+
     protected String name;
 
     public Account() {
@@ -37,7 +45,6 @@ public class Account {
         this.operations = operations;
     }
 
-
     public String getName() {
         return name;
     }
@@ -45,13 +52,12 @@ public class Account {
     public void setName(String name) {
         this.name = name;
     }
-    
 
     public double getAccrued() {
         return 0.0;
     }
-    
-    public Date getCurrently(){
+
+    public Date getCurrently() {
         return null;
     }
 
@@ -59,10 +65,10 @@ public class Account {
     // Methods of account
     // ***********************************************************************************************************
 
-    public boolean isBankAccount(){
+    public boolean isBankAccount() {
         return false;
     }
-    
+
     public void increaseBalance(double amount) {
         this.balance += amount;
     }

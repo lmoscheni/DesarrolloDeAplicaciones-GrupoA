@@ -22,6 +22,13 @@ public class RegistrationOfOperationsCashFlow {
     protected List<Consolidation> consolidations;
     protected List<Account> accounts;
 
+    public RegistrationOfOperationsCashFlow() {
+        this.operations = new ArrayList<Operation>();
+        this.vouchers = new ArrayList<Voucher>();
+        this.consolidations = new ArrayList<Consolidation>();
+        this.accounts = accounts;
+    }
+    
     public RegistrationOfOperationsCashFlow(List<Account> accounts) {
         this.operations = new ArrayList<Operation>();
         this.vouchers = new ArrayList<Voucher>();
@@ -52,7 +59,7 @@ public class RegistrationOfOperationsCashFlow {
     public boolean isAccrued(Account account){
         
         int days = account.getCurrently().getDay() - (new Date().getDay());
-        if(days == 0){
+        if(days == 15){
             return true;
         }else{
             return false;

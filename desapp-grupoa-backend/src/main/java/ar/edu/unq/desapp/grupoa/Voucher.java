@@ -27,7 +27,8 @@ public class Voucher {
     public Voucher() {
     }
 
-    public Voucher(Date dateOfIssue, String socialReason, String cuit, double amount, BillType billType, Category concept) {
+    public Voucher(Date dateOfIssue, String socialReason, String cuit, double amount, BillType billType,
+            Category concept) {
         this.amount = amount;
         this.dateOfIssue = dateOfIssue;
         this.socialReason = socialReason;

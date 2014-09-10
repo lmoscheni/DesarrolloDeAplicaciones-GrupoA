@@ -60,14 +60,14 @@ public class OperationTest extends TestCase {
 
         assertEquals(mockOperationType, operation.getOperationType());
     }
-    
-    public void testGetAndSetDateOperation(){
-        
+
+    public void testGetAndSetDateOperation() {
+
         Date mockDate = mock(Date.class);
-        
+
         Operation operation = new Operation();
         operation.setDateOperation(mockDate);
-        
+
         assertEquals(mockDate, operation.getDateOperation());
     }
 

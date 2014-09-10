@@ -39,32 +39,32 @@ public class AccountTest extends TestCase {
         assertEquals(mockListOperations, account.getOperations());
     }
 
-    public void testGetAndSetName(){
-        
+    public void testGetAndSetName() {
+
         Account account = new Account();
         account.setName("Cuenta1");
-        
+
         assertEquals("Cuenta1", account.getName());
     }
-    
-    public void testGetAccrued(){
-        
+
+    public void testGetAccrued() {
+
         Account account = new Account();
-        
+
         assertEquals(0.0, account.getAccrued());
     }
-    
+
     // ***********************************************************************************************************
     // Test methods
     // ***********************************************************************************************************
 
-    public void testIsBankAccount(){
-        
+    public void testIsBankAccount() {
+
         Account account = new Account();
-        
+
         assertFalse(account.isBankAccount());
     }
-    
+
     public void testIncreaseBalance() {
 
         Account account = new Account();
