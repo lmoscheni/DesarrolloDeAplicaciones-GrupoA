@@ -1,10 +1,10 @@
 package ar.edu.unq.desapp.grupoa;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -20,13 +20,17 @@ import junit.framework.TestCase;
 public class RegistrationOfOperationsCashFlowTest extends TestCase {
 
     public void testRegistrateOperation() {
+        
         List<Account> accounts = new ArrayList<Account>();
         RegistrationOfOperationsCashFlow system = new RegistrationOfOperationsCashFlow(accounts);
+        
         Operation mockOperation = mock(Operation.class);
-
-        system.registrateOperation(mockOperation);
+        Account mockAccount = mock(Account.class);
+        
+        system.registrateOperation(mockOperation, mockAccount);
 
         assertEquals(1, system.getOperations().size());
+        verify(mockOperation, times(1)).applyOperation(mockAccount);
     }
 
 }

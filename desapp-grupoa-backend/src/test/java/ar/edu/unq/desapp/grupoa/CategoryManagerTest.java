@@ -21,9 +21,10 @@ public class CategoryManagerTest extends TestCase {
     // Test Getters and setters
     // ***********************************************************************************************************
 
+    @SuppressWarnings("unchecked")
     public void testGetAndSetCategories() {
 
-        List mockCategories = mock(ArrayList.class);
+        List<Category> mockCategories = mock(ArrayList.class);
 
         CategoryManager cManager = new CategoryManager();
         cManager.setCategorys(mockCategories);
@@ -50,12 +51,12 @@ public class CategoryManagerTest extends TestCase {
 
         Category mockCategory = mock(Category.class);
         when(mockCategory.getName()).thenReturn("Ingreso");
-
+        when(mockCategory.isTheSame(any(Category.class))).thenReturn(false);
+        
         CategoryManager cManager = new CategoryManager();
         cManager.addCategory(mockCategory);
         cManager.addSubcategory(mockCategory, "Venta");
 
-        verify(mockCategory, times(2)).getName();
         verify(mockCategory, times(1)).addSubcategory(anyString());
         ;
     }

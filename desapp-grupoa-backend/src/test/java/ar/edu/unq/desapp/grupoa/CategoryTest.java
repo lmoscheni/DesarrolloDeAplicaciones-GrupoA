@@ -21,6 +21,7 @@ public class CategoryTest extends TestCase {
         assertEquals("Juli", category.getName());
     }
 
+    @SuppressWarnings("unchecked")
     public void testGetAndSetSubcategories() {
 
         List<Category> mockListSubcategory = mock(ArrayList.class);
@@ -41,5 +42,13 @@ public class CategoryTest extends TestCase {
         category.addSubcategory("Venta");
 
         assertEquals(1, category.getSubcategorys().size());
+    }
+    
+    public void testIsTheSame(){
+        
+        Category categoryIngreso = new Category("Ingreso");
+        Category categoryVenta = new Category("Venta");
+        
+        assertFalse(categoryIngreso.isTheSame(categoryVenta));
     }
 }

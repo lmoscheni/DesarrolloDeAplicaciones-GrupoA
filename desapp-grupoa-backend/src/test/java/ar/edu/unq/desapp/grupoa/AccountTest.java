@@ -29,6 +29,7 @@ public class AccountTest extends TestCase {
         assertEquals(100.0, account.getBalance());
     }
 
+    @SuppressWarnings("unchecked")
     public void testGetAndSetOperations() {
 
         List<Operation> mockListOperations = mock(ArrayList.class);
