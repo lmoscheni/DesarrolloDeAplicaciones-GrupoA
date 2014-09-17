@@ -86,5 +86,9 @@ public class Account {
         this.operations.remove(operation);
         this.balance -= operation.getAmount();
     }
+    
+    public void updateTheAccountStatus() {
+        
+    }
 
 }

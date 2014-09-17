@@ -26,7 +26,6 @@ public class RegistrationOfOperationsCashFlow {
         this.operations = new ArrayList<Operation>();
         this.vouchers = new ArrayList<Voucher>();
         this.consolidations = new ArrayList<Consolidation>();
-        this.accounts = accounts;
     }
     
     public RegistrationOfOperationsCashFlow(List<Account> accounts) {
@@ -52,33 +51,19 @@ public class RegistrationOfOperationsCashFlow {
     // Methods of class RegistrationOfOperationsCashFlow
     // ********************************************************************************************************
 
-    public void registrateOperation(Operation mockOperation) {
-        this.operations.add(mockOperation);
+    public void registrateOperation(Operation operation,Account account) {
+        this.operations.add(operation);
+        operation.applyOperation(account);
     }
 
-    public boolean isAccrued(Account account){
-        
-        int days = account.getCurrently().getDay() - (new Date().getDay());
-        if(days == 15){
-            return true;
-        }else{
-            return false;
-        }
-        
-    }
-    
-    public void transferAccruedToBalance(){
-        
-        for(Account account : this.accounts){
-            if(account.isBankAccount() && this.isAccrued(account)){
-                double tranfer = account.getAccrued();
-                account.decreaseBalance(tranfer);
-                account.setBalance(account.getBalance() + tranfer);
-            }
+    public void updateAccounts(){
+        for(Account acount : this.accounts) {
+            acount.updateTheAccountStatus();
         }
     }
     
     public void concolidationOfAccounts() {
+        this.updateAccounts();
         double available = 0.0;
         double accrued = 0.0;
         for (Account account : this.accounts) {
@@ -88,26 +73,33 @@ public class RegistrationOfOperationsCashFlow {
         this.consolidations.add(new Consolidation(available, accrued, new Date()));
     }
     
-    public Vector datesOperetionExport(){ 
+    public String generateRow(Operation operation) {
+        String row = operation.getDateOperation().toString() + 
+                            ", " + 
+                            operation.getOperationType().getClass().toString() +
+                            ", " + 
+                            operation.getCategory().getName() + 
+                            ", " + " " + ", " 
+                            + operation.getShift().toString() +
+                            ", " + " " + ", " + 
+                            operation.getAmount();
+        return row;
+    }
     
-        Vector dates = new Vector();
+    public Vector<String> datesOperetionExport(){ 
+        Vector<String> dates = new Vector<String>();
         dates.add("Date, Type, Category, Subcategory, Shift, Apply to, Amount");
         for(Operation operation: this.operations){
-            String dateString = "";
-            dateString = operation.getDateOperation().toString() + ", " + operation.getOperationType().getClass().toString() +
-                    ", " + operation.getCategory().getName() + ", " + " " + ", " + operation.getShift().toString() +
-                    ", " + " " + ", " + operation.getAmount();
-            dates.add(dateString);
+            dates.add(this.generateRow(operation));
         }
         return dates;
     }
     
-    public void exportOperations(){
-        
-        Vector vectorDates = this.datesOperetionExport();
-        String path = "./operations_" + new Date().toString() + ".xls";
+    public void exportOperations(String path){
+        Vector<String> vectorDates = this.datesOperetionExport();
+        String exportPath = path + "operations_" + new Date().toString() + ".xls";
         try {
-            GenerateExcel.crearExcel(vectorDates, "Operations", path);
+            GenerateExcel.crearExcel(vectorDates, "Operations", exportPath);
         } catch (Exception e) {
             e.printStackTrace();
         }

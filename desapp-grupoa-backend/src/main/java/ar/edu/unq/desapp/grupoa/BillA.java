@@ -21,10 +21,10 @@ public class BillA extends BillType {
     private double IVA;
 
     public BillA() {
+    
     }
 
     public BillA(double taxed, double noTaxed, double IIBBPerception, double IVA) {
-
         this.taxed = taxed;
         this.noTaxed = noTaxed;
         this.IIBBPerception = IIBBPerception;
@@ -74,12 +74,14 @@ public class BillA extends BillType {
     private double calculatePorsentaje(double amount, double porsentaje) {
         return ((porsentaje * amount) / 100.0);
     }
+    
+    private double calculateTaxes(double amount) {
+        return this.taxed + this.noTaxed + this.IIBBPerception + calculatePorsentaje(amount, this.IVA);
+    }
 
     public double calculateFinalAmount(Voucher voucher) {
-
-        double finalAmount = 0;
         double amount = voucher.getAmount();
-        finalAmount = amount + this.taxed + this.noTaxed + this.IIBBPerception + calculatePorsentaje(amount, this.IVA);
+        double finalAmount = amount + this.calculateTaxes(amount);
         return finalAmount;
     }
 

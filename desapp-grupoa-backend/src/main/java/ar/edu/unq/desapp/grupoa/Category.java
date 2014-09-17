@@ -47,12 +47,16 @@ public class Category {
     }
 
     // ***********************************************************************************************************
-    // Methods of class Voucher
+    // Methods of class Category
     // ***********************************************************************************************************
 
     public void addSubcategory(String name) {
         this.subcategorys.add(new Category(name));
 
+    }
+    
+    public boolean isTheSame(Category category) {
+        return this.getName().equals(category.getName());
     }
 
 }

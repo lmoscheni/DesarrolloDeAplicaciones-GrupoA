@@ -41,7 +41,7 @@ public class CategoryManager {
 
     public void addSubcategory(Category category, String subcategory) {
         for (Category c : this.categorys) {
-            if (c.getName().equals(category.getName())) {
+            if (c.isTheSame(category)) {
                 c.addSubcategory(subcategory);
             }
         }
