@@ -19,20 +19,21 @@ public class GenerateExcelTest extends TestCase {
     public void testExportExcel() throws Exception {
 
         String excelFile = "./demo.xls";
-        List fila1 = new ArrayList<String>();
+        List<String> fila1 = new ArrayList<String>();
         fila1.add("Nombre");
         fila1.add("Apellido");
         fila1.add("Edad ");
-        List fila2 = new ArrayList<String>();
+        List<String> fila2 = new ArrayList<String>();
         fila2.add("Julian");
         fila2.add("Skalic");
         fila2.add("22 ");
+        @SuppressWarnings("rawtypes")
         List filas = new ArrayList<ArrayList>();
         filas.add(fila1);
         filas.add(fila2);
 
-        Vector v = new Vector();
-        Vector vTest = new Vector();
+        Vector<String> v = new Vector<String>();
+        Vector<String> vTest = new Vector<String>();
         v.addElement("Nombre,Apellido,Edad");
         v.addElement("Julian,Skalic,22");
 
@@ -63,7 +64,8 @@ public class GenerateExcelTest extends TestCase {
         for (int x = 0; x < v.size(); x++) {
 
             String[] s1 = vTest.get(x).toString().split(" ,");
-            ArrayList s2 = (ArrayList) filas.get(x);
+            @SuppressWarnings("unchecked")
+            ArrayList<String> s2 = (ArrayList<String>) filas.get(x);
 
             for (int k = 0; k < s1.length; k++) {
                 assertEquals(s2.get(k), s1[k]);

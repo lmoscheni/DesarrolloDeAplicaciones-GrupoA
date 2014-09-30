@@ -1,9 +1,11 @@
-package ar.edu.unq.desapp.grupoa;
+package ar.edu.unq.desapp.grupoa.Accounts;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import ar.edu.unq.desapp.grupoa.Operation.Operation;
 
 /**
  * Class bank account

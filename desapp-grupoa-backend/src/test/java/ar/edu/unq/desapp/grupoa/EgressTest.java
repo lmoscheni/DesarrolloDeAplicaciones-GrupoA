@@ -4,6 +4,9 @@ import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import ar.edu.unq.desapp.grupoa.Accounts.Account;
+import ar.edu.unq.desapp.grupoa.Operation.Egress;
+import ar.edu.unq.desapp.grupoa.Operation.Operation;
 import junit.framework.TestCase;
 
 public class EgressTest extends TestCase {

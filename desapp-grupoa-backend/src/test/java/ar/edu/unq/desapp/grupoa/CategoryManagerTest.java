@@ -5,6 +5,8 @@ import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.desapp.grupoa.Category.Category;
+import ar.edu.unq.desapp.grupoa.Category.CategoryManager;
 import junit.framework.TestCase;
 
 /**

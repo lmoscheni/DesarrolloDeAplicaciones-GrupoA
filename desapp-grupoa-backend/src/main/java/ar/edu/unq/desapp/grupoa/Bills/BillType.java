@@ -1,4 +1,6 @@
-package ar.edu.unq.desapp.grupoa;
+package ar.edu.unq.desapp.grupoa.Bills;
+
+import ar.edu.unq.desapp.grupoa.System.Voucher;
 
 /**
  * Class bill type

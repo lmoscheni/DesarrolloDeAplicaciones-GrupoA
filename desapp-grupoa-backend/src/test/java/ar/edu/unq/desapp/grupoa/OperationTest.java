@@ -7,6 +7,11 @@ import static org.mockito.Mockito.verify;
 import java.util.Date;
 
 import junit.framework.TestCase;
+import ar.edu.unq.desapp.grupoa.Accounts.Account;
+import ar.edu.unq.desapp.grupoa.Category.Category;
+import ar.edu.unq.desapp.grupoa.Operation.Operation;
+import ar.edu.unq.desapp.grupoa.Operation.OperationType;
+import ar.edu.unq.desapp.grupoa.System.Shift;
 import ar.edu.unq.desapp.grupoa.builders.OperationBuilder;
 
 /**

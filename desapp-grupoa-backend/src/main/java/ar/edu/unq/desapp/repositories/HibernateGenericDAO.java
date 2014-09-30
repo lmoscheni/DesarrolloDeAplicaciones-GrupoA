@@ -10,6 +10,7 @@ import java.util.List;
  * 
  * @param <T>
  */
+/*
 public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport
 		implements GenericRepository<T>, Serializable {
 
@@ -71,4 +72,4 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport
 		this.getHibernateTemplate().update(entity);
 	}
 
-}
+}*/

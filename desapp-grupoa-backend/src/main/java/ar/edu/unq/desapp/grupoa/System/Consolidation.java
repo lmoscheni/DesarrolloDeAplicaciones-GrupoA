@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoa;
+package ar.edu.unq.desapp.grupoa.System;
 
 import java.util.Date;
 

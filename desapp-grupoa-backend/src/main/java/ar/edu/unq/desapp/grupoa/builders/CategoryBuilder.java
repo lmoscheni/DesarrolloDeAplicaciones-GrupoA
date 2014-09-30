@@ -1,6 +1,6 @@
 package ar.edu.unq.desapp.grupoa.builders;
 
-import ar.edu.unq.desapp.grupoa.Category;
+import ar.edu.unq.desapp.grupoa.Category.Category;
 
 /**
  * Class category builder

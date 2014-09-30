@@ -5,6 +5,9 @@ import static org.mockito.Mockito.*;
 import java.util.Date;
 
 import junit.framework.TestCase;
+import ar.edu.unq.desapp.grupoa.Bills.BillType;
+import ar.edu.unq.desapp.grupoa.Category.Category;
+import ar.edu.unq.desapp.grupoa.System.Voucher;
 import ar.edu.unq.desapp.grupoa.builders.VoucherBuilder;
 
 /**

@@ -1,4 +1,5 @@
-package ar.edu.unq.desapp.grupoa;
+package ar.edu.unq.desapp.grupoa.Bills;
+
 
 public class BillX extends BillType {
 

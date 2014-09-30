@@ -5,6 +5,8 @@ import static org.mockito.Mockito.mock;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.desapp.grupoa.Accounts.Account;
+import ar.edu.unq.desapp.grupoa.Operation.Operation;
 import junit.framework.TestCase;
 
 /**

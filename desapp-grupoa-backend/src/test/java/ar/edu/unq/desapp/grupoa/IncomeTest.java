@@ -1,5 +1,8 @@
 package ar.edu.unq.desapp.grupoa;
 
+import ar.edu.unq.desapp.grupoa.Accounts.Account;
+import ar.edu.unq.desapp.grupoa.Operation.Income;
+import ar.edu.unq.desapp.grupoa.Operation.Operation;
 import junit.framework.TestCase;
 import static org.mockito.Mockito.*;
 

@@ -1,9 +1,9 @@
 package ar.edu.unq.desapp.grupoa.builders;
 
-import ar.edu.unq.desapp.grupoa.Category;
-import ar.edu.unq.desapp.grupoa.Operation;
-import ar.edu.unq.desapp.grupoa.OperationType;
-import ar.edu.unq.desapp.grupoa.Shift;
+import ar.edu.unq.desapp.grupoa.Category.Category;
+import ar.edu.unq.desapp.grupoa.Operation.Operation;
+import ar.edu.unq.desapp.grupoa.Operation.OperationType;
+import ar.edu.unq.desapp.grupoa.System.Shift;
 
 /**
  * Class a operation builder

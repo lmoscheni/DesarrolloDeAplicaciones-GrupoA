@@ -7,6 +7,9 @@ import static org.mockito.Mockito.verify;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.desapp.grupoa.Accounts.Account;
+import ar.edu.unq.desapp.grupoa.Operation.Operation;
+import ar.edu.unq.desapp.grupoa.System.RegistrationOfOperationsCashFlow;
 import junit.framework.TestCase;
 
 /**

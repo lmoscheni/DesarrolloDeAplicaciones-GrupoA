@@ -1,4 +1,6 @@
-package ar.edu.unq.desapp.grupoa;
+package ar.edu.unq.desapp.grupoa.Operation;
+
+import ar.edu.unq.desapp.grupoa.Accounts.Account;
 
 public class Egress extends OperationType {
 

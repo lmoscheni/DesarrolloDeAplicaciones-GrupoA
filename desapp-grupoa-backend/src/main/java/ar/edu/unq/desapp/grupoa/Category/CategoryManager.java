@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoa;
+package ar.edu.unq.desapp.grupoa.Category;
 
 import java.util.ArrayList;
 import java.util.List;

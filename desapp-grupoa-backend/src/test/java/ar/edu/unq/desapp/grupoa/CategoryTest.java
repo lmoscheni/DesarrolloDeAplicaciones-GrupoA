@@ -5,6 +5,7 @@ import static org.mockito.Mockito.mock;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.desapp.grupoa.Category.Category;
 import junit.framework.TestCase;
 
 public class CategoryTest extends TestCase {

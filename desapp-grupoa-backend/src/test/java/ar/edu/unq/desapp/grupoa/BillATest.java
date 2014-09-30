@@ -1,5 +1,7 @@
 package ar.edu.unq.desapp.grupoa;
 
+import ar.edu.unq.desapp.grupoa.Bills.BillA;
+import ar.edu.unq.desapp.grupoa.System.Voucher;
 import ar.edu.unq.desapp.grupoa.builders.BillABuilder;
 import junit.framework.TestCase;
 import static org.mockito.Mockito.*;

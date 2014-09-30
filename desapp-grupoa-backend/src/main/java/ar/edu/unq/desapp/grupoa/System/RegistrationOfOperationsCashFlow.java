@@ -1,10 +1,12 @@
-package ar.edu.unq.desapp.grupoa;
+package ar.edu.unq.desapp.grupoa.System;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
+import ar.edu.unq.desapp.grupoa.Accounts.Account;
+import ar.edu.unq.desapp.grupoa.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.exportation.GenerateExcel;
 
 /**

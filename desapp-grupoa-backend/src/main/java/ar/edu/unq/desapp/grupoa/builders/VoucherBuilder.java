@@ -2,9 +2,9 @@ package ar.edu.unq.desapp.grupoa.builders;
 
 import java.util.Date;
 
-import ar.edu.unq.desapp.grupoa.BillType;
-import ar.edu.unq.desapp.grupoa.Category;
-import ar.edu.unq.desapp.grupoa.Voucher;
+import ar.edu.unq.desapp.grupoa.Bills.BillType;
+import ar.edu.unq.desapp.grupoa.Category.Category;
+import ar.edu.unq.desapp.grupoa.System.Voucher;
 
 /**
  * Class voucher builder
