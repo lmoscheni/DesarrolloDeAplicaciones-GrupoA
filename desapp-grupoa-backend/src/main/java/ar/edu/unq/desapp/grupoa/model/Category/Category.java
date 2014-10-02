@@ -3,6 +3,9 @@ package ar.edu.unq.desapp.grupoa.model.Category;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.desapp.grupoa.Entity;
+
+
 /**
  * Class category
  * 
@@ -11,13 +14,18 @@ import java.util.List;
  * 
  */
 
-public class Category {
+public class Category extends Entity{
 
-    public String name;
+    private static final long serialVersionUID = -914391959347026916L;
+
+    //private Integer id;
+    
+    protected String name;
 
     public List<Category> subcategorys;
-
+    
     public Category() {
+        super();
         this.subcategorys = new ArrayList<Category>();
     }
 
@@ -29,10 +37,18 @@ public class Category {
     // ***********************************************************************************************************
     // Getters and setters
     // ***********************************************************************************************************
-
+    
     public String getName() {
         return name;
     }
+
+//    public Integer getId() {
+//        return id;
+//    }
+
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
 
     public void setName(String name) {
         this.name = name;
