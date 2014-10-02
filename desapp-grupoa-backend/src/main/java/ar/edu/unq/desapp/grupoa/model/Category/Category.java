@@ -1,10 +1,18 @@
 package ar.edu.unq.desapp.grupoa.model.Category;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.unq.desapp.grupoa.Entity;
-
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * Class category
@@ -14,14 +22,22 @@ import ar.edu.unq.desapp.grupoa.Entity;
  * 
  */
 
-public class Category extends Entity{
 
-    private static final long serialVersionUID = -914391959347026916L;
+@Entity
+@Table(name = "CATEGORY")
+public class Category implements Serializable{
 
-    //private Integer id;
+    private static final long serialVersionUID = 8560666959522143702L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CATEGORY_ID", unique = true)
+    private Long id;
     
+    @Column(name = "NAME")
     protected String name;
-
+    
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public List<Category> subcategorys;
     
     public Category() {
@@ -42,13 +58,13 @@ public class Category extends Entity{
         return name;
     }
 
-//    public Integer getId() {
-//        return id;
-//    }
+    public Long getId() {
+        return id;
+    }
 
-//    public void setId(Integer id) {
-//        this.id = id;
-//    }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public void setName(String name) {
         this.name = name;
