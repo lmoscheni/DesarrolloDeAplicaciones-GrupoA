@@ -7,7 +7,25 @@
   <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>-->
 
 <!---group-->
-<body ng-app="cargarComprobanteApp">
+<div ng-controller="cargarComprobanteApp">
+    
+        <div class="container">
+      <!--<div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a ng-href="#">Home</a></li>
+          <li><a ng-href="#/about">About</a></li>
+          <li><a ng-href="#">Contact</a></li>
+        </ul>
+        <h3 class="text-muted">angular</h3>
+      </div>-->
+
+      <div ng-view=""></div>
+
+<!--      <div class="footer">
+        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+      </div>-->
+    </div>
+    
     <h2>Cargar comprobante</h2>
     
     <div class="input jumbotron">
@@ -54,9 +72,9 @@
 	    	</div>
     	</div>
         
-        <!--<div class="form-actions">
+        <div class="form-actions">
         	
-            <a rel="stylesheet" href="#/about" >jajaja</a>
-        </div>-->
+            <a rel="stylesheet" href="#/homePage" >jajaja</a>
+        </div>
     </div>
-</body>
+</div>
