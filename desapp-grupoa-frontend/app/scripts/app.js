@@ -23,7 +23,7 @@ angular
         templateUrl: 'views/homePage.html',
         controller: 'HomePageCtrl'
       })
-        .when('/homePage', {
+        .when('/crearComprobante', {
         templateUrl: 'views/crearComprobante.html',
         controller: 'MainCtrl'
       })
