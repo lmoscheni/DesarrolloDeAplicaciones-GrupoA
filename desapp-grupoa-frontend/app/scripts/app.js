@@ -25,7 +25,15 @@ angular
       })
         .when('/crearComprobante', {
         templateUrl: 'views/crearComprobante.html',
-        controller: 'MainCtrl'
+        controller: 'CrearComprobanteCtrl'
+      })
+        .when('/registroDeOperacionesYComprobantes', {
+        templateUrl: 'views/registroDeOperacionesYComprobantes.html',
+        controller: 'RegistroDeOperacionesCtrl'
+      })
+        .when('/registroDeOperaciones', {
+        templateUrl: 'views/registroDeOperacione.html',
+        controller: 'RegistroDeOperacionesCtrl'
       })
       .otherwise({
         redirectTo: '/'
