@@ -1,42 +1,84 @@
 <div ng-controller="RegistroDeOperaciones">
-<div class="container-fluid">
-  <div class="row">
-    <!-- Nav left -->
-    <ul class="nav col-md-2" id="leftTabs">
-      <li class="active">
-        <a href="#/registroDeOperaciones" data-toggle="tab">
-          <span><h3>Comprobantes</h3></span>
-        </a>
-      </li>
-      <li>
-        <a href="#b_tab" data-toggle="tab">
-          <span><h3>Operaciones</h3></span>
-        </a>
-      </li>
-    </ul>
-    <!-- Nav content -->
-    <div class="tab-content col-md-10">
-      <div class="tab-pane active" id="a_tab">
-        <!--<h1>Content of A</h1>-->
-      </div>
-      <div class="tab-pane" id="b_tab">
-        <h1>Content of B</h1>
-      </div>
-      <div class="tab-pane" id="c_tab">
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#first" data-toggle="tab">First</a></li>
-          <li><a href="#second" data-toggle="tab">Second</a></li>
-          <li><a href="#third" data-toggle="tab">Third</a></li>
-        </ul>
-        <!-- Nav tabs content -->
-        <div class="tab-content">
-          <div id="first" class="tab-pane active">Content of first</div>
-          <div id="second" class="tab-pane">Content of second</div>
-          <div id="third" class="tab-pane">Content of third</div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Nav left -->
+            <ul class="nav nav-tabs nav-stacked col-md-2">
+                <li><a href="registroDeOperacionesYComprobantes/#tab1" data-toggle="tab"><h3>Comprobantes</h3></a></li>
+                <li><a href="registroDeOperacionesYComprobantes/#tab2" data-toggle="tab"><h3>Operaciones</h3></a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade" id="tab1">
+
+                    <a href="registroDeOperacionesYComprobantes/#basicModal" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">Crear</a>
+
+                    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                                    <h4 class="modal-title" id="myModalLabel">Crear comprobante</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <select ng-model="propiedad" draggable="true" ng-options="billType.name for billType in billTypes" class="form-control">
+                                          <option value="">Bill Type</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <input ng-model="cuit" type="text" placeholder="Cuit" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <input ng-model="taxed" type="text" placeholder="Taxed" disabled="true" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <input ng-model="noTaxed" type="text" placeholder="No Taxed" disabled="true" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <input ng-model="IIBBPerception" type="text" placeholder="IIBB Perception" disabled="true" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <input ng-model="iva" type="text" placeholder="IVA" disabled="true" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <input ng-model="amount" type="number" placeholder="Amount" class="form-control"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="tab2">
+                    Tab 2 content              
+                </div>
+        
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
 </div>
