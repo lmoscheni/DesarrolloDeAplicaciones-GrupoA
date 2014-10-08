@@ -4,15 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  * Class category
@@ -24,20 +19,16 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "CATEGORY")
 public class Category implements Serializable{
 
     private static final long serialVersionUID = 8560666959522143702L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CATEGORY_ID", unique = true)
-    private Long id;
+//
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     
-    @Column(name = "NAME")
     protected String name;
     
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public List<Category> subcategorys;
     
     public Category() {
@@ -58,11 +49,11 @@ public class Category implements Serializable{
         return name;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
