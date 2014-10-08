@@ -16,6 +16,7 @@ import ar.edu.unq.desapp.grupoa.helpers.exportation.GenerateExcel;
 
 public class GenerateExcelTest extends TestCase {
 
+    @SuppressWarnings("unchecked")
     public void testExportExcel() throws Exception {
 
         String excelFile = "./demo.xls";
@@ -64,7 +65,6 @@ public class GenerateExcelTest extends TestCase {
         for (int x = 0; x < v.size(); x++) {
 
             String[] s1 = vTest.get(x).toString().split(" ,");
-            @SuppressWarnings("unchecked")
             ArrayList<String> s2 = (ArrayList<String>) filas.get(x);
 
             for (int k = 0; k < s1.length; k++) {

@@ -1,7 +1,5 @@
 package ar.edu.unq.desapp.grupoa.model.Category;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class category
@@ -11,19 +9,16 @@ import java.util.List;
  * 
  */
 
-public class Category {
+public class Category implements CategoryI{
 
     public String name;
-
-    public List<Category> subcategorys;
+    public Subcategory subcategory;
 
     public Category() {
-        this.subcategorys = new ArrayList<Category>();
     }
 
     public Category(String anName) {
         name = anName;
-        subcategorys = new ArrayList<Category>();
     }
 
     // ***********************************************************************************************************
@@ -37,26 +32,17 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-
-    public List<Category> getSubcategorys() {
-        return subcategorys;
-    }
-
-    public void setSubcategorys(List<Category> subcategorys) {
-        this.subcategorys = subcategorys;
-    }
-
-    // ***********************************************************************************************************
-    // Methods of class Category
-    // ***********************************************************************************************************
-
-    public void addSubcategory(String name) {
-        this.subcategorys.add(new Category(name));
-
+    
+    public Subcategory getSubcategory() {
+        return this.subcategory;
     }
     
-    public boolean isTheSame(Category category) {
-        return this.getName().equals(category.getName());
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
+    }
+
+    public boolean isTheSame(CategoryI category) {
+        return this.name == category.getName();
     }
 
 }

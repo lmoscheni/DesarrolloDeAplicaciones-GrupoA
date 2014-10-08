@@ -39,10 +39,10 @@ public class CategoryManager {
         this.categorys.add(anCategory);
     }
 
-    public void addSubcategory(Category category, String subcategory) {
+    public void addSubcategory(Category category, String subcategoryName) {
         for (Category c : this.categorys) {
             if (!c.isTheSame(category)) {
-                c.addSubcategory(subcategory);
+                c.setSubcategory(new Subcategory(subcategoryName));
             }
         }
     }
