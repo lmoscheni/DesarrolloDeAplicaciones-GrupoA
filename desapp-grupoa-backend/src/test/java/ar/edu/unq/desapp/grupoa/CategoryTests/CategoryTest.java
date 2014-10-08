@@ -1,11 +1,8 @@
 package ar.edu.unq.desapp.grupoa.CategoryTests;
 
 import static org.mockito.Mockito.mock;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
+import ar.edu.unq.desapp.grupoa.model.Category.Subcategory;
 import junit.framework.TestCase;
 
 public class CategoryTest extends TestCase {
@@ -22,15 +19,14 @@ public class CategoryTest extends TestCase {
         assertEquals("Juli", category.getName());
     }
 
-    @SuppressWarnings("unchecked")
-    public void testGetAndSetSubcategories() {
+    public void testGetAndSetSubcategory() {
 
-        List<Category> mockListSubcategory = mock(ArrayList.class);
+        Subcategory mockSubcategory = mock(Subcategory.class);
 
         Category category = new Category();
-        category.setSubcategorys(mockListSubcategory);
+        category.setSubcategory(mockSubcategory);
 
-        assertEquals(mockListSubcategory, category.getSubcategorys());
+        assertEquals(mockSubcategory, category.getSubcategory());
     }
 
     // ***********************************************************************************************************
@@ -38,11 +34,12 @@ public class CategoryTest extends TestCase {
     // ***********************************************************************************************************
 
     public void testAddSubcategory() {
-
+        Subcategory mockSubcategory = mock(Subcategory.class);
+        
         Category category = new Category();
-        category.addSubcategory("Venta");
+        category.setSubcategory(mockSubcategory);
 
-        assertEquals(1, category.getSubcategorys().size());
+        assertEquals(mockSubcategory, category.getSubcategory());
     }
     
     public void testIsTheSame(){

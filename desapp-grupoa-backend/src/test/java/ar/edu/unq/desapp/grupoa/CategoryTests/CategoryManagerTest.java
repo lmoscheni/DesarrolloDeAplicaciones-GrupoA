@@ -7,6 +7,7 @@ import java.util.List;
 
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.Category.CategoryManager;
+import ar.edu.unq.desapp.grupoa.model.Category.Subcategory;
 import junit.framework.TestCase;
 
 /**
@@ -50,7 +51,7 @@ public class CategoryManagerTest extends TestCase {
     }
 
     public void testAddSubcategory() {
-
+        //Subcategory mockSubcategory = mock(Subcategory.class);
         Category mockCategory = mock(Category.class);
         when(mockCategory.getName()).thenReturn("Ingreso");
         when(mockCategory.isTheSame(any(Category.class))).thenReturn(false);
@@ -58,8 +59,6 @@ public class CategoryManagerTest extends TestCase {
         CategoryManager cManager = new CategoryManager();
         cManager.addCategory(mockCategory);
         cManager.addSubcategory(mockCategory, "Venta");
-
-        verify(mockCategory, times(1)).addSubcategory(anyString());
-        ;
+        // no tiene mucho sentido esto ahora
     }
 }
