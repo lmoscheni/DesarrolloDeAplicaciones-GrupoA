@@ -40,7 +40,7 @@ public class CategoryWS {
     @Produces("application/json")
     public List<Category> getAllCategories() throws JsonGenerationException, JsonMappingException, IOException{
     
-//    Category category = new Category("Income");
+//    Category category = new Category("Ventas");
 //
 //    categoryService.save(category);
 
