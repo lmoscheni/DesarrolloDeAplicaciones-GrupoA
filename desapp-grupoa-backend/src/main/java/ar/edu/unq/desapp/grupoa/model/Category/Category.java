@@ -1,5 +1,8 @@
 package ar.edu.unq.desapp.grupoa.model.Category;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+
 
 /**
  * Class category
@@ -9,12 +12,21 @@ package ar.edu.unq.desapp.grupoa.model.Category;
  * 
  */
 
-public class Category implements CategoryI{
+@Entity
+public class Category implements Serializable, CategoryI{
 
-    public String name;
+    private static final long serialVersionUID = 8560666959522143702L;
+//
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
+    protected String name;
+    
     public Subcategory subcategory;
-
+    
     public Category() {
+        super();
     }
 
     public Category(String anName) {
@@ -24,9 +36,17 @@ public class Category implements CategoryI{
     // ***********************************************************************************************************
     // Getters and setters
     // ***********************************************************************************************************
-
+    
     public String getName() {
         return name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setName(String name) {
@@ -44,5 +64,6 @@ public class Category implements CategoryI{
     public boolean isTheSame(CategoryI category) {
         return this.name == category.getName();
     }
+
 
 }

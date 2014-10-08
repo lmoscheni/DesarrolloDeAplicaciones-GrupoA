@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/123/trunk/src/wicket-spring-hib/src/main/resources/mappings
+END
+Car.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/123/trunk/src/wicket-spring-hib/src/main/resources/mappings/Car.hbm.xml
+END
+Person.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/123/trunk/src/wicket-spring-hib/src/main/resources/mappings/Person.hbm.xml
+END

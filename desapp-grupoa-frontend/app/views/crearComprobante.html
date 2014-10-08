@@ -6,27 +6,33 @@
   </p>
   <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>-->
 
+<!---group-->
+<div ng-controller="cargarComprobanteCtrl">
+    
+        <div class="container">
+      <!--<div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a ng-href="#">Home</a></li>
+          <li><a ng-href="#/about">About</a></li>
+          <li><a ng-href="#">Contact</a></li>
+        </ul>
+        <h3 class="text-muted">angular</h3>
+      </div>-->
+
+      <div ng-view=""></div>
+
+<!--      <div class="footer">
+        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+      </div>-->
+    </div>
+    
     <h2>Cargar comprobante</h2>
     
-    <div class="input-group jumbotron">
-
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input type='text' class="form-control" />
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-
-            <script type="text/javascript">
-                $(function () {
-                    $('#datetimepicker1').datetimepicker();
-                });
-            </script>
+    <div class="input jumbotron">
         
-        
-        <div class="col-sm">
-            <select ng-model="propiedad" contextmenu="sad" id="propiedad" class="form-control">
-              <option value="titulo">T&iacute;tulo</option>
-              <option value="genero">G&eacute;nero</option>
+        <div class="form-group">
+            <select ng-model="propiedad" draggable="true" ng-options="billType.name for billType in billTypes" class="form-control">
+              <option value="">Bill Type</option>
             </select>
         </div>
         
@@ -35,15 +41,40 @@
         		<input ng-model="cuit" type="text" placeholder="Cuit" class="form-control" />
         	</div>
     	</div>
-    	
-    	<div class="form-group">
+
+        <div class="form-group">
+        	<div class="controls">
+        		<input ng-model="taxed" type="text" placeholder="Taxed" disabled="true" class="form-control" />
+        	</div>
+    	</div>
+        
+        <div class="form-group">
+        	<div class="controls">
+        		<input ng-model="noTaxed" type="text" placeholder="No Taxed" disabled="true" class="form-control" />
+        	</div>
+    	</div>
+        
+        <div class="form-group">
+        	<div class="controls">
+        		<input ng-model="IIBBPerception" type="text" placeholder="IIBB Perception" disabled="true" class="form-control" />
+        	</div>
+    	</div>
+        
+        <div class="form-group">
+        	<div class="controls">
+        		<input ng-model="iva" type="text" placeholder="IVA" disabled="true" class="form-control" />
+        	</div>
+    	</div>
+        
+        <div class="form-group">
 			<div class="controls">
 				<input ng-model="amount" type="number" placeholder="Amount" class="form-control"/>
 	    	</div>
     	</div>
-
+        
         <div class="form-actions">
         	
-            <a rel="stylesheet" href="#/about" >jajaja</a>
+            <a rel="stylesheet" href="#/homePage" >jajaja</a>
         </div>
     </div>
+</div>
