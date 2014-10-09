@@ -12,7 +12,9 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
+import ar.edu.unq.desapp.grupoa.model.Operation.Income;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
+import ar.edu.unq.desapp.grupoa.model.System.Shift;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 import ar.edu.unq.desapp.grupoa.services.OperationService;
 
@@ -26,6 +28,10 @@ public class OperationWS {
     @Path("/all")
     @Produces("application/json")
     public List<Operation> getAllOperations() throws JsonGenerationException, JsonMappingException, IOException{
+        
+        Operation o = new Operation(10.0,new Category("Salida"),Shift.MORNING,new Income());
+        this.getOperationService().save(o);
+        
         List<Operation> operations = getOperationService().retriveAll();
         return operations;
     }
@@ -34,7 +40,7 @@ public class OperationWS {
         return operationService;
     }
     
-    public void setOperationsService(OperationService operationService) {
+    public void setOperationService(OperationService operationService) {
         this.operationService = operationService;
     }
 }

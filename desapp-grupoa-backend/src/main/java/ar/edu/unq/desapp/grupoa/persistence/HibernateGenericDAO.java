@@ -3,7 +3,11 @@ package ar.edu.unq.desapp.grupoa.persistence;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import ar.edu.unq.desapp.grupoa.model.Category.Category;
 
 /**
  * Generic hibernate DAO
@@ -42,7 +46,8 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport
 
 	}
 
-	public List<T> findByExample(final T exampleObject) {
+	@SuppressWarnings("unchecked")
+    public List<T> findByExample(final T exampleObject) {
 		return this.getHibernateTemplate().findByExample(exampleObject);
 
 	}
@@ -51,10 +56,17 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport
 		return this.getHibernateTemplate().get(this.persistentClass, id);
 	}
 
+	@SuppressWarnings("unchecked")
+    public T findByName(final String name){
+	    Criteria criteria = this.getSession().createCriteria(Category.class);
+	    criteria.add(Restrictions.eq("name", name));
+	    return (T) criteria.uniqueResult();
+	}
+	
 	protected abstract Class<T> getDomainClass();
 
 	public void save(final T entity) {
-		this.getHibernateTemplate().save(entity);
+		this.getHibernateTemplate().saveOrUpdate(entity);
 		this.getHibernateTemplate().flush();
 	}
 

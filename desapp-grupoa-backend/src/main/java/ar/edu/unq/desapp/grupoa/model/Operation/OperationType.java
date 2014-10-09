@@ -1,5 +1,9 @@
 package ar.edu.unq.desapp.grupoa.model.Operation;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
 import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 
 /**
@@ -10,7 +14,10 @@ import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
  * 
  */
 
-public abstract class OperationType {
+@Entity
+public abstract class OperationType implements Serializable{
+
+    private static final long serialVersionUID = 1015311019105432947L;
 
     public abstract void chargeOperation(Operation operation, Account account);
 

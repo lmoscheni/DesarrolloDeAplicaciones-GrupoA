@@ -3,17 +3,23 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
  
 <hibernate-mapping default-lazy="false" default-access="field" default-cascade="save-update">
-    <class name="ar.edu.unq.desapp.grupoa.model.Category.Category" table="Category" >
+    <class name="ar.edu.unq.desapp.grupoa.model.Operation.Operation" table="Operation" >
         <id name="id" type="java.lang.Integer">
             <column name="O_ID" />
             <generator class="identity" />
         </id>
 
-        <property name="amount" type="int"></property>
+        <property name="amount" type="double"></property>
         <many-to-one name="category" class="ar.edu.unq.desapp.grupoa.model.Category.Category" column="O_CATEGORY" cascade="all"/>
-        <many-to-one name="shift" class="ar.edu.unq.desapp.grupoa.model.System.Shift" column="O_SHIFT" cascade="all"/>
-        <many-to-one name="operationType" class="ar.edu.unq.desapp.grupoa.model.Operation.OperationType" column="O_OPERATIONTYPE" cascade="all"/>
+        <!-- <many-to-one name="operationType" class="ar.edu.unq.desapp.grupoa.model.Operation.OperationType" column="O_OPERATIONTYPE" cascade="all"/> -->
         <property name="dateOperation" type="java.util.Date" ></property>
+        
+        <property name="shift" column="O_SHIFT" not-null="true">
+	      <type name="org.hibernate.type.EnumType">
+	         <param name="enumClass">ar.edu.unq.desapp.grupoa.model.System.Shift</param>
+	         <param name="type">12</param>
+	      </type>
+	    </property>
         
     </class>
 </hibernate-mapping>

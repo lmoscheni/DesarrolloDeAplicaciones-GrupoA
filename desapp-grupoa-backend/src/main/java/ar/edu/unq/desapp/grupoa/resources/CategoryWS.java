@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
+import ar.edu.unq.desapp.grupoa.model.Category.Subcategory;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
 @Service
@@ -39,12 +40,15 @@ public class CategoryWS {
     @Path("/all")
     @Produces("application/json")
     public List<Category> getAllCategories() throws JsonGenerationException, JsonMappingException, IOException{
-//    Category category = new Category("Ventas");
-//
-//    categoryService.save(category);
-
         List<Category> categorias = getCategoryService().retriveAll();
         return categorias;
+    }
+    
+    @GET
+    @Path("/getCategory/{categoryId}")
+    @Produces("application/json")
+    public Category findCategory(@PathParam("categoryId") final String name) throws JsonGenerationException, JsonMappingException, IOException{
+        return getCategoryService().findByName(name);
     }
     
     public CategoryService getCategoryService() {
@@ -54,24 +58,7 @@ public class CategoryWS {
     public void setCategoryService(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
-    
-//    public CategoryWS() {}
 
-//
-//    @GET
-//    @Path("/allCategories")
-//    @Produces("application/json")
-//    public List<Category> findAllCategories() {
-//        return categoryService.findAllCategories();
-//    }
-//    
-//    @GET
-//    @Path("/getCategory/{categoryId}")
-//    @Produces("application/json")
-//    public Category findCategory(@PathParam("categoryId") final String bookId) {
-//        return categoryService.findCategory(new Long(bookId));
-//    }
-//    
 //    @POST
 //    @Path("/createCategory")
 //    @Consumes("application/json")

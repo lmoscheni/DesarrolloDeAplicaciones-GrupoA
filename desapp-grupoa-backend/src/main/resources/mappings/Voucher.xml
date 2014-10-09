@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping default-lazy="false" default-access="field" default-cascade="save-update">
+    <class name="ar.edu.unq.desapp.grupoa.model.System.Voucher" table="Voucher" >
+        <id name="id" type="java.lang.Integer">
+            <column name="V_ID" />
+            <generator class="identity" />
+        </id>
+
+		<property name="dateOfIssue" type="java.util.Date" ></property>
+        <property name="socialReason" type="string"></property>
+        <property name="cuit" type="string"></property>
+        <many-to-one name="concept" class="ar.edu.unq.desapp.grupoa.model.Category.Category" column="V_CATEGORY" cascade="all"/>
+        <property name="amount" type="double"></property>
+    </class>
+</hibernate-mapping>

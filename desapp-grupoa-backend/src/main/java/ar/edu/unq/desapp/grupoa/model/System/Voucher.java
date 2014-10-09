@@ -1,6 +1,9 @@
 package ar.edu.unq.desapp.grupoa.model.System;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
 
 import ar.edu.unq.desapp.grupoa.model.Bills.BillType;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
@@ -13,8 +16,13 @@ import ar.edu.unq.desapp.grupoa.model.Category.Category;
  * 
  */
 
-public class Voucher {
+@Entity
+public class Voucher implements Serializable{
 
+    private static final long serialVersionUID = -6002265001794686198L;
+
+    public Integer id;
+    
     private Date dateOfIssue;
 
     private String socialReason;
@@ -44,6 +52,14 @@ public class Voucher {
     // Getters and setters
     // ***********************************************************************************************************
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public Date getDateOfIssue() {
         return dateOfIssue;
     }
