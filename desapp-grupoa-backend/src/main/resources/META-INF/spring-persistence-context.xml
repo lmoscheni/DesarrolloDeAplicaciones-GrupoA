@@ -107,5 +107,9 @@
 	<bean id="persistence.categorydao" class="ar.edu.unq.desapp.grupoa.persistence.CategoryDAO" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	
+	<bean id="persistence.operationdao" class="ar.edu.unq.desapp.grupoa.persistence.OperationDAO" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 
 </beans>

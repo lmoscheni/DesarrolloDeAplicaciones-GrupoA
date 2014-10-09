@@ -39,15 +39,12 @@ public class CategoryWS {
     @Path("/all")
     @Produces("application/json")
     public List<Category> getAllCategories() throws JsonGenerationException, JsonMappingException, IOException{
-    
 //    Category category = new Category("Ventas");
 //
 //    categoryService.save(category);
 
-    /////
-    List<Category> categorias = getCategoryService().retriveAll();
-    return categorias;
-    //return JSONObject.getInstance().ObjectToJSON(categorias);
+        List<Category> categorias = getCategoryService().retriveAll();
+        return categorias;
     }
     
     public CategoryService getCategoryService() {

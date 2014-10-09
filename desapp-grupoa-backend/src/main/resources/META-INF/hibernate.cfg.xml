@@ -16,6 +16,7 @@
         <!-- <property name="hbm2ddl.auto">create-drop</property> -->
 
         <mapping resource="src/main/resources/mappings/Category.xml"></mapping>
+        <mapping resource="src/main/resources/mappings/Operation.xml"></mapping>
 		
     </session-factory>
 </hibernate-configuration>

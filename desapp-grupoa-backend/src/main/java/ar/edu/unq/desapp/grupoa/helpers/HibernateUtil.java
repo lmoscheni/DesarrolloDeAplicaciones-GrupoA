@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoa.utils;
+package ar.edu.unq.desapp.grupoa.helpers;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

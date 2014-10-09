@@ -22,9 +22,19 @@ http://www.springframework.org/schema/context/spring-context.xsd
 		<property name="categoryService" ref="services.category" />
 	</bean>
 	
+	<bean id="operationwsclass" class="ar.edu.unq.desapp.grupoa.resources.OperationWS">
+		<property name="operationService" ref="services.operation" />
+	</bean>
+	
     <jaxrs:server id="categoryWs" address="/">
         <jaxrs:serviceBeans>
         	<ref bean="categorywsclass" />
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    
+    <jaxrs:server id="operationWs" address="/">
+        <jaxrs:serviceBeans>
+        	<ref bean="operationwsclass" />
         </jaxrs:serviceBeans>
     </jaxrs:server>
 

@@ -1,6 +1,9 @@
 package ar.edu.unq.desapp.grupoa.model.Operation;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
 
 import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
@@ -14,8 +17,13 @@ import ar.edu.unq.desapp.grupoa.model.System.Shift;
  * 
  */
 
-public class Operation {
+@Entity
+public class Operation implements Serializable{
 
+    private static final long serialVersionUID = -2093366008375658799L;
+
+    private Integer id;
+    
     private double amount;
 
     private Category category;
@@ -41,6 +49,14 @@ public class Operation {
     // Getters and setters
     // ******************************************************************************************************
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public double getAmount() {
         return amount;
     }

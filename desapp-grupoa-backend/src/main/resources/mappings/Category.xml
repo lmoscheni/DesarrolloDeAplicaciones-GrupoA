@@ -5,10 +5,11 @@
 <hibernate-mapping default-lazy="false" default-access="field" default-cascade="save-update">
     <class name="ar.edu.unq.desapp.grupoa.model.Category.Category" table="Category" >
         <id name="id" type="java.lang.Integer">
-            <column name="ID" />
+            <column name="C_ID" />
             <generator class="identity" />
         </id>
 
         <property name="name" type="string"></property>
+        <many-to-one name="subcategory" class="ar.edu.unq.desapp.grupoa.model.Category.Subcategory" column="C_SUBCATEGORY" cascade="all"/>
     </class>
 </hibernate-mapping>
