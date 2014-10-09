@@ -26,7 +26,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 <!-- =========Servicios  ========= -->
 <!-- =========================== -->
 
-	<jaxrs:server id="category" address="/">
+	<jaxrs:server id="category" address="/categories">
 		<jaxrs:serviceBeans>
 			<ref bean="categoryWS" />
 		</jaxrs:serviceBeans>
@@ -46,7 +46,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</jaxrs:features>
 	</jaxrs:server>
 
-	<jaxrs:server id="operation" address="/">
+	<jaxrs:server id="operation" address="/operations">
 		<jaxrs:serviceBeans>
 			<ref bean="operationWS" />
 		</jaxrs:serviceBeans>
@@ -64,7 +64,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		<jaxrs:features>
 			<cxf:logging />
 		</jaxrs:features>
-	</jaxrs:server>
+	</jaxrs:server> 
 
     <bean id="categoryWS" class="ar.edu.unq.desapp.grupoa.resources.CategoryWS">
 		<property name="categoryService" ref="services.category" />

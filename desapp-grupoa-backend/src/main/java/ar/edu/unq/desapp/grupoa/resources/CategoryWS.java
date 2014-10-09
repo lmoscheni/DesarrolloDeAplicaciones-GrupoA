@@ -25,7 +25,6 @@ import ar.edu.unq.desapp.grupoa.model.Category.Subcategory;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
 @Service
-@Path("/categories")
 public class CategoryWS {
     
     public static int HTTP_OK_CREATED = 201;

@@ -19,7 +19,6 @@ import ar.edu.unq.desapp.grupoa.services.CategoryService;
 import ar.edu.unq.desapp.grupoa.services.OperationService;
 
 @Service
-@Path("/operations")
 public class OperationWS {
 
     private OperationService operationService;
@@ -28,10 +27,6 @@ public class OperationWS {
     @Path("/all")
     @Produces("application/json")
     public List<Operation> getAllOperations() throws JsonGenerationException, JsonMappingException, IOException{
-        
-        Operation o = new Operation(10.0,new Category("Salida"),Shift.MORNING,new Income());
-        this.getOperationService().save(o);
-        
         List<Operation> operations = getOperationService().retriveAll();
         return operations;
     }

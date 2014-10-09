@@ -26,13 +26,13 @@ http://www.springframework.org/schema/context/spring-context.xsd
 		<property name="operationService" ref="services.operation" />
 	</bean>
 	
-    <jaxrs:server id="categoryWs" address="/">
+    <jaxrs:server id="categoryWs" address="/categories">
         <jaxrs:serviceBeans>
         	<ref bean="categorywsclass" />
         </jaxrs:serviceBeans>
     </jaxrs:server>
     
-     <jaxrs:server id="operationWs" address="/">
+     <jaxrs:server id="operationWs" address="/operations">
         <jaxrs:serviceBeans>
         	<ref bean="operationwsclass" />
         </jaxrs:serviceBeans>
