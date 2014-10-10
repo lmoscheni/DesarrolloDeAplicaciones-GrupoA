@@ -11,7 +11,7 @@
 
         <property name="amount" type="double"></property>
         <many-to-one name="category" class="ar.edu.unq.desapp.grupoa.model.Category.Category" column="O_CATEGORY" cascade="all"/>
-        <!-- <many-to-one name="operationType" class="ar.edu.unq.desapp.grupoa.model.Operation.OperationType" column="O_OPERATIONTYPE" cascade="all"/> -->
+        <many-to-one name="operationType" class="ar.edu.unq.desapp.grupoa.model.Operation.OperationType" column="O_OPERATIONTYPE" cascade="all"/>
         <property name="dateOperation" type="java.util.Date" ></property>
         
         <property name="shift" column="O_SHIFT" not-null="true">
