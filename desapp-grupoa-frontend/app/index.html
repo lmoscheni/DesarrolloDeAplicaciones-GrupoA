@@ -18,30 +18,26 @@
     <!-- endbuild -->
 </head>
     
-<body ng-app="angularApp">
+<body ng-app="angularApp" style="background-color:#c7f6e8">
       
-    <img alt="full screen background image" src="images/ingreso-y-gasto.jpg" id="full-screen-background-image" />
+    <!--<img alt="full screen background image" src="images/ingreso-y-gasto.jpg" id="full-screen-background-image" />-->
     
-    <div class="container">
-        <h1><center>Sistema de control de gastos y flujo de efectivo.</center></br></h1>
+    <div class="container header">
+        <h1><center><u>Sistema de control de gastos y flujo de efectivo.</u></center></br></h1>
+ 
+        <ol class="breadcrumb">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#/registroDeOperacionesYComprobantes">Operaciones y comprobantes</a></li>
+        </ol>
     </div>
         
     <!-- Add your site or application content here -->
     <div class="container">
-      <!--<div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">angular</h3>
-      </div>-->
+        <div ng-view=""></div>
 
-      <div ng-view=""></div>
-
-<!--      <div class="footer">
+        <!--<div class="footer">
         <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>-->
+        </div>-->
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
