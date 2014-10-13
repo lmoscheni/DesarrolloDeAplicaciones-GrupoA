@@ -3,17 +3,14 @@
         <div class="row">
             <!-- Nav left -->
             <ul class="nav nav-tabs nav-stacked col-md-3">
-                <li><a href="registroDeOperacionesYComprobantes/#tab1" data-toggle="tab"><h3>Comprobantes <span class="glyphicon glyphicon-expand"></span></h3></a></li>
-                <li><a href="registroDeOperacionesYComprobantes/#tab2" data-toggle="tab"><h3>Operaciones <span class="glyphicon glyphicon-expand"></span></h3></a></li>
+                <li><a href="registroDeOperacionesYComprobantes/#tab1" ng-Click="getCategories()" data-toggle="tab"><h3>Comprobantes <span class="glyphicon glyphicon-expand"></span></h3></a></li>
+                <li><a href="registroDeOperacionesYComprobantes/#tab2" ng-Click="getOperations()" data-toggle="tab"><h3>Operaciones <span class="glyphicon glyphicon-expand"></span></h3></a></li>
             </ul>
 
             <div class="tab-content">
                 
-                
                 <div class="tab-pane fade" id="tab1">
-                    
-                    
-                    
+
                     <table id="breakingBadChar">
   			           <thead>
                            <tr>
@@ -27,21 +24,52 @@
                             <td>{{character.name}}</td> 
                             
                         </tr>
-                            <tr ng-model="categories">
+<!--                            <tr ng-model="categories">
                                 {{categories}}
                                 {{status}}
-                            </tr>
+                            </tr>-->
   			           </tbody>
                     </table>
-                    <a ng-Click="getCategories()"  class="btn btn-lg btn-success">Crear <span class="glyphicon glyphicon-ok"></span></a>
+                    </br>
+                    <a href="#/crearComprobante"  class="btn btn-lg btn-success">Crear <span class="glyphicon glyphicon-ok"></span></a>
                     <a href="#" class="btn btn-lg btn-warning">Modificar</a>
                     <a href="#" class="btn btn-lg btn-danger">Eliminar <span class="glyphicon glyphicon-remove"></a>
                 </div>
             
                 <div class="tab-pane fade" id="tab2">
+                    
+                    <table id="breakingBadChar">
+  			           <thead>
+                           <tr>
+  					            <td>Amount &nbsp&nbsp</td>
+                                <td>Category &nbsp&nbsp</td>
+                               <td>Shift &nbsp&nbsp</td>
+                               <td>Data Operation &nbsp&nbsp</td>
+                               <td>Actions  </td>
+  				          </tr>
+  			           </thead>
+                        
+                        <tbody>
+                            <tr ng-repeat="operation in operations">
+                                <td>{{operation.amount}}&nbsp&nbsp</td> 
+                                <td>{{operation.category.name}}&nbsp&nbsp</td> 
+                                <td>{{operation.shift}}&nbsp&nbsp</td> 
+                                <td>{{operation.dateOperation.toDate()}}&nbsp&nbsp</td> 
+                                <td><a href="#" class="btn btn-warning">Modificar</a>
+                    <a ng-Click="delete(operation)" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-remove"></a>
+                                </td>
+                            </tr>
+<!--                            <tr ng-model="categories">
+                                {{categories}}
+                                {{status}}
+                            </tr>-->
+  			           </tbody>
+                    </table>
+                    </br>
+                    </br>
+                    </br>
                     <a href="#/crearOperacion" class="btn btn-lg btn-success">Crear <span class="glyphicon glyphicon-ok"></a>
-                    <a href="#" class="btn btn-lg btn-warning">Modificar</a>
-                    <a href="#" class="btn btn-lg btn-danger">Eliminar <span class="glyphicon glyphicon-remove"></a>
+                    
                 </div>
             </div>
         </div>
