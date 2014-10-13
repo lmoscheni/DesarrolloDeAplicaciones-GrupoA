@@ -34,18 +34,18 @@ public class OperationWS {
     @Path("/all")
     @Produces("application/json")
     public List<Operation> getAllOperations() throws JsonGenerationException, JsonMappingException, IOException{
+//        getOperationService().save(new Operation(10.0,new Category("Terrabusi"),Shift.MORNING, new Income()));
+        
         List<Operation> operations = getOperationService().retriveAll();
         return operations;
     }
     
     
-    @DELETE
+    @GET
     @Path("/deleteOperation/{id}")
-    @Produces("application/json")
-    public Response deleteBook(@PathParam("id") final String id) {
+    public void deleteBook(@PathParam("id") final String id) {
         Operation o = getOperationService().findById(new Integer(id));
         getOperationService().delete(o);
-        return Response.status(204).build();
     }
     
     public OperationService getOperationService() {

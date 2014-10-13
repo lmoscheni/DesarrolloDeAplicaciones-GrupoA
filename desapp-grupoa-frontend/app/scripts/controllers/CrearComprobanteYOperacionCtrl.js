@@ -51,7 +51,7 @@ app.controller('CrearComprobanteYOperacionCtrl', function ($http,$scope) {
             respondType: 'json',
             headers : {'Content-Type' : 'application/json'},
         }).success(function(data){
-               $scope.getCategories();
+               $scope.operations = data;
         }).error(function(data){
             console.log('An Error occurred while trying to get all categories');
         });

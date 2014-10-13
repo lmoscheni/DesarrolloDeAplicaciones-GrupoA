@@ -22,7 +22,7 @@ public class GenericService<T> implements Serializable {
         this.dao = dao;
     }
     
-    @Transactional(readOnly = true)
+    @Transactional
     public void delete(final T object) {
         this.getDao().delete(object);
     }

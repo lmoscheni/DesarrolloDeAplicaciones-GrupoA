@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.Category.Subcategory;
+import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
 @Service
@@ -43,6 +44,14 @@ public class CategoryWS {
     @Produces("application/json")
     public Category findCategory(@PathParam("categoryId") final String name) throws JsonGenerationException, JsonMappingException, IOException{
         return getCategoryService().findByName(name);
+    }
+    
+    @GET
+    @Path("/deleteCategory/{id}")
+    public List<Category> deleteCategory(@PathParam("id") final String id) {
+        Category c = getCategoryService().findById(new Integer(id));
+        getCategoryService().delete(c);
+        return  getCategoryService().retriveAll();
     }
     
     public CategoryService getCategoryService() {
