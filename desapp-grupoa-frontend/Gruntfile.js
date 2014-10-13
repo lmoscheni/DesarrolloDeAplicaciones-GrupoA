@@ -20,10 +20,16 @@ module.exports = function (grunt) {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
-
+var corsMiddleware = function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+}
   // Define the configuration for all the tasks
   grunt.initConfig({
 
+      
     // Project settings
     yeoman: appConfig,
 
@@ -71,7 +77,21 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35729
       },
-      livereload: {
+      server: {
+      options: {
+        middleware: function(connect, options) {
+          return [
+            // Serve static files
+            connect.static(options.base),
+            // Make empty directories browsable
+            connect.directory(options.base),
+            // CORS support
+            corsMiddleware
+          ];
+        }
+      }
+    },
+    livereload: {
         options: {
           open: true,
           middleware: function (connect) {
@@ -406,3 +426,5 @@ module.exports = function (grunt) {
     'build'
   ]);
 };
+
+

@@ -9,6 +9,7 @@ import javax.ws.rs.Produces;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
@@ -22,16 +23,13 @@ import ar.edu.unq.desapp.grupoa.services.OperationService;
 @Service
 public class OperationWS {
 
+    @Autowired
     private OperationService operationService;
     
     @GET
     @Path("/all")
     @Produces("application/json")
     public List<Operation> getAllOperations() throws JsonGenerationException, JsonMappingException, IOException{
-        
-        Operation o = new Operation(10.0,new Category("Alfajor"),Shift.EVENING,new Egress());
-        this.getOperationService().save(o);
-        
         List<Operation> operations = getOperationService().retriveAll();
         return operations;
     }

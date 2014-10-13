@@ -12,7 +12,7 @@ import javax.persistence.Entity;
  * 
  */
 
-@Entity
+
 public class Category implements Serializable, CategoryI{
 
     private static final long serialVersionUID = 8560666959522143702L;

@@ -8,8 +8,32 @@
             </ul>
 
             <div class="tab-content">
+                
+                
                 <div class="tab-pane fade" id="tab1">
-                    <a href="#/crearComprobante" class="btn btn-lg btn-success">Crear <span class="glyphicon glyphicon-ok"></span></a>
+                    
+                    
+                    
+                    <table id="breakingBadChar">
+  			           <thead>
+                           <tr>
+
+  					         <td>Nombre</td>
+  				          </tr>
+  			           </thead>
+                        <tbody>
+
+                        <tr ng-repeat="character in categories">
+                            <td>{{character.name}}</td> 
+                            
+                        </tr>
+                            <tr ng-model="categories">
+                                {{categories}}
+                                {{status}}
+                            </tr>
+  			           </tbody>
+                    </table>
+                    <a ng-Click="getCategories()"  class="btn btn-lg btn-success">Crear <span class="glyphicon glyphicon-ok"></span></a>
                     <a href="#" class="btn btn-lg btn-warning">Modificar</a>
                     <a href="#" class="btn btn-lg btn-danger">Eliminar <span class="glyphicon glyphicon-remove"></a>
                 </div>

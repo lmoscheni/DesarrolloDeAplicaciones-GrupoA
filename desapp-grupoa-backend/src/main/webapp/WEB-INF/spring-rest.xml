@@ -19,7 +19,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
 	<bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider" />
 
-	<bean id='jacksonProvider' class='org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider' />
+	<bean id='jacksonProvider' class='org.codehaus.jackson.jaxrs.JacksonJsonProvider' />
 
 
 <!-- =========================== -->
@@ -36,7 +36,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 			<entry key="xml" value="application/xml" />
 		</jaxrs:extensionMappings>
 
-		<jaxrs:providers>
+ 		<jaxrs:providers>
 			<ref bean="jaxbProvider" />
 			<ref bean="jacksonProvider" />
 		</jaxrs:providers>

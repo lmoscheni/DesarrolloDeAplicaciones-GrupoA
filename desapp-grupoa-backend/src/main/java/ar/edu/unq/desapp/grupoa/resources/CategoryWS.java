@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoa.resources;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -26,21 +27,15 @@ import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
 @Service
 public class CategoryWS {
-    
-    public static int HTTP_OK_CREATED = 201;
-    
-    public static int HTTP_OK = 200;
-    
-    public static int HTTP_DELETE = 204;
 
+    @Autowired
     private CategoryService categoryService;
     
     @GET
     @Path("/all")
     @Produces("application/json")
-    public List<Category> getAllCategories() throws JsonGenerationException, JsonMappingException, IOException{
-        List<Category> categorias = getCategoryService().retriveAll();
-        return categorias;
+    public List<Category> getAllCategories(){
+        return getCategoryService().retriveAll();
     }
     
     @GET

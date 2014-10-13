@@ -13,12 +13,12 @@
 # ------------------------------------------------------------------------------
 
 # Enable cross-origin AJAX requests.
-# http://code.google.com/p/html5security/wiki/CrossOriginRequestSecurity
-# http://enable-cors.org/
+ http://code.google.com/p/html5security/wiki/CrossOriginRequestSecurity
+ http://enable-cors.org/
 
-# <IfModule mod_headers.c>
-#    Header set Access-Control-Allow-Origin "*"
-# </IfModule>
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
 
 # ------------------------------------------------------------------------------
 # | CORS-enabled images                                                        |
@@ -29,11 +29,15 @@
 # http://blog.chromium.org/2011/07/using-cross-domain-images-in-webgl-and.html
 # http://hacks.mozilla.org/2011/11/using-cors-to-load-webgl-textures-from-cross-domain-images/
 
+
+
 <IfModule mod_setenvif.c>
     <IfModule mod_headers.c>
+    
         <FilesMatch "\.(gif|ico|jpe?g|png|svg|svgz|webp)$">
             SetEnvIf Origin ":" IS_CORS
             Header set Access-Control-Allow-Origin "*" env=IS_CORS
+            
         </FilesMatch>
     </IfModule>
 </IfModule>
@@ -538,6 +542,6 @@ FileETag None
 # Enable if you serve a lot of static content but, be aware of the
 # possible disadvantages!
 
-# <IfModule mod_headers.c>
+#<IfModule mod_headers.c>
 #    Header set Connection Keep-Alive
-# </IfModule>
+#</IfModule>

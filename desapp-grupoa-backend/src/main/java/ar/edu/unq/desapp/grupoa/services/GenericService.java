@@ -27,7 +27,7 @@ public class GenericService<T> implements Serializable {
         this.getDao().delete(object);
     }
     
-    @Transactional
+    @Transactional(readOnly = true)
     public List<T> retriveAll() {
         return this.getDao().findAll();
     }
