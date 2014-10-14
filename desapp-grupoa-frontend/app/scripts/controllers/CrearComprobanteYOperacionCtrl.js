@@ -15,10 +15,12 @@ var app = angular.module('angularApp');
 
 app.controller('CrearComprobanteYOperacionCtrl', function ($http,$scope) {
     
+    
     $scope.categories = [];
     $scope.operations = [];
-    
+        
     $scope.getCategories = function() {
+        
         $http({
             method : 'GET',
             url: 'http://localhost:8080/desapp-grupoa-backend/rest/categories/all',
@@ -57,6 +59,20 @@ app.controller('CrearComprobanteYOperacionCtrl', function ($http,$scope) {
         });
     };
     
+    $scope.parse = function(date){
+        var datee = new Date(JSON.parse(date));    
+        return datee;
+    };
+    
+    $scope.typeOperation = function(operationType){
+        if(operationType.income) {
+            return 'Income';   
+        }else{
+            return 'Egress';
+        }
+    };
+    
+    $scope.selectedCategory = {};
   });
 
 

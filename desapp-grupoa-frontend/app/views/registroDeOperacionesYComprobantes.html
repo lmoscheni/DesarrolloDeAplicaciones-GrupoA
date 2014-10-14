@@ -46,6 +46,7 @@
                                 <td>Category &nbsp&nbsp</td>
                                <td>Shift &nbsp&nbsp</td>
                                <td>Data Operation &nbsp&nbsp</td>
+                               <td>Operation Type&nbsp&nbsp</td>
                                <td>Actions  </td>
   				          </tr>
   			           </thead>
@@ -55,7 +56,8 @@
                                 <td>{{operation.amount}}&nbsp&nbsp</td> 
                                 <td>{{operation.category.name}}&nbsp&nbsp</td> 
                                 <td>{{operation.shift}}&nbsp&nbsp</td> 
-                                <td>{{operation.dateOperation.toDate()}}&nbsp&nbsp</td> 
+                                <td>{{parse(operation.dateOperation)}}&nbsp&nbsp</td> 
+                                <td>{{typeOperation(operation.operationType)}}&nbsp&nbsp</td> 
                                 <td><a href="#" class="btn btn-warning">Modificar</a>
                     <a ng-Click="delete(operation)" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-remove"></a>
                                 </td>
