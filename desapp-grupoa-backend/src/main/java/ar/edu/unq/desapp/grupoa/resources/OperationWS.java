@@ -6,13 +6,17 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +53,30 @@ public class OperationWS {
         
         return getOperationService().retriveAll();
     }
+    
+    @POST
+    @Path("/saveOperation/")
+    @Consumes("application/json")
+    public Response createOperation(@Multipart(value = "operation", type = "application/json") final String jsonOperation) {
+    try {
+        System.out.println("aca");
+        Operation o = parseOperation(jsonOperation);
+        
+        getOperationService().save(o);
+    } catch (Exception e) {
+        System.out.println(e);
+        return Response.serverError().build();
+    }
+        return Response.status(201).build();
+    }
+    
+    @SuppressWarnings("unused")
+    private Operation parseOperation(final String jsonOperation) throws Exception {
+        Operation newOperation = new Operation();
+        ObjectMapper mapper = new ObjectMapper();
+        newOperation = mapper.readValue(jsonOperation, Operation.class);
+        return newOperation;
+        }
     
     public OperationService getOperationService() {
         return operationService;

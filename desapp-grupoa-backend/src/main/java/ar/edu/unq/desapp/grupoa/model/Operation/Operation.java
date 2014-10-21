@@ -35,6 +35,7 @@ public class Operation implements Serializable{
     private Date dateOperation;
 
     public Operation() {
+        this.dateOperation = new Date();
     }
 
     public Operation(double amount, Category category, Shift shift, OperationType operationType) {

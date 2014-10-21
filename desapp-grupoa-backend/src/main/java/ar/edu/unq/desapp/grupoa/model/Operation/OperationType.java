@@ -39,9 +39,9 @@ public abstract class OperationType implements Serializable{
         this.id = id;
     }
 
-    public abstract void chargeOperation(Operation operation, Account account);
-
     public boolean isIncome() {
         return false;
     }
+
+    public void chargeOperation(Operation operation, Account account){};
 }

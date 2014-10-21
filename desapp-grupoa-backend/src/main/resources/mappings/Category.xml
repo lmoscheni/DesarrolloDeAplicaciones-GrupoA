@@ -10,6 +10,10 @@
         </id>
 
         <property name="name" type="string"></property>
-        <many-to-one name="subcategory" class="ar.edu.unq.desapp.grupoa.model.Category.Subcategory" column="C_SUBCATEGORY" cascade="all"/>
+        
+        <bag name="subcategories" cascade="all">
+        	<key column="C_SUBCATEGORY"></key>
+            <one-to-many class="ar.edu.unq.desapp.grupoa.model.Category.Subcategory"/>
+        </bag>
     </class>
 </hibernate-mapping>

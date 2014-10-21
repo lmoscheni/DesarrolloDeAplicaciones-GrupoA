@@ -18,6 +18,9 @@ app.controller('CrearComprobanteYOperacionCtrl', function ($http,$scope) {
     
     $scope.categories = [];
     $scope.operations = [];
+    $scope.objectOperationJson = {};
+    $scope.objectOperationJson = {'amount':'', 'shift':'', 'category':''};
+   
         
     $scope.getCategories = function() {
         
@@ -42,7 +45,7 @@ app.controller('CrearComprobanteYOperacionCtrl', function ($http,$scope) {
         }).success(function(data){
                 $scope.operations = data;
         }).error(function(data){
-            console.log('An Error occurred while trying to get all categories');
+            console.log('An Error occurred while trying to get all operations');
         });
     };
     
@@ -55,7 +58,7 @@ app.controller('CrearComprobanteYOperacionCtrl', function ($http,$scope) {
         }).success(function(data){
                $scope.operations = data;
         }).error(function(data){
-            console.log('An Error occurred while trying to get all categories');
+            console.log('An Error occurred while trying delete a category');
         });
     };
     
@@ -72,7 +75,16 @@ app.controller('CrearComprobanteYOperacionCtrl', function ($http,$scope) {
         }
     };
     
-    $scope.selectedCategory = {};
+    $scope.createOperation = function() {
+        $http.post('http://localhost:8080/desapp-grupoa-backend/rest/operations/saveOperation/', angular.toJson($scope.objectOperationJson)).success(
+        function(data, status, headers, config) {
+            /*$location.path("/");*/
+                $scope.operations = data;
+        }).error(function(data, status, headers, config) {
+            console.log('An Error occurred while trying to store a book');
+        });
+    };
+    
   });
 
 

@@ -36,6 +36,9 @@ public class CategoryWS {
     @Path("/all")
     @Produces("application/json")
     public List<Category> getAllCategories(){
+        Category c = new Category("Ventas");
+        c.addSubcategory(new Subcategory("Alfajores"));
+        getCategoryService().save(c);
         return getCategoryService().retriveAll();
     }
     

@@ -1,7 +1,8 @@
 package ar.edu.unq.desapp.grupoa.model.Category;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -23,7 +24,7 @@ public class Category implements Serializable, CategoryI{
     
     protected String name;
     
-    public Subcategory subcategory;
+    public List<Subcategory> subcategories = new ArrayList<Subcategory>();
     
     public Category() {
         super();
@@ -36,6 +37,14 @@ public class Category implements Serializable, CategoryI{
     // ***********************************************************************************************************
     // Getters and setters
     // ***********************************************************************************************************
+    
+    public List<Subcategory> getSubcategories() {
+        return subcategories;
+    }
+
+    public void setSubcategories(List<Subcategory> subcategories) {
+        this.subcategories = subcategories;
+    }
     
     public String getName() {
         return name;
@@ -52,18 +61,26 @@ public class Category implements Serializable, CategoryI{
     public void setName(String name) {
         this.name = name;
     }
-    
-    public Subcategory getSubcategory() {
-        return this.subcategory;
-    }
-    
-    public void setSubcategory(Subcategory subcategory) {
-        this.subcategory = subcategory;
-    }
 
     public boolean isTheSame(CategoryI category) {
         return this.name == category.getName();
     }
-
-
+    
+ // ***********************************************************************************************************
+//  // Methods of class Category
+//  // ***********************************************************************************************************
+    
+    public void addSubcategory(Subcategory subcategory){
+        this.subcategories.add(subcategory);
+    }
+    
+    public Subcategory getSubcategory(String name){
+        Subcategory return_subcategory = new Subcategory();
+        for(Subcategory subcategory : this.subcategories){
+            if (subcategory.name.equals(name)){
+                return_subcategory = subcategory;
+            }
+        }
+        return return_subcategory;
+    }
 }
