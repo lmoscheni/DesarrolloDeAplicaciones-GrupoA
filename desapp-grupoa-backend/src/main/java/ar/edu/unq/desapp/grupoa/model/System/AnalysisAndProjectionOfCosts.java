@@ -6,16 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
-import ar.edu.unq.desapp.grupoa.model.Category.CategoryManager;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 
 public class AnalysisAndProjectionOfCosts {
     
     public List<Operation> operations;
     public List<Consolidation> consolidations;
-    public CategoryManager categorys;
+    public List<Category> categorys;
     
-    public AnalysisAndProjectionOfCosts(List<Operation> operations,List<Consolidation> consolidations,CategoryManager categorys) {
+    public AnalysisAndProjectionOfCosts(List<Operation> operations,List<Consolidation> consolidations,List<Category> categorys) {
         this.operations = operations;
         this.consolidations = consolidations;
         this.categorys = categorys;
@@ -37,8 +36,8 @@ public class AnalysisAndProjectionOfCosts {
         List<Operation> operationsOfCategory = this.getOperationsOfTheCategory(category);
         
         for(Operation operation : operationsOfCategory) {
-            String categoryName = operation.getCategory().getSubcategory().getName();
-            this.passingToMap(distributionExpenses, categoryName, operation);
+            //String categoryName = operation.getCategory().getSubcategory().getNam;
+            //this.passingToMap(distributionExpenses, categoryName, operation);
         }
         
         return distributionExpenses;
@@ -48,7 +47,7 @@ public class AnalysisAndProjectionOfCosts {
         if (map.containsKey(key)) {
             Double oldValue = map.get(key);
             map.put(key, oldValue + operation.getAmount());
-        }else {
+        }else { 
             map.put(key,operation.getAmount());
         }
     }

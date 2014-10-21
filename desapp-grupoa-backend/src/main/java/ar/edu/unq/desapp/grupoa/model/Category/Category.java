@@ -24,7 +24,7 @@ public class Category implements Serializable, CategoryI{
     
     protected String name;
     
-    public List<Subcategory> subcategories = new ArrayList<Subcategory>();
+    public List<String> subcategories = new ArrayList<String>();
     
     public Category() {
         super();
@@ -38,12 +38,8 @@ public class Category implements Serializable, CategoryI{
     // Getters and setters
     // ***********************************************************************************************************
     
-    public List<Subcategory> getSubcategories() {
+    public List<String> getSubcategories() {
         return subcategories;
-    }
-
-    public void setSubcategories(List<Subcategory> subcategories) {
-        this.subcategories = subcategories;
     }
     
     public String getName() {
@@ -70,17 +66,19 @@ public class Category implements Serializable, CategoryI{
 //  // Methods of class Category
 //  // ***********************************************************************************************************
     
-    public void addSubcategory(Subcategory subcategory){
+    public void addSubcategory(String subcategory){
         this.subcategories.add(subcategory);
     }
     
-    public Subcategory getSubcategory(String name){
-        Subcategory return_subcategory = new Subcategory();
-        for(Subcategory subcategory : this.subcategories){
-            if (subcategory.name.equals(name)){
-                return_subcategory = subcategory;
+    
+    // habria que mandar la subcategoria no el nombre
+    public String getSubcategory(String subcategory){
+        String returnSubcategory = "";
+        for(String sub : this.subcategories){
+            if (sub.equals(name)){
+                returnSubcategory = sub;
             }
         }
-        return return_subcategory;
+        return returnSubcategory;
     }
 }
