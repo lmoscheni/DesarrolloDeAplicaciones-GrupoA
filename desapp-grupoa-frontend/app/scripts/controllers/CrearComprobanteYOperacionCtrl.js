@@ -19,7 +19,7 @@ app.controller('CrearComprobanteYOperacionCtrl', function ($http,$scope) {
     $scope.categories = [];
     $scope.operations = [];
     $scope.objectOperationJson = {};
-    $scope.objectOperationJson = {'amount':'', 'shift':'', 'category':''};
+    $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false'};
    
         
     $scope.getCategories = function() {
@@ -76,7 +76,7 @@ app.controller('CrearComprobanteYOperacionCtrl', function ($http,$scope) {
     };
     
     $scope.createOperation = function() {
-        $http.post('http://localhost:8080/desapp-grupoa-backend/rest/operations/saveOperation/', angular.toJson($scope.objectOperationJson)).success(
+        $http.post('http://localhost:8080/desapp-grupoa-backend/rest/operations/save/', angular.toJson($scope.objectOperationJson)).success(
         function(data, status, headers, config) {
             /*$location.path("/");*/
                 $scope.operations = data;

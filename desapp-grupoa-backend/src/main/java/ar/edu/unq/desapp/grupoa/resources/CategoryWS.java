@@ -22,8 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
-import ar.edu.unq.desapp.grupoa.model.Category.Subcategory;
-import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
 @Service
@@ -36,25 +34,37 @@ public class CategoryWS {
     @Path("/all")
     @Produces("application/json")
     public List<Category> getAllCategories(){
-        Category c = new Category("Ventas");
-        c.addSubcategory(new Subcategory("Alfajores"));
-        getCategoryService().save(c);
         return getCategoryService().retriveAll();
     }
     
     @GET
-    @Path("/getCategory/{categoryId}")
+    @Path("/get/{categoryId}")
     @Produces("application/json")
     public Category findCategory(@PathParam("categoryId") final String name) throws JsonGenerationException, JsonMappingException, IOException{
         return getCategoryService().findByName(name);
     }
     
     @GET
-    @Path("/deleteCategory/{id}")
+    @Path("/delete/{id}")
     public List<Category> deleteCategory(@PathParam("id") final String id) {
         Category c = getCategoryService().findById(new Integer(id));
         getCategoryService().delete(c);
         return  getCategoryService().retriveAll();
+    }
+    
+    @POST
+    @Path("/save/")
+    @Consumes("application/json")
+    public Response saveCategory(@Multipart(value = "category", type = "application/json") final String name) {
+        try {
+        System.out.println(name);
+        getCategoryService().save(new Category(name));
+        } catch (Exception e) {
+            System.out.println(e);
+            return Response.serverError().build();
+        }
+            return Response.status(201).build();
+        
     }
     
     public CategoryService getCategoryService() {

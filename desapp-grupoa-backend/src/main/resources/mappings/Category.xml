@@ -11,9 +11,10 @@
 
         <property name="name" type="string"></property>
         
-        <bag name="subcategories" cascade="all">
-        	<key column="C_SUBCATEGORY"></key>
-            <one-to-many class="ar.edu.unq.desapp.grupoa.model.Category.Subcategory"/>
-        </bag>
+        <list name="subcategories" table="Subcategory">
+			<key column="C_SUBCATEGORY"/>
+			<list-index column="sort_order" base="0"/>
+			<element column="name" type="string"/>
+		</list>
     </class>
 </hibernate-mapping>

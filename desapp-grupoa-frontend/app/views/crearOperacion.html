@@ -4,11 +4,11 @@
     <div class="col-md-6 input">
 
         
-        <!--<div class="form-group">
+        <div class="form-group">
             <label class="btn  btn-toggle">
                 <input type="checkbox" ng-model="objectOperationJson.operationType" /> Check for income operation
             </label>
-        </div>-->
+        </div>
         
         <div class="form-group">
             <table>
@@ -22,13 +22,33 @@
                             </select>
                         </td>
                         <td>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#/crearComprobante"  class="btn btn-success"> Create a new category <span class="glyphicon glyphicon-ok"></span></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#/crearCategory"  class="btn btn-success"> Create a new category <span class="glyphicon glyphicon-ok"></span></a>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
+        <div class="form-group">
+            <table>
+               <thead>
+               </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select ng-model="objectOperationJson.subcategory" disabled="true" draggable="true" ng-options="subcategory.name as subcategory.name for subcategory in categories" class="form-control">
+                                <option value="">Select a subcategory</option>
+                            </select>
+                        </td>
+                        <td>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#/crearComprobante"  class="btn btn-success"> Create a new subcategory <span class="glyphicon glyphicon-ok"></span></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
         <div class="form-group">
             <div class="controls">
                 <input ng-model="objectOperationJson.shift" type="text" placeholder="Shift" class="form-control" />

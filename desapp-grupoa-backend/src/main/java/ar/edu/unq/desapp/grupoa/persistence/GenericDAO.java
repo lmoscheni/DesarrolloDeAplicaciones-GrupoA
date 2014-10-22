@@ -27,5 +27,7 @@ public interface GenericDAO<T> {
 	List<T> findByExample(T exampleObject);
 	
 	T findByName(String name);
+	
+	void saveOrUpdate(T entity);
 
 }

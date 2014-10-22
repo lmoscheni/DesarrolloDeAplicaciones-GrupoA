@@ -47,8 +47,4 @@ public class GenericService<T> implements Serializable {
         return this.getDao().findById(id);
     }
     
-    @Transactional
-    public T findByName(final String name){
-        return this.getDao().findByName(name);
-    }
 }

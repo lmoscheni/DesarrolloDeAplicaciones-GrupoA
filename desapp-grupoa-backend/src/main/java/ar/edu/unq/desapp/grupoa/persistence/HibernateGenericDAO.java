@@ -57,17 +57,10 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport
 		return this.getHibernateTemplate().get(this.persistentClass, id);
 	}
 
-	@SuppressWarnings("unchecked")
-    public T findByName(final String name){
-	    Criteria criteria = this.getSession().createCriteria(Category.class);
-	    criteria.add(Restrictions.eq("name", name));
-	    return (T) criteria.uniqueResult();
-	}
-	
 	protected abstract Class<T> getDomainClass();
 
 	public void save(final T entity) {
-		this.getHibernateTemplate().saveOrUpdate(entity);
+		this.getHibernateTemplate().save(entity);
 		this.getHibernateTemplate().flush();
 	}
 

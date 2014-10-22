@@ -39,6 +39,10 @@ app.config(function ($routeProvider, $httpProvider) {
         templateUrl: 'views/crearOperacion.html',
         controller: 'CrearComprobanteYOperacionCtrl'
       })
+        .when('/crearCategory', {
+        templateUrl: 'views/crearCategory.html',
+        controller: 'CrearCategoriaCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -10,4 +10,16 @@ public class OperationDAO extends HibernateGenericDAO<Operation> implements Gene
     protected Class<Operation> getDomainClass() {
         return Operation.class;
     }
+
+    @Override
+    public Operation findByName(String name) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void saveOrUpdate(Operation entity) {
+        // TODO Auto-generated method stub
+        
+    }
 }
