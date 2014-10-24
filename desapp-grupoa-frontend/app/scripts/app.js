@@ -41,7 +41,11 @@ app.config(function ($routeProvider, $httpProvider) {
       })
         .when('/crearCategory', {
         templateUrl: 'views/crearCategory.html',
-        controller: 'CrearCategoriaCtrl'
+        controller: 'CrearCategoriaYSubcategoriaCtrl'
+      })
+        .when('/crearSubcategory', {
+        templateUrl: 'views/crearSubcategory.html',
+        controller: 'CrearCategoriaYSubcategoriaCtrl'
       })
       .otherwise({
         redirectTo: '/'

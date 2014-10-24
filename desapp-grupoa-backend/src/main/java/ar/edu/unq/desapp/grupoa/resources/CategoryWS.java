@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
+import ar.edu.unq.desapp.grupoa.parser.Parser;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
 @Service
@@ -59,6 +60,20 @@ public class CategoryWS {
         try {
         System.out.println(name);
         getCategoryService().save(new Category(name));
+        } catch (Exception e) {
+            System.out.println(e);
+            return Response.serverError().build();
+        }
+            return Response.status(201).build();
+        
+    }
+    
+    @POST
+    @Path("/saveSubcategory/")
+    @Consumes("application/json")
+    public Response saveSubcategory(@Multipart(value = "category", type = "application/json") final String json) {
+        try {
+            getCategoryService().update(Parser.parseCategory(json, categoryService));
         } catch (Exception e) {
             System.out.println(e);
             return Response.serverError().build();

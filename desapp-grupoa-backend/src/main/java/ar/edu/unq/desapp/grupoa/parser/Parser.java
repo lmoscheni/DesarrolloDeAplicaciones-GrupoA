@@ -11,10 +11,9 @@ import ar.edu.unq.desapp.grupoa.services.CategoryService;
 public class Parser {
 
     public static Operation parseOperation(final String jsonOperation, CategoryService categoryService) throws Exception {
-        String delims = "[ \",:{}]+";
-        String[] tokens = jsonOperation.split(delims);
+        String[] tokens = getTokens(jsonOperation);
         Operation newOperation = new Operation();
-        newOperation.setAmount(Integer.parseInt(tokens[2]));
+        newOperation.setAmount(Double.parseDouble(tokens[2]));
         newOperation.setShift(Shift.create(tokens[4]));
         Category category = categoryService.findByName(tokens[6]);
         newOperation.setCategory(category);
@@ -26,5 +25,18 @@ public class Parser {
         }
         newOperation.setOperationType(operationType);
         return newOperation;
+    }
+    
+    public static Category parseCategory(final String json, CategoryService categoryService){
+        String[] tokens = getTokens(json);
+        Category category = categoryService.findByName(tokens[2]);
+        category.addSubcategory(tokens[4]);
+        return category;
+    }
+    
+    private static String[] getTokens(String json){
+        String delims = "[ \",:{}]+";
+        String[] tokens = json.split(delims);
+        return tokens;
     }
 }

@@ -4,7 +4,7 @@
     <div class="col-md-6 input">
 
         
-        <div class="form-group">
+        <div class="form-group" required name="formm">
             <label class="btn  btn-toggle">
                 <input type="checkbox" ng-model="objectOperationJson.operationType" /> Check for income operation
             </label>
@@ -22,7 +22,7 @@
                             </select>
                         </td>
                         <td>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#/crearCategory"  class="btn btn-success"> Create a new category <span class="glyphicon glyphicon-ok"></span></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#/crearOperacion/#modalCrearCategoria" data-toggle="modal"  class="btn btn-success"> Create a new category <span class="glyphicon glyphicon-ok"></span></a>
                         </td>
                     </tr>
                 </tbody>
@@ -36,12 +36,12 @@
                 <tbody>
                     <tr>
                         <td>
-                            <select ng-model="objectOperationJson.subcategory" disabled="true" draggable="true" ng-options="subcategory.name as subcategory.name for subcategory in categories" class="form-control">
+                            <select ng-model="objectOperationJson.subcategory" ng-Click="getSubcategories()" ng-disabled="disableSubcategory" draggable="true" ng-options="subcategory for subcategory in subcategories" class="form-control">
                                 <option value="">Select a subcategory</option>
                             </select>
                         </td>
                         <td>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#/crearComprobante"  class="btn btn-success"> Create a new subcategory <span class="glyphicon glyphicon-ok"></span></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#/crearOperacion/#modalCrearSubcategoria" data-toggle="modal" ng-disabled="disableSubcategory" class="btn btn-success"> Create a new subcategory <span class="glyphicon glyphicon-ok"></span></a>
                         </td>
                     </tr>
                 </tbody>
@@ -50,21 +50,66 @@
 
         
         <div class="form-group">
-            <div class="controls">
+            <div class="input-group">
+                <span class="input-group-addon">></span>
                 <input ng-model="objectOperationJson.shift" type="text" placeholder="Shift" class="form-control" />
             </div>
         </div>
 
         <div class="form-group">
-            <div class="controls">
+           <div class="input-group">
+                <span class="input-group-addon">$</span>
                 <input ng-model="objectOperationJson.amount" type="number" placeholder="Amount" class="form-control"/>
             </div>
         </div>
         
         <div class="form-group">
-            <a ng-Click="createOperation()" class="btn btn-lg btn-success">Aceptar</a>
+            <a ng-Click="createOperation()" ng-disabled="formm.$invalid"class="btn btn-lg btn-success">Aceptar</a>
             <a href="#/registroDeOperacionesYComprobantes" class="btn btn-lg btn-danger">Cancelar</a>
         </div>
         
+             </div>
+
+</div>
+
+<div ng-controller="CrearCategoriaYSubcategoriaCtrl">
+    <div class="modal fade" id="modalCrearCategoria" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content modal-content-one">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">&times;</a>
+                    <h3>Crear categoria</h3>
+                </div>
+                <div class="modal-body">
+                    <input ng-model="objectCategory.name" type="text" placeholder="Name" class="form-control" />
+                </div>
+                <div class="modal-footer">
+                    <a href="#" ng-Click="createCategory()" data-dismiss="modal" class="btn btn-success">Aceptar</a>
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modalCrearSubcategoria" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content modal-content-one">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">&times;</a>
+                    <h3>Crear Subcategoria</h3>
+                </div>
+                <select ng-model="category"  ng-Click="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" class="form-control">
+                                <option value="">Select a category</option>
+                            </select>
+                <div class="modal-body">
+                    <input ng-model="objectCategory.subcategory" type="text" placeholder="Name" class="form-control" />
+                </div>
+                <div class="modal-footer">
+                    <a href="#" ng-Click="createSubcategory()" data-dismiss="modal" class="btn btn-success">Aceptar</a>
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+

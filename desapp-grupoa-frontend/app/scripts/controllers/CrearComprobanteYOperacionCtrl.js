@@ -17,35 +17,47 @@ app.controller('CrearComprobanteYOperacionCtrl', function ($http,$scope) {
     
     
     $scope.categories = [];
+    $scope.subcategories = [];
     $scope.operations = [];
     $scope.objectOperationJson = {};
     $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false'};
-   
-        
+    $scope.disableSubcategory = true;
+    
+    
     $scope.getCategories = function() {
-        
-        $http({
-            method : 'GET',
-            url: 'http://localhost:8080/desapp-grupoa-backend/rest/categories/all',
-            respondType: 'json',
-            headers : {'Content-Type' : 'application/json'},
-        }).success(function(data){
-                $scope.categories = data;
-        }).error(function(data){
-            console.log('An Error occurred while trying to get all categories');
+        $scope.disableSubcategory = false;
+        $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
+        .success(function(data) {
+            $scope.categories = data;
+            
+        }).error(function() {
+            alert('No se pudieron obtener resultados del servidor');
         });
     };
-        
+       
+    $scope.getSubcategories = function() {
+            for(var i in $scope.categories){
+                if($scope.categories[i].name === $scope.objectOperationJson.category){
+                    $scope.subcategories = $scope.categories[i].subcategories;    
+                };
+            };
+    }
+    
+    function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+            if ((new Date().getTime() - start) > milliseconds){
+                break;
+            }
+        }
+    }
+    
     $scope.getOperations = function() {
-        $http({
-            method : 'GET',
-            url: 'http://localhost:8080/desapp-grupoa-backend/rest/operations/all',
-            respondType: 'json',
-            headers : {'Content-Type' : 'application/json'},
-        }).success(function(data){
+        $http.get('http://localhost:8080/desapp-grupoa-backend/rest/operations/all')
+        .success(function(data) {
                 $scope.operations = data;
-        }).error(function(data){
-            console.log('An Error occurred while trying to get all operations');
+        }).error(function() {
+            alert('No se pudieron obtener resultados del servidor');
         });
     };
     
@@ -76,8 +88,8 @@ app.controller('CrearComprobanteYOperacionCtrl', function ($http,$scope) {
     };
     
     $scope.createOperation = function() {
-        $http.post('http://localhost:8080/desapp-grupoa-backend/rest/operations/save/', angular.toJson($scope.objectOperationJson)).success(
-        function(data, status, headers, config) {
+        $http.post('http://localhost:8080/desapp-grupoa-backend/rest/operations/save/',angular.toJson($scope.objectOperationJson))
+        .success(function(data, status, headers, config) {
             /*$location.path("/");*/
                 $scope.operations = data;
         }).error(function(data, status, headers, config) {
@@ -85,6 +97,5 @@ app.controller('CrearComprobanteYOperacionCtrl', function ($http,$scope) {
         });
     };
     
+    
   });
-
-
