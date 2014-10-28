@@ -28,6 +28,8 @@ public class Operation implements Serializable{
 
     private Category category;
 
+    private String subcategory;
+    
     private Shift shift;
 
     private OperationType operationType;
@@ -38,9 +40,10 @@ public class Operation implements Serializable{
         this.dateOperation = new Date();
     }
 
-    public Operation(double amount, Category category, Shift shift, OperationType operationType) {
+    public Operation(double amount, Category category, String subcategory, Shift shift, OperationType operationType) {
         this.amount = amount;
         this.category = category;
+        this.subcategory = subcategory;
         this.shift = shift;
         this.operationType = operationType;
         this.dateOperation = new Date();
@@ -52,6 +55,14 @@ public class Operation implements Serializable{
 
     public Integer getId() {
         return id;
+    }
+
+    public String getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(String subcategory) {
+        this.subcategory = subcategory;
     }
 
     public void setId(Integer id) {

@@ -1,17 +1,18 @@
-<div ng-controller="CrearComprobanteYOperacionCtrl">
+<div ng-controller="OperacionCtrl">
     <div class="container-fluid">
         <div class="row">
             <!-- Nav left -->
             <ul class="nav nav-tabs nav-stacked col-md-3">
-                <li><a href="registroDeOperacionesYComprobantes/#tab1" ng-Click="getCategories()" data-toggle="tab"><h3>Comprobantes <span class="glyphicon glyphicon-expand"></span></h3></a></li>
-                <li><a href="registroDeOperacionesYComprobantes/#tab2" ng-Click="getOperations()" data-toggle="tab"><h3>Operaciones <span class="glyphicon glyphicon-expand"></span></h3></a></li>
+                <li><a href="registroDeOperacionesYComprobantes/#tab1" ng-Click="getCategories()" data-toggle="tab"><h3>{{ 'COMPROBANTES' | translate}} <span class="glyphicon glyphicon-expand"></span></h3></a></li>
+                <li><a href="registroDeOperacionesYComprobantes/#tab2" ng-Click="getOperations()" data-toggle="tab"><h3>{{ 'OPERACIONES' | translate}} <span class="glyphicon glyphicon-expand"></span></h3></a></li>
             </ul>
 
             <div class="tab-content">
                 
+            <!--***********************************  Tab de los comprobantes  *********************************************-->
                 <div class="tab-pane fade" id="tab1">
                     
-                    <table id="breakingBadChar" class="table table-bordered table-hover table-condensed">
+                    <!--<table id="breakingBadChar" class="table table-bordered table-hover table-condensed">
   			           <thead>
                            <tr>
 
@@ -26,54 +27,57 @@
                             <td><a href="#" class="btn btn-warning">Modificar</a>
                     <a href="#" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-remove"></a></td>
                         </tr>
-<!--                            <tr ng-model="categories">
+                            <tr ng-model="categories">
                                 {{categories}}
                                 {{status}}
-                            </tr>-->
+                            </tr>
   			           </tbody>
                     </table>
                     </br>
                     <a href="#/crearComprobante"  class="btn btn-lg btn-success">Crear <span class="glyphicon glyphicon-ok"></span></a>
-                    
+                    -->
                 </div>
-            
+            <!--******************************************************************************************************-->
+                
+            <!--***********************************  Tab de las operaciones  *********************************************-->
                 <div class="tab-pane fade" id="tab2">
-                    
-                    <table id="breakingBadChar" class="table table-bordered table-hover table-condensed">
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-condensed">
   			           <thead>
                            <tr>
-  					            <td>Amount &nbsp&nbsp</td>
-                                <td>Category &nbsp&nbsp</td>
-                               <td>Shift &nbsp&nbsp</td>
-                               <td>Data Operation &nbsp&nbsp</td>
-                               <td>Operation Type&nbsp&nbsp</td>
-                               <td>Actions  </td>
+  					            <td>{{ 'MONTO' | translate}} </td>
+                                <td>{{ 'CATEGORIA' | translate}} </td>
+                               <td>{{ 'SUBCATEGORIA' | translate}} </td>
+                               <td>{{ 'TURNO' | translate}} </td>
+                               <td>{{ 'DIA_OPERACION' | translate}} </td>
+                               <td>{{ 'TIPO_OPERACION' | translate}} </td>
+                               <td>{{ 'ACCION' | translate}}  </td>
   				          </tr>
   			           </thead>
                         
                         <tbody>
                             <tr ng-repeat="operation in operations">
-                                <td>{{operation.amount}}&nbsp&nbsp</td> 
-                                <td>{{operation.category.name}}&nbsp&nbsp</td> 
-                                <td>{{operation.shift}}&nbsp&nbsp</td> 
-                                <td>{{parse(operation.dateOperation)}}&nbsp&nbsp</td> 
-                                <td>{{typeOperation(operation.operationType)}}&nbsp&nbsp</td> 
-                                <td><a href="#" class="btn btn-warning">Modificar</a>
-                    <a ng-Click="delete(operation)" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-remove"></a>
+                                <td>{{operation.amount}} </td> 
+                                <td>{{operation.category.name}} </td> 
+                                <td>{{operation.subcategory}} </td> 
+                                <td>{{operation.shift}} </td> 
+                                <td>{{parse(operation.dateOperation)}} </td> 
+                                <td>{{typeOperation(operation.operationType)}} </td> 
+                                <td>
+                                    <a ng-Click="modificar(operation)" class="btn btn-warning">{{ 'MODIFICAR' | translate}} </a>
+                                    <a ng-Click="delete(operation)" class="btn btn-danger">{{ 'ELIMINAR' | translate}} <span class="glyphicon glyphicon-remove"></a>
                                 </td>
                             </tr>
-<!--                            <tr ng-model="categories">
-                                {{categories}}
-                                {{status}}
-                            </tr>-->
   			           </tbody>
                     </table>
+                    </div>
                     </br>
                     </br>
                     </br>
-                    <a href="#/crearOperacion" class="btn btn-lg btn-success">Crear <span class="glyphicon glyphicon-ok"></a>
+                    <a href="#/crearOperacion" class="btn btn-lg btn-success">{{ 'CREAR' | translate}} <span class="glyphicon glyphicon-ok"></a>
                     
                 </div>
+            <!--******************************************************************************************************-->
             </div>
         </div>
     </div>

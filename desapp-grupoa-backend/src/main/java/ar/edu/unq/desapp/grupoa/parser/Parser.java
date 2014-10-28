@@ -23,6 +23,7 @@ public class Parser {
         }else{
             operationType = new Egress();
         }
+        newOperation.setSubcategory(tokens[10]);
         newOperation.setOperationType(operationType);
         return newOperation;
     }

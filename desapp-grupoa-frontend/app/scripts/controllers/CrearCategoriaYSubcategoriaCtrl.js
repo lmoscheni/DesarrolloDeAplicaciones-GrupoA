@@ -20,8 +20,8 @@ app.controller('CrearCategoriaYSubcategoriaCtrl', function ($http,$scope) {
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/categories/save/', $scope.objectCategory.name)
         .success(function() {
                 alert('Categoria "' + $scope.objectCategory.name + '", creada correctamente!!');
-        }).error(function() {
-            alert('No se pudo crear la categoria');
+        }).error(function(data,status) {
+            alert('No se pudo crear la categoria, error (' + status + ')');
         });
     };
     
@@ -29,10 +29,10 @@ app.controller('CrearCategoriaYSubcategoriaCtrl', function ($http,$scope) {
         $scope.objectCategory.name = $scope.category;
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/categories/saveSubcategory/', $scope.objectCategory)
         .success(function() {
-            alert('Categoria "' + $scope.objectCategory.name + '", creada correctamente!!');
+            alert('Subcategoria "' + $scope.objectCategory.subcategory + '", creada correctamente!!');
         })
-        .error(function() {
-            console.log('An Error occurred');
+        .error(function(data,status) {
+            console.log('No se pudo crear la subcategoria, error (' + status + ')');
         });
     };
 });

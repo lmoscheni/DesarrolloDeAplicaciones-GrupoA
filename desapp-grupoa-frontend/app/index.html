@@ -21,13 +21,22 @@
 <body ng-app="angularApp" style="background-color:#c7f6e8">
       
     <!--<img alt="full screen background image" src="images/ingreso-y-gasto.jpg" id="full-screen-background-image" />-->
-    
+
     <div class="container header">
-        <h1><center><u>Sistema de control de gastos y flujo de efectivo.</u></center></br></h1>
+    
+        <div ng-controller="HomePageCtrl">
+            <div class="form">
+                <span>{{ 'SELECT_IDIOMA' | translate}}</span>
+                <button ng-Click="changeLanguage('en')" class="link" translate>EN</a>
+                <button ng-Click="changeLanguage('es')" class="link" translate>ES</a>
+            </div>
+        </div>
+        
+        <h1><center><u>{{ 'TITLE' | translate }}</u></center></br></h1>
  
         <ol class="breadcrumb">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#/registroDeOperacionesYComprobantes">Operaciones y comprobantes</a></li>
+          <li><a href="#">{{ 'INICIO' | translate }}</a></li>
+          <li><a href="#/registroDeOperacionesYComprobantes">{{ 'OPERACIONES_Y_COMPROBANTES' | translate }}</a></li>
         </ol>
     </div>
         
@@ -53,6 +62,8 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -64,7 +75,7 @@
     <script src="scripts/controllers/HomePageCtrl.js"></script>
     <script src="scripts/controllers/CrearCategoriaYSubcategoriaCtrl.js"></script>
     <script src="scripts/service.js"></script>
-    <script src="scripts/controllers/CrearComprobanteYOperacionCtrl.js"></script>
+    <script src="scripts/controllers/OperacionCtrl.js"></script>
     <!-- endbuild -->
         
 </body>
