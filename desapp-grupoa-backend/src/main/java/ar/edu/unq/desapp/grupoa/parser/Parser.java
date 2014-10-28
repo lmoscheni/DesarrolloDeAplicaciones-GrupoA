@@ -10,19 +10,23 @@ import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
 public class Parser {
 
+    // TODO: Hay que aplicar refactor a lo loco y hay que mover esto al pk helpers
     public static Operation parseOperation(final String jsonOperation, CategoryService categoryService) throws Exception {
         String[] tokens = getTokens(jsonOperation);
+        
         Operation newOperation = new Operation();
         newOperation.setAmount(Double.parseDouble(tokens[2]));
         newOperation.setShift(Shift.create(tokens[4]));
         Category category = categoryService.findByName(tokens[6]);
         newOperation.setCategory(category);
         OperationType operationType = null;
+        
         if(tokens[8].equals("true")){
             operationType = new Income();
         }else{
             operationType = new Egress();
         }
+        
         newOperation.setSubcategory(tokens[10]);
         newOperation.setOperationType(operationType);
         return newOperation;
