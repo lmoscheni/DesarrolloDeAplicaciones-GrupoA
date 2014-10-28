@@ -22,13 +22,15 @@ public class OperationBuilder {
     private double amount;
 
     private Category category;
+    
+    private String subcategory;
 
     private Shift shift;
 
     private OperationType operationType;
 
     public Operation build() {
-        return new Operation(amount, category, shift, operationType);
+        return new Operation(amount, category , subcategory , shift, operationType);
     }
 
     public OperationBuilder withAmount(double amount) {

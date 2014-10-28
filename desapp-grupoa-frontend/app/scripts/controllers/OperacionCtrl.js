@@ -2,16 +2,6 @@
 'use strict';
 
 var app = angular.module('angularApp');
-/**
- * @ngdoc function
- * @name angularApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the angularApp
- */
-
-
-
 
 app.controller('OperacionCtrl', function ($http,$scope,$location) {
     
@@ -28,7 +18,6 @@ app.controller('OperacionCtrl', function ($http,$scope,$location) {
         $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
         .success(function(data) {
             $scope.categories = data;
-            localStorage['dataObject'] = JSON.stringify($scope.objectOperationJson);
         }).error(function() {
             alert('No se pudieron obtener resultados del servidor');
         });
@@ -41,16 +30,7 @@ app.controller('OperacionCtrl', function ($http,$scope,$location) {
                 }
             }
     };
-    
-    function sleep(milliseconds) {
-        var start = new Date().getTime();
-        for (var i = 0; i < 1e7; i++) {
-            if ((new Date().getTime() - start) > milliseconds){
-                break;
-            }
-        }
-    }
-    
+
     $scope.getOperations = function() {
         $http.get('http://localhost:8080/desapp-grupoa-backend/rest/operations/all')
         .success(function(data) {
@@ -109,11 +89,4 @@ app.controller('OperacionCtrl', function ($http,$scope,$location) {
         });
         }
     };
-    
-    $scope.validate = function() {
-        var ret = ($scope.objectOperationJson.amount === '');
-        return ret;
-    };
-
-    
   });

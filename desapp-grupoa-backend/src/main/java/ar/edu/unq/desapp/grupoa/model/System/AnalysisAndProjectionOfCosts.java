@@ -36,8 +36,8 @@ public class AnalysisAndProjectionOfCosts {
         List<Operation> operationsOfCategory = this.getOperationsOfTheCategory(category);
         
         for(Operation operation : operationsOfCategory) {
-            //String categoryName = operation.getCategory().getSubcategory().getNam;
-            //this.passingToMap(distributionExpenses, categoryName, operation);
+            String categoryName = operation.getSubcategory();
+            this.passingToMap(distributionExpenses, categoryName, operation);
         }
         
         return distributionExpenses;

@@ -2,13 +2,8 @@ package ar.edu.unq.desapp.grupoa.persistence;
 
 import java.io.Serializable;
 import java.util.List;
-
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.unq.desapp.grupoa.model.Category.Category;
 
 /**
  * Generic hibernate DAO

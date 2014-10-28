@@ -49,10 +49,7 @@ public class Operation implements Serializable{
         this.dateOperation = new Date();
     }
 
-    // ******************************************************************************************************
     // Getters and setters
-    // ******************************************************************************************************
-
     public Integer getId() {
         return id;
     }
@@ -109,10 +106,7 @@ public class Operation implements Serializable{
         this.dateOperation = dateOperation;
     }
 
-    // ******************************************************************************************************
     // Methods
-    // ******************************************************************************************************
-
     public void applyOperation(Account account) {
 
         this.operationType.chargeOperation(this, account);

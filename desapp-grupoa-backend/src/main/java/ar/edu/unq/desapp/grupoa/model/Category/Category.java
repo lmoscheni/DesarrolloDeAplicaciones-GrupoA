@@ -13,12 +13,10 @@ import java.util.List;
  */
 
 
-public class Category implements Serializable, CategoryI{
+public class Category implements Serializable{
 
     private static final long serialVersionUID = 8560666959522143702L;
-//
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
     
     protected String name;
@@ -33,10 +31,7 @@ public class Category implements Serializable, CategoryI{
         name = anName;
     }
 
-    // ***********************************************************************************************************
     // Getters and setters
-    // ***********************************************************************************************************
-    
     public List<String> getSubcategories() {
         return subcategories;
     }
@@ -57,27 +52,15 @@ public class Category implements Serializable, CategoryI{
         this.name = name;
     }
 
-    public boolean isTheSame(CategoryI category) {
+    public boolean isTheSame(Category category) {
         return this.name == category.getName();
     }
     
- // ***********************************************************************************************************
-//  // Methods of class Category
-//  // ***********************************************************************************************************
+ 
+    // Methods of class Category
     
     public void addSubcategory(String subcategory){
         this.subcategories.add(subcategory);
     }
-    
-    
-    // habria que mandar la subcategoria no el nombre
-    public String getSubcategory(String subcategory){
-        String returnSubcategory = "";
-        for(String sub : this.subcategories){
-            if (sub.equals(name)){
-                returnSubcategory = sub;
-            }
-        }
-        return returnSubcategory;
-    }
+
 }
