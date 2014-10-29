@@ -10,7 +10,6 @@ import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
 public class Parser {
 
-    // TODO: Hay que aplicar refactor a lo loco y hay que mover esto al pk helpers
     public static Operation parseOperation(final String jsonOperation, CategoryService categoryService) throws Exception {
         String[] tokens = getTokens(jsonOperation);
         

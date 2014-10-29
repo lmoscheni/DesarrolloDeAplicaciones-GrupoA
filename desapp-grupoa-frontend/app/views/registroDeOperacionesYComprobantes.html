@@ -2,9 +2,9 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Nav left -->
-            <ul class="nav nav-tabs nav-stacked col-md-3">
-                <li><a href="registroDeOperacionesYComprobantes/#tab1" ng-Click="getCategories()" data-toggle="tab"><h3>{{ 'COMPROBANTES' | translate}} <span class="glyphicon glyphicon-expand"></span></h3></a></li>
-                <li><a href="registroDeOperacionesYComprobantes/#tab2" ng-Click="getOperations()" data-toggle="tab"><h3>{{ 'OPERACIONES' | translate}} <span class="glyphicon glyphicon-expand"></span></h3></a></li>
+            <ul class="nav nav-tabs">
+                <li><a href="registroDeOperacionesYComprobantes/#tab1" ng-Click="getCategories()" data-toggle="tab"><h3>{{ 'COMPROBANTES' | translate}} <span class="glyphicon glyphicon-collapse-down"></span></h3></a></li>
+                <li><a href="registroDeOperacionesYComprobantes/#tab2" ng-Click="getOperations()" data-toggle="tab"><h3>{{ 'OPERACIONES' | translate}} <span class="glyphicon glyphicon-collapse-down"></span></h3></a></li>
             </ul>
 
             <div class="tab-content">
@@ -41,7 +41,7 @@
                 
             <!--***********************************  Tab de las operaciones  *********************************************-->
                 <div class="tab-pane fade" id="tab2">
-                    <div class="table-responsive">
+                    </br>
                     <table class="table table-bordered table-hover table-condensed">
   			           <thead>
                            <tr>
@@ -56,8 +56,9 @@
   			           </thead>
                         
                         <tbody>
-                            <tr ng-repeat="operation in operations">
-                                <td>{{operation.amount}} </td> 
+                            <tr ng-repeat="operation in operations | offset: currentPage*itemsPerPage |
+  limitTo: itemsPerPage">
+                                <td sortable="amount">{{operation.amount}} </td> 
                                 <td>{{operation.category.name}} </td> 
                                 <td>{{operation.subcategory}} </td> 
                                 <td>{{operation.shift}} </td> 
@@ -69,13 +70,28 @@
                                 </td>
                             </tr>
   			           </tbody>
+                        <tfoot>
+                            <td colspan="3">
+                                <ul  class="pagination pagination-right">
+                                    <li ng-class="prevPageDisabled()">
+                                        <a href ng-click="prevPage()">« Prev</a>
+                                    </li>
+                                    <li ng-repeat="n in numberPages()">
+                                        <a href ng-click="page(n)">{{n+1}}</a>
+                                    </li>
+                                    <li ng-class="nextPageDisabled()">
+                                        <a href ng-click="nextPage()">Next »</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tfoot>
                     </table>
-                    </div>
                     </br>
                     </br>
                     </br>
                     <a href="#/crearOperacion" class="btn btn-lg btn-success">{{ 'CREAR' | translate}} <span class="glyphicon glyphicon-ok"></a>
-                    
+                        
                 </div>
             <!--******************************************************************************************************-->
             </div>

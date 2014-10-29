@@ -16,6 +16,7 @@ var app = angular.module('angularApp', [
     'ngSanitize',
     'ngTouch',
     'ngResource',
+    'ngTable',
     'pascalprecht.translate'
   ]);
 
