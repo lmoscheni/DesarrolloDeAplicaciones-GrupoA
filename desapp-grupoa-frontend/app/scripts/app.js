@@ -16,7 +16,6 @@ var app = angular.module('angularApp', [
     'ngSanitize',
     'ngTouch',
     'ngResource',
-    'ngTable',
     'pascalprecht.translate'
   ]);
 
@@ -35,7 +34,7 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
       })
         .when('/registroDeOperacionesYComprobantes', {
         templateUrl: 'views/registroDeOperacionesYComprobantes.html',
-        controller: 'OperacionCtrl'
+        controller: 'RegistroDeOperacionesYComprobantesCtrl'
       })
         .when('/crearOperacion', {
         templateUrl: 'views/crearOperacion.html',
@@ -43,11 +42,11 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
       })
         .when('/crearCategory', {
         templateUrl: 'views/crearCategory.html',
-        controller: 'CrearCategoriaYSubcategoriaCtrl'
+        controller: 'CategoriaYSubcategoriaCtrl'
       })
         .when('/crearSubcategory', {
         templateUrl: 'views/crearSubcategory.html',
-        controller: 'CrearCategoriaYSubcategoriaCtrl'
+        controller: 'CategoriaYSubcategoriaCtrl'
       })
       .otherwise({
         redirectTo: '/'
