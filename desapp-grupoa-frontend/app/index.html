@@ -21,11 +21,61 @@
     
 <body ng-app="angularApp" style="background-color:#c7f6e8">
       
-    <!--<img alt="full screen background image" src="images/ingreso-y-gasto.jpg" id="full-screen-background-image" />-->
 
-    <div class="container header">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Desplegar navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{ 'TITLE' | translate }}</a>
+        </div>
+ 
+        <!-- MENU PARA CREAR Y VER COMPROBANTES U OPERACIONES-->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{'CREAR' | translate}}<b class="caret"></b></a>
+        
+                    <ul class="dropdown-menu">
+                        <li><a href="#">{{'COMPROBANTE' | translate}}</a></li>
+                        <li><a href="#/crearOperacion">{{'OPERACION' | translate}}</a></li>
+                        <!--<li class="divider"></li>-->
+                    </ul>
+                </li>
+            </ul>
+ 
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{'VER' | translate}}<b class="caret"></b></a>
+        
+                    <ul class="dropdown-menu">
+                        <li><a href="#">{{'COMPROBANTES' | translate}}</a></li>
+                        <li><a href="#/verOperaciones">{{'OPERACIONES' | translate}}</a></li>
+                        <!--<li class="divider"></li>-->
+                    </ul>
+                </li>
+            </ul>
+            
+            <ul ng-controller="IndexCtrl" class="nav navbar-nav navbar-right">
+                <li><a style="cursor: pointer;" ng-Click="changeLanguage('en')" translate>EN</a></li>
+                <li><a style="cursor: pointer;" ng-Click="changeLanguage('es')" translate>ES</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div ng-view=""></div>
+    </div>
     
-        <div ng-controller="HomePageCtrl">
+    <!--<div ng-controller="IndexCtrl" class="footer">
+        <p>{{date}}</p>
+    </div>-->
+    <!--<div class="container header">
+    
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navbar">
             <div class="form">
                 <span>{{ 'SELECT_IDIOMA' | translate}}</span>
                 <button ng-Click="changeLanguage('en')" class="link" translate>EN</a>
@@ -33,22 +83,17 @@
             </div>
         </div>
         
-        <h1><center><u>{{ 'TITLE' | translate }}</u></center></br></h1>
- 
+        <div>
+            <h1><center><u>{{ 'TITLE' | translate }}</u></center></br></h1>
+        </div>
         <ol class="breadcrumb">
           <li><a href="#">{{ 'INICIO' | translate }}</a></li>
           <li><a href="#/registroDeOperacionesYComprobantes">{{ 'OPERACIONES_Y_COMPROBANTES' | translate }}</a></li>
         </ol>
-    </div>
+    </div>-->
         
     <!-- Add your site or application content here -->
-    <div class="container">
-        <div ng-view=""></div>
-
-        <!--<div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-        </div>-->
-    </div>
+    
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -72,7 +117,8 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/AppCtrl.js"></script>
-    <script src="scripts/controllers/HomePageCtrl.js"></script>
+    <script src="scripts/controllers/IndexCtrl.js"></script>
+    <script src="scripts/controllers/VerOperacionesCtrl.js"></script>
     <script src="scripts/controllers/CategoriaYSubcategoriaCtrl.js"></script>
     <script src="scripts/service.js"></script>
     <script src="scripts/controllers/OperacionCtrl.js"></script>

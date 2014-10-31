@@ -3,8 +3,8 @@
 
 var app = angular.module('angularApp');
 
-app.controller('OperacionCtrl', function ($http,$scope,$location) {
-    
+app.controller('OperacionCtrl', function ($http,$scope,$location,$window) {
+    $window.location.href
     
     $scope.categories = [];
     $scope.subcategories = [];
@@ -28,6 +28,20 @@ app.controller('OperacionCtrl', function ($http,$scope,$location) {
                     $scope.subcategories = $scope.categories[i].subcategories;    
                 }
             }
+    };    
+    
+    $scope.delete = function(operation) {
+        $http({
+            method : 'GET',
+            url: 'http://localhost:8080/desapp-grupoa-backend/rest/operations/deleteOperation/' + operation.id,
+            respondType: 'jso n',
+            headers : {'Content-Type' : 'application/json'},
+        }).success(function(data){
+               $scope.operations = data;
+            $location.path('/verOperaciones');
+        }).error(function(data,status){
+            alert('Error (' + status + ') al borrar la operacion');
+        });
     };
     
     $scope.modificar = function(operation) {
@@ -45,7 +59,7 @@ app.controller('OperacionCtrl', function ($http,$scope,$location) {
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/operations/save/',angular.toJson($scope.objectOperationJson))
         .success(function(data) {
                 $scope.operations = data;
-                $location.path('/registroDeOperacionesYComprobantes');
+                $location.path('/verOperaciones');
             alert('Operacion creada con exito!!');
         }).error(function(data,status) {
             alert('Error (' + status + ') al guardar la operacion');

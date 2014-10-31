@@ -12,7 +12,7 @@ var app = angular.module('angularApp');
 
 
 
-app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope) {
+app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location) {
     $scope.objectCategory = { 'name':'', 'subcategory':''};
     $scope.category = '';
     
@@ -20,7 +20,8 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope) {
         
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/categories/save/', $scope.objectCategory.name)
         .success(function() {
-                alert('Categoria "' + $scope.objectCategory.name + '", creada correctamente!!');
+            alert('Categoria "' + $scope.objectCategory.name + '", creada correctamente!!');
+            
         }).error(function(data,status) {
             alert('No se pudo crear la categoria, error (' + status + ')');
         });

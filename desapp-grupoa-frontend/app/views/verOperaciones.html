@@ -1,0 +1,43 @@
+<div ng-controller="VerOperacionesCtrl" class="">
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+  			   <td>{{ 'MONTO' | translate}} </td>
+               <td>{{ 'CATEGORIA' | translate}} </td>
+               <td>{{ 'SUBCATEGORIA' | translate}} </td>
+               <td>{{ 'TURNO' | translate}} </td>
+               <td>{{ 'DIA_OPERACION' | translate}} </td>
+               <td>{{ 'TIPO_OPERACION' | translate}} </td>
+               <td>{{ 'ACCION' | translate}}  </td>
+  		    </tr>
+        </thead>
+        
+        <tbody>
+            <tr ng-repeat="operation in operations | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
+                <td sortable="amount">{{operation.amount}} </td> 
+                <td>{{operation.category.name}} </td> 
+                <td>{{operation.subcategory}} </td> 
+                <td>{{operation.shift}} </td> 
+                <td>{{parse(operation.dateOperation)}} </td> 
+                <td>{{typeOperation(operation.operationType)}} </td> 
+                <td>
+                    <div ng-controller="OperacionCtrl">
+                    <a ng-Click="modificar(operation)" class="btn btn-warning">{{ 'MODIFICAR' | translate}} </a>
+                    <a ng-Click="delete(operation)" class="btn btn-danger">{{ 'ELIMINAR' | translate}} <span class="glyphicon glyphicon-remove"></a></div>
+                </td>
+            </tr>
+  		</tbody>
+    </table>
+    
+    <ul  class="pagination pagination-right">
+        <li ng-class="prevPageDisabled()">
+            <a href ng-click="prevPage()">« Prev</a>
+        </li>
+        <li ng-repeat="n in numberPages()">
+            <a href ng-click="page(n)">{{n+1}}</a>
+        </li>
+        <li ng-class="nextPageDisabled()">
+            <a href ng-click="nextPage()">Next »</a>
+        </li>
+    </ul>
+</div>

@@ -2,20 +2,20 @@
 
 var app = angular.module('angularApp');
 
-app.controller('RegistroDeOperacionesYComprobantesCtrl', function ($http,$scope,$location) {
+app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route) {
 
     $scope.operations = [];
+    $scope.itemsPerPage = 5;
+    $scope.currentPage = 0;
     
-    $scope.getOperations = function() {
-        $http.get('http://localhost:8080/desapp-grupoa-backend/rest/operations/all')
+    
+    $http.get('http://localhost:8080/desapp-grupoa-backend/rest/operations/all')
         .success(function(data) {
-                $scope.operations = data;
-        
+            $scope.operations = data;
         }).error(function() {
             alert('No se pudieron obtener resultados del servidor');
-        });
-    };
-    
+    });
+
     $scope.parse = function(date){
         var datee = new Date(JSON.parse(date));    
         return datee;
@@ -24,11 +24,6 @@ app.controller('RegistroDeOperacionesYComprobantesCtrl', function ($http,$scope,
     $scope.typeOperation = function(operationType){
         return operationType.income ? 'Income' : 'Egress'
     };
-    
-    
-    
-    $scope.itemsPerPage = 5;
-    $scope.currentPage = 0;
     
     $scope.prevPage = function() {
         if ($scope.currentPage > 0) {

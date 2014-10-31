@@ -24,9 +24,9 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
     
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/homePage.html',
-        controller: 'HomePageCtrl'
+      .when('/verOperaciones', {
+        templateUrl: 'views/verOperaciones.html',
+        controller: 'VerOperacionesCtrl'
       })
         .when('/crearComprobante', {
         templateUrl: 'views/crearComprobante.html',
@@ -63,6 +63,8 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         ANALISIS_DE_GASTOS : 'Analysis of expenses',
         OPERACIONES : 'Operations',
         COMPROBANTES : 'Vouchers',
+        OPERACION : 'Operation',
+        COMPROBANTE : 'Voucher',
         CREAR : 'Create',
         ELIMINAR : 'Delete',
         MODIFICAR : 'Modify',
@@ -81,7 +83,8 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         DIA_OPERACION : 'Date operation',
         TIPO_OPERACION : 'Operation type',
         ACCION : 'Actions',
-        NOMBRE : 'Name'
+        NOMBRE : 'Name',
+        VER : 'See'
     });
     
     $translateProvider.translations('es', {
@@ -95,6 +98,8 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         ANALISIS_DE_GASTOS : 'Análisis de gastos',
         OPERACIONES : 'Operaciones',
         COMPROBANTES : 'Comprobantes',
+        OPERACION : 'Operación',
+        COMPROBANTE : 'Comprobante',
         CREAR : 'Crear',
         ELIMINAR : 'Eliminar',
         MODIFICAR : 'Modificar',
@@ -113,7 +118,8 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         DIA_OPERACION : 'Día de la operación',
         TIPO_OPERACION : 'Tipo de operación',
         ACCION : 'Acciones',
-        NOMBRE : 'Nombre'
+        NOMBRE : 'Nombre',
+        VER : 'Ver'
     });
     $translateProvider.preferredLanguage('es');
     
