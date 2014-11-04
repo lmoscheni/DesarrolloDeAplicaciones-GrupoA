@@ -1,10 +1,11 @@
-<div ng-controller="OperacionCtrl">
+<div ng-controller="EditarOperacionCtrl">
    
-    <h2><u>{{ 'CREAR_OPERACION' | translate}}</u></h2>
+    <h2><u>{{ 'EDITAR_OPERACION' | translate}}</u></h2>
     <form id="form" name="form" class="col-md-6 input" navalidate>
 
         
         <div class="form-group" required name="formm">
+            {{hh}}
             <label class="btn  btn-toggle">
                 <input type="checkbox" ng-model="objectOperationJson.operationType" /> {{ 'SELECCIONAR_PARA_INGRESO' | translate}}
             </label>
@@ -19,6 +20,7 @@
                         <td>
                             <select name="categoria" required ng-model="objectOperationJson.category"  ng-Click="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" class="form-control">
                                 <option value="">{{ 'SELECCIONAR_CATEGORIA' | translate}}</option>
+                                <option value="objectOperationJson.category"></option>
                             </select>
                         </td>
                         <td>
@@ -59,7 +61,8 @@
         <div class="form-group">
            <div class="input-group">
                 <span class="input-group-addon">$</span>
-                <input name="monto/amount" id="monto" name="monto" type="number" class="form-control" ng-model="objectOperationJson.amount" placeholder="{{ 'MONTO' | translate}}" class="form-control" ng-required="true"/>
+                <input value="objectOperationJson.amount" name="monto/amount" id="monto" name="monto" type="number" class="form-control" ng-model="objectOperationJson.amount" placeholder="{{ 'MONTO' | translate}}" class="form-control" ng-required="true"/>
+               
             </div>
         </div>
         
@@ -125,4 +128,3 @@
         </div>
     </div>
 </div>
-

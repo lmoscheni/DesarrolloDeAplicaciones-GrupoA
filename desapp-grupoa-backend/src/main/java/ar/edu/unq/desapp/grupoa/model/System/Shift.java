@@ -2,18 +2,18 @@ package ar.edu.unq.desapp.grupoa.model.System;
 
 public enum Shift {
 
-    MORNING, EVENING, NIGHT;
+    MAÑANA, TARDE, NOCHE;
     
     public static Shift create(String shift){
         Shift returnValue = null;
-        if(shift.equals("EVENING") || shift.equals("evening") || shift.equals("Evening")){
-            returnValue = EVENING;
+        if(shift.equals("TARDE") || shift.equals("tarde") || shift.equals("Tarde")){
+            returnValue = TARDE;
         }
-        if(shift.equals("MORNING") || shift.equals("morning") || shift.equals("Morning")){
-            returnValue = MORNING;
+        if(shift.equals("MAÑANA") || shift.equals("mañana") || shift.equals("Mañana")){
+            returnValue = MAÑANA;
         }
-        if(shift.equals("NIGHT") || shift.equals("night") || shift.equals("Night")){
-            returnValue = NIGHT;
+        if(shift.equals("NOCHE") || shift.equals("noche") || shift.equals("Noche")){
+            returnValue = NOCHE;
         }
         return returnValue;
     }

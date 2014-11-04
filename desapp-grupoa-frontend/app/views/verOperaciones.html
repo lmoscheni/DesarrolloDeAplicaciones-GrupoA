@@ -22,8 +22,8 @@
                 <td>{{typeOperation(operation.operationType)}} </td> 
                 <td>
                     <div ng-controller="OperacionCtrl">
-                    <a ng-Click="modificar(operation)" class="btn btn-warning">{{ 'MODIFICAR' | translate}} </a>
-                    <a ng-Click="delete(operation)" class="btn btn-danger">{{ 'ELIMINAR' | translate}} <span class="glyphicon glyphicon-remove"></a></div>
+                    <a href="#/modificarOperacion/{{operation}}" class="btn btn-warning">{{ 'MODIFICAR' | translate}} </a>
+                    <a HTTP-EQUIV="REFRESH" ng-Click="delete(operation)" class="btn btn-danger">{{ 'ELIMINAR' | translate}} <span class="glyphicon glyphicon-remove"></a></div>
                 </td>
             </tr>
   		</tbody>

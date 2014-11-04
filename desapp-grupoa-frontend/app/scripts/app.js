@@ -40,6 +40,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         templateUrl: 'views/crearOperacion.html',
         controller: 'OperacionCtrl'
       })
+        .when('/modificarOperacion/:operacion', {
+        templateUrl: 'views/modificarOperacion.html',
+        controller: 'EditarOperacionCtrl'
+      })
         .when('/crearCategory', {
         templateUrl: 'views/crearCategory.html',
         controller: 'CategoriaYSubcategoriaCtrl'
@@ -80,11 +84,13 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         SELECCIONAR_CATEGORIA : 'Select category',
         SELECCIONAR_SUBCATEGORIA : 'Select subcategory',
         CREAR_OPERACION : 'Create operation',
+        EDITAR_OPERACION : 'Edit operation',
         DIA_OPERACION : 'Date operation',
         TIPO_OPERACION : 'Operation type',
         ACCION : 'Actions',
         NOMBRE : 'Name',
-        VER : 'See'
+        VER : 'See',
+        MENSAJE_CONFIRMACION : 'To confirm operation?'
     });
     
     $translateProvider.translations('es', {
@@ -115,11 +121,13 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         SELECCIONAR_CATEGORIA : 'Seleccionar categoria',
         SELECCIONAR_SUBCATEGORIA : 'Seleccionar subcategoria',
         CREAR_OPERACION : 'Crear operación',
+        EDITAR_OPERACION : 'Editar operación',
         DIA_OPERACION : 'Día de la operación',
         TIPO_OPERACION : 'Tipo de operación',
         ACCION : 'Acciones',
         NOMBRE : 'Nombre',
-        VER : 'Ver'
+        VER : 'Ver',
+        MENSAJE_CONFIRMACION : '¿Confirmar operación?'
     });
     $translateProvider.preferredLanguage('es');
     

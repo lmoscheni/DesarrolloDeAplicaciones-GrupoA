@@ -3,15 +3,16 @@
 
 var app = angular.module('angularApp');
 
-app.controller('OperacionCtrl', function ($http,$scope,$location,$window) {
-    $window.location.href
+app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeParams,$translate) {
     
     $scope.categories = [];
     $scope.subcategories = [];
-    $scope.objectOperationJson;
+    $scope.objectOperationJson = {};
     $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':''};
     $scope.disableSubcategory = true;
+    $scope.d = false;
     
+
     $scope.getCategories = function() {
         $scope.disableSubcategory = false;
         $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
@@ -31,40 +32,38 @@ app.controller('OperacionCtrl', function ($http,$scope,$location,$window) {
     };    
     
     $scope.delete = function(operation) {
-        $http({
-            method : 'GET',
-            url: 'http://localhost:8080/desapp-grupoa-backend/rest/operations/deleteOperation/' + operation.id,
-            respondType: 'jso n',
-            headers : {'Content-Type' : 'application/json'},
-        }).success(function(data){
-               $scope.operations = data;
-            $location.path('/verOperaciones');
-        }).error(function(data,status){
-            alert('Error (' + status + ') al borrar la operacion');
-        });
+        if(confirm('Confirmar operacion?')) {
+            $http({
+                method : 'GET',
+                url: 'http://localhost:8080/desapp-grupoa-backend/rest/operations/deleteOperation/' + operation.id,
+                respondType: 'jso n',
+                headers : {'Content-Type' : 'application/json'},
+            }).success(function(data){
+                   $scope.operations = data;
+                    $window.location.reload();
+            }).error(function(data,status){
+                alert('Error (' + status + ') al borrar la operacion');
+            });
+        }
     };
     
-    $scope.modificar = function(operation) {
-        $scope.objectOperationJson.amount = '4';
+    
+        $scope.objectOperationJson.amount = $routeParams.amount;
+        /*$scope.objectOperationJson.amount = '4';
         $scope.objectOperationJson.category = operation.category;
-        $scope.objectOperationJson.shift = 'lalallala';
-        $scope.$watch($scope.modificar);
-        $location.path('/crearOperacion');
-    };
+        $scope.objectOperationJson.shift = 'lalallala';*/
+    
     
     $scope.createOperation = function() {
-        if ($scope.objectOperationJson.amount === '' || $scope.objectOperationJson.shift === '' || $scope.objectOperationJson.category === '' || $scope.objectOperationJson.subcategory === '') {
-            alert('Debe llenar todos los campos');  
-        }else{
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/operations/save/',angular.toJson($scope.objectOperationJson))
         .success(function(data) {
                 $scope.operations = data;
                 $location.path('/verOperaciones');
             alert('Operacion creada con exito!!');
-        }).error(function(data,status) {
-            alert('Error (' + status + ') al guardar la operacion');
+        }).error(function(status) {
+            alert('Error ('+ status +') al guardar la operacion');
         });
-        }
+        
     };
     
   });

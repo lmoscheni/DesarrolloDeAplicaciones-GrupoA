@@ -2,6 +2,7 @@ package ar.edu.unq.desapp.grupoa.resources;
 
 import java.io.IOException;
 import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -9,11 +10,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+
 import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.parser.Parser;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
@@ -52,7 +55,7 @@ public class OperationWS {
         System.out.println(e);
         return Response.serverError().build();
     }
-        return Response.status(201).build();
+        return Response.status(200).build();
     }
     
     private Operation parseOperation(final String jsonOperation) throws Exception {

@@ -12,13 +12,14 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route) {
     $http.get('http://localhost:8080/desapp-grupoa-backend/rest/operations/all')
         .success(function(data) {
             $scope.operations = data;
+            $location.reload;
         }).error(function() {
             alert('No se pudieron obtener resultados del servidor');
     });
 
     $scope.parse = function(date){
-        var datee = new Date(JSON.parse(date));    
-        return datee;
+        var datee = new Date(JSON.parse(date));  
+        return datee.toLocaleDateString();
     };
     
     $scope.typeOperation = function(operationType){
