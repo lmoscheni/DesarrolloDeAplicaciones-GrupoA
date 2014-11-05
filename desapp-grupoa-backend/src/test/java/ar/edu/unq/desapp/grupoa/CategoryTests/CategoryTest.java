@@ -16,20 +16,36 @@ public class CategoryTest extends TestCase {
 
         assertEquals("Juli", category.getName());
     }
+    
+    public void testGetAndSetId() {
 
+        Category category = new Category();
+        Integer i = new Integer(1);
+        category.setId(i);
+
+        assertEquals(i, category.getId());
+    }
+
+    public void testGetSubcategories(){
+       
+        Category category = new Category();
+        category.addSubcategory("Alfajor");
+        
+        assertTrue(category.getSubcategories().contains("Alfajor"));
+    }
 
     // ***********************************************************************************************************
     // Test methods
     // ***********************************************************************************************************
 
-//    public void testAddSubcategory() {
-//        Subcategory mockSubcategory = mock(Subcategory.class);
-//        
-//        Category category = new Category();
-//        category.setSubcategory(mockSubcategory);
-//
-//        assertEquals(mockSubcategory, category.getSubcategory());
-//    }
+    public void testAddSubcategory() {
+        
+        Category category = new Category();
+        String subcategory = "Alfajor";
+        category.addSubcategory(subcategory);
+
+        assertTrue(category.getSubcategories().contains(subcategory));
+    }
     
     public void testIsTheSame(){
         

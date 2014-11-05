@@ -35,7 +35,24 @@ public class OperationTest extends TestCase {
 
         assertEquals(100.0, operation.getAmount());
     }
+    
+    public void testGetAndSetId() {
 
+        Operation operation = new Operation();
+        Integer i = new Integer(1);
+        operation.setId(i);
+
+        assertEquals(i, operation.getId());
+    }
+
+    public void testGetAndSetSubcategories() {
+
+        Operation operation = new Operation();
+        operation.setSubcategory("Alfajor");;
+
+        assertEquals("Alfajor", operation.getSubcategory());
+    }
+    
     public void testGetAndSetCategory() {
 
         Category mockCategory = mock(Category.class);
@@ -48,7 +65,7 @@ public class OperationTest extends TestCase {
 
     public void testGetAndSetShift() {
 
-        Shift mockShift = Shift.EVENING;
+        Shift mockShift = Shift.TARDE;
 
         Operation operation = new Operation();
         operation.setShift(mockShift);

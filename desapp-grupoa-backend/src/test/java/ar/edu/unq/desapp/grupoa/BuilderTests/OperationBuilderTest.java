@@ -36,7 +36,7 @@ public class OperationBuilderTest extends TestCase {
 
     public void testBuildVoucherWithShift() {
 
-        Shift mockShift = Shift.EVENING;
+        Shift mockShift = Shift.TARDE;
 
         Operation operation = OperationBuilder.aOperation().withShift(mockShift).build();
 
