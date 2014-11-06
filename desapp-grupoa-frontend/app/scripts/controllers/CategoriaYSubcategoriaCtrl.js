@@ -12,7 +12,7 @@ var app = angular.module('angularApp');
 
 
 
-app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location) {
+app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,ngDialog) {
     $scope.objectCategory = { 'name':'', 'subcategory':''};
     $scope.category = '';
     
@@ -20,10 +20,10 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location) {
         
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/categories/save/', $scope.objectCategory.name)
         .success(function() {
-            alert('Categoria "' + $scope.objectCategory.name + '", creada correctamente!!');
-            
-        }).error(function(data,status) {
-            alert('No se pudo crear la categoria, error (' + status + ')');
+            ngDialog.open({template:'Categoria "' + $scope.objectCategory.name + '", creada correctamente!!',plain:true});
+            $location.path('/crearOperacion');
+        }).error(function() {
+            ngDialog.open({template:'Error del servidor, al crear la categoria',plain:true});
         });
     };
     
@@ -31,10 +31,10 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location) {
         $scope.objectCategory.name = $scope.category;
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/categories/saveSubcategory/', $scope.objectCategory)
         .success(function() {
-            alert('Subcategoria "' + $scope.objectCategory.subcategory + '", creada correctamente!!');
+            ngDialog.open({template:'Subcategoria "' + $scope.objectCategory.subcategory + '", creada correctamente!!',plain:true});
         })
-        .error(function(data,status) {
-            console.log('No se pudo crear la subcategoria, error (' + status + ')');
+        .error(function() {
+            ngDialog.open({template:'Error del servidor, al crear la subcategoria',plain:true});
         });
     };
 });

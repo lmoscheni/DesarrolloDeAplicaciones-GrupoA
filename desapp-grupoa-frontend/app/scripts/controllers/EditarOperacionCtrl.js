@@ -3,7 +3,7 @@
 
 var app = angular.module('angularApp');
 
-app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$routeParams) {
+app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$routeParams,ngDialog) {
     
     $scope.categories = [];
     $scope.subcategories = [];
@@ -15,7 +15,7 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
         .success(function(data) {
             $scope.categories = data;
         }).error(function() {
-            alert('No se pudieron obtener resultados del servidor');
+            ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
         });
     };
        
@@ -40,19 +40,11 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
                 url: 'http://localhost:8080/desapp-grupoa-backend/rest/operations/modify/' + JSON.parse($routeParams.operacion).id + '/' + angular.toJson($scope.objectOperationJson),
                 respondType: 'jso n',
                 headers : {'Content-Type' : 'application/json'},
-            }).success(function(data){
+            }).success(function(){
                   $location.path('/verOperaciones');
-            }).error(function(data,status){
-                alert('Error (' + status + ') al borrar la operacion');
+            }).error(function(){
+                ngDialog.open({template:'Error del servidor, al modificar la operación',plain:true});
             });
-        /*$http.get('http://localhost:8080/desapp-grupoa backend/rest/operations/modify/',  JSON.parse($routeParams.operacion).id)
-        .success(function(data) {
-                $scope.operations = data;
-                $location.path('/verOperaciones');
-            alert('Operacion creada con exito!!');
-        }).error(function(status) {
-            alert('Error ('+ status +') al modificar la operacion');
-        });*/
     };
     
   });

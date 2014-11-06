@@ -16,7 +16,8 @@ var app = angular.module('angularApp', [
     'ngSanitize',
     'ngTouch',
     'ngResource',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'ngDialog'
   ]);
 
 app.config(function ($routeProvider, $httpProvider, $translateProvider) {

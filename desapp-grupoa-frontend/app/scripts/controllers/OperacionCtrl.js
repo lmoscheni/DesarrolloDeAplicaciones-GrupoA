@@ -3,7 +3,7 @@
 
 var app = angular.module('angularApp');
 
-app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeParams,$translate) {
+app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeParams,ngDialog) {
     
     $scope.categories = [];
     $scope.subcategories = [];
@@ -19,7 +19,7 @@ app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeP
         .success(function(data) {
             $scope.categories = data;
         }).error(function() {
-            alert('No se pudieron obtener resultados del servidor');
+            ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
         });
     };
        
@@ -39,32 +39,26 @@ app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeP
                 respondType: 'jso n',
                 headers : {'Content-Type' : 'application/json'},
             }).success(function(data){
-                   $scope.operations = data;
-                    $window.location.reload();
-            }).error(function(data,status){
-                alert('Error (' + status + ') al borrar la operacion');
+                $scope.operations = data;
+                $window.location.reload();
+            }).error(function(){
+                ngDialog.open({template:'Error del servidor, al borrar la operación',plain:true});
             });
         }
     };
     
-    
-        $scope.objectOperationJson.amount = $routeParams.amount;
-        /*$scope.objectOperationJson.amount = '4';
-        $scope.objectOperationJson.category = operation.category;
-        $scope.objectOperationJson.shift = 'lalallala';*/
-    
-    
     $scope.createOperation = function() {
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/operations/save/',angular.toJson($scope.objectOperationJson))
         .success(function(data) {
-                $scope.operations = data;
-                $location.path('/verOperaciones');
-            alert('Operacion creada con exito!!');
-        }).error(function(status) {
-            alert('Error ('+ status +') al guardar la operacion');
+            $scope.operations = data;
+            $location.path('/verOperaciones');
+            ngDialog.open({template:'Operacion creada con exito',plain:true});
+        }).error(function() {
+            ngDialog.open({template:'Error del servidor, al crear la operación',plain:true});
         });
         
     };
+    
     
   });
 

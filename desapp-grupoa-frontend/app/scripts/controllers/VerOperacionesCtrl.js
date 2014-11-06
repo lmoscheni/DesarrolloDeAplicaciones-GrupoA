@@ -2,7 +2,7 @@
 
 var app = angular.module('angularApp');
 
-app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route) {
+app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,ngDialog) {
 
     $scope.operations = [];
     $scope.itemsPerPage = 5;
@@ -12,9 +12,8 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route) {
     $http.get('http://localhost:8080/desapp-grupoa-backend/rest/operations/all')
         .success(function(data) {
             $scope.operations = data;
-            $location.reload;
         }).error(function() {
-            alert('No se pudieron obtener resultados del servidor');
+            ngDialog.open({template:'Error del servidor, al obtener las operaciones',plain:true});
     });
 
     $scope.parse = function(date){
@@ -23,7 +22,7 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route) {
     };
     
     $scope.typeOperation = function(operationType){
-        return operationType.income ? 'Income' : 'Egress'
+        return operationType.income ? 'Income' : 'Egress';
     };
     
     $scope.prevPage = function() {
@@ -33,7 +32,7 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route) {
       };
 
       $scope.prevPageDisabled = function() {
-        return $scope.currentPage === 0 ? "disabled" : "";
+        return $scope.currentPage === 0 ? 'disabled' : '';
       };
 
       $scope.pageCount = function() {
@@ -47,7 +46,7 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route) {
       };
 
       $scope.nextPageDisabled = function() {
-        return $scope.currentPage === $scope.pageCount() ? "disabled" : "";
+        return $scope.currentPage === $scope.pageCount() ? 'disabled' : '';
       };
     
     $scope.page = function(nPage) {
