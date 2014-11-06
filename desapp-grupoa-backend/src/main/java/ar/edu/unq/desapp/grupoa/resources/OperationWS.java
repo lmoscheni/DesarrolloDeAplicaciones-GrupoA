@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -49,17 +50,36 @@ public class OperationWS {
     @Path("/save/")
     @Consumes("application/json")
     public Response createOperation(@Multipart(value = "operation", type = "application/json") final String jsonOperation) {
-    try {
-        getOperationService().save(parseOperation(jsonOperation));
-    } catch (Exception e) {
-        System.out.println(e);
-        return Response.serverError().build();
-    }
+        try {
+            getOperationService().save(parseNewOperation(jsonOperation));
+        } catch (Exception e) {
+            System.out.println(e);
+            return Response.serverError().build();
+        }
         return Response.status(200).build();
     }
     
-    private Operation parseOperation(final String jsonOperation) throws Exception {
-        return Parser.parseOperation(jsonOperation, getCategoryService());
+    @GET
+    @Path("/modify/{id}/{operation}")
+    @Produces("application/json")
+    public Response saveCategory(@PathParam("id") final int id,
+    @PathParam("operation") final String operation) {
+        try {
+            Operation o = getOperationService().findById(id);
+            getOperationService().update(parseUpdateOperation(o,operation));
+        } catch (Exception e) {
+            System.out.println(e);
+            return Response.serverError().build();
+        }
+        return Response.ok().build();
+    }
+    
+    private Operation parseNewOperation(final String jsonOperation) throws Exception {
+        return Parser.parseOperation(new Operation(),jsonOperation, getCategoryService());
+    }
+    
+    private Operation parseUpdateOperation(Operation o,final String jsonOperation) throws Exception {
+        return Parser.parseOperation(o,jsonOperation, getCategoryService());
     }
     
     public OperationService getOperationService() {

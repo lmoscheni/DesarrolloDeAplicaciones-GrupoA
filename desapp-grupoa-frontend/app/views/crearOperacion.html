@@ -17,7 +17,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <select name="categoria" required ng-model="objectOperationJson.category"  ng-Click="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" class="form-control">
+                            <select name="categoria" ng-model="objectOperationJson.category"  ng-Click="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" class="form-control">
                                 <option value="">{{ 'SELECCIONAR_CATEGORIA' | translate}}</option>
                             </select>
                         </td>
@@ -36,7 +36,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <select  name="subcategoria" required ng-model="objectOperationJson.subcategory" ng-Click="getSubcategories()" ng-disabled="disableSubcategory" draggable="true" ng-options="subcategory for subcategory in subcategories" class="form-control">
+                            <select  name="subcategoria" ng-model="objectOperationJson.subcategory" ng-Click="getSubcategories()" ng-disabled="disableSubcategory" draggable="true" ng-options="subcategory for subcategory in subcategories" class="form-control">
                                 <option value="">{{ 'SELECCIONAR_SUBCATEGORIA' | translate}}</option>
                             </select>
                         </td>

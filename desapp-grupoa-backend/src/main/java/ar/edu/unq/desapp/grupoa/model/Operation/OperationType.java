@@ -18,18 +18,8 @@ import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 public abstract class OperationType implements Serializable{
 
     private static final long serialVersionUID = 1015311019105432947L;
-
-    //private String name;
     
     private Integer id;
-    
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
 
     public Integer getId() {
         return id;

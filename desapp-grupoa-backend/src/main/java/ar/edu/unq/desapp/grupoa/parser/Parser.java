@@ -10,14 +10,13 @@ import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
 public class Parser {
 
-    public static Operation parseOperation(final String jsonOperation, CategoryService categoryService) throws Exception {
+    public static Operation parseOperation(Operation o,final String jsonOperation, CategoryService categoryService) throws Exception {
         String[] tokens = getTokens(jsonOperation);
         
-        Operation newOperation = new Operation();
-        newOperation.setAmount(Double.parseDouble(tokens[2]));
-        newOperation.setShift(Shift.create(tokens[4]));
+        o.setAmount(Double.parseDouble(tokens[2]));
+        o.setShift(Shift.create(tokens[4]));
         Category category = categoryService.findByName(tokens[6]);
-        newOperation.setCategory(category);
+        o.setCategory(category);
         OperationType operationType = null;
         
         if(tokens[8].equals("true")){
@@ -26,9 +25,9 @@ public class Parser {
             operationType = new Egress();
         }
         
-        newOperation.setSubcategory(tokens[10]);
-        newOperation.setOperationType(operationType);
-        return newOperation;
+        o.setSubcategory(tokens[10]);
+        o.setOperationType(operationType);
+        return o;
     }
     
     public static Category parseCategory(final String json, CategoryService categoryService){
