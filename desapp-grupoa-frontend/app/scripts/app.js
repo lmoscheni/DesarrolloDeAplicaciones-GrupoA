@@ -53,6 +53,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         templateUrl: 'views/crearSubcategory.html',
         controller: 'CategoriaYSubcategoriaCtrl'
       })
+        .when('/verCategorias', {
+        templateUrl: 'views/verCategorias.html',
+        controller: 'CategoriaYSubcategoriaCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -79,8 +83,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         MONTO : 'Amount',
         TURNO : 'Shift',
         CATEGORIA : 'Category',
+        CATEGORIAS : 'Categories',
         SUBCATEGORIA : 'Subcategory',
         CREAR_CATEGORIA : 'Create category',
+        ELIMINAR_CATEGORIA : 'Delete category',
         CREAR_SUBCATEGORIA : 'Create subcategory',
         SELECCIONAR_CATEGORIA : 'Select category',
         SELECCIONAR_SUBCATEGORIA : 'Select subcategory',
@@ -116,8 +122,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         MONTO : 'Monto',
         TURNO : 'Turno',
         CATEGORIA : 'Categoria',
+        CATEGORIAS : 'Categorias',
         SUBCATEGORIA : 'Subcategoria',
         CREAR_CATEGORIA : 'Crear categoria',
+        ELIMINAR_CATEGORIA : 'Borrar categoria',
         CREAR_SUBCATEGORIA : 'Crear subcategoria',
         SELECCIONAR_CATEGORIA : 'Seleccionar categoria',
         SELECCIONAR_SUBCATEGORIA : 'Seleccionar subcategoria',

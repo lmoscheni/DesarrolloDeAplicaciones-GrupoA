@@ -1,0 +1,31 @@
+<div ng-controller="CategoriaYSubcategoriaCtrl" class="">
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+               <td>{{ 'CATEGORIA' | translate}} </td>
+               <td>{{ 'ACCION' | translate}}  </td>
+  		    </tr>
+        </thead>
+        
+        <tbody>
+            <tr ng-repeat="category in categories | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
+                <td sortable="name">{{category.name}} </td> 
+                <td>
+                    <a ng-Click="modificar" class="btn btn-warning">{{ 'MODIFICAR' | translate}} </a>
+                    <a HTTP-EQUIV="REFRESH" ng-Click="delete(category)" class="btn btn-danger">{{ 'ELIMINAR' | translate}} <span class="glyphicon glyphicon-remove"></a></div>
+            </tr>
+  		</tbody>
+    </table>
+    
+    <ul  class="pagination pagination-right">
+        <li ng-class="prevPageDisabled()">
+            <a href ng-click="prevPage()">« Prev</a>
+        </li>
+        <li ng-repeat="n in numberPages()">
+            <a href ng-click="page(n)">{{n+1}}</a>
+        </li>
+        <li ng-class="nextPageDisabled()">
+            <a href ng-click="nextPage()">Next »</a>
+        </li>
+    </ul>
+</div>

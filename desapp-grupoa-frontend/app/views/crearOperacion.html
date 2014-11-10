@@ -22,7 +22,7 @@
                             </select>
                         </td>
                         <td>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#/crearOperacion/#modalCrearCategoria" data-toggle="modal"  class="btn btn-success"> {{ 'CREAR_CATEGORIA' | translate}} <span class="glyphicon glyphicon-ok"></span></a>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#/crearOperacion/#modalCrearCategoria" data-toggle="modal"  class="btn btn-success"> {{ 'CREAR_CATEGORIA' | translate}} <span class="glyphicon glyphicon-ok"></span></a>
                         </td>
                     </tr>
                 </tbody>
@@ -41,7 +41,7 @@
                             </select>
                         </td>
                         <td>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#/crearOperacion/#modalCrearSubcategoria/{{objectOperationJson.category}}" data-toggle="modal" ng-disabled="disableSubcategory" class="btn btn-success"> {{ 'CREAR_SUBCATEGORIA' | translate}} <span class="glyphicon glyphicon-ok"></span></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#/crearOperacion/#modalCrearSubcategoria" data-toggle="modal" ng-disabled="disableSubcategory" class="btn btn-success"> {{ 'CREAR_SUBCATEGORIA' | translate}} <span class="glyphicon glyphicon-ok"></span></a>
                         </td>
                     </tr>
                 </tbody>
@@ -111,9 +111,9 @@
                     <a class="close" data-dismiss="modal">&times;</a>
                     <h3>{{ 'CREAR_SUBCATEGORIA' | translate}}</h3>
                 </div>
-                <select ng-model="category"  ng-Click="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" class="form-control">
+                    <select ng-model="category"  ng-Click="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" class="form-control">
                                 <option value="">{{ 'SELECCIONAR_CATEGORIA' | translate}}</option>
-                            </select>
+                    </select>
                 <div class="modal-body">
                     <input ng-model="objectCategory.subcategory" type="text" placeholder="{{ 'NOMBRE' | translate}}" class="form-control" />
                 </div>
