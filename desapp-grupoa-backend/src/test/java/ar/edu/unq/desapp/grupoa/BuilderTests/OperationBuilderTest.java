@@ -18,14 +18,14 @@ import static org.mockito.Mockito.*;
 
 public class OperationBuilderTest extends TestCase {
 
-    public void testBuildVoucherWithAmount() {
+    public void testBuildVoucherWithAmount() throws Exception {
 
         Operation operation = OperationBuilder.aOperation().withAmount(100.0).build();
 
         assertEquals(100.0, operation.getAmount());
     }
 
-    public void testBuildVoucherWithCategory() {
+    public void testBuildVoucherWithCategory() throws Exception {
 
         Category mockCategory = mock(Category.class);
 
@@ -34,7 +34,7 @@ public class OperationBuilderTest extends TestCase {
         assertEquals(mockCategory, operation.getCategory());
     }
 
-    public void testBuildVoucherWithShift() {
+    public void testBuildVoucherWithShift() throws Exception {
 
         Shift mockShift = Shift.TARDE;
 
@@ -43,7 +43,7 @@ public class OperationBuilderTest extends TestCase {
         assertEquals(mockShift, operation.getShift());
     }
 
-    public void testBuildVoucherOperationType() {
+    public void testBuildVoucherOperationType() throws Exception {
 
         OperationType mockOperationType = mock(OperationType.class);
 

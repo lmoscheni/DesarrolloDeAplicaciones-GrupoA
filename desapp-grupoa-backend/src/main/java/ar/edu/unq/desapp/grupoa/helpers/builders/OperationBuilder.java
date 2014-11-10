@@ -29,7 +29,7 @@ public class OperationBuilder {
 
     private OperationType operationType;
 
-    public Operation build() {
+    public Operation build() throws Exception {
         return new Operation(amount, category , subcategory , shift, operationType);
     }
 

@@ -40,8 +40,8 @@ public class Operation implements Serializable{
         this.dateOperation = new Date();
     }
 
-    public Operation(double amount, Category category, String subcategory, Shift shift, OperationType operationType) {
-        this.amount = amount;
+    public Operation(double amount, Category category, String subcategory, Shift shift, OperationType operationType) throws Exception {
+        this.setAmount(amount);
         this.category = category;
         this.subcategory = subcategory;
         this.shift = shift;
@@ -70,8 +70,12 @@ public class Operation implements Serializable{
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setAmount(double amount) throws Exception {
+        if(amount < 0){
+            throw new Exception("Monto invalido");
+        }else{
+            this.amount = amount;
+        }
     }
 
     public Category getCategory() {

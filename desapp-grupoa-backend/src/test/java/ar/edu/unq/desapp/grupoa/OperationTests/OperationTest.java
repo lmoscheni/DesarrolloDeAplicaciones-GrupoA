@@ -28,7 +28,7 @@ public class OperationTest extends TestCase {
     // Test Getters and setters
     // ***********************************************************************************************************
 
-    public void testGetAndSetAmount() {
+    public void testGetAndSetAmount() throws Exception {
 
         Operation operation = new Operation();
         operation.setAmount(100.0);
@@ -97,7 +97,7 @@ public class OperationTest extends TestCase {
     // Test methods
     // ***********************************************************************************************************
 
-    public void testApplyOperation() {
+    public void testApplyOperation() throws Exception {
 
         OperationType mockOperationType = mock(OperationType.class);
         Account mockAccount = mock(Account.class);

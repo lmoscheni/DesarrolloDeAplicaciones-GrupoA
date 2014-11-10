@@ -49,14 +49,9 @@ public class OperationWS {
     @POST
     @Path("/save/")
     @Consumes("application/json")
-    public Response createOperation(@Multipart(value = "operation", type = "application/json") final String jsonOperation) {
-        try {
-            getOperationService().save(parseNewOperation(jsonOperation));
-        } catch (Exception e) {
-            System.out.println(e);
-            return Response.serverError().build();
-        }
-        return Response.status(200).build();
+    public Response createOperation(@Multipart(value = "operation", type = "application/json") final String jsonOperation) throws Exception {
+            getOperationService().saveOperation(jsonOperation, getCategoryService());
+            return Response.status(200).build();
     }
     
     @GET
