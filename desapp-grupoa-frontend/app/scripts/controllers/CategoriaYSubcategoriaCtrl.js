@@ -14,10 +14,11 @@ var app = angular.module('angularApp');
 
 app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,ngDialog) {
     $scope.objectCategory = { 'name':'', 'subcategory':''};
-    $scope.category = '';
+    $scope.category = {};
     $scope.categories = [];
     $scope.itemsPerPage = 5;
     $scope.currentPage = 0;
+    $scope.categoryName = '';
     
     $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
     .success(function(data) {
@@ -48,6 +49,26 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,ng
         });
     };
     
+    $scope.dataModify = function(category) {
+        $scope.category = category; 
+        $scope.categoryName = category.name;
+    };
+    
+    $scope.modificar = function() {
+        
+        $http({
+                method : 'GET',
+                url: 'http://localhost:8080/desapp-grupoa-backend/rest/categories/modify/' + angular.toJson($scope.category.id) + '/' + $scope.categoryName,
+                respondType: 'jso n',
+                headers : {'Content-Type' : 'application/json'},
+            }).success(function(data){
+                $scope.categories = data;
+                ngDialog.open({template:'Categoria modificada.',plain:true});
+            }).error(function(){
+                ngDialog.open({template:'Error del servidor, al modificar la categoria',plain:true});
+            });
+    };
+    
     $scope.delete = function(category) {
         if(confirm('Confirmar operacion?')) {
             $http({
@@ -58,15 +79,8 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,ng
             }).success(function(data){
                 $scope.categories = data;
             }).error(function(){
-                ngDialog.open({template:'Error del servidor, al borrar la operación',plain:true});
+                ngDialog.open({template:'Error del servidor, al borrar la categoria',plain:true});
             });
-            /*$http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/delete/', category.id)
-            .success(function(data) {
-                $scope.categories = data;
-            })
-            .error(function() {
-                ngDialog.open({template:'Error del servidor, al crear la subcategoria',plain:true});
-            });*/
         }
     };
     

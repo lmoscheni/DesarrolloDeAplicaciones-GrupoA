@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
+import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.parser.Parser;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
@@ -63,6 +64,21 @@ public class CategoryWS {
         }
             return Response.status(201).build();
         
+    }
+    
+    @GET
+    @Path("/modify/{id}/{name}")
+    @Produces("application/json")
+    public List<Category> modifyCategory(@PathParam("id") final int id,
+    @PathParam("name") final String categoryName) {
+        try {
+            Category c = getCategoryService().findById(id);
+            c.setName(categoryName);
+            getCategoryService().update(c);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return getCategoryService().retriveAll();
     }
     
     @POST
