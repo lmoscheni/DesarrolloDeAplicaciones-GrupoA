@@ -14,16 +14,17 @@ app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeP
     
 
     $scope.getCategories = function() {
-        $scope.disableSubcategory = false;
         $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
         .success(function(data) {
             $scope.categories = data;
+            $scope.disableSubcategory = false;
         }).error(function() {
             ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
         });
     };
        
     $scope.getSubcategories = function() {
+            $scope.getCategories();
             for(var i in $scope.categories){
                 if($scope.categories[i].name === $scope.objectOperationJson.category){
                     $scope.subcategories = $scope.categories[i].subcategories;    
@@ -32,7 +33,7 @@ app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeP
     };    
     
     $scope.delete = function(operation) {
-        if(confirm('Confirmar operacion?')) {
+        if(confirm('Confirmar operación?')) {
             $http({
                 method : 'GET',
                 url: 'http://localhost:8080/desapp-grupoa-backend/rest/operations/deleteOperation/' + operation.id,
@@ -52,7 +53,7 @@ app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeP
         .success(function(data) {
             $scope.operations = data;
             $location.path('/verOperaciones');
-            ngDialog.open({template:'Operacion creada con exito',plain:true});
+            ngDialog.open({template:'Operación creada con éxito',plain:true});
         }).error(function() {
             ngDialog.open({template:'Error del servidor, al crear la operación',plain:true});
         });

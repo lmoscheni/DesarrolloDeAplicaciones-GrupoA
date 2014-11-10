@@ -62,5 +62,10 @@ public class Category implements Serializable{
     public void addSubcategory(String subcategory){
         this.subcategories.add(subcategory);
     }
+    
+    public void deleteSubcategory(String subcategory){
+        this.subcategories.remove(subcategory);
+        
+    }
 
 }

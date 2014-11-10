@@ -1,0 +1,60 @@
+<div ng-controller="CategoriaYSubcategoriaCtrl" class="">
+   
+    <table class="table table-bordered table-hover table-condensed">
+         {{c}}
+        <thead>
+            <tr>
+               <td>{{ 'SUBCATEGORIA' | translate}} </td>
+               <td>{{ 'ACCION' | translate}}  </td>
+  		    </tr>
+        </thead>
+        
+        <tbody>
+            <tr ng-repeat="subcategory in subcategories | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
+                <td sortable="name">{{subcategory}} </td>         
+                <td>
+                    <a ng-Click="dataModify(category)" data-target="#modalEditarCategoria" data-toggle="modal" class="btn btn-warning">{{ 'MODIFICAR' | translate}} </a>
+                    <a HTTP-EQUIV="REFRESH" ng-Click="deleteSubcategory(subcategory)" class="btn btn-danger">{{ 'ELIMINAR' | translate}} <span class="glyphicon glyphicon-remove"></a>
+                </td>
+            </tr>
+  		</tbody>
+    </table>
+    
+    <ul  class="pagination pagination-right">
+        <li ng-class="prevPageDisabled()">
+            <a href ng-click="prevPage()">« Prev</a>
+        </li>
+        <li ng-repeat="n in numberPages(false)">
+            <a href ng-click="page(n)">{{n+1}}</a>
+        </li>
+        <li ng-class="nextPageDisabled()">
+            <a href ng-click="nextPage(false)">Next »</a>
+        </li>
+    </ul>
+    
+    
+
+<ul class="pager">
+  <li class="previous"><a href="#/verCategorias">&larr; Anterior</a></li>
+</ul>
+
+
+    
+    <div class="modal fade" id="modalEditarCategoria" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content modal-content-one">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">&times;</a>
+                    <h3>{{ 'MODIFICAR_CATEGORIA' | translate}}</h3>
+                </div>
+                <div class="modal-body">
+                    <input ng-model="categoryName" type="text" placeholder="{{ 'NOMBRE' | translate}}" class="form-control" />
+                </div>
+                <div class="modal-footer">
+                    <a href="#" ng-Click="modificar()" data-dismiss="modal" class="btn btn-success">{{ 'ACEPTAR' | translate}}</a>
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">{{ 'CANCELAR' | translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

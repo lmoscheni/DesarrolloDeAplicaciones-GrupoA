@@ -1,9 +1,10 @@
 <div ng-controller="CategoriaYSubcategoriaCtrl" class="">
     <table class="table table-bordered table-hover table-condensed">
+        {{c}}
         <thead>
             <tr>
                <td>{{ 'CATEGORIA' | translate}} </td>
-                <td> Subcategorias</td>
+                <td> {{ 'SUBCATEGORIA' | translate}}</td>
                <td>{{ 'ACCION' | translate}}  </td>
   		    </tr>
         </thead>
@@ -12,13 +13,10 @@
             <tr ng-repeat="category in categories | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
                 <td sortable="name">{{category.name}} </td> 
                 <td>{{category.subcategories}}</td>          
-<!--                    <tr ng-repeat="subcategory in category.subcategories">
-                            {{subcategory}}
-                    </tr>-->
- 
                 <td>
                     <a ng-Click="dataModify(category)" data-target="#modalEditarCategoria" data-toggle="modal" class="btn btn-warning">{{ 'MODIFICAR' | translate}} </a>
                     <a HTTP-EQUIV="REFRESH" ng-Click="delete(category)" class="btn btn-danger">{{ 'ELIMINAR' | translate}} <span class="glyphicon glyphicon-remove"></a>
+                    <a ng-click="loadSubcategories(category)" href="#/verSubcategorias/{{category}}" class="btn btn-primary">{{ 'MODIFICAR_SUBCATEGORIAS' | translate}}</a>
                 </td>
             </tr>
   		</tbody>
@@ -28,11 +26,11 @@
         <li ng-class="prevPageDisabled()">
             <a href ng-click="prevPage()">« Prev</a>
         </li>
-        <li ng-repeat="n in numberPages()">
+        <li ng-repeat="n in numberPages(true)">
             <a href ng-click="page(n)">{{n+1}}</a>
         </li>
         <li ng-class="nextPageDisabled()">
-            <a href ng-click="nextPage()">Next »</a>
+            <a href ng-click="nextPage(true)">Next »</a>
         </li>
     </ul>
     

@@ -12,13 +12,14 @@ var app = angular.module('angularApp');
 
 
 
-app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,ngDialog) {
+app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$routeParams,$window,ngDialog) {
     $scope.objectCategory = { 'name':'', 'subcategory':''};
     $scope.category = {};
     $scope.categories = [];
     $scope.itemsPerPage = 5;
     $scope.currentPage = 0;
     $scope.categoryName = '';
+    
     
     $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
     .success(function(data) {
@@ -34,7 +35,7 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,ng
             ngDialog.open({template:'Categoria "' + $scope.objectCategory.name + '", creada correctamente!!',plain:true});
             $location.path('/crearOperacion');
         }).error(function() {
-            ngDialog.open({template:'Error del servidor, al crear la categoria',plain:true});
+            ngDialog.open({template:'Error del servidor, al crear la categoría',plain:true});
         });
     };
     
@@ -42,13 +43,18 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,ng
         $scope.objectCategory.name = $scope.category;
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/categories/saveSubcategory/', $scope.objectCategory)
         .success(function() {
-            ngDialog.open({template:'Subcategoria "' + $scope.objectCategory.subcategory + '", creada correctamente!!',plain:true});
+            ngDialog.open({template:'Subcategoría "' + $scope.objectCategory.subcategory + '", creada correctamente!!',plain:true});
         })
         .error(function() {
-            ngDialog.open({template:'Error del servidor, al crear la subcategoria',plain:true});
+            ngDialog.open({template:'Error del servidor, al crear la subcategoría',plain:true});
         });
     };
     
+    if($routeParams.categoria != null) {
+        $scope.category = JSON.parse($routeParams.categoria);
+        $scope.subcategories = JSON.parse($routeParams.categoria).subcategories;  
+    }
+
     $scope.dataModify = function(category) {
         $scope.category = category; 
         $scope.categoryName = category.name;
@@ -63,14 +69,14 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,ng
                 headers : {'Content-Type' : 'application/json'},
             }).success(function(data){
                 $scope.categories = data;
-                ngDialog.open({template:'Categoria modificada.',plain:true});
+                ngDialog.open({template:'Categoría modificada.',plain:true});
             }).error(function(){
-                ngDialog.open({template:'Error del servidor, al modificar la categoria',plain:true});
+                ngDialog.open({template:'Error del servidor, al modificar la categoría',plain:true});
             });
     };
     
     $scope.delete = function(category) {
-        if(confirm('Confirmar operacion?')) {
+        if(confirm('Confirmar operación?')) {
             $http({
                 method : 'GET',
                 url: 'http://localhost:8080/desapp-grupoa-backend/rest/categories/delete/'+ category.id,
@@ -78,8 +84,25 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,ng
                 headers : {'Content-Type' : 'application/json'},
             }).success(function(data){
                 $scope.categories = data;
+                ngDialog.open({template:'Categoría eliminada',plain:true});
             }).error(function(){
-                ngDialog.open({template:'Error del servidor, al borrar la categoria',plain:true});
+                ngDialog.open({template:'Error del servidor, al borrar la categoría',plain:true});
+            });
+        }
+    };
+    
+    $scope.deleteSubcategory = function(subcategory) {
+        if(confirm('Confirmar operación?')) {
+            $http({
+                method : 'GET',
+                url: 'http://localhost:8080/desapp-grupoa-backend/rest/categories/deleteSubcategory/'+ angular.toJson($scope.category.id) + '/' + subcategory,
+                respondType: 'jso n',
+                headers : {'Content-Type' : 'application/json'},
+            }).success(function(data){
+                $scope.subcategories = data;
+                ngDialog.open({template:'Subcategoría eliminada',plain:true});
+            }).error(function(){
+                ngDialog.open({template:'Error del servidor, al borrar la subcategoría',plain:true});
             });
         }
     };
@@ -94,12 +117,16 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,ng
         return $scope.currentPage === 0 ? 'disabled' : '';
       };
 
-      $scope.pageCount = function() {
-        return Math.ceil($scope.categories.length/$scope.itemsPerPage)-1;
+      $scope.pageCount = function(bool) {
+          if(bool) {
+            return Math.ceil($scope.categories.length/$scope.itemsPerPage)-1;
+          }else {
+              return Math.ceil($scope.subcategories.length/$scope.itemsPerPage)-1;
+          }
       };
 
-      $scope.nextPage = function() {
-        if ($scope.currentPage < $scope.pageCount()) {
+      $scope.nextPage = function(bool) {
+        if ($scope.currentPage < $scope.pageCount(bool)) {
           $scope.currentPage++;
         }
       };
@@ -112,8 +139,12 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,ng
         $scope.currentPage = nPage;  
     };
     
-    $scope.numberPages = function(){
-        var countData = $scope.categories.length;
+    $scope.numberPages = function(bool){
+        if(bool) {
+            var countData = $scope.categories.length;
+        }else{
+            var countData = $scope.subcategories.length;
+        }
         var countPages = 0;
         $scope.listPages = [];
         for (var i=0; i<countData; i = i+5) {

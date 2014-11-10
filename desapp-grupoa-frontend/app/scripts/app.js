@@ -57,6 +57,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         templateUrl: 'views/verCategorias.html',
         controller: 'CategoriaYSubcategoriaCtrl'
       })
+        .when('/verSubcategorias/:categoria', {
+        templateUrl: 'views/verSubcategorias.html',
+        controller: 'CategoriaYSubcategoriaCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -90,6 +94,7 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         MODIFICAR_CATEGORIA : 'Modify category',
         ELIMINAR_CATEGORIA : 'Delete category',
         CREAR_SUBCATEGORIA : 'Create subcategory',
+        MODIFICAR_SUBCATEGORIAS : 'Modify subcategories',
         SELECCIONAR_CATEGORIA : 'Select category',
         SELECCIONAR_SUBCATEGORIA : 'Select subcategory',
         CREAR_OPERACION : 'Create operation',
@@ -123,16 +128,17 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         SELECCIONAR_PARA_INGRESO : 'Seleccionar para un ingreso',
         MONTO : 'Monto',
         TURNO : 'Turno',
-        CATEGORIA : 'Categoria',
+        CATEGORIA : 'Categoría',
         CATEGORIAS : 'Categorias',
-        SUBCATEGORIA : 'Subcategoria',
+        SUBCATEGORIA : 'Subcategoría',
         SUBCATEGORIAS : 'Subcategorias',
-        CREAR_CATEGORIA : 'Crear categoria',
-        MODIFICAR_CATEGORIA : 'Modificar categoria',
-        ELIMINAR_CATEGORIA : 'Borrar categoria',
-        CREAR_SUBCATEGORIA : 'Crear subcategoria',
-        SELECCIONAR_CATEGORIA : 'Seleccionar categoria',
-        SELECCIONAR_SUBCATEGORIA : 'Seleccionar subcategoria',
+        CREAR_CATEGORIA : 'Crear categoría',
+        MODIFICAR_CATEGORIA : 'Modificar categoría',
+        MODIFICAR_SUBCATEGORIAS : 'Modificar subcategorias',
+        ELIMINAR_CATEGORIA : 'Borrar categoría',
+        CREAR_SUBCATEGORIA : 'Crear subcategoría',
+        SELECCIONAR_CATEGORIA : 'Seleccionar categoría',
+        SELECCIONAR_SUBCATEGORIA : 'Seleccionar subcategoría',
         CREAR_OPERACION : 'Crear operación',
         EDITAR_OPERACION : 'Editar operación',
         DIA_OPERACION : 'Día de la operación',
