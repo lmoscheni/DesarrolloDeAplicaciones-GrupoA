@@ -96,6 +96,23 @@ public class CategoryWS {
     }
     
     @GET
+    @Path("/modifySubcategory/{id}/{name1}/{name2}")
+    @Produces("application/json")
+    public List<String> modifySubcategory(@PathParam("id") final int id,
+    @PathParam("name1") final String subcategoryName,
+    @PathParam("name2") final String newSubcategoryName){
+        try {
+            Category c = getCategoryService().findById(id);
+            c.modifySubcategory(subcategoryName, newSubcategoryName);
+            getCategoryService().update(c);
+            return c.subcategories;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+    
+    @GET
     @Path("/deleteSubcategory/{id}/{name}")
     @Produces("application/json")
     public List<String> deleteSubcategory(@PathParam("id") final int id,

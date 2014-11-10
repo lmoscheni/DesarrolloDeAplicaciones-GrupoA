@@ -65,7 +65,17 @@ public class Category implements Serializable{
     
     public void deleteSubcategory(String subcategory){
         this.subcategories.remove(subcategory);
-        
     }
-
+    
+    public void modifySubcategory(String subcategory, String newSubcategory){
+        List<String> newSubcategories = new ArrayList<String>();
+        for(String s : this.subcategories){
+            if(s.equals(subcategory)){
+                newSubcategories.add(newSubcategory);
+            }else{
+                newSubcategories.add(s);
+            }
+        }
+        this.subcategories = newSubcategories;
+    }
 }
