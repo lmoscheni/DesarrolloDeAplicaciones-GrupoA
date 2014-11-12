@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -22,6 +21,7 @@ import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.parser.Parser;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 import ar.edu.unq.desapp.grupoa.services.OperationService;
+import ar.edu.unq.desapp.grupoa.services.OperationTypeService;
 
 @Service
 public class OperationWS {
@@ -29,6 +29,7 @@ public class OperationWS {
     @Autowired
     private OperationService operationService;
     private CategoryService categoryService;
+    private OperationTypeService operationTypeService;
     
     @GET
     @Path("/all")
@@ -49,8 +50,12 @@ public class OperationWS {
     @POST
     @Path("/save/")
     @Consumes("application/json")
-    public Response createOperation(@Multipart(value = "operation", type = "application/json") final String jsonOperation) throws Exception {
-            getOperationService().saveOperation(jsonOperation, getCategoryService());
+    public Response createOperation(@Multipart(value = "operation", type = "application/json") final String jsonOperation){
+        try {    
+            getOperationService().saveOperation(jsonOperation, getCategoryService(), getOperationTypeService());
+        }catch(Exception montoInvalido){
+            return Response.status(500).build();
+        }
             return Response.status(200).build();
     }
     
@@ -69,12 +74,12 @@ public class OperationWS {
         return Response.ok().build();
     }
     
-    private Operation parseNewOperation(final String jsonOperation) throws Exception {
-        return Parser.parseOperation(new Operation(),jsonOperation, getCategoryService());
-    }
+//    private Operation parseNewOperation(final String jsonOperation) throws Exception {
+//        return Parser.parseOperation(new Operation(),jsonOperation, getCategoryService());
+//    }
     
     private Operation parseUpdateOperation(Operation o,final String jsonOperation) throws Exception {
-        return Parser.parseOperation(o,jsonOperation, getCategoryService());
+        return Parser.parseOperation(o,jsonOperation, getCategoryService(), getOperationTypeService());
     }
     
     public OperationService getOperationService() {
@@ -92,4 +97,14 @@ public class OperationWS {
     public void setCategoryService(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
+
+    public OperationTypeService getOperationTypeService() {
+        return operationTypeService;
+    }
+
+    public void setOperationTypeService(OperationTypeService operationTypeService) {
+        this.operationTypeService = operationTypeService;
+    }
+    
+    
 }

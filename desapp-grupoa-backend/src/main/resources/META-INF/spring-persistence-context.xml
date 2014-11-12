@@ -29,6 +29,7 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 			<list>
 				<value>classpath*:META-INF/hibernate.properties</value>
 				<value>classpath*:META-INF/jdbc.properties</value>
+				<value>classpath*:META-INF/log4j.properties</value>
 				<!-- <value>classpath*:META-INF/jdbc.MYSQL.properties</value> -->
 			</list>
 		</property>
@@ -114,6 +115,10 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 	</bean>
 	
 	<bean id="persistence.operationdao" class="ar.edu.unq.desapp.grupoa.persistence.OperationDAO" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	
+	<bean id="persistence.operationtypedao" class="ar.edu.unq.desapp.grupoa.persistence.OperationTypeDAO" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 

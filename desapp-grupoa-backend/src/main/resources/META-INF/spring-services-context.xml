@@ -15,5 +15,8 @@
 		<property name="dao" ref="persistence.operationdao" />
 	</bean>
 
+	<bean id="services.operationType" class="ar.edu.unq.desapp.grupoa.services.OperationTypeService">
+		<property name="dao" ref="persistence.operationtypedao" />
+	</bean>
 
 </beans>

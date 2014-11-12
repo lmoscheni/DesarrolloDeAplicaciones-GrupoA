@@ -72,6 +72,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	
 	<bean id="operationWS" class="ar.edu.unq.desapp.grupoa.resources.OperationWS">
 		<property name="operationService" ref="services.operation" />
+		<property name="operationTypeService" ref="services.operationType" />
 		<property name="categoryService" ref="services.category" />
 	</bean>
 

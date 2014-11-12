@@ -7,10 +7,11 @@ import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.model.Operation.OperationType;
 import ar.edu.unq.desapp.grupoa.model.System.Shift;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
+import ar.edu.unq.desapp.grupoa.services.OperationTypeService;
 
 public class Parser {
 
-    public static Operation parseOperation(Operation o,final String jsonOperation, CategoryService categoryService) throws Exception {
+    public static Operation parseOperation(Operation o,final String jsonOperation, CategoryService categoryService, OperationTypeService operationTypeService) throws Exception {
         String[] tokens = getTokens(jsonOperation);
         
         o.setAmount(Double.parseDouble(tokens[2]));
@@ -20,9 +21,15 @@ public class Parser {
         OperationType operationType = null;
         
         if(tokens[8].equals("true")){
-            operationType = new Income();
+//            operationType = operationTypeService.findByName("Income");
+//            if(operationType.equals(null)){
+                operationType = new Income();
+//            }
         }else{
-            operationType = new Egress();
+//            operationType = operationTypeService.findByName("Egress");
+//            if(operationType.equals(null)){
+                operationType = new Egress();
+//            }
         }
         
         o.setSubcategory(tokens[10]);

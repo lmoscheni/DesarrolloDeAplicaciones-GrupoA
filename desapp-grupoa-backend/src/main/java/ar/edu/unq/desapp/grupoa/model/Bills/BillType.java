@@ -1,5 +1,9 @@
 package ar.edu.unq.desapp.grupoa.model.Bills;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
 import ar.edu.unq.desapp.grupoa.model.System.Voucher;
 
 /**
@@ -10,8 +14,23 @@ import ar.edu.unq.desapp.grupoa.model.System.Voucher;
  * 
  */
 
-public class BillType {
+@Entity
+public class BillType implements Serializable{
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public double calculateFinalAmount(Voucher voucher) {
         return voucher.getAmount();
     }

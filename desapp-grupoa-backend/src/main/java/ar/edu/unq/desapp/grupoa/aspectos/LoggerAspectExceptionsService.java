@@ -1,18 +1,23 @@
 package ar.edu.unq.desapp.grupoa.aspectos;
 
 import org.apache.log4j.Logger;
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 
 @Aspect
 public class LoggerAspectExceptionsService {
 
     Logger logger;
-    @AfterThrowing(pointcut = "execution( * ar.edu.unq.desapp.grupoa.services..*(..))",throwing = "exception")
-    public void logException(JoinPoint jp,Exception exception) throws Throwable {
-        System.out.println("Hola");
-        logger = Logger.getLogger(jp.getTarget().getClass());
-        logger.error(exception);
+    
+    @Around("execution( * ar.edu.unq.desapp.grupoa.services..*(..))")
+    public Object logException(ProceedingJoinPoint method) throws Throwable{
+        try {            
+                return method.proceed();
+        } catch (Exception e) {
+            logger = Logger.getLogger(method.getTarget().getClass());
+            logger.error(e);
+            throw new Exception();
+        }
     }
 }
