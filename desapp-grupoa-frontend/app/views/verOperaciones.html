@@ -1,4 +1,6 @@
 <div ng-controller="VerOperacionesCtrl" class="">
+    <div class="panel panel-default">
+    <div class="panel-heading">{{ 'OPERACIONES' | translate}}</div>
     <table class="table table-bordered table-hover table-condensed">
         <thead>
             <tr>
@@ -22,12 +24,13 @@
                 <td>{{typeOperation(operation.operationType)}} </td> 
                 <td>
                     <div ng-controller="OperacionCtrl">
-                    <a href="#/modificarOperacion/{{operation}}" class="btn btn-warning">{{ 'MODIFICAR' | translate}} </a>
-                    <a HTTP-EQUIV="REFRESH" ng-Click="delete(operation)" class="btn btn-danger">{{ 'ELIMINAR' | translate}} <span class="glyphicon glyphicon-remove"></a></div>
+                    <a href="#/modificarOperacion/{{operation}}" class="btn"><span class="glyphicon glyphicon-pencil">  </a>
+                    <a HTTP-EQUIV="REFRESH" ng-Click="delete(operation)" class="btn"><span class="glyphicon glyphicon-remove"></a></div>
                 </td>
             </tr>
   		</tbody>
     </table>
+    </div>
     
     <ul  class="pagination pagination-right">
         <li ng-class="prevPageDisabled()">
@@ -40,4 +43,13 @@
             <a href ng-click="nextPage()">Next »</a>
         </li>
     </ul>
+    </br>
+
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-1">
+            <a href="#/crearOperacion" type="submit" class="btn btn-primary"> Crear operacion</a>
+        </div>
+    </div>
+    </br>
 </div>

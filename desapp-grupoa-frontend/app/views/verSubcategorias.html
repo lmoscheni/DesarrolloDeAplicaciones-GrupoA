@@ -1,5 +1,8 @@
 <div ng-controller="CategoriaYSubcategoriaCtrl" class="">
    
+    <div class="panel panel-default">
+    <div class="panel-heading">{{ 'SUBCATEGORIAS' | translate}}</div>
+        
     <table class="table table-bordered table-hover table-condensed">
          {{c}}
         <thead>
@@ -13,13 +16,14 @@
             <tr ng-repeat="subcategory in subcategories | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
                 <td sortable="name">{{subcategory}} </td>         
                 <td>
-                    <a ng-Click="dataModifySubcategory(subcategory)" data-target="#modalEditarSubcategoria" data-toggle="modal" class="btn btn-warning">{{ 'MODIFICAR' | translate}} </a>
-                    <a HTTP-EQUIV="REFRESH" ng-Click="deleteSubcategory(subcategory)" class="btn btn-danger">{{ 'ELIMINAR' | translate}} <span class="glyphicon glyphicon-remove"></a>
+                    <a ng-Click="dataModifySubcategory(subcategory)" data-target="#modalEditarSubcategoria" data-toggle="modal" class="btn"><span class="glyphicon glyphicon-pencil"> </a>
+                    <a HTTP-EQUIV="REFRESH" ng-Click="deleteSubcategory(subcategory)" class="btn"><span class="glyphicon glyphicon-remove"></a>
                 </td>
             </tr>
   		</tbody>
     </table>
-    
+    </div>
+        
     <ul  class="pagination pagination-right">
         <li ng-class="prevPageDisabled()">
             <a href ng-click="prevPage()">« Prev</a>

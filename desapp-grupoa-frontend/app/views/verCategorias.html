@@ -1,4 +1,6 @@
 <div ng-controller="CategoriaYSubcategoriaCtrl" class="">
+    <div class="panel panel-default">
+    <div class="panel-heading">{{ 'CATEGORIAS' | translate}}</div>
     <table class="table table-bordered table-hover table-condensed">
         {{c}}
         <thead>
@@ -14,14 +16,15 @@
                 <td sortable="name">{{category.name}} </td> 
                 <td>{{category.subcategories}}</td>          
                 <td>
-                    <a ng-Click="dataModify(category)" data-target="#modalEditarCategoria" data-toggle="modal" class="btn btn-warning">{{ 'MODIFICAR' | translate}} </a>
-                    <a HTTP-EQUIV="REFRESH" ng-Click="delete(category)" class="btn btn-danger">{{ 'ELIMINAR' | translate}} <span class="glyphicon glyphicon-remove"></a>
-                    <a ng-click="loadSubcategories(category)" href="#/verSubcategorias/{{category}}" class="btn btn-primary">{{ 'MODIFICAR_SUBCATEGORIAS' | translate}}</a>
+                    <a ng-Click="dataModify(category)" data-target="#modalEditarCategoria" data-toggle="modal" class="btn"><span class="glyphicon glyphicon-pencil"> </a>
+                    <a HTTP-EQUIV="REFRESH" ng-Click="delete(category)" class="btn"><span class="glyphicon glyphicon-remove"></a>
+                    <a ng-click="loadSubcategories(category)" href="#/verSubcategorias/{{category}}" class="btn">{{ 'MODIFICAR_SUBCATEGORIAS' | translate}}</a>
                 </td>
             </tr>
   		</tbody>
     </table>
-    
+    </div>
+        
     <ul  class="pagination pagination-right">
         <li ng-class="prevPageDisabled()">
             <a href ng-click="prevPage()">« Prev</a>
