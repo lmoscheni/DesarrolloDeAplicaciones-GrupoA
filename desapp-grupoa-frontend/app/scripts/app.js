@@ -105,7 +105,8 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         ACCION : 'Actions',
         NOMBRE : 'Name',
         VER : 'See',
-        MENSAJE_CONFIRMACION : 'To confirm operation?'
+        MENSAJE_CONFIRMACION : 'To confirm operation?',
+        CONCEPTO : 'Concept'
     });
     
     $translateProvider.translations('es', {
@@ -148,7 +149,8 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         ACCION : 'Acciones',
         NOMBRE : 'Nombre',
         VER : 'Ver',
-        MENSAJE_CONFIRMACION : '¿Confirmar operación?'
+        MENSAJE_CONFIRMACION : '¿Confirmar operación?',
+        CONCEPTO : 'Concepto'
     });
     $translateProvider.preferredLanguage('es');
     

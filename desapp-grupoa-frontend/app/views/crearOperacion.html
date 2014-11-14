@@ -12,15 +12,17 @@
         </div>
         
         <div class="form-group">
-            <table>
+            <table class="input-group">
                <thead>
                </thead>
                 <tbody>
                     <tr>
                         <td>
-                            <select name="categoria" required ng-model="objectOperationJson.category"  ng-Click="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" class="form-control">
+                            
+                            <select name="categoria" required ng-model="objectOperationJson.category"  ng-Click="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" ng-class="form-control">
                                 <option value="">{{ 'SELECCIONAR_CATEGORIA' | translate}}</option>
                             </select>
+                            
                         </td>
                         <td>
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a data-target="#modalCrearCategoria" data-toggle="modal"  class="btn btn-success"> {{ 'CREAR_CATEGORIA' | translate}} <span class="glyphicon glyphicon-ok"></span></a>
@@ -37,7 +39,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <select  name="subcategoria" required ng-model="objectOperationJson.subcategory" ng-Click="getSubcategories()" ng-disabled="disableSubcategory" draggable="true" ng-options="subcategory for subcategory in subcategories" class="form-control">
+                            <select  name="subcategoria" required ng-model="objectOperationJson.subcategory" ng-Click="getSubcategories()" ng-disabled="disableSubcategory" draggable="true" ng-options="subcategory for subcategory in subcategories" ng-class="form-control">
                                 <option value="">{{ 'SELECCIONAR_SUBCATEGORIA' | translate}}</option>
                             </select>
                         </td>
@@ -49,18 +51,28 @@
             </table>
         </div>
 
-        
         <div class="form-group">
             <div class="input-group">
+                <select  name="subcategoria" required ng-model="objectOperationJson.shift" draggable="true" ng-class="form-control">
+                    <option value="">Seleccionar turno</option>
+                    <option value="Mañana">Mañana</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Noche">Noche</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+           <div class="input-group">
                 <span class="input-group-addon">></span>
-                <input name="turno/shift" ng-model="objectOperationJson.shift" type="text" placeholder="{{ 'TURNO' | translate}}" class="form-control" required/>
+                <input required name="concepto" id="concept" type="string" ng-model="objectOperationJson.concept" placeholder="{{ 'CONCEPTO' | translate}}" ng-required="true" ng-class="form-control"></input>
             </div>
         </div>
 
         <div class="form-group">
            <div class="input-group">
                 <span class="input-group-addon">$</span>
-                <input name="monto/amount" id="monto" name="monto" type="number" class="form-control" ng-model="objectOperationJson.amount" placeholder="{{ 'MONTO' | translate}}" class="form-control" ng-required="true"/>
+                <input name="monto/amount" id="monto" name="monto" type="number" ng-class="form-control" ng-model="objectOperationJson.amount" placeholder="{{ 'MONTO' | translate}}" ng-required="true"/>
             </div>
         </div>
         
@@ -72,7 +84,7 @@
         
         
              </form>
-        </div>
+<!--        </div>
         <div class="col-lg-6">
             <div class="alert alert-danger" ng-show="form.$invalid">
           <div ng-repeat="(errorType, components) in form.$error">
@@ -82,7 +94,7 @@
             </ul>
           </div>
         </div>    
-        </div>
+        </div>-->
 
 </div>
 

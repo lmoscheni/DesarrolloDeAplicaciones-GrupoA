@@ -18,7 +18,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <select name="selectCategory" ng-model="objectOperationJson.category"  ng-Click="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" class="form-control">
+                            <select name="selectCategory" ng-model="objectOperationJson.category"  ng-Click="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" ng-class="form-control">
                                 <option value="">{{objectOperationJson.category}}</option>
                             </select>
                         </td>
@@ -37,7 +37,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <select  name="subcategoria" required ng-model="objectOperationJson.subcategory" ng-Click="getSubcategories()" ng-disabled="disableSubcategory" draggable="true" ng-options="subcategory for subcategory in subcategories" class="form-control">
+                            <select  name="subcategoria" ng-model="objectOperationJson.subcategory" ng-Click="getSubcategories()" ng-disabled="disableSubcategory" draggable="true" ng-options="subcategory for subcategory in subcategories" ng-class="form-control">
                                 <option value="">{{objectOperationJson.subcategory}}</option>
                             </select>
                         </td>
@@ -48,12 +48,22 @@
                 </tbody>
             </table>
         </div>
-
         
         <div class="form-group">
             <div class="input-group">
+                <select  name="subcategoria" required ng-model="objectOperationJson.shift" draggable="true" ng-class="form-control">
+                    <option value="Mañana">{{objectOperationJson.shift}}</option>
+                    <option value="Mañana">Mañana</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Noche">Noche</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+           <div class="input-group">
                 <span class="input-group-addon">></span>
-                <input name="turno/shift" ng-model="objectOperationJson.shift" type="text" placeholder="{{ 'TURNO' | translate}}" class="form-control" required/>
+                <input name="concepto" id="concept" type="string" class="form-control" ng-model="objectOperationJson.concept" placeholder="{{ 'CONCEPTO' | translate}}" class="form-control" ng-required="true"/>
             </div>
         </div>
 

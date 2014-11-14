@@ -21,10 +21,6 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,ngD
         return datee.toLocaleDateString();
     };
     
-    $scope.typeOperation = function(operationType){
-        return operationType.income ? 'Income' : 'Egress';
-    };
-    
     $scope.prevPage = function() {
         if ($scope.currentPage > 0) {
           $scope.currentPage--;

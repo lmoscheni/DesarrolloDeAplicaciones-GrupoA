@@ -8,7 +8,7 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
     $scope.categories = [];
     $scope.subcategories = [];
     $scope.objectOperationJson = {};
-    $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':''};
+    $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':'', 'concept' : ''};
 
     $scope.getCategories = function() {
         $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
@@ -28,10 +28,13 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
     };    
     
     $scope.objectOperationJson.amount = JSON.parse($routeParams.operacion).amount;
-    $scope.objectOperationJson.operationType = JSON.parse($routeParams.operacion).operationType.income;
+    if(JSON.parse($routeParams.operacion).operationType === 'INCOME'){
+        $scope.objectOperationJson.operationType = true;
+    }
     $scope.objectOperationJson.shift = JSON.parse($routeParams.operacion).shift;
     $scope.objectOperationJson.category = JSON.parse($routeParams.operacion).category.name;
     $scope.objectOperationJson.subcategory = JSON.parse($routeParams.operacion).subcategory;
+    $scope.objectOperationJson.concept = JSON.parse($routeParams.operacion).concept;
     
     $scope.modificar = function() {
         
@@ -42,8 +45,12 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
                 headers : {'Content-Type' : 'application/json'},
             }).success(function(){
                   $location.path('/verOperaciones');
-            }).error(function(){
-                ngDialog.open({template:'Error del servidor, al modificar la operación',plain:true});
+            }).error(function(data,status){
+                if(status === 501){
+                    ngDialog.open({template:'Monto invalido (no negativo)',plain:true});
+                }else{
+                    ngDialog.open({template:'Error del servidor '+status+', al crear la operación',plain:true});
+                }
             });
     };
     

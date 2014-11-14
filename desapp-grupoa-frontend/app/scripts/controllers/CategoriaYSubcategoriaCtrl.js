@@ -36,8 +36,12 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
         .success(function() {
             ngDialog.open({template:'Categoria "' + $scope.objectCategory.name + '", creada correctamente!!',plain:true});
             $location.path('/crearOperacion');
-        }).error(function() {
-            ngDialog.open({template:'Error del servidor, al crear la categoría',plain:true});
+        }).error(function(data,status) {
+            if(status === 500){
+                ngDialog.open({template:'Ya existe la categoría',plain:true});
+            }else{
+                ngDialog.open({template:'Error del servidor, al crear la categoría',plain:true});
+            }
         });
     };
     
@@ -47,8 +51,12 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
         .success(function() {
             ngDialog.open({template:'Subcategoría "' + $scope.objectCategory.subcategory + '", creada correctamente!!',plain:true});
         })
-        .error(function() {
-            ngDialog.open({template:'Error del servidor, al crear la subcategoría',plain:true});
+        .error(function(data,status) {
+            if(status === 500){
+                ngDialog.open({template:'Ya existe la subcategoría',plain:true});
+            }else{
+                ngDialog.open({template:'Error del servidor, al crear la categoría',plain:true});
+            }
         });
     };
     

@@ -7,6 +7,7 @@
   			   <td>{{ 'MONTO' | translate}} </td>
                <td>{{ 'CATEGORIA' | translate}} </td>
                <td>{{ 'SUBCATEGORIA' | translate}} </td>
+               <td>{{ 'CONCEPTO' | translate}} </td>
                <td>{{ 'TURNO' | translate}} </td>
                <td>{{ 'DIA_OPERACION' | translate}} </td>
                <td>{{ 'TIPO_OPERACION' | translate}} </td>
@@ -19,9 +20,10 @@
                 <td sortable="amount">{{operation.amount}} </td> 
                 <td>{{operation.category.name}} </td> 
                 <td>{{operation.subcategory}} </td> 
+                <td>{{operation.concept}} </td> 
                 <td>{{operation.shift}} </td> 
                 <td>{{parse(operation.dateOperation)}} </td> 
-                <td>{{typeOperation(operation.operationType)}} </td> 
+                <td>{{operation.operationType}} </td> 
                 <td>
                     <div ng-controller="OperacionCtrl">
                     <a href="#/modificarOperacion/{{operation}}" class="btn"><span class="glyphicon glyphicon-pencil">  </a>
