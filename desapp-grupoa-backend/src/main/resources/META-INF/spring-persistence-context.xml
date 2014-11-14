@@ -117,9 +117,5 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 	<bean id="persistence.operationdao" class="ar.edu.unq.desapp.grupoa.persistence.OperationDAO" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
-	
-	<bean id="persistence.operationtypedao" class="ar.edu.unq.desapp.grupoa.persistence.OperationTypeDAO" >
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
 
 </beans>

@@ -1,8 +1,9 @@
 package ar.edu.unq.desapp.grupoa.helpers.builders;
 
+import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
-import ar.edu.unq.desapp.grupoa.model.Operation.OperationType;
+import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
 import ar.edu.unq.desapp.grupoa.model.System.Shift;
 
 /**
@@ -22,15 +23,19 @@ public class OperationBuilder {
     private double amount;
 
     private Category category;
-    
-    private String subcategory;
 
+    private String subcategory;
+    
+    private String concept;
+    
     private Shift shift;
 
-    private OperationType operationType;
+    private OperationTypeEnum operationType;
 
+    private Account account;
+    
     public Operation build() throws Exception {
-        return new Operation(amount, category , subcategory , shift, operationType);
+        return new Operation(amount, category , subcategory , shift, operationType, concept, account);
     }
 
     public OperationBuilder withAmount(double amount) {
@@ -43,13 +48,28 @@ public class OperationBuilder {
         return this;
     }
 
+    public OperationBuilder withSubcategory(String subcategory) {
+        this.subcategory = subcategory;
+        return this;
+    }
+    
     public OperationBuilder withShift(Shift shift) {
         this.shift = shift;
         return this;
     }
 
-    public OperationBuilder withOperationType(OperationType operationType) {
+    public OperationBuilder withOperationType(OperationTypeEnum operationType) {
         this.operationType = operationType;
+        return this;
+    }
+    
+    public OperationBuilder withConcept(String concept) {
+        this.concept = concept;
+        return this;
+    }
+    
+    public OperationBuilder withAccount(Account account) {
+        this.account = account;
         return this;
     }
 }

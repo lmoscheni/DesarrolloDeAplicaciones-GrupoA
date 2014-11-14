@@ -18,10 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
-import ar.edu.unq.desapp.grupoa.parser.Parser;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 import ar.edu.unq.desapp.grupoa.services.OperationService;
-import ar.edu.unq.desapp.grupoa.services.OperationTypeService;
 
 @Service
 public class OperationWS {
@@ -29,14 +27,13 @@ public class OperationWS {
     @Autowired
     private OperationService operationService;
     private CategoryService categoryService;
-    private OperationTypeService operationTypeService;
     
     @GET
     @Path("/all")
     @Produces("application/json")
     public List<Operation> getAllOperations() throws JsonGenerationException, JsonMappingException, IOException{
-        List<Operation> operations = getOperationService().retriveAll();
-        return operations;
+            List<Operation> operations = getOperationService().retriveAll();
+            return operations;
     }
     
     @GET
@@ -52,7 +49,7 @@ public class OperationWS {
     @Consumes("application/json")
     public Response createOperation(@Multipart(value = "operation", type = "application/json") final String jsonOperation){
         try {    
-            getOperationService().saveOperation(jsonOperation, getCategoryService(), getOperationTypeService());
+            getOperationService().saveOperation(jsonOperation, getCategoryService());
         }catch(Exception montoInvalido){
             return Response.status(500).build();
         }
@@ -66,20 +63,11 @@ public class OperationWS {
     @PathParam("operation") final String operation) {
         try {
             Operation o = getOperationService().findById(id);
-            getOperationService().update(parseUpdateOperation(o,operation));
+            getOperationService().updateOperation(o, operation, categoryService);
         } catch (Exception e) {
-            System.out.println(e);
-            return Response.serverError().build();
+            return Response.status(501).build();
         }
         return Response.ok().build();
-    }
-    
-//    private Operation parseNewOperation(final String jsonOperation) throws Exception {
-//        return Parser.parseOperation(new Operation(),jsonOperation, getCategoryService());
-//    }
-    
-    private Operation parseUpdateOperation(Operation o,final String jsonOperation) throws Exception {
-        return Parser.parseOperation(o,jsonOperation, getCategoryService(), getOperationTypeService());
     }
     
     public OperationService getOperationService() {
@@ -97,14 +85,5 @@ public class OperationWS {
     public void setCategoryService(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
-
-    public OperationTypeService getOperationTypeService() {
-        return operationTypeService;
-    }
-
-    public void setOperationTypeService(OperationTypeService operationTypeService) {
-        this.operationTypeService = operationTypeService;
-    }
-    
     
 }

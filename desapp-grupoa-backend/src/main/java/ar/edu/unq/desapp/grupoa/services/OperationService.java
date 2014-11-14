@@ -13,11 +13,21 @@ public class OperationService extends GenericService<Operation>{
     private static final long serialVersionUID = -4047486437268145200L;
 
     @Transactional
-    public void saveOperation(String json, CategoryService categoryService, OperationTypeService operationTypeService) throws Exception{
-        save(this.parseNewOperation(json,categoryService, operationTypeService));
+    public void saveOperation(String json, CategoryService categoryService) throws Exception{
+        save(this.parseNewOperation(json,categoryService));
     }
     
-    private Operation parseNewOperation(final String jsonOperation,CategoryService categoryService, OperationTypeService operationTypeService) throws Exception {
-        return Parser.parseOperation(new Operation(),jsonOperation, categoryService, operationTypeService);
+    @Transactional
+    public void updateOperation(Operation o, String jsonOperation, CategoryService categoryService) throws Exception{
+        update(this.parseUpdateOperation(o,jsonOperation,categoryService));
+    }
+    
+    //Other methods
+    private Operation parseNewOperation(final String jsonOperation,CategoryService categoryService) throws Exception {
+        return Parser.parseOperation(new Operation(),jsonOperation, categoryService);
+    }
+    
+    private Operation parseUpdateOperation(Operation o,final String jsonOperation,CategoryService categoryService) throws Exception {
+        return Parser.parseOperation(o,jsonOperation, categoryService);
     }
 }

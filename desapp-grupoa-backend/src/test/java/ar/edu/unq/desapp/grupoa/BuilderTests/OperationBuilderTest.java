@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 import ar.edu.unq.desapp.grupoa.helpers.builders.OperationBuilder;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
-import ar.edu.unq.desapp.grupoa.model.Operation.OperationType;
+import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
 import ar.edu.unq.desapp.grupoa.model.System.Shift;
 import static org.mockito.Mockito.*;
 
@@ -33,6 +33,15 @@ public class OperationBuilderTest extends TestCase {
 
         assertEquals(mockCategory, operation.getCategory());
     }
+    
+    public void testBuildVoucherWithSubcategory() throws Exception {
+
+        String subcategory = "Otros";
+
+        Operation operation = OperationBuilder.aOperation().withSubcategory(subcategory).build();
+
+        assertEquals(subcategory, operation.getSubcategory());
+    }
 
     public void testBuildVoucherWithShift() throws Exception {
 
@@ -45,10 +54,19 @@ public class OperationBuilderTest extends TestCase {
 
     public void testBuildVoucherOperationType() throws Exception {
 
-        OperationType mockOperationType = mock(OperationType.class);
+        OperationTypeEnum operationType = OperationTypeEnum.EGRESS;
 
-        Operation operation = OperationBuilder.aOperation().withOperationType(mockOperationType).build();
+        Operation operation = OperationBuilder.aOperation().withOperationType(operationType).build();
 
-        assertEquals(mockOperationType, operation.getOperationType());
+        assertEquals(operationType, operation.getOperationType());
+    }
+    
+    public void testBuildVoucherWithConcept() throws Exception {
+
+        String concept = "Un concepto";
+
+        Operation operation = OperationBuilder.aOperation().withConcept(concept).build();
+
+        assertEquals(concept, operation.getConcept());
     }
 }

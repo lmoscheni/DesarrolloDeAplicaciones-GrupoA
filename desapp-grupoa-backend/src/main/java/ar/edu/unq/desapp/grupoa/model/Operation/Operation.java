@@ -30,28 +30,46 @@ public class Operation implements Serializable{
 
     private String subcategory;
     
+    private String concept;
+    
     private Shift shift;
-
-    private OperationType operationType;
+    
+    private OperationTypeEnum operationType;
 
     private Date dateOperation;
+    
+    private Account account;
 
     public Operation() {
         this.dateOperation = new Date();
     }
 
-    public Operation(double amount, Category category, String subcategory, Shift shift, OperationType operationType) throws Exception {
+    public Operation(double amount, Category category, String subcategory, Shift shift, OperationTypeEnum operationType, String concept, Account account) throws Exception {
         this.setAmount(amount);
         this.category = category;
         this.subcategory = subcategory;
         this.shift = shift;
         this.operationType = operationType;
         this.dateOperation = new Date();
+        this.concept = concept;
+        this.account = account;
     }
 
     // Getters and setters
     public Integer getId() {
         return id;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public void setOperationType(OperationTypeEnum operationType) {
+        this.operationType = operationType;
     }
 
     public String getSubcategory() {
@@ -94,11 +112,11 @@ public class Operation implements Serializable{
         this.shift = shift;
     }
 
-    public OperationType getOperationType() {
+    public OperationTypeEnum getOperationType() {
         return operationType;
     }
 
-    public void setOperationType(OperationType operationType) {
+    public void setOperationTypeEnum(OperationTypeEnum operationType) {
         this.operationType = operationType;
     }
 
@@ -110,10 +128,18 @@ public class Operation implements Serializable{
         this.dateOperation = dateOperation;
     }
 
+    public String getConcept() {
+        return concept;
+    }
+
+    public void setConcept(String concept) {
+        this.concept = concept;
+    }
+
     // Methods
     public void applyOperation(Account account) {
 
-        this.operationType.chargeOperation(this, account);
+        this.operationType.getOperationTypeEnum(this.operationType).chargeOperation(this, account);
     }
 
 }

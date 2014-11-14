@@ -10,14 +10,21 @@
         </id>
 
         <property name="amount" type="double"></property>
+        <property name="concept" type="string"></property>
         <many-to-one name="category" class="ar.edu.unq.desapp.grupoa.model.Category.Category" column="O_CATEGORY"/>
         <property name="subcategory" type="string"></property>
-        <many-to-one name="operationType" class="ar.edu.unq.desapp.grupoa.model.Operation.OperationType" column="O_OPERATIONTYPE" />
         <property name="dateOperation" type="java.util.Date" ></property>
         
         <property name="shift" column="O_SHIFT" not-null="true">
 	      <type name="org.hibernate.type.EnumType">
 	         <param name="enumClass">ar.edu.unq.desapp.grupoa.model.System.Shift</param>
+	         <param name="type">12</param>
+	      </type>
+	    </property>
+	    
+	    <property name="operationType" column="O_OPERATIONTYPE" not-null="true">
+	      <type name="org.hibernate.type.EnumType">
+	         <param name="enumClass">ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum</param>
 	         <param name="type">12</param>
 	      </type>
 	    </property>

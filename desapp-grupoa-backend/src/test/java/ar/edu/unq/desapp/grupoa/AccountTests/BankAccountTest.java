@@ -53,14 +53,6 @@ public class BankAccountTest extends TestCase {
         assertEquals(10, account.getDelayTime());
     }
     
-    public void testGetAndSetID() {
-
-        BankAccount account = new BankAccount();
-        account.setID(1);
-        
-        assertEquals(1, account.getID());
-    }
-    
     // ***********************************************************************************************************
     // Test methods
     // ***********************************************************************************************************

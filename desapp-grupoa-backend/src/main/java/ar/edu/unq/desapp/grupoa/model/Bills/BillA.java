@@ -12,6 +12,11 @@ import ar.edu.unq.desapp.grupoa.model.System.Voucher;
 
 public class BillA extends BillType {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
     private double taxed;
 
     private double noTaxed;

@@ -11,7 +11,7 @@ import ar.edu.unq.desapp.grupoa.helpers.builders.OperationBuilder;
 import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
-import ar.edu.unq.desapp.grupoa.model.Operation.OperationType;
+import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
 import ar.edu.unq.desapp.grupoa.model.System.Shift;
 
 /**
@@ -75,12 +75,12 @@ public class OperationTest extends TestCase {
 
     public void testGetAndSetOperationType() {
 
-        OperationType mockOperationType = mock(OperationType.class);
+        OperationTypeEnum operationType = OperationTypeEnum.EGRESS;
 
         Operation operation = new Operation();
-        operation.setOperationType(mockOperationType);
+        operation.setOperationType(operationType);
 
-        assertEquals(mockOperationType, operation.getOperationType());
+        assertEquals(operationType, operation.getOperationType());
     }
 
     public void testGetAndSetDateOperation() {
@@ -99,13 +99,13 @@ public class OperationTest extends TestCase {
 
     public void testApplyOperation() throws Exception {
 
-        OperationType mockOperationType = mock(OperationType.class);
+        OperationTypeEnum operationType = OperationTypeEnum.INCOME;
         Account mockAccount = mock(Account.class);
 
-        Operation operation = OperationBuilder.aOperation().withOperationType(mockOperationType).build();
+        Operation operation = OperationBuilder.aOperation().withOperationType(operationType).build();
 
         operation.applyOperation(mockAccount);
 
-        verify(mockOperationType, times(1)).chargeOperation(operation, mockAccount);
+        verify(operationType, times(1)).getOperationTypeEnum(operationType).chargeOperation(operation, mockAccount);
     }
 }

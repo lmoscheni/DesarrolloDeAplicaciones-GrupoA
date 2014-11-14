@@ -57,6 +57,13 @@ public class AccountTest extends TestCase {
         assertEquals(0.0, account.getAccrued());
     }
 
+    public void testGetAndSetID() {
+
+        Account account = new Account();
+        account.setId(1);
+        
+        assertEquals(1, account.getId());
+    }
     // ***********************************************************************************************************
     // Test methods
     // ***********************************************************************************************************

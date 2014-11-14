@@ -17,18 +17,21 @@ import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 
 public class BankAccount extends Account {
     
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
     public double accrued;
 
     public Date currently;
 
     public int delayTime;
-
-    public int ID;
     
     public List<Operation> pendingOperations;
 
     public BankAccount() {
-        super();
+        super("BanckAccount");
         this.accrued = 0.0;
         this.currently = new Date();
         this.pendingOperations = new ArrayList<Operation>();
@@ -52,14 +55,6 @@ public class BankAccount extends Account {
 
     public void setDelayTime(int delayTime) {
         this.delayTime = delayTime;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int iD) {
-        ID = iD;
     }
 
     public List<Operation> getPendingOperations() {

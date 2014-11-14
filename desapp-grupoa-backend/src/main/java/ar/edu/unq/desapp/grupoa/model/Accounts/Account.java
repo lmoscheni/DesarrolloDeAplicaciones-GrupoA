@@ -1,8 +1,11 @@
 package ar.edu.unq.desapp.grupoa.model.Accounts;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Entity;
 
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 
@@ -14,8 +17,16 @@ import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
  * 
  */
 
-public class Account {
+@Entity
+public class Account implements Serializable{
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    private int id;
+    
     protected double balance;
 
     protected List<Operation> operations;
@@ -26,6 +37,12 @@ public class Account {
         this.balance = 0;
         this.operations = new ArrayList<Operation>();
     }
+    
+    public Account(String name) {
+        this.balance = 0;
+        this.name = name;
+        this.operations = new ArrayList<Operation>();
+    }
 
     // ***********************************************************************************************************
     // Getters and setters
@@ -33,6 +50,14 @@ public class Account {
 
     public double getBalance() {
         return balance;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setBalance(double balance) {
