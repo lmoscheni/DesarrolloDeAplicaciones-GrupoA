@@ -1,6 +1,6 @@
 package ar.edu.unq.desapp.grupoa.helpers.builders;
 
-import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
+import ar.edu.unq.desapp.grupoa.model.Accounts.AccountEnum;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
@@ -32,7 +32,7 @@ public class OperationBuilder {
 
     private OperationTypeEnum operationType;
 
-    private Account account;
+    private AccountEnum account;
     
     public Operation build() throws Exception {
         return new Operation(amount, category , subcategory , shift, operationType, concept, account);
@@ -68,7 +68,7 @@ public class OperationBuilder {
         return this;
     }
     
-    public OperationBuilder withAccount(Account account) {
+    public OperationBuilder withAccount(AccountEnum account) {
         this.account = account;
         return this;
     }

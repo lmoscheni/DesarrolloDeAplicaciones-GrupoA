@@ -17,7 +17,8 @@
 
         <mapping resource="src/main/resources/mappings/Category.xml"></mapping>
         <mapping resource="src/main/resources/mappings/Operation.xml"></mapping>
-        <mapping resource="src/main/resources/mappings/OperationType.xml"></mapping>
+        <mapping resource="src/main/resources/mappings/BillType.xml"></mapping>
+        <mapping resource="src/main/resources/mappings/Account.xml"></mapping>
 		
     </session-factory>
 </hibernate-configuration>

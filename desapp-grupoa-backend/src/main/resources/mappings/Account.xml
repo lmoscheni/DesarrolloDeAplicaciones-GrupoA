@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="ar.edu.unq.desapp.grupoa.model.Accounts.Account" table="Account">
+		<id name="id" type="java.lang.Integer">
+            <column name="A_ID" />
+            <generator class="identity" />
+        </id>
+        
+		<property name="name" type="string"></property>
+		<property name="balance" type="double"></property>
+
+		<bag name="operations" table="RelationAccountOperation" cascade="all">
+				<key column="A_ID"/>
+				<many-to-many column="O_ID" class="ar.edu.unq.desapp.grupoa.model.Operation.Operation"/>
+			</bag>
+
+		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Accounts.BankAccount" table="BankAccount">
+			<key column="A_ID"/>
+			<property name="accrued" type="double"></property>
+			<property name="currently" type="java.util.Date" ></property>
+			<property name="delayTime" type="java.lang.Integer"></property>
+			<bag name="pendingOperations" table="RelationAccountOperationPending" cascade="all">
+				<key column="A_ID"/>
+				<many-to-many column="O_ID" class="ar.edu.unq.desapp.grupoa.model.Operation.Operation"/>
+			</bag>
+		</joined-subclass>
+
+		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Accounts.Cash" table="CashAccount">
+			<key column="A_ID"/>
+		</joined-subclass>
+		
+		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Accounts.CurrentAccount" table="CurrentAccount">
+			<key column="A_ID"/>
+		</joined-subclass>
+	</class>
+</hibernate-mapping>

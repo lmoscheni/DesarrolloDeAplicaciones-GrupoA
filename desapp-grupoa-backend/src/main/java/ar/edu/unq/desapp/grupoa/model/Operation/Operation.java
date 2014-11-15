@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 
 import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
+import ar.edu.unq.desapp.grupoa.model.Accounts.AccountEnum;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.System.Shift;
 
@@ -38,13 +39,13 @@ public class Operation implements Serializable{
 
     private Date dateOperation;
     
-    private Account account;
+    private AccountEnum account;
 
     public Operation() {
         this.dateOperation = new Date();
     }
 
-    public Operation(double amount, Category category, String subcategory, Shift shift, OperationTypeEnum operationType, String concept, Account account) throws Exception {
+    public Operation(double amount, Category category, String subcategory, Shift shift, OperationTypeEnum operationType, String concept, AccountEnum account) throws Exception {
         this.setAmount(amount);
         this.category = category;
         this.subcategory = subcategory;
@@ -60,11 +61,11 @@ public class Operation implements Serializable{
         return id;
     }
 
-    public Account getAccount() {
+    public AccountEnum getAccount() {
         return account;
     }
 
-    public void setAccount(Account account) {
+    public void setAccount(AccountEnum account) {
         this.account = account;
     }
 
@@ -138,8 +139,9 @@ public class Operation implements Serializable{
 
     // Methods
     public void applyOperation(Account account) {
-
-        this.operationType.getOperationTypeEnum(this.operationType).chargeOperation(this, account);
+        if(account.getName().equals(this.account.name())){
+            this.operationType.getOperationTypeEnum(this.operationType).chargeOperation(this, account);
+        }
     }
 
 }

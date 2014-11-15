@@ -65,6 +65,26 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 			<cxf:logging />
 		</jaxrs:features>
 	</jaxrs:server> 
+	
+	<jaxrs:server id="account" address="/accounts">
+		<jaxrs:serviceBeans>
+			<ref bean="accountWS" />
+		</jaxrs:serviceBeans>
+
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+			<entry key="xml" value="application/xml" />
+		</jaxrs:extensionMappings>
+
+ 		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers>
+
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
 
     <bean id="categoryWS" class="ar.edu.unq.desapp.grupoa.resources.CategoryWS">
 		<property name="categoryService" ref="services.category" />
@@ -73,6 +93,10 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	<bean id="operationWS" class="ar.edu.unq.desapp.grupoa.resources.OperationWS">
 		<property name="operationService" ref="services.operation" />
 		<property name="categoryService" ref="services.category" />
+	</bean>
+	
+	<bean id="accountWS" class="ar.edu.unq.desapp.grupoa.resources.AccountWS">
+		<property name="accountService" ref="services.account" />
 	</bean>
 
 </beans>

@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoa.parser;
 
+import ar.edu.unq.desapp.grupoa.model.Accounts.AccountEnum;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
@@ -26,6 +27,7 @@ public class Parser {
         o.setSubcategory(tokens[10]);
         o.setOperationTypeEnum(operationType);
         o.setConcept(tokens[12]);
+        o.setAccount(AccountEnum.create(tokens[14]));
         return o;
     }
     
