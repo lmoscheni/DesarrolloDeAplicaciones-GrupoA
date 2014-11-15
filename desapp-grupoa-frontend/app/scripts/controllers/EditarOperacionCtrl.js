@@ -8,7 +8,7 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
     $scope.categories = [];
     $scope.subcategories = [];
     $scope.objectOperationJson = {};
-    $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':'', 'concept' : ''};
+    $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':'', 'concept' : '', 'account' : ''};
 
     $scope.getCategories = function() {
         $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
@@ -35,6 +35,7 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
     $scope.objectOperationJson.category = JSON.parse($routeParams.operacion).category.name;
     $scope.objectOperationJson.subcategory = JSON.parse($routeParams.operacion).subcategory;
     $scope.objectOperationJson.concept = JSON.parse($routeParams.operacion).concept;
+    $scope.objectOperationJson.account = JSON.parse($routeParams.operacion).account;
     
     $scope.modificar = function() {
         

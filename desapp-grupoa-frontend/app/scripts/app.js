@@ -106,7 +106,13 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         NOMBRE : 'Name',
         VER : 'See',
         MENSAJE_CONFIRMACION : 'To confirm operation?',
-        CONCEPTO : 'Concept'
+        CONCEPTO : 'Concept',
+        CUENTA : 'Account',
+        MANANA : 'Morning',
+        TARDE : 'Evening',
+        NOCHE : 'Night',
+        SELECCIONAR_TURNO : 'Select shift',
+        SELECCIONAR_CUENTA : 'Select account'
     });
     
     $translateProvider.translations('es', {
@@ -150,7 +156,13 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         NOMBRE : 'Nombre',
         VER : 'Ver',
         MENSAJE_CONFIRMACION : '¿Confirmar operación?',
-        CONCEPTO : 'Concepto'
+        CONCEPTO : 'Concepto',
+        CUENTA : 'Cuenta',
+        MANANA : 'Mañana',
+        TARDE : 'Tarde',
+        NOCHE : 'Noche',
+        SELECCIONAR_TURNO : 'Seleccionar turno',
+        SELECCIONAR_CUENTA : 'Seleccionar cuenta'
     });
     $translateProvider.preferredLanguage('es');
     

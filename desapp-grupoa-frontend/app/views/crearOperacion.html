@@ -54,10 +54,21 @@
         <div class="form-group">
             <div class="input-group">
                 <select  name="subcategoria" required ng-model="objectOperationJson.shift" draggable="true" ng-class="form-control">
-                    <option value="">Seleccionar turno</option>
-                    <option value="Mañana">Mañana</option>
-                    <option value="Tarde">Tarde</option>
-                    <option value="Noche">Noche</option>
+                    <option value="">{{ 'SELECCIONAR_TURNO' | translate}}</option>
+                    <option value="Mañana">{{ 'MANANA' | translate}}</option>
+                    <option value="Tarde">{{ 'TARDE' | translate}}</option>
+                    <option value="Noche">{{ 'NOCHE' | translate}}</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="input-group">
+                <select  name="cuenta" required ng-model="objectOperationJson.account" draggable="true" ng-class="form-control">
+                    <option value="">{{ 'SELECCIONAR_CUENTA' | translate}}</option>
+                    <option value="Cuenta corriente">Cuenta corriente</option>
+                    <option value="Cuenta en efectivo">Cuenta en efectivo</option>
+                    <option value="Cuenta bancaria">Cuenta bancaria</option>
                 </select>
             </div>
         </div>

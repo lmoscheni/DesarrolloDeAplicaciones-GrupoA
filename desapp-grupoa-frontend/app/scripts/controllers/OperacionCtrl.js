@@ -8,7 +8,7 @@ app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeP
     $scope.categories = [];
     $scope.subcategories = [];
     $scope.objectOperationJson = {};
-    $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':'', 'concept' : ''};
+    $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':'', 'concept' : '', 'account' : ''};
     $scope.disableSubcategory = true;
     $scope.d = false;
     
