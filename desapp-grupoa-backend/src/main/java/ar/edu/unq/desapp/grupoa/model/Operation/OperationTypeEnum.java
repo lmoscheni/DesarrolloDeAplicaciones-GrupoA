@@ -5,7 +5,7 @@ public enum OperationTypeEnum {
     INCOME, EGRESS;
     
     public OperationType getOperationTypeEnum(OperationTypeEnum o){
-        if(o.equals("INCOME")){
+        if(o.equals(INCOME)){
             return new Income();
         }else{
             return new Egress();

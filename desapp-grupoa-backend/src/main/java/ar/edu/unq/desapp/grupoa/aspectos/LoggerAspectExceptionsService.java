@@ -10,14 +10,14 @@ public class LoggerAspectExceptionsService {
 
     Logger logger;
     
-    @Around("execution( * ar.edu.unq.desapp.grupoa.services..*(..))")
-    public Object logException(ProceedingJoinPoint method) throws Throwable{
-        try {            
-                return method.proceed();
-        } catch (Exception e) {
-            logger = Logger.getLogger(method.getTarget().getClass());
-            logger.error(e);
-            throw new Exception();
-        }
-    }
+//    @Around("execution( * ar.edu.unq.desapp.grupoa.services..*(..))")
+//    public Object logException(ProceedingJoinPoint method) throws Throwable{
+//        try {            
+//                return method.proceed();
+//        } catch (Exception e) {
+//            logger = Logger.getLogger(method.getTarget().getClass());
+//            logger.error(e);
+//            throw new Exception();
+//        }
+//    }
 }

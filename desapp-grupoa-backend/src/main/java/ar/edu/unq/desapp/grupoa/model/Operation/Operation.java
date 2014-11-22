@@ -139,9 +139,7 @@ public class Operation implements Serializable{
 
     // Methods
     public void applyOperation(Account account) {
-        if(account.getName().equals(this.account.name())){
             this.operationType.getOperationTypeEnum(this.operationType).chargeOperation(this, account);
-        }
     }
 
 }

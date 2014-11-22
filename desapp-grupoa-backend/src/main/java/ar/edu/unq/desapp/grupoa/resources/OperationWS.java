@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
+import ar.edu.unq.desapp.grupoa.services.AccountService;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 import ar.edu.unq.desapp.grupoa.services.OperationService;
 
@@ -27,6 +28,7 @@ public class OperationWS {
     @Autowired
     private OperationService operationService;
     private CategoryService categoryService;
+    private AccountService accountService;
     
     @GET
     @Path("/all")
@@ -47,12 +49,9 @@ public class OperationWS {
     @POST
     @Path("/save/")
     @Consumes("application/json")
-    public Response createOperation(@Multipart(value = "operation", type = "application/json") final String jsonOperation){
-        try {    
-            getOperationService().saveOperation(jsonOperation, getCategoryService());
-        }catch(Exception montoInvalido){
-            return Response.status(500).build();
-        }
+    public Response createOperation(@Multipart(value = "operation", type = "application/json") final String jsonOperation) throws Exception{
+        
+            getOperationService().saveOperation(jsonOperation, getCategoryService(), getAccountService());
             return Response.status(200).build();
     }
     
@@ -85,5 +84,14 @@ public class OperationWS {
     public void setCategoryService(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
+
+    public AccountService getAccountService() {
+        return accountService;
+    }
+
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
+    }
+    
     
 }

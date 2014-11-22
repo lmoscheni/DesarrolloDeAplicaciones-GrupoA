@@ -13,6 +13,6 @@ public class Egress extends OperationType implements Serializable{
     }
     
     public void chargeOperation(Operation operation, Account account) {
-        account.increaseBalance(operation.getAmount());
+        account.decreaseBalance(operation.getAmount());
     }
 }

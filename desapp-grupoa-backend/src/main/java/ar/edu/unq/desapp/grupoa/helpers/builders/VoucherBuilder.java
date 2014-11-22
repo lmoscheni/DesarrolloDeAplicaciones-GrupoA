@@ -3,7 +3,6 @@ package ar.edu.unq.desapp.grupoa.helpers.builders;
 import java.util.Date;
 
 import ar.edu.unq.desapp.grupoa.model.Bills.BillType;
-import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.System.Voucher;
 
 /**
@@ -26,7 +25,7 @@ public class VoucherBuilder {
 
     private String cuit;
 
-    private Category concept;
+    private String concept;
 
     private double amount;
 
@@ -61,7 +60,7 @@ public class VoucherBuilder {
         return this;
     }
 
-    public VoucherBuilder withConcept(Category concept) {
+    public VoucherBuilder withConcept(String concept) {
         this.concept = concept;
         return this;
     }

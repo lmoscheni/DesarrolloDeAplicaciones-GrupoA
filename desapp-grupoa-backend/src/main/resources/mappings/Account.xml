@@ -12,27 +12,27 @@
 		<property name="name" type="string"></property>
 		<property name="balance" type="double"></property>
 
-		<bag name="operations" table="RelationAccountOperation" cascade="all">
-				<key column="A_ID"/>
+		<bag name="operations" lazy="true" table="RelationAccountOperation" cascade="all">
+				<key column="AC_ID"></key>
 				<many-to-many column="O_ID" class="ar.edu.unq.desapp.grupoa.model.Operation.Operation"/>
-			</bag>
+		</bag>
 
-		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Accounts.BankAccount" table="BankAccount">
+		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Accounts.BankAccount" table="BankAccount" extends="ar.edu.unq.desapp.grupoa.model.Accounts.Account">
 			<key column="A_ID"/>
 			<property name="accrued" type="double"></property>
 			<property name="currently" type="java.util.Date" ></property>
 			<property name="delayTime" type="java.lang.Integer"></property>
 			<bag name="pendingOperations" table="RelationAccountOperationPending" cascade="all">
-				<key column="A_ID"/>
+				<key column="AC_ID"/>
 				<many-to-many column="O_ID" class="ar.edu.unq.desapp.grupoa.model.Operation.Operation"/>
 			</bag>
 		</joined-subclass>
 
-		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Accounts.Cash" table="CashAccount">
+		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Accounts.Cash" table="CashAccount" extends="ar.edu.unq.desapp.grupoa.model.Accounts.Account">
 			<key column="A_ID"/>
 		</joined-subclass>
 		
-		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Accounts.CurrentAccount" table="CurrentAccount">
+		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Accounts.CurrentAccount" table="CurrentAccount" extends="ar.edu.unq.desapp.grupoa.model.Accounts.Account">
 			<key column="A_ID"/>
 		</joined-subclass>
 	</class>

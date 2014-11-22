@@ -1,5 +1,8 @@
 package ar.edu.unq.desapp.grupoa.persistence;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
+
 import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 
 public class AccountDAO extends HibernateGenericDAO<Account> implements GenericDAO<Account>{
@@ -11,8 +14,9 @@ public class AccountDAO extends HibernateGenericDAO<Account> implements GenericD
 
     @Override
     public Account findByName(String name) {
-        // TODO Auto-generated method stub
-        return null;
+        Criteria criteria = this.getSession().createCriteria(Account.class);
+        criteria.add(Restrictions.eq("name", name));
+        return (Account) criteria.uniqueResult();
     }
 
     @Override

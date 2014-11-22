@@ -31,10 +31,11 @@ public class BankAccount extends Account {
     public List<Operation> pendingOperations;
 
     public BankAccount() {
-        super("BanckAccount");
+        super("BankAccount");
         this.accrued = 0.0;
         this.currently = new Date();
         this.pendingOperations = new ArrayList<Operation>();
+        this.delayTime = 15;
     }
 
     // ***********************************************************************************************************
@@ -81,6 +82,7 @@ public class BankAccount extends Account {
     @Override
     public void registrateOperation(Operation operation) {
         this.pendingOperations.add(operation);
+        operation.applyOperation(this);
     }
 
     @Override

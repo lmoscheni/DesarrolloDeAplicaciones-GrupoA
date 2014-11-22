@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.Entity;
 
 import ar.edu.unq.desapp.grupoa.model.Bills.BillType;
-import ar.edu.unq.desapp.grupoa.model.Category.Category;
 
 /**
  * Class voucher
@@ -29,7 +28,7 @@ public class Voucher implements Serializable{
 
     private String cuit;
 
-    private Category concept;
+    private String concept;
 
     private double amount;
 
@@ -39,7 +38,7 @@ public class Voucher implements Serializable{
     }
 
     public Voucher(Date dateOfIssue, String socialReason, String cuit, double amount, BillType billType,
-            Category concept) {
+            String concept) {
         this.amount = amount;
         this.dateOfIssue = dateOfIssue;
         this.socialReason = socialReason;
@@ -64,11 +63,11 @@ public class Voucher implements Serializable{
         return dateOfIssue;
     }
 
-    public Category getConcept() {
+    public String getConcept() {
         return concept;
     }
 
-    public void setConcept(Category concept) {
+    public void setConcept(String concept) {
         this.concept = concept;
     }
 

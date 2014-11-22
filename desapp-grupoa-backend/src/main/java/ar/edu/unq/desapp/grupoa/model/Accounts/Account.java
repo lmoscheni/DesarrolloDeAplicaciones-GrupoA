@@ -3,7 +3,9 @@ package ar.edu.unq.desapp.grupoa.model.Accounts;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 
@@ -29,12 +31,11 @@ public class Account implements Serializable{
     
     protected double balance;
 
-    protected List<Operation> operations;
+    public List<Operation> operations;
 
     protected String name;
 
     public Account() {
-        this.balance = 0;
         this.operations = new ArrayList<Operation>();
     }
     
@@ -117,5 +118,6 @@ public class Account implements Serializable{
     public void updateTheAccountStatus() {
         
     }
+
 
 }

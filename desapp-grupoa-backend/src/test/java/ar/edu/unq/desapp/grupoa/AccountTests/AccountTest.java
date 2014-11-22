@@ -60,9 +60,11 @@ public class AccountTest extends TestCase {
     public void testGetAndSetID() {
 
         Account account = new Account();
-        account.setId(1);
+        Integer integer = new Integer(1);
         
-        assertEquals(1, account.getId());
+        account.setId(integer);
+        
+        assertEquals(integer, account.getId());
     }
     // ***********************************************************************************************************
     // Test methods

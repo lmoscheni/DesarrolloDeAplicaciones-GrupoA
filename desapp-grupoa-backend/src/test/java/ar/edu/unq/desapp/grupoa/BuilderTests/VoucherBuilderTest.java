@@ -7,7 +7,6 @@ import java.util.Date;
 import junit.framework.TestCase;
 import ar.edu.unq.desapp.grupoa.helpers.builders.VoucherBuilder;
 import ar.edu.unq.desapp.grupoa.model.Bills.BillType;
-import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.System.Voucher;
 
 /**
@@ -58,9 +57,7 @@ public class VoucherBuilderTest extends TestCase {
 
     public void testBuildVoucherConcept() {
 
-        Category mockConcept = mock(Category.class);
-
-        Voucher voucher = VoucherBuilder.aVoucher().withConcept(mockConcept).build();
-        assertEquals(mockConcept, voucher.getConcept());
+        Voucher voucher = VoucherBuilder.aVoucher().withConcept("concept").build();
+        assertEquals("concept", voucher.getConcept());
     }
 }
