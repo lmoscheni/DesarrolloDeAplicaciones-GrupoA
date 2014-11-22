@@ -1,15 +1,16 @@
 <div ng-controller="OperacionCtrl">
    <h2><u>{{ 'CREAR_OPERACION' | translate}}</u></h2>
-    <div class="row col-lg-16">
-    <div class="col-lg-10">
-    <form id="form" name="form" class="col-md-6 input" navalidate>
+    
+    
+    <form id="form" name="form" class="input" navalidate>
 
-        
-        <div class="form-group" required name="formm">
+        <div class="form-group">
+            
             <label class="btn  btn-toggle">
-                <input type="checkbox" ng-model="objectOperationJson.operationType" /> {{ 'SELECCIONAR_PARA_INGRESO' | translate}}
+                <input type="checkbox" ng-model="objectOperationJson.operationType"/> {{ 'SELECCIONAR_PARA_INGRESO' | translate}}
             </label>
         </div>
+        
         
         <div class="form-group">
             <table class="input-group">
@@ -61,7 +62,7 @@
                 </select>
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="input-group">
                 <select  name="cuenta" required ng-model="objectOperationJson.account" draggable="true" ng-class="form-control">
@@ -72,14 +73,14 @@
                 </select>
             </div>
         </div>
-        
+            
         <div class="form-group">
            <div class="input-group">
                 <span class="input-group-addon">></span>
                 <input required name="concepto" id="concept" type="string" ng-model="objectOperationJson.concept" placeholder="{{ 'CONCEPTO' | translate}}" ng-required="true" ng-class="form-control"></input>
             </div>
         </div>
-
+            
         <div class="form-group">
            <div class="input-group">
                 <span class="input-group-addon">$</span>
@@ -92,10 +93,9 @@
             <a href="#/verOperaciones" class="btn btn-danger">{{ 'CANCELAR' | translate}}</a>
         </div>
         
-        
-        
-             </form>
-<!--        </div>
+    </form>
+<!--
+        </div>
         <div class="col-lg-6">
             <div class="alert alert-danger" ng-show="form.$invalid">
           <div ng-repeat="(errorType, components) in form.$error">
@@ -105,9 +105,10 @@
             </ul>
           </div>
         </div>    
-        </div>-->
+        </div>
+-->
 
-</div>
+</div>    
 
 <!--*************************  Modals  ****************************************-->
 <div ng-controller="CategoriaYSubcategoriaCtrl">
@@ -152,5 +153,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>

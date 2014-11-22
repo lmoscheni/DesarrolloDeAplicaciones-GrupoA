@@ -21,11 +21,12 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
     $scope.categoryName = '';
     $scope.subcategory = '';
     $scope.newSubcategory = '';
-    
+    $scope.subcategories = [];
     
     $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
     .success(function(data) {
         $scope.categories = data;
+        $scope.subcategories = data[0].subcategories;
     }).error(function() {
         ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
     });

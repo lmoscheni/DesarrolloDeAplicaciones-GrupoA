@@ -14,7 +14,9 @@
         <tbody>
             <tr ng-repeat="category in categories | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
                 <td sortable="name">{{category.name}} </td> 
-                <td>{{category.subcategories}}</td>          
+                <td>
+                    {{category.subcategories}}
+                </td>          
                 <td>
                     <a ng-Click="dataModify(category)" data-target="#modalEditarCategoria" data-toggle="modal" class="btn"><span class="glyphicon glyphicon-pencil"> </a>
                     <a HTTP-EQUIV="REFRESH" ng-Click="delete(category)" class="btn"><span class="glyphicon glyphicon-remove"></a>

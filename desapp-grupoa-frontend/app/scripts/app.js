@@ -29,10 +29,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         templateUrl: 'views/verOperaciones.html',
         controller: 'VerOperacionesCtrl'
       })
-        .when('/crearComprobante', {
+        /*.when('/crearComprobante', {
         templateUrl: 'views/crearComprobante.html',
-        controller: 'CrearComprobanteYOperacionCtrl'
-      })
+        controller: 'ComprobanteCtrl'
+      })*/
         .when('/registroDeOperacionesYComprobantes', {
         templateUrl: 'views/registroDeOperacionesYComprobantes.html',
         controller: 'RegistroDeOperacionesYComprobantesCtrl'
@@ -112,7 +112,9 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         TARDE : 'Evening',
         NOCHE : 'Night',
         SELECCIONAR_TURNO : 'Select shift',
-        SELECCIONAR_CUENTA : 'Select account'
+        SELECCIONAR_CUENTA : 'Select account',
+        CARGAR_COMPROBANTE : 'Load voucher',
+        RAZON_SOCIAL : 'Social reason'
     });
     
     $translateProvider.translations('es', {
@@ -162,7 +164,9 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         TARDE : 'Tarde',
         NOCHE : 'Noche',
         SELECCIONAR_TURNO : 'Seleccionar turno',
-        SELECCIONAR_CUENTA : 'Seleccionar cuenta'
+        SELECCIONAR_CUENTA : 'Seleccionar cuenta',
+        CARGAR_COMPROBANTE : 'Cargar comprobante',
+        RAZON_SOCIAL : 'Razon social'
     });
     $translateProvider.preferredLanguage('es');
     

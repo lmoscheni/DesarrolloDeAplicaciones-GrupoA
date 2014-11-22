@@ -45,30 +45,6 @@
  
         <!-- MENU PARA CREAR Y VER COMPROBANTES U OPERACIONES-->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <!--<ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{'CREAR' | translate}}<b class="caret"></b></a>
-        
-                    <ul class="dropdown-menu">
-                        <li><a href="#">{{'COMPROBANTE' | translate}}</a></li>
-                        <li><a href="#/crearOperacion">{{'OPERACION' | translate}}</a></li>
-                        <li class="divider"></li>
-                    </ul>
-                </li>
-            </ul>
- 
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{'VER' | translate}}<b class="caret"></b></a>
-        
-                    <ul class="dropdown-menu">
-                        <li><a href="#">{{'COMPROBANTES' | translate}}</a></li>
-                        <li><a href="#/verOperaciones">{{'OPERACIONES' | translate}} </a></li>
-                        <li class="divider"></li>
-                        <li><a href="#/verCategorias">{{'CATEGORIAS' | translate}}</a></li>
-                    </ul>
-                </li>
-            </ul>-->
             
             <ul ng-controller="IndexCtrl" class="nav navbar-nav navbar-right">
                 <li><a style="cursor: pointer;" ng-Click="changeLanguage('en')" translate>EN</a></li>
@@ -89,26 +65,8 @@
     </div>
     
     <div ng-controller="IndexCtrl" class="footer">
-        <p>Sistema de gestion de gastos by Skalic Julian and Leandro Moscheni | 2014</p>
+        <p>Sistema de gestion de gastos by Skalic Julian and Moscheni Leandro | 2014</p>
     </div>
-    <!--<div class="container header">
-    
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navbar">
-            <div class="form">
-                <span>{{ 'SELECT_IDIOMA' | translate}}</span>
-                <button ng-Click="changeLanguage('en')" class="link" translate>EN</a>
-                <button ng-Click="changeLanguage('es')" class="link" translate>ES</a>
-            </div>
-        </div>
-        
-        <div>
-            <h1><center><u>{{ 'TITLE' | translate }}</u></center></br></h1>
-        </div>
-        <ol class="breadcrumb">
-          <li><a href="#">{{ 'INICIO' | translate }}</a></li>
-          <li><a href="#/registroDeOperacionesYComprobantes">{{ 'OPERACIONES_Y_COMPROBANTES' | translate }}</a></li>
-        </ol>
-    </div>-->
         
     <!-- Add your site or application content here -->
     
@@ -138,6 +96,7 @@
     <script src="scripts/service.js"></script>
     <script src="scripts/controllers/OperacionCtrl.js"></script>
     <script src="scripts/controllers/EditarOperacionCtrl.js"></script>
+    <script src="scripts/controllers/ComprobanteCtrl.js"></script>
     
     <!-- endbuild -->
         

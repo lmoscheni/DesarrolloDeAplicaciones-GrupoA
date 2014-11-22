@@ -1,73 +1,116 @@
-<div ng-controller="CrearComprobanteYOperacionCtrl">
-    
-    <h2><u>Cargar comprobante</u></h2>
-    
-    <div class="col-md-6 input">
-        
+<div ng-controller="ComprobanteCtrl">
+   <h2><u>{{ 'CARGAR_COMPROBANTE' | translate}}</u></h2>
+    <div class="row col-lg-16">
+    <div class="col-lg-10">
+    <form id="form" name="form" class="col-md-6 input" navalidate>
+
+
+        <date-time-picker recipient="recipient"></date-time-picker>
         <div class="form-group">
-           <table>
-               <thead>
-               </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <select ng-model="selectedCategory"  ng-Click="getCategories()" draggable="true" ng-options="category.id as category.name for category in categories" class="form-control">
-                                <option value="">Select a category</option>
-                            </select>
-                        </td>
-                        <td>
-                           &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="#/crearComprobante"  class="btn btn-success">Create a new category <span class="glyphicon glyphicon-ok"></span></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="input-group">
+                <select  name="billType" required ng-model="objectOperationJson.billType" draggable="true" ng-class="form-control">
+                    <option value="">Seleccionar tipo de pago</option>
+                    <option value="Tipo A">Tipo A</option>
+                    <option value="Tipo B">Tipo B</option>
+                    <option value="Tipo C">Tipo C</option>
+                    <option value="Tipo D">Tipo D</option>
+                    <option value="Tipo X">Tipo X</option>
+                </select>
+            </div>
         </div>
         
-    	<div class="form-group">
-        	<div class="input-group">
+        <div class="form-group">
+           <div class="input-group">
                 <span class="input-group-addon">></span>
-        		<input ng-model="cuit" type="text" placeholder="Cuit" class="form-control" />
-        	</div>
-    	</div>
+                <input required name="razonSocial" id="razonSocial" type="string" ng-model="objectOperationJson.socialReason" placeholder="{{ 'RAZON_SOCIAL' | translate}}" ng-required="true" ng-class="form-control"></input>
+            </div>
+        </div>
+        
+        <div class="form-group">
+           <div class="input-group">
+                <span class="input-group-addon">></span>
+                <input required name="concepto" id="concept" type="string" ng-model="objectOperationJson.concept" placeholder="{{ 'CONCEPTO' | translate}}" ng-required="true" ng-class="form-control"></input>
+            </div>
+        </div>
 
         <div class="form-group">
-        	<div class="input-group">
+           <div class="input-group">
                 <span class="input-group-addon">></span>
-        		<input ng-model="taxed" type="text" placeholder="Taxed" class="form-control" />
-        	</div>
-    	</div>
+                <input required name="cuit" id="cuit" type="string" ng-model="objectOperationJson.cuit" placeholder="CUIT" ng-required="true" ng-class="form-control"></input>
+            </div>
+        </div>
         
         <div class="form-group">
-        	<div class="input-group">
-                <span class="input-group-addon">></span>
-        		<input ng-model="noTaxed" type="text" placeholder="No Taxed" class="form-control" />
-        	</div>
-    	</div>
-        
-        <div class="form-group">
-        	<div class="input-group">
-                <span class="input-group-addon">></span>
-        		<input ng-model="IIBBPerception" type="text" placeholder="IIBB Perception" class="form-control" />
-        	</div>
-    	</div>
-        
-        <div class="form-group">
-        	<div class="input-group">
-                <span class="input-group-addon">></span>
-        		<input ng-model="iva" type="text" placeholder="IVA" class="form-control" />
-        	</div>
-    	</div>
-        
-        <div class="form-group">
-			<div class="input-group">
+           <div class="input-group">
                 <span class="input-group-addon">$</span>
-				<input ng-model="amount" type="number" placeholder="Amount" class="form-control"/>
-	    	</div>
-    	</div>
+                <input name="monto/amount" id="monto" name="monto" type="number" ng-class="form-control" ng-model="objectOperationJson.amount" placeholder="{{ 'MONTO' | translate}}" ng-required="true"/>
+            </div>
+        </div>
         
         <div class="form-group">
-            <a href="#" class="btn btn-lg btn-success">Aceptar</a>
-            <a href="#/registroDeOperacionesYComprobantes" class="btn btn-lg btn-danger">Cancelar</a>
+            <a ng-disabled="form.$invalid" type="submit" ng-Click="createOperation()" class="btn btn-primary">{{ 'ACEPTAR' | translate}}</a>
+            <a href="#/verOperaciones" class="btn btn-danger">{{ 'CANCELAR' | translate}}</a>
+        </div>
+        
+        
+        
+             </form>
+<!--        </div>
+        <div class="col-lg-6">
+            <div class="alert alert-danger" ng-show="form.$invalid">
+          <div ng-repeat="(errorType, components) in form.$error">
+            <h4>{{errorType}}</h4>
+            <ul>
+              <li ng-repeat="(key,value) in components">El campo {{value.$name}} tiene un valor invalido: {{value.$viewValue || '[vacio]'}}</li>
+            </ul>
+          </div>
+        </div>    
+        </div>-->
+
+</div>
+
+<!--*************************  Modals  ****************************************-->
+<div ng-controller="CategoriaYSubcategoriaCtrl">
+    
+    <!--*************************  Modal de crear categoria  ****************************************-->
+    <div class="modal fade" id="modalCrearCategoria" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content modal-content-one">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">&times;</a>
+                    <h3>{{ 'CREAR_CATEGORIA' | translate}}</h3>
+                </div>
+                <div class="modal-body">
+                    <input ng-model="objectCategory.name" type="text" placeholder="{{ 'NOMBRE' | translate}}" class="form-control" />
+                </div>
+                <div class="modal-footer">
+                    <a href="#" ng-Click="createCategory()" data-dismiss="modal" class="btn btn-success">{{ 'ACEPTAR' | translate}}</a>
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">{{ 'CANCELAR' | translate}}</a>
+                </div>
+            </div>
         </div>
     </div>
+    
+    <!--*************************  Modal de crear subcategoria  ****************************************-->
+    <div class="modal fade" id="modalCrearSubcategoria" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content modal-content-one">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">&times;</a>
+                    <h3>{{ 'CREAR_SUBCATEGORIA' | translate}}</h3>
+                </div>
+                    <select ng-model="category"  ng-Click="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" class="form-control">
+                                <option value="">{{ 'SELECCIONAR_CATEGORIA' | translate}}</option>
+                    </select>
+                <div class="modal-body">
+                    <input ng-model="objectCategory.subcategory" type="text" placeholder="{{ 'NOMBRE' | translate}}" class="form-control" />
+                </div>
+                <div class="modal-footer">
+                    <a href="#" ng-Click="createSubcategory()" data-dismiss="modal" class="btn btn-success">{{ 'ACEPTAR' | translate}}</a>
+                    <a href="#" class="btn btn-danger" data-dismiss="modal"> {{ 'CANCELAR' | translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
