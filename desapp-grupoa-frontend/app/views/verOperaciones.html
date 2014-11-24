@@ -22,10 +22,10 @@
                 <td>{{operation.category.name}} </td> 
                 <td>{{operation.subcategory}} </td> 
                 <td>{{operation.concept}} </td>
-                <td>{{operation.account}} </td>
-                <td>{{operation.shift}} </td> 
+                <td>{{cuenta(operation.account)}} </td>
+                <td>{{turno(operation.shift)}} </td> 
                 <td>{{parse(operation.dateOperation)}} </td> 
-                <td>{{operation.operationType}} </td> 
+                <td>{{tipoOperacion(operation.operationType)}} </td> 
                 <td>
                     <div ng-controller="OperacionCtrl">
                     <a href="#/modificarOperacion/{{operation}}" class="btn"><span class="glyphicon glyphicon-pencil">  </a>

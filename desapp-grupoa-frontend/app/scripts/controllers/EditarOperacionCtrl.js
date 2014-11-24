@@ -45,7 +45,7 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
                 respondType: 'jso n',
                 headers : {'Content-Type' : 'application/json'},
             }).success(function(){
-                  $location.path('/verOperaciones');
+                $location.path('/verOperaciones');
             }).error(function(data,status){
                 if(status === 501){
                     ngDialog.open({template:'Monto invalido (no negativo)',plain:true});

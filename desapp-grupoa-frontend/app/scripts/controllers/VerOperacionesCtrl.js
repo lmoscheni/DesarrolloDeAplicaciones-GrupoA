@@ -21,6 +21,18 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,ngD
         return datee.toLocaleDateString();
     };
     
+    $scope.cuenta = function(c) {
+        return c === 'BankAccount' ? 'Cuenta bancaria' : c === 'CashAccount' ? 'Cuenta en efectivo' : 'Cuenta corriente';  
+    };
+    
+    $scope.turno = function(t) {
+        return t === 'MAÑANA' ? 'Mañana' : c === 'TARDE' ? 'Tarde' : 'Noche';  
+    };
+    
+    $scope.tipoOperacion = function(to) {
+        return to === 'INCOME' ? 'Ingreso' : 'Egreso';
+    };
+    
     $scope.prevPage = function() {
         if ($scope.currentPage > 0) {
           $scope.currentPage--;
