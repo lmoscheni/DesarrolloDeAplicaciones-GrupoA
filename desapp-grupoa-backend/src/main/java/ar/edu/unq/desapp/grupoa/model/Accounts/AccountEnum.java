@@ -1,7 +1,9 @@
 package ar.edu.unq.desapp.grupoa.model.Accounts;
 
+import java.io.Serializable;
 
-public enum AccountEnum {
+
+public enum AccountEnum implements Serializable{
 
     BankAccount,CashAccount,CurrentAccount;
     

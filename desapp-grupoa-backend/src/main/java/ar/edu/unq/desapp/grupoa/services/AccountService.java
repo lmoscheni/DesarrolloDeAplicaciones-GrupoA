@@ -28,4 +28,9 @@ public class AccountService  extends GenericService<Account>{
     public Account getAccount(String name){
         return this.getDao().findByName(name);
     }
+    
+    @Transactional
+    public void u(Account a){
+        update(a);
+    }
 }

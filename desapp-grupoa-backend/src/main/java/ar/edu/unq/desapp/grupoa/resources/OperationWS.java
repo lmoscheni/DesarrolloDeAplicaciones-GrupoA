@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoa.resources;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -17,7 +18,10 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
+import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
+import ar.edu.unq.desapp.grupoa.parser.Parser;
 import ar.edu.unq.desapp.grupoa.services.AccountService;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 import ar.edu.unq.desapp.grupoa.services.OperationService;
@@ -41,8 +45,7 @@ public class OperationWS {
     @GET
     @Path("/deleteOperation/{id}")
     public List<Operation> deleteOperation(@PathParam("id") final String id) {
-        Operation o = getOperationService().findById(new Integer(id));
-        getOperationService().delete(o);
+        getOperationService().deleteOperation(new Integer(id), getOperationService(), getAccountService());
         return getOperationService().retriveAll();
     }
     
@@ -59,13 +62,20 @@ public class OperationWS {
     @Path("/modify/{id}/{operation}")
     @Produces("application/json")
     public Response saveCategory(@PathParam("id") final int id,
-    @PathParam("operation") final String operation) {
-        try {
-            Operation o = getOperationService().findById(id);
-            getOperationService().updateOperation(o, operation, categoryService);
-        } catch (Exception e) {
-            return Response.status(501).build();
-        }
+    @PathParam("operation") final String operation) throws Exception {
+            
+        Operation o = getOperationService().findById(id);
+        Account a = getAccountService().getAccount(o.getAccount().toString());
+        System.out.println(a.getName());
+        a.deleteOperation(o);
+        getAccountService().update(a);
+        
+        getOperationService().updateOperation(o, operation, getCategoryService());
+
+        a = getAccountService().getAccount(o.getAccount().toString());
+        a.registrateOperation(o);
+        getAccountService().update(a);
+        
         return Response.ok().build();
     }
     

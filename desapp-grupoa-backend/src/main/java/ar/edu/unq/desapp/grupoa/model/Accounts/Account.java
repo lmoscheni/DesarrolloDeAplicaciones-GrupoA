@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
+import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
 
 /**
  * Class account
@@ -111,8 +112,46 @@ public class Account implements Serializable{
     }
 
     public void deleteOperation(Operation operation) {
-        this.operations.remove(operation);
-        this.balance -= operation.getAmount();
+        List<Operation> newList = new ArrayList<Operation>();
+        for(Operation o : this.operations){
+            if(!o.getId().equals(operation.getId())){
+                newList.add(o);
+            }
+        }
+        this.operations = newList;
+        if(operation.getOperationType().equals(OperationTypeEnum.INCOME)){
+            this.decreaseBalance(operation.getAmount());
+        }else{
+            this.increaseBalance(operation.getAmount());
+        }
+    }
+    
+    public void modifyBalance(Account a,OperationTypeEnum estadoAnterior,Operation o){
+        System.out.println(estadoAnterior);
+        System.out.println(o.getOperationType());
+        if(estadoAnterior.equals(OperationTypeEnum.INCOME) && (o.getOperationType().equals(OperationTypeEnum.EGRESS))){
+            a.decreaseBalance(o.getAmount());
+            a.decreaseBalance(o.getAmount());
+            System.out.println("Modificando INCOME EGRESS...");
+        }else{
+            if(estadoAnterior.equals(OperationTypeEnum.EGRESS) && (o.getOperationType().equals(OperationTypeEnum.INCOME))){
+                a.increaseBalance(o.getAmount());
+                a.increaseBalance(o.getAmount());
+                System.out.println("Modificando EGRESS INCOME...");
+            }
+        }
+    }
+    
+    public void modifyOperation(Account a, OperationTypeEnum estadoAnterior, Operation o, Operation oO){
+        System.out.println(a.getName());
+        System.out.println(o.getAccount().toString());
+        if(a.getName().equals(o.getAccount().name())){
+            System.out.println("Modificando...");
+            this.modifyBalance(a,estadoAnterior,o);
+        }else{
+            a.deleteOperation(oO);
+            this.registrateOperation(o);
+        }
     }
     
     public void updateTheAccountStatus() {

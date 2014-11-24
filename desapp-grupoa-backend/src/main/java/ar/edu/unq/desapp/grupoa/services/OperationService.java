@@ -1,5 +1,8 @@
 package ar.edu.unq.desapp.grupoa.services;
 
+import javax.mail.Session;
+
+import org.apache.cxf.service.invoker.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
@@ -24,7 +27,16 @@ public class OperationService extends GenericService<Operation>{
     
     @Transactional
     public void updateOperation(Operation o, String jsonOperation, CategoryService categoryService) throws Exception{
-        update(this.parseUpdateOperation(o,jsonOperation,categoryService));
+        update(Parser.parseUpdateOperation(o,jsonOperation,categoryService));
+    }
+    
+    @Transactional
+    public void deleteOperation(Integer id, OperationService OS, AccountService AS){
+        Operation o = OS.findById(new Integer(id));
+        Account a = AS.getAccount(o.getAccount().toString());
+        a.deleteOperation(o);
+        AS.update(a);
+        OS.delete(o);
     }
     
     //Other methods
@@ -33,6 +45,6 @@ public class OperationService extends GenericService<Operation>{
     }
     
     private Operation parseUpdateOperation(Operation o,final String jsonOperation,CategoryService categoryService) throws Exception {
-        return Parser.parseOperation(o,jsonOperation, categoryService);
+        return Parser.parseUpdateOperation(o,jsonOperation, categoryService);
     }
 }

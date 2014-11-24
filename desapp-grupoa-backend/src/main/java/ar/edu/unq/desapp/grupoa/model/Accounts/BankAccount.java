@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
+import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
 
 /**
  * Class bank account
@@ -101,7 +102,43 @@ public class BankAccount extends Account {
     }
     
     public void cancelOperation(Operation operation) {
-        this.pendingOperations.remove(operation);
+        List<Operation> newList = new ArrayList<Operation>();
+        for(Operation o : this.pendingOperations){
+            if(!o.getId().equals(operation.getId())){
+                newList.add(o);
+            }
+        }
+        this.pendingOperations = newList;
+        if(operation.getOperationType().equals(OperationTypeEnum.INCOME)){
+            this.decreaseBalance(operation.getAmount());
+        }else{
+            this.increaseBalance(operation.getAmount());
+        }
+    }
+    
+    @Override
+    public void deleteOperation(Operation operation){
+        boolean isInPendingOperations = false;
+        for(Operation o : this.pendingOperations){
+            if(o.getId().equals(operation.getId())){
+                System.out.println("Entre");
+                isInPendingOperations = true;
+            }
+        }
+        if(isInPendingOperations){
+            this.cancelOperation(operation);
+        }else{
+            this.delOperation(operation);
+        }
+    }
+    
+    public void delOperation(Operation operation) {
+        this.operations.remove(operation);
+        if(operation.getOperationType().equals(OperationTypeEnum.INCOME)){
+            balance -= operation.getAmount();
+        }else{
+            balance += operation.getAmount();
+        }
     }
     
     @SuppressWarnings("deprecation")

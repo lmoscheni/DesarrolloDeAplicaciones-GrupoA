@@ -14,13 +14,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
+import ar.edu.unq.desapp.grupoa.model.Accounts.AccountEnum;
+import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.services.AccountService;
+import ar.edu.unq.desapp.grupoa.services.OperationService;
 
 @Service
 public class AccountWS {
 
     @Autowired
     private AccountService accountService;
+    private OperationService operationService;
 
     @GET
     @Path("/init")
@@ -36,13 +40,21 @@ public class AccountWS {
     public Account getAccount(@PathParam("name") final String name) throws JsonGenerationException, JsonMappingException, IOException{
             return getAccountService().getAccount(name);
     }
-    
+   
     public AccountService getAccountService() {
         return accountService;
     }
 
     public void setAccountService(AccountService accountService) {
         this.accountService = accountService;
+    }
+
+    public OperationService getOperationService() {
+        return operationService;
+    }
+
+    public void setOperationService(OperationService operationService) {
+        this.operationService = operationService;
     }
     
     

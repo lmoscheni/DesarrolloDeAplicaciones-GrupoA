@@ -12,20 +12,28 @@
 		<property name="name" type="string"></property>
 		<property name="balance" type="double"></property>
 
-		<bag name="operations" lazy="true" table="RelationAccountOperation" cascade="all">
-				<key column="AC_ID"></key>
+		<list name="operations" lazy="false" fetch="select" table="RelationAccountOperation">
+				<key column="A_ID"></key>
+				<list-index column="sort_order" base="0"/>
 				<many-to-many column="O_ID" class="ar.edu.unq.desapp.grupoa.model.Operation.Operation"/>
-		</bag>
+		</list>
+		
+		<!-- <list name="operations" lazy="false" fetch="select" table="Operation">
+				<key column="A_ID"></key>
+				<list-index column="sort_order" base="0"/>
+				<one-to-many class="ar.edu.unq.desapp.grupoa.model.Operation.Operation"/>
+		</list> -->
 
 		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Accounts.BankAccount" table="BankAccount" extends="ar.edu.unq.desapp.grupoa.model.Accounts.Account">
 			<key column="A_ID"/>
 			<property name="accrued" type="double"></property>
 			<property name="currently" type="java.util.Date" ></property>
 			<property name="delayTime" type="java.lang.Integer"></property>
-			<bag name="pendingOperations" table="RelationAccountOperationPending" cascade="all">
+			<list name="pendingOperations" lazy="false" fetch="select" table="RelationAccountOperationPending">
 				<key column="AC_ID"/>
+				<list-index column="sort_order" base="0"/>
 				<many-to-many column="O_ID" class="ar.edu.unq.desapp.grupoa.model.Operation.Operation"/>
-			</bag>
+			</list>
 		</joined-subclass>
 
 		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Accounts.Cash" table="CashAccount" extends="ar.edu.unq.desapp.grupoa.model.Accounts.Account">
