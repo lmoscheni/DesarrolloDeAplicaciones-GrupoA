@@ -61,6 +61,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         templateUrl: 'views/verSubcategorias.html',
         controller: 'CategoriaYSubcategoriaCtrl'
       })
+        .when('/verCuentas', {
+        templateUrl: 'views/verCuentas.html',
+        controller: 'CuentasCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -114,7 +118,8 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         SELECCIONAR_TURNO : 'Select shift',
         SELECCIONAR_CUENTA : 'Select account',
         CARGAR_COMPROBANTE : 'Load voucher',
-        RAZON_SOCIAL : 'Social reason'
+        RAZON_SOCIAL : 'Social reason',
+        ESTADO_CUENTAS : 'Accounts state'
     });
     
     $translateProvider.translations('es', {
@@ -166,7 +171,8 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         SELECCIONAR_TURNO : 'Seleccionar turno',
         SELECCIONAR_CUENTA : 'Seleccionar cuenta',
         CARGAR_COMPROBANTE : 'Cargar comprobante',
-        RAZON_SOCIAL : 'Razon social'
+        RAZON_SOCIAL : 'Razon social',
+        ESTADO_CUENTAS : 'Estado de cuentas'
     });
     $translateProvider.preferredLanguage('es');
     

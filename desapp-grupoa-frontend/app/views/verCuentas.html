@@ -1,0 +1,22 @@
+<div ng-controller="CuentasCtrl" class="">
+    <div class="panel panel-default">
+    <div class="panel-heading">Cuentas</div>
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+               <td>Cuenta</td>
+                <td>Monto</td>
+               <!-- <td>Cuenta corriente</td>
+               <td>Cuenta bancaria</td>-->
+  		    </tr>
+        </thead>
+        
+        <tbody>
+            <tr ng-repeat="cuenta in cuentas">
+                <td class="">{{cuenta.name}}</td>
+                <td class="" sortable="cuenta.balance">{{stateAmount(cuenta.balance)}}</td>          
+            </tr>
+  		</tbody>
+    </table>
+    </div>
+</div>

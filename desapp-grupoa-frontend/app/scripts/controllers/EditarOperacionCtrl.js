@@ -9,6 +9,7 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
     $scope.subcategories = [];
     $scope.objectOperationJson = {};
     $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':'', 'concept' : '', 'account' : ''};
+    $scope.shifts = ['Mañana', 'Tarde', 'Noche'];
 
     $scope.getCategories = function() {
         $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
@@ -18,7 +19,11 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
             ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
         });
     };
-       
+    
+    $scope.turno = function(t) {
+        return t === 'MAÑANA' ? "Mañana" : c === 'TARDE' ? "Tarde" : "Noche";  
+    };
+    
     $scope.getSubcategories = function() {
             for(var i in $scope.categories){
                 if($scope.categories[i].name === $scope.objectOperationJson.category){
