@@ -1,12 +1,10 @@
 package ar.edu.unq.desapp.grupoa.parser;
 
-import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 import ar.edu.unq.desapp.grupoa.model.Accounts.AccountEnum;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
 import ar.edu.unq.desapp.grupoa.model.System.Shift;
-import ar.edu.unq.desapp.grupoa.services.AccountService;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
 public class Parser {

@@ -1,12 +1,14 @@
 package ar.edu.unq.desapp.grupoa.AccountTests;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
+import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
 import junit.framework.TestCase;
 
 /**
@@ -116,7 +118,9 @@ public class AccountTest extends TestCase {
     public void testDeleteOperation() {
 
         Operation mockOperation = mock(Operation.class);
-
+        when(mockOperation.getId()).thenReturn(new Integer(1));
+        when(mockOperation.getOperationTypeEnum()).thenReturn(OperationTypeEnum.INCOME);
+        
         Account account = new Account();
 
         assertEquals(0, account.getOperations().size());

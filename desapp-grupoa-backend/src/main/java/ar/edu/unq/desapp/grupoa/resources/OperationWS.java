@@ -1,7 +1,6 @@
 package ar.edu.unq.desapp.grupoa.resources;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -20,8 +19,6 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
-import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
-import ar.edu.unq.desapp.grupoa.parser.Parser;
 import ar.edu.unq.desapp.grupoa.services.AccountService;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 import ar.edu.unq.desapp.grupoa.services.OperationService;
@@ -53,8 +50,11 @@ public class OperationWS {
     @Path("/save/")
     @Consumes("application/json")
     public Response createOperation(@Multipart(value = "operation", type = "application/json") final String jsonOperation) throws Exception{
-        
+        try{
             getOperationService().saveOperation(jsonOperation, getCategoryService(), getAccountService());
+        }catch(Exception monto){
+            return Response.status(501).build();
+        }
             return Response.status(200).build();
     }
     

@@ -78,7 +78,7 @@ public class RegistrationOfOperationsCashFlow {
     public String generateRow(Operation operation) {
         String row = operation.getDateOperation().toString() + 
                             ", " + 
-                            operation.getOperationType().getClass().toString() +
+                            operation.getOperationTypeEnum().getClass().toString() +
                             ", " + 
                             operation.getCategory().getName() + 
                             ", " + " " + ", " 

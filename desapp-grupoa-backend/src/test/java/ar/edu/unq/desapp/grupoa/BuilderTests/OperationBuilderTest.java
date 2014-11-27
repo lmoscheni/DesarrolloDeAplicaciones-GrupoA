@@ -58,7 +58,7 @@ public class OperationBuilderTest extends TestCase {
 
         Operation operation = OperationBuilder.aOperation().withOperationType(operationType).build();
 
-        assertEquals(operationType, operation.getOperationType());
+        assertEquals(operationType, operation.getOperationTypeEnum());
     }
     
     public void testBuildVoucherWithConcept() throws Exception {

@@ -1,6 +1,8 @@
 package ar.edu.unq.desapp.grupoa.resources;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,8 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
-import ar.edu.unq.desapp.grupoa.model.Accounts.AccountEnum;
-import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.services.AccountService;
 import ar.edu.unq.desapp.grupoa.services.OperationService;
 
@@ -26,6 +26,20 @@ public class AccountWS {
     private AccountService accountService;
     private OperationService operationService;
 
+    @GET
+    @Path("/all")
+    @Produces("application/json")
+    public List<Account> getAllAccounts(){
+        Account a1 = getAccountService().getAccount("CashAccount");
+        Account a2 = getAccountService().getAccount("CurrentAccount");
+        Account a3 = getAccountService().getAccount("BankAccount");
+        List<Account> accs = new ArrayList<Account>();
+        accs.add(a1);
+        accs.add(a2);
+        accs.add(a3);
+        return accs;
+    }
+    
     @GET
     @Path("/init")
     @Produces("application/json")

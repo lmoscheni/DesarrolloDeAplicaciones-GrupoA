@@ -88,6 +88,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
     <bean id="categoryWS" class="ar.edu.unq.desapp.grupoa.resources.CategoryWS">
 		<property name="categoryService" ref="services.category" />
+		<property name="operationService" ref="services.operation" />
 	</bean>
 	
 	<bean id="operationWS" class="ar.edu.unq.desapp.grupoa.resources.OperationWS">

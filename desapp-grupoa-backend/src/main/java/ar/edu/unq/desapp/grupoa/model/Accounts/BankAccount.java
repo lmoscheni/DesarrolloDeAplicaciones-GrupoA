@@ -109,7 +109,7 @@ public class BankAccount extends Account {
             }
         }
         this.pendingOperations = newList;
-        if(operation.getOperationType().equals(OperationTypeEnum.INCOME)){
+        if(operation.getOperationTypeEnum().equals(OperationTypeEnum.INCOME)){
             this.decreaseBalance(operation.getAmount());
         }else{
             this.increaseBalance(operation.getAmount());
@@ -134,7 +134,7 @@ public class BankAccount extends Account {
     
     public void delOperation(Operation operation) {
         this.operations.remove(operation);
-        if(operation.getOperationType().equals(OperationTypeEnum.INCOME)){
+        if(operation.getOperationTypeEnum().equals(OperationTypeEnum.INCOME)){
             balance -= operation.getAmount();
         }else{
             balance += operation.getAmount();

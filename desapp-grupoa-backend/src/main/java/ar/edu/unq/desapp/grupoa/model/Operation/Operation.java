@@ -69,14 +69,18 @@ public class Operation implements Serializable{
         this.account = account;
     }
 
-    public void setOperationType(OperationTypeEnum operationType) {
-        this.operationType = operationType;
-    }
-
     public String getSubcategory() {
         return subcategory;
     }
 
+    public void setOperationType(OperationTypeEnum o){
+        this.operationType = o;
+    }
+    
+    public OperationTypeEnum getOperationType(){
+        return this.operationType;
+    }
+    
     public void setSubcategory(String subcategory) {
         this.subcategory = subcategory;
     }
@@ -113,7 +117,7 @@ public class Operation implements Serializable{
         this.shift = shift;
     }
 
-    public OperationTypeEnum getOperationType() {
+    public OperationTypeEnum getOperationTypeEnum() {
         return operationType;
     }
 
@@ -139,7 +143,7 @@ public class Operation implements Serializable{
 
     // Methods
     public void applyOperation(Account account) {
-            this.operationType.getOperationTypeEnum(this.operationType).chargeOperation(this, account);
+           this.operationType.getOperationTypeEnum(this.operationType).chargeOperation(this, account);
     }
 
 }

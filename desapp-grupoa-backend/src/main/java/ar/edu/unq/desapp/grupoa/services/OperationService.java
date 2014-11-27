@@ -1,8 +1,5 @@
 package ar.edu.unq.desapp.grupoa.services;
 
-import javax.mail.Session;
-
-import org.apache.cxf.service.invoker.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
@@ -44,7 +41,7 @@ public class OperationService extends GenericService<Operation>{
         return Parser.parseOperation(new Operation(),jsonOperation, categoryService);
     }
     
-    private Operation parseUpdateOperation(Operation o,final String jsonOperation,CategoryService categoryService) throws Exception {
-        return Parser.parseUpdateOperation(o,jsonOperation, categoryService);
-    }
+//    private Operation parseUpdateOperation(Operation o,final String jsonOperation,CategoryService categoryService) throws Exception {
+//        return Parser.parseUpdateOperation(o,jsonOperation, categoryService);
+//    }
 }

@@ -44,7 +44,7 @@ public class EgressTest extends TestCase {
 
         egress.chargeOperation(mockOperation, mockAccount);
 
-        verify(mockAccount, times(1)).increaseBalance(anyInt());
+        verify(mockAccount, times(1)).decreaseBalance(anyInt());
         verify(mockOperation, times(1)).getAmount();
 
     }

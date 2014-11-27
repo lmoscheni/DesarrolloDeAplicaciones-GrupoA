@@ -18,13 +18,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
+import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
+import ar.edu.unq.desapp.grupoa.services.OperationService;
 
 @Service
 public class CategoryWS {
 
     @Autowired
     private CategoryService categoryService;
+    private OperationService operationService;
     
     @GET
     @Path("/all")
@@ -96,6 +99,13 @@ public class CategoryWS {
         try {
             Category c = getCategoryService().findById(id);
             c.modifySubcategory(subcategoryName, newSubcategoryName);
+            List<Operation> operations = getOperationService().retriveAll();
+            for(Operation o : operations){
+                if(o.getSubcategory().equals(subcategoryName)){
+                    o.setSubcategory(newSubcategoryName);
+                    getOperationService().update(o);
+                }
+            }
             getCategoryService().update(c);
             return c.subcategories;
         } catch (Exception e) {
@@ -128,4 +138,14 @@ public class CategoryWS {
     public void setCategoryService(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
+
+    public OperationService getOperationService() {
+        return operationService;
+    }
+
+    public void setOperationService(OperationService operationService) {
+        this.operationService = operationService;
+    }
+    
+    
 }

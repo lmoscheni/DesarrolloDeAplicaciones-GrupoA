@@ -6,6 +6,7 @@ import java.util.List;
 
 import ar.edu.unq.desapp.grupoa.model.Accounts.BankAccount;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
+import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
 import static org.mockito.Mockito.*;
 import junit.framework.TestCase;
 
@@ -100,7 +101,9 @@ public class BankAccountTest extends TestCase {
     public void testCancelOperation(){
         
         Operation mockOperation = mock(Operation.class);
-
+        when(mockOperation.getId()).thenReturn(new Integer(1));
+        when(mockOperation.getOperationTypeEnum()).thenReturn(OperationTypeEnum.INCOME);
+        
         BankAccount account = new BankAccount();
 
         assertEquals(0, account.getPendingOperations().size());

@@ -3,9 +3,7 @@ package ar.edu.unq.desapp.grupoa.model.Accounts;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Entity;
 
@@ -119,38 +117,10 @@ public class Account implements Serializable{
             }
         }
         this.operations = newList;
-        if(operation.getOperationType().equals(OperationTypeEnum.INCOME)){
+        if(operation.getOperationTypeEnum().equals(OperationTypeEnum.INCOME)){
             this.decreaseBalance(operation.getAmount());
         }else{
             this.increaseBalance(operation.getAmount());
-        }
-    }
-    
-    public void modifyBalance(Account a,OperationTypeEnum estadoAnterior,Operation o){
-        System.out.println(estadoAnterior);
-        System.out.println(o.getOperationType());
-        if(estadoAnterior.equals(OperationTypeEnum.INCOME) && (o.getOperationType().equals(OperationTypeEnum.EGRESS))){
-            a.decreaseBalance(o.getAmount());
-            a.decreaseBalance(o.getAmount());
-            System.out.println("Modificando INCOME EGRESS...");
-        }else{
-            if(estadoAnterior.equals(OperationTypeEnum.EGRESS) && (o.getOperationType().equals(OperationTypeEnum.INCOME))){
-                a.increaseBalance(o.getAmount());
-                a.increaseBalance(o.getAmount());
-                System.out.println("Modificando EGRESS INCOME...");
-            }
-        }
-    }
-    
-    public void modifyOperation(Account a, OperationTypeEnum estadoAnterior, Operation o, Operation oO){
-        System.out.println(a.getName());
-        System.out.println(o.getAccount().toString());
-        if(a.getName().equals(o.getAccount().name())){
-            System.out.println("Modificando...");
-            this.modifyBalance(a,estadoAnterior,o);
-        }else{
-            a.deleteOperation(oO);
-            this.registrateOperation(o);
         }
     }
     

@@ -3,11 +3,7 @@ package ar.edu.unq.desapp.grupoa.persistence;
 import java.io.Serializable;
 import java.util.List;
 
-import org.apache.cxf.service.invoker.SessionFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
-import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
-
 
 /**
  * Generic hibernate DAO
