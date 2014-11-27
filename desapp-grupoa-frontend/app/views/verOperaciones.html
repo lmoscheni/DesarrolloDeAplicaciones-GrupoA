@@ -4,15 +4,15 @@
     <table class="table table-bordered table-hover table-condensed">
         <thead>
             <tr>
-  			   <td>{{ 'MONTO' | translate}} </td>
-               <td>{{ 'CATEGORIA' | translate}} </td>
-               <td>{{ 'SUBCATEGORIA' | translate}} </td>
-               <td>{{ 'CONCEPTO' | translate}} </td>
-               <td>{{ 'CUENTA' | translate}} </td>
-               <td>{{ 'TURNO' | translate}} </td>
-               <td>{{ 'DIA_OPERACION' | translate}} </td>
-               <td>{{ 'TIPO_OPERACION' | translate}} </td>
-               <td>{{ 'ACCION' | translate}}  </td>
+  			   <td><b>{{ 'MONTO' | translate}} </b></td>
+               <td><b>{{ 'CATEGORIA' | translate}} </b></td>
+               <td><b>{{ 'SUBCATEGORIA' | translate}} </b></td>
+               <td><b>{{ 'CONCEPTO' | translate}} </b></td>
+               <td><b>{{ 'CUENTA' | translate}} </b></td>
+               <td><b>{{ 'TURNO' | translate}} </b></td>
+               <td><b>{{ 'DIA_OPERACION' | translate}} </b></td>
+               <td><b>{{ 'TIPO_OPERACION' | translate}} </b></td>
+               <td><b>{{ 'ACCION' | translate}}  </b></td>
   		    </tr>
         </thead>
         
@@ -38,13 +38,13 @@
     
     <ul  class="pagination pagination-right">
         <li ng-class="prevPageDisabled()">
-            <a href ng-click="prevPage()">« Prev</a>
+            <a href ng-click="prevPage()">« {{ 'PREVIO' | translate}}</a>
         </li>
         <li ng-repeat="n in numberPages()">
             <a href ng-click="page(n)">{{n+1}}</a>
         </li>
         <li ng-class="nextPageDisabled()">
-            <a href ng-click="nextPage()">Next »</a>
+            <a href ng-click="nextPage()">{{ 'SIGUIENTE' | translate}} »</a>
         </li>
     </ul>
     </br>
@@ -55,5 +55,9 @@
             <a href="#/crearOperacion" type="submit" class="btn btn-primary"> Crear operacion</a>
         </div>
     </div>
+    
+
+        <button class="btn btn-warning" type="button" ng-csv="operations" filename="test.csv" field-separator="{,}">Exportar csv</button>
     </br>
+</br>
 </div>

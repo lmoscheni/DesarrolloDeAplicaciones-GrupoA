@@ -26,7 +26,7 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
     $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
     .success(function(data) {
         $scope.categories = data;
-        $scope.subcategories = data[0].subcategories;
+        /*$scope.subcategories = data[0].subcategories;*/
     }).error(function() {
         ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
     });
@@ -60,6 +60,10 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
             }
         });
     };
+    
+    $scope.loadSubcategories = function(category) {
+        $scope.subcategories = category.subcategories;
+    }
     
     if($routeParams.categoria != null) {
         $scope.category = JSON.parse($routeParams.categoria);
@@ -150,9 +154,9 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
 
       $scope.pageCount = function(bool) {
           if(bool) {
-            return Math.ceil($scope.categories.length/$scope.itemsPerPage)-1;
+            return Math.ceil($scope.subcategories.length/$scope.itemsPerPage)-1;
           }else {
-              return Math.ceil($scope.subcategories.length/$scope.itemsPerPage)-1;
+              return Math.ceil($scope.categories.length/$scope.itemsPerPage)-1;
           }
       };
 

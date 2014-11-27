@@ -30,7 +30,7 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,ngD
     };
     
     $scope.tipoOperacion = function(to) {
-        return to === 'INCOME' ? 'Ingreso' : 'Egreso';
+        return to === "INCOME" ? 'Ingreso' : 'Egreso';
     };
     
     $scope.prevPage = function() {

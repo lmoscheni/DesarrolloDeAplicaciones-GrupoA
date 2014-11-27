@@ -17,7 +17,8 @@ var app = angular.module('angularApp', [
     'ngTouch',
     'ngResource',
     'pascalprecht.translate',
-    'ngDialog'
+    'ngDialog',
+    'ngCsv'
   ]);
 
 app.config(function ($routeProvider, $httpProvider, $translateProvider) {
@@ -119,7 +120,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         SELECCIONAR_CUENTA : 'Select account',
         CARGAR_COMPROBANTE : 'Load voucher',
         RAZON_SOCIAL : 'Social reason',
-        ESTADO_CUENTAS : 'Accounts state'
+        ESTADO_CUENTAS : 'Accounts state',
+        REPORTES : 'Reports',
+        PREVIO : 'Prev',
+        SIGUIENTE : 'Next'
     });
     
     $translateProvider.translations('es', {
@@ -172,7 +176,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         SELECCIONAR_CUENTA : 'Seleccionar cuenta',
         CARGAR_COMPROBANTE : 'Cargar comprobante',
         RAZON_SOCIAL : 'Razon social',
-        ESTADO_CUENTAS : 'Estado de cuentas'
+        ESTADO_CUENTAS : 'Estado de cuentas',
+        REPORTES : 'Reportes',
+        PREVIO : 'Prev',
+        SIGUIENTE : 'Sig'
     });
     $translateProvider.preferredLanguage('es');
     
