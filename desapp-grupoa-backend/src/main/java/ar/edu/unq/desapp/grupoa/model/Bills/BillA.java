@@ -30,6 +30,7 @@ public class BillA extends BillType {
     }
 
     public BillA(double taxed, double noTaxed, double IIBBPerception, double IVA) {
+        super("BillA");
         this.taxed = taxed;
         this.noTaxed = noTaxed;
         this.IIBBPerception = IIBBPerception;

@@ -18,5 +18,5 @@
 	<bean id="services.account" class="ar.edu.unq.desapp.grupoa.services.AccountService">
 		<property name="dao" ref="persistence.accountdao" />
 	</bean>
-
+	
 </beans>

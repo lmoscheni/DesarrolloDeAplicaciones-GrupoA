@@ -3,32 +3,37 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-lazy="false" default-access="field" default-cascade="save-update">
-	<class name="ar.edu.unq.desapp.grupoa.model.Bills.BillType" discriminator-value="BillType">
+	<class name="ar.edu.unq.desapp.grupoa.model.Bills.BillType" table="BillType">
 		<id name="id" type="java.lang.Integer">
             <column name="BT_ID" />
             <generator class="identity" />
         </id>
         
-		<discriminator column="clase" type="string" />
+		<property name="name" type="string"></property>
 
-		<subclass name="ar.edu.unq.desapp.grupoa.model.Bills.BillA"
-			discriminator-value="BillA">
-		</subclass>
+		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Bills.BillA" table="BillA" extends="ar.edu.unq.desapp.grupoa.model.Bills.BillType">
+			<key column="BT_ID"/>
+			<property name="taxed" type="double"></property>
+			<property name="noTaxed" type="double"></property>
+			<property name="IIBBPerception" type="double"></property>
+			<property name="IVA" type="double"></property>
+		</joined-subclass>
 
-		<subclass name="ar.edu.unq.desapp.grupoa.model.Bills.BillB"
-			discriminator-value="BillB">
-		</subclass>
+		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Bills.BillB" table="BillB" extends="ar.edu.unq.desapp.grupoa.model.Bills.BillType">
+			<key column="BT_ID"/>
+		</joined-subclass>
 		
-		<subclass name="ar.edu.unq.desapp.grupoa.model.Bills.BillC"
-			discriminator-value="BillC">
-		</subclass>
+		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Bills.BillC" table="BillC" extends="ar.edu.unq.desapp.grupoa.model.Bills.BillType">
+			<key column="BT_ID"/>
+		</joined-subclass>
+
+		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Bills.BillD" table="BillD" extends="ar.edu.unq.desapp.grupoa.model.Bills.BillType">
+			<key column="BT_ID"/>
+		</joined-subclass>		
 		
-		<subclass name="ar.edu.unq.desapp.grupoa.model.Bills.BillD"
-			discriminator-value="BillD">
-		</subclass>
-		
-		<subclass name="ar.edu.unq.desapp.grupoa.model.Bills.BillX"
-			discriminator-value="BillX">
-		</subclass>
+		<joined-subclass name="ar.edu.unq.desapp.grupoa.model.Bills.BillX" table="BillX" extends="ar.edu.unq.desapp.grupoa.model.Bills.BillType">
+			<key column="BT_ID"/>
+		</joined-subclass>		
+
 	</class>
 </hibernate-mapping>

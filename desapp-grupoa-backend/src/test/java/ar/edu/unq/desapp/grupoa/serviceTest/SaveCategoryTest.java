@@ -2,42 +2,49 @@ package ar.edu.unq.desapp.grupoa.serviceTest;
 
 import java.util.List;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
 
-public class SaveCategoryTest extends TestCase {
+@ContextConfiguration(locations = {"classpath:META-INF/spring-services-context.xml","classpath:META-INF/spring-persistence-context.xml","classpath:META-INF/spring-web.xml"})
+public class SaveCategoryTest extends AbstractTransactionalJUnit4SpringContextTests {
 
-//    CategoryService categoryService = new CategoryService();
-//    
+    @Autowired
+    CategoryService categoryService;
+    
+    @Test
     public void testGuardarYBuscarCategory(){
-//        
-//        Category category = new Category("Ventas");
-//        new CategoryService().save(category);
-//        boolean esta = false;
-//        
-//        assertTrue(category.getId() != null);
-//
-//        List<Category> categories = getCategoryService().retriveAll();
-//        for(Category c : categories){
-//            if(c.getName().equals("Ventas")){
-//                esta = true;
-//            }
-//        }
-//        assertTrue(esta);
+        
+        Category category = new Category("Ventas Mayoristas");
+        getCategoryService().save(category);
+        boolean esta = false;
+        
+        assertTrue(category.getId() != null);
+
+        List<Category> categories = getCategoryService().retriveAll();
+        for(Category c : categories){
+            if(c.getName().equals("Ventas Mayoristas")){
+                esta = true;
+            }
+        }
+        assertTrue(esta);
     }
-//
-//    public CategoryService getCategoryService() {
-//        return categoryService;
-//    }
-//
-//    public void setCategoryService(CategoryService categoryService) {
-//        this.categoryService = categoryService;
-//    }
+
+    public CategoryService getCategoryService() {
+        return categoryService;
+    }
+
+    public void setCategoryService(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
     
 //    @Test
 //    public void deleteCategory(){

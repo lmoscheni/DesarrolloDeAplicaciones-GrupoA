@@ -19,6 +19,7 @@
         <mapping resource="src/main/resources/mappings/Operation.xml"></mapping>
         <mapping resource="src/main/resources/mappings/BillType.xml"></mapping>
         <mapping resource="src/main/resources/mappings/Account.xml"></mapping>
+        <mapping resource="src/main/resources/mappings/Voucher.xml"></mapping>
 		
     </session-factory>
 </hibernate-configuration>

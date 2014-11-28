@@ -8,4 +8,7 @@ public class BillX extends BillType {
      */
     private static final long serialVersionUID = 1L;
 
+    public BillX(){
+        super("BillX");
+    }
 }

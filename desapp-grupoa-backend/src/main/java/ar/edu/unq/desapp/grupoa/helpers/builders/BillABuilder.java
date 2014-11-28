@@ -23,6 +23,8 @@ public class BillABuilder {
     private double IIBBPerception;
 
     private double IVA;
+    
+    private String name;
 
     public BillA build() {
         return new BillA(taxed, noTaxed, IIBBPerception, IVA);
@@ -45,6 +47,11 @@ public class BillABuilder {
 
     public BillABuilder withIVA(double IVA) {
         this.IVA = IVA;
+        return this;
+    }
+    
+    public BillABuilder withName(String name) {
+        this.name = name;
         return this;
     }
 }

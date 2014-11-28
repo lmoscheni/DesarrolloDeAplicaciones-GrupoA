@@ -21,8 +21,19 @@ public class BillType implements Serializable{
      * 
      */
     private static final long serialVersionUID = 1L;
+    
     private Integer id;
 
+    private String name;
+    
+    public BillType(){
+        
+    }
+    
+    public BillType(String name){
+        this.name = name;
+    }
+    
     public Integer getId() {
         return id;
     }
@@ -31,6 +42,14 @@ public class BillType implements Serializable{
         this.id = id;
     }
     
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public double calculateFinalAmount(Voucher voucher) {
         return voucher.getAmount();
     }
