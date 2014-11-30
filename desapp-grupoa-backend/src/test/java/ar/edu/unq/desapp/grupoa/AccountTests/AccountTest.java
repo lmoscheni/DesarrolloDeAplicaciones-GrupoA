@@ -2,9 +2,13 @@ package ar.edu.unq.desapp.grupoa.AccountTests;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.Test;
 
 import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
@@ -19,7 +23,7 @@ import junit.framework.TestCase;
  * 
  */
 
-public class AccountTest extends TestCase {
+public class AccountTest extends TestCase{
 
     // ***********************************************************************************************************
     // Test Getters and setters
@@ -30,7 +34,7 @@ public class AccountTest extends TestCase {
         Account account = new Account();
         account.setBalance(100.0);
 
-        assertEquals(100.0, account.getBalance());
+        assertTrue(100.0 == account.getBalance());
     }
 
     @SuppressWarnings("unchecked")

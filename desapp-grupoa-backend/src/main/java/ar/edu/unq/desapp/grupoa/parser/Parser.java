@@ -1,10 +1,16 @@
 package ar.edu.unq.desapp.grupoa.parser;
 
 import ar.edu.unq.desapp.grupoa.model.Accounts.AccountEnum;
+import ar.edu.unq.desapp.grupoa.model.Bills.BillA;
+import ar.edu.unq.desapp.grupoa.model.Bills.BillB;
+import ar.edu.unq.desapp.grupoa.model.Bills.BillC;
+import ar.edu.unq.desapp.grupoa.model.Bills.BillD;
+import ar.edu.unq.desapp.grupoa.model.Bills.BillX;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
 import ar.edu.unq.desapp.grupoa.model.System.Shift;
+import ar.edu.unq.desapp.grupoa.model.System.Voucher;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 
 public class Parser {
@@ -51,6 +57,42 @@ public class Parser {
         o.setConcept(tokens[12]);
         o.setAccount(AccountEnum.create(tokens[14]));
         return o;
+    }
+    
+    public static Voucher parseVoucher(Voucher voucher,final String jsonVoucher, CategoryService categoryService) throws Exception {
+        String[] tokens = getTokens(jsonVoucher);
+        
+        //voucher.setAmount(Double.parseDouble(tokens[2]));
+        voucher.setSocialReason(tokens[4]);
+        voucher.setCuit(tokens[6]);
+        voucher.setConcept(tokens[8]);
+        voucher.setAmount(Integer.parseInt(tokens[10]));
+        
+        if(tokens[12].equals("Bill A")){
+            BillA billA = new BillA();
+            billA.setTaxed(Integer.parseInt(tokens[14]));
+            billA.setNoTaxed(Integer.parseInt(tokens[16]));
+            billA.setIIBBPerception(Integer.parseInt(tokens[18]));
+            billA.setIVA(Integer.parseInt(tokens[20]));
+            voucher.setBillType(billA);
+        }
+        if(tokens[12].equals("Bill B")){
+            BillB billB = new BillB();
+            voucher.setBillType(billB);
+        }
+        if(tokens[12].equals("Bill C")){
+            BillC billC = new BillC();
+            voucher.setBillType(billC);
+        }
+        if(tokens[12].equals("Bill D")){
+            BillD billD = new BillD();
+            voucher.setBillType(billD);
+        }
+        if(tokens[12].equals("Bill X")){
+            BillX billX = new BillX();
+            voucher.setBillType(billX);
+        }
+        return voucher;
     }
     
     public static Category parseCategory(final String json, CategoryService categoryService) throws Exception{

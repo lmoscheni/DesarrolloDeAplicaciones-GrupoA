@@ -18,7 +18,8 @@ var app = angular.module('angularApp', [
     'ngResource',
     'pascalprecht.translate',
     'ngDialog',
-    'ngCsv'
+    'ngCsv',
+    'ngChartist'
   ]);
 
 app.config(function ($routeProvider, $httpProvider, $translateProvider) {
@@ -30,10 +31,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         templateUrl: 'views/verOperaciones.html',
         controller: 'VerOperacionesCtrl'
       })
-        /*.when('/crearComprobante', {
+        .when('/crearComprobante', {
         templateUrl: 'views/crearComprobante.html',
         controller: 'ComprobanteCtrl'
-      })*/
+      })
         .when('/registroDeOperacionesYComprobantes', {
         templateUrl: 'views/registroDeOperacionesYComprobantes.html',
         controller: 'RegistroDeOperacionesYComprobantesCtrl'
@@ -65,6 +66,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         .when('/verCuentas', {
         templateUrl: 'views/verCuentas.html',
         controller: 'CuentasCtrl'
+      })
+        .when('/verReportes', {
+        templateUrl: 'views/verReportes.html',
+        controller: 'ReporteCtrl'
       })
       .otherwise({
         redirectTo: '/'

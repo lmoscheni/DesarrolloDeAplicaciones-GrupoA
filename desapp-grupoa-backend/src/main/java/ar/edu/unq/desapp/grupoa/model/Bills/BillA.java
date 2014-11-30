@@ -26,7 +26,7 @@ public class BillA extends BillType {
     private double IVA;
 
     public BillA() {
-    
+        super("BillA");
     }
 
     public BillA(double taxed, double noTaxed, double IIBBPerception, double IVA) {

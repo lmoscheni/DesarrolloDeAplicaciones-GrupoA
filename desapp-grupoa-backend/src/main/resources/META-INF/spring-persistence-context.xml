@@ -121,5 +121,9 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 	<bean id="persistence.accountdao" class="ar.edu.unq.desapp.grupoa.persistence.AccountDAO" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	
+	<bean id="persistence.voucherdao" class="ar.edu.unq.desapp.grupoa.persistence.VoucherDAO" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 
 </beans>

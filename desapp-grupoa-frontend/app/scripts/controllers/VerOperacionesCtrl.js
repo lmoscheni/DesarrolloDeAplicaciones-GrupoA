@@ -72,7 +72,8 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,ngD
         return $scope.listPages;
     };
     
-  });
+    
+});
 
 app.filter('offset', function() {
   return function(input, start) {

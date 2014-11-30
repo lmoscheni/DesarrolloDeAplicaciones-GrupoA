@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width">
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script type="text/javascript" src="http://www.google.com/jsapi?ext.js"></script>
     
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css" />
     <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog-theme-default.css" />
+    <link rel="stylesheet" href="bower_components/chartist/libdist/chartist.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link rel="stylesheet" href="styles/main.css">
@@ -55,10 +57,10 @@
 
     <ul class="nav nav-tabs">
         <li role="presentation"><a href="#/verOperaciones">{{ 'OPERACIONES' | translate}}</a></li>
-        <li role="presentation"><a href="#">{{ 'COMPROBANTES' | translate}}</a></li>
+        <li role="presentation"><a href="#/crearComprobante">{{ 'COMPROBANTES' | translate}}</a></li>
         <li role="presentation"><a href="#/verCategorias">{{ 'CATEGORIAS' | translate}}</a></li>
         <li role="presentation"><a href="#/verCuentas">{{ 'ESTADO_CUENTAS' | translate}}</a></li>
-        <li role="presentation"><a href="#">{{ 'REPORTES' | translate}}</a></li>
+        <li role="presentation"><a href="#/verReportes">{{ 'REPORTES' | translate}}</a></li>
     </ul>
     </br>
     
@@ -89,6 +91,7 @@
     <script src="bower_components/angular-translate/angular-translate.js"></script>
     <script src="bower_components/ngDialog/js/ngDialog.js"></script>
     <script src="bower_components/ng-csv/build/ng-csv.js"></script>
+    <script src="bower_components/ng-chartistjs/example/lib/ng-chartist.js"></script>
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -101,6 +104,7 @@
     <script src="scripts/controllers/EditarOperacionCtrl.js"></script>
     <script src="scripts/controllers/ComprobanteCtrl.js"></script>
     <script src="scripts/controllers/CuentasCtrl.js"></script>
+    <script src="scripts/controllers/ReporteCtrl.js"></script>
     
     <!-- endbuild -->
         

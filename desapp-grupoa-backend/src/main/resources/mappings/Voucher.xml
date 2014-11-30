@@ -14,7 +14,7 @@
 		<property name="cuit" type="string"></property>
 		<property name="concept" type="string"></property>
 		<property name="amount" type="double"></property>
-        <many-to-one name="billType" class="ar.edu.unq.desapp.grupoa.model.Bills.BillType" column="V_BILLTYPE"/>
+        <many-to-one name="billType" class="ar.edu.unq.desapp.grupoa.model.Bills.BillType" column="V_BILLTYPE" cascade="all"/>
         
     </class>
 </hibernate-mapping>

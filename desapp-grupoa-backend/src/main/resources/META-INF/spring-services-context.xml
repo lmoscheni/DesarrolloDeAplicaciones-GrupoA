@@ -19,4 +19,8 @@
 		<property name="dao" ref="persistence.accountdao" />
 	</bean>
 	
+	<bean id="services.voucher" class="ar.edu.unq.desapp.grupoa.services.VoucherService">
+		<property name="dao" ref="persistence.voucherdao" />
+	</bean>
+	
 </beans>
