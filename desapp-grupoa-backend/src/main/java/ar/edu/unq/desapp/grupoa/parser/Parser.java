@@ -97,6 +97,9 @@ public class Parser {
     
     public static Category parseCategory(final String json, CategoryService categoryService) throws Exception{
         String[] tokens = getTokens(json);
+        for(String s : tokens){
+            System.out.println(s);
+        }
         Category category = categoryService.findByName(tokens[2]);
         for(String subcategory : category.subcategories){
             if(subcategory.equals(tokens[4])){
