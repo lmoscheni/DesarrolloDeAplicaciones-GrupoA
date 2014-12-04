@@ -105,6 +105,46 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 			<cxf:logging />
 		</jaxrs:features>
 	</jaxrs:server>
+	
+	<jaxrs:server id="consolidation" address="/consolidations">
+		<jaxrs:serviceBeans>
+			<ref bean="consolidationWS" />
+		</jaxrs:serviceBeans>
+
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+			<entry key="xml" value="application/xml" />
+		</jaxrs:extensionMappings>
+
+ 		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers>
+
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
+	
+	<jaxrs:server id="report" address="/reports">
+		<jaxrs:serviceBeans>
+			<ref bean="reportWS" />
+		</jaxrs:serviceBeans>
+
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+			<entry key="xml" value="application/xml" />
+		</jaxrs:extensionMappings>
+
+ 		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers>
+
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
 
     <bean id="categoryWS" class="ar.edu.unq.desapp.grupoa.resources.CategoryWS">
 		<property name="categoryService" ref="services.category" />
@@ -124,6 +164,15 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	
 	<bean id="voucherWS" class="ar.edu.unq.desapp.grupoa.resources.VoucherWS">
 		<property name="voucherService" ref="services.voucher" />
+	</bean>
+	
+	<bean id="consolidationWS" class="ar.edu.unq.desapp.grupoa.resources.ConsolidationWS">
+		<property name="consolidationService" ref="services.consolidation" />
+		<property name="accountService" ref="services.account" />
+	</bean>
+	
+	<bean id="reportWS" class="ar.edu.unq.desapp.grupoa.resources.ReportWS">
+		<property name="operationService" ref="services.operation" />
 		<property name="categoryService" ref="services.category" />
 	</bean>
 

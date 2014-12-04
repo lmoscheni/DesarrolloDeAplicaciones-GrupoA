@@ -125,5 +125,13 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 	<bean id="persistence.voucherdao" class="ar.edu.unq.desapp.grupoa.persistence.VoucherDAO" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	
+	<bean id="persistence.billtypedao" class="ar.edu.unq.desapp.grupoa.persistence.BillTypeDAO" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	
+	<bean id="persistence.consolidationdao" class="ar.edu.unq.desapp.grupoa.persistence.ConsolidationDAO" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 
 </beans>

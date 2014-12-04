@@ -27,8 +27,7 @@ public class AccountDAO extends HibernateGenericDAO<Account> implements GenericD
 
     @Override
     protected Class<Account> getDomainClass() {
-        // TODO Auto-generated method stub
-        return null;
+        return Account.class;
     }
 
 

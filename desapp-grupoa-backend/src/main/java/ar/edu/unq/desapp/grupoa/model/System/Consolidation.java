@@ -1,6 +1,9 @@
 package ar.edu.unq.desapp.grupoa.model.System;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
 
 /**
  * Class consolidation
@@ -10,7 +13,15 @@ import java.util.Date;
  * 
  */
 
-public class Consolidation {
+@Entity
+public class Consolidation implements Serializable{
+    
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    public Integer id;
     
     protected double available;
 
@@ -36,4 +47,13 @@ public class Consolidation {
         return consolidationDate;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    
 }

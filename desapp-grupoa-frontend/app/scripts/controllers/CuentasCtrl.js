@@ -16,6 +16,15 @@ angular.module('angularApp').controller('CuentasCtrl', function ($http,$scope,$l
             ngDialog.open({template:'Error del servidor, al obtener las cuentas',plain:true});
     });
     
+    $scope.consolidate = function(){
+        $http.get('http://localhost:8080/desapp-grupoa-backend/rest/consolidations/consolidate')
+        .success(function() {
+            ngDialog.open({template:'Consolidación exitosa',plain:true});
+        }).error(function() {
+            ngDialog.open({template:'Error del servidor al consolidar cuentas',plain:true});
+        });
+    };
+    
     $scope.cuentaNombre = function(c) {
         return c === 'BankAccount' ? 'Cuenta bancaria' : c === 'CashAccount' ? 'Cuenta en efectivo' : 'Cuenta corriente';  
     };
@@ -27,6 +36,8 @@ angular.module('angularApp').controller('CuentasCtrl', function ($http,$scope,$l
     $scope.devengado = function() {
         return $scope.cuentas[2].accrued;
     };
+    
+    
     
     $scope.stateAmount = function(amount) {
         if(parseInt(amount) >= 0.0){

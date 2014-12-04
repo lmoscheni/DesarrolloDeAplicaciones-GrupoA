@@ -35,6 +35,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         templateUrl: 'views/crearComprobante.html',
         controller: 'ComprobanteCtrl'
       })
+        .when('/verComprobantes', {
+        templateUrl: 'views/verComprobantes.html',
+        controller: 'VerComprobantesCtrl'
+      })
         .when('/registroDeOperacionesYComprobantes', {
         templateUrl: 'views/registroDeOperacionesYComprobantes.html',
         controller: 'RegistroDeOperacionesYComprobantesCtrl'

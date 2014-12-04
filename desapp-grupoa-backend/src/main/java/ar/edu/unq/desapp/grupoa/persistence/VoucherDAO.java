@@ -23,8 +23,7 @@ public class VoucherDAO extends HibernateGenericDAO<Voucher> implements GenericD
 
     @Override
     protected Class<Voucher> getDomainClass() {
-        // TODO Auto-generated method stub
-        return null;
+        return Voucher.class;
     }
 
 }

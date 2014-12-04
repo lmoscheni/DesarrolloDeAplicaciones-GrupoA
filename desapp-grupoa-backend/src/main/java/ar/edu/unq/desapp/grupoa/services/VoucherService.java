@@ -13,12 +13,12 @@ public class VoucherService extends GenericService<Voucher>{
     private static final long serialVersionUID = 1L;
 
     @Transactional
-    public void saveVoucher(String json, CategoryService categoryService) throws Exception{
-        Voucher v = this.parseNewVoucher(json,categoryService);
+    public void saveVoucher(String json) throws Exception{
+        Voucher v = this.parseNewVoucher(json);
         save(v);
     }
     
-    public Voucher parseNewVoucher(String json, CategoryService CS) throws Exception{
-        return Parser.parseVoucher(new Voucher(),json,CS);
+    public Voucher parseNewVoucher(String json) throws Exception{
+        return Parser.parseVoucher(new Voucher(),json);
     }
 }

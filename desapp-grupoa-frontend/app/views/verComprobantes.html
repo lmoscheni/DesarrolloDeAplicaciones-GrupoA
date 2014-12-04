@@ -1,0 +1,70 @@
+<div ng-controller="VerComprobantesCtrl" class="">
+    <div class="panel panel-default">
+    <div class="panel-heading">{{ 'COMPROBANTES' | translate}}</div>
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+  			   <td><b>Date</b></td>
+                <td><b>Razon social</b></td>
+                <td><b>Concepto</b></td>
+                <td><b>Cuit</b></td>
+                <td><b>Monto</b></td>
+                <td><b>Tipo de pago</b></td>
+                <td><b>Taxed</b></td>
+                <td><b>No taxed</b></td>
+                <td><b>IIBB</b></td>
+                <td><b>IVA</b></td>
+                <td><b>Monto final</b></td>
+                <td><b>Acciones</b></td>
+  		    </tr>
+        </thead>
+        
+        <tbody>
+            <tr ng-repeat="voucher in vouchers | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
+                <td sortable="amount">{{parse(voucher.dateOfIssue)}} </td> 
+                <td>{{voucher.socialReason}} </td> 
+                <td>{{voucher.concept}} </td> 
+                <td>{{voucher.cuit}} </td>
+                <td>{{voucher.amount}} </td>
+                <td>{{comprobanteNombre(voucher.billType.name)}} </td> 
+                <td>{{verificar(voucher.billType.taxed)}} </td>
+                <td>{{verificar(voucher.billType.noTaxed)}} </td> 
+                <td>{{verificar(voucher.billType.IIBBPerception)}} </td>
+                <td>{{verificar(voucher.billType.IVA)}} </td> 
+                <td>{{calcular(voucher)}} </td>
+                <td>
+                    <div ng-controller="OperacionCtrl">
+                    <a href="#/modificarOperacion/{{operation}}" class="btn"><span class="glyphicon glyphicon-pencil">  </a>
+                    <a HTTP-EQUIV="REFRESH" ng-Click="delete(operation)" class="btn"><span class="glyphicon glyphicon-remove"></a></div>
+                </td>
+            </tr>
+  		</tbody>
+    </table>
+    </div>
+    
+    <ul  class="pagination pagination-right">
+        <li ng-class="prevPageDisabled()">
+            <a href ng-click="prevPage()">« {{ 'PREVIO' | translate}}</a>
+        </li>
+        <li ng-repeat="n in numberPages()">
+            <a href ng-click="page(n)">{{n+1}}</a>
+        </li>
+        <li ng-class="nextPageDisabled()">
+            <a href ng-click="nextPage()">{{ 'SIGUIENTE' | translate}} »</a>
+        </li>
+    </ul>
+    </br>
+
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-1">
+            <a href="#/crearComprobante" type="submit" class="btn btn-primary"> Crear comprobante</a>
+        </div>
+    </div>
+    
+
+        <button class="btn btn-warning" type="button" ng-csv="operations" filename="test.csv" field-separator="{,}">Exportar csv</button>
+    </br>
+
+</br>
+</div>

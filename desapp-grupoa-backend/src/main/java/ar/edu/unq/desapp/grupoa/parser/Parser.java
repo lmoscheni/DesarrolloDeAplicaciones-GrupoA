@@ -1,5 +1,9 @@
 package ar.edu.unq.desapp.grupoa.parser;
 
+import java.util.Date;
+
+import org.codehaus.jackson.JsonGenerationException;
+
 import ar.edu.unq.desapp.grupoa.model.Accounts.AccountEnum;
 import ar.edu.unq.desapp.grupoa.model.Bills.BillA;
 import ar.edu.unq.desapp.grupoa.model.Bills.BillB;
@@ -59,10 +63,19 @@ public class Parser {
         return o;
     }
     
-    public static Voucher parseVoucher(Voucher voucher,final String jsonVoucher, CategoryService categoryService) throws Exception {
+    @SuppressWarnings("deprecation")
+    public static Voucher parseVoucher(Voucher voucher,final String jsonVoucher) throws Exception {
         String[] tokens = getTokens(jsonVoucher);
+        String[] date = tokens[2].split("-");
+        System.out.println(date[0]);
+        System.out.println(date[1]);
+        System.out.println(date[2]);
+        Date d = new Date();
+        d.setDate(Integer.parseInt(date[2]));
+        d.setMonth(Integer.parseInt(date[1]));
+        d.setYear(Integer.parseInt(date[0]));
         
-        //voucher.setAmount(Double.parseDouble(tokens[2]));
+        voucher.setDateOfIssue(d);
         voucher.setSocialReason(tokens[4]);
         voucher.setCuit(tokens[6]);
         voucher.setConcept(tokens[8]);

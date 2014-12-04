@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoa.resources;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -25,12 +26,11 @@ public class VoucherWS {
 
     @Autowired
     private VoucherService voucherService;
-    private CategoryService categoryService;
     
     @GET
     @Path("/all")
     @Produces("application/json")
-    public List<Voucher> getAllVouchers() throws JsonGenerationException, JsonMappingException, IOException{
+    public List<Voucher> getAllVouchers() throws Exception, JsonGenerationException, JsonMappingException, IOException{
             List<Voucher> vouchers = getVoucherService().retriveAll();
             return vouchers;
     }
@@ -40,7 +40,7 @@ public class VoucherWS {
     @Consumes("application/json")
     public Response createVoucher(@Multipart(value = "voucher", type = "application/json") final String jsonVoucher) throws Exception{
         try{
-            getVoucherService().saveVoucher(jsonVoucher, getCategoryService());
+            getVoucherService().saveVoucher(jsonVoucher);
         }catch(Exception e){
             return Response.status(501).build();
         }
@@ -53,14 +53,6 @@ public class VoucherWS {
 
     public void setVoucherService(VoucherService voucherService) {
         this.voucherService = voucherService;
-    }
-
-    public CategoryService getCategoryService() {
-        return categoryService;
-    }
-
-    public void setCategoryService(CategoryService categoryService) {
-        this.categoryService = categoryService;
     }
     
 }

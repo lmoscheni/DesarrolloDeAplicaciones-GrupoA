@@ -1,25 +1,27 @@
 
 'use strict';
+var report = {};
 
 var app = angular.module('angularApp');
-    app.controller('ReporteCtrl', function($scope) {
-      $scope.name = "Ejemplo"
+    app.controller('ReporteCtrl', function($scope,$http) {
+      $scope.name = "Ejemplo";
+      
     });
-    app.directive('chart', function() {
+    app.directive('chart', function($http) {
         return {
           restrict: 'A',
           link: function($scope, $elm, $attr) {
             // Create the data table.
+            
+              $http.get('http://localhost:8080/desapp-grupoa-backend/rest/operations/all')
+        .success(function(dataa) {
+            $scope.report = dataa;
+ 
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Topping');
             data.addColumn('number', 'Slices');
-            data.addRows([
-              ['Mushrooms', 3],
-              ['Onions', 1],
-              ['Olives', 1],
-              ['Zucchini', 1],
-            ]);
-
+            
+            data.addRows($scope.report);
             // Set chart options
             var options = {'title':'How Much Pizza I Ate Last Night',
                            'width':400,
@@ -28,6 +30,13 @@ var app = angular.module('angularApp');
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.PieChart($elm[0]);
             chart.draw(data, options);
+        }).error(function() {
+            /*ngDialog.open({template:'Error del servidor, al obtener los comprobantes',plain:true});*/
+        });
+            
+            
+
+            
           }
       }
     });

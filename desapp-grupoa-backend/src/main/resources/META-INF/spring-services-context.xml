@@ -23,4 +23,12 @@
 		<property name="dao" ref="persistence.voucherdao" />
 	</bean>
 	
+	<bean id="services.billtype" class="ar.edu.unq.desapp.grupoa.services.BillTypeService">
+		<property name="dao" ref="persistence.billtypedao" />
+	</bean>
+	
+	<bean id="services.consolidation" class="ar.edu.unq.desapp.grupoa.services.ConsolidationService">
+		<property name="dao" ref="persistence.consolidationdao" />
+	</bean>
+	
 </beans>

@@ -6,7 +6,9 @@ var app = angular.module('angularApp');
 app.controller('ComprobanteCtrl', function ($http,$scope,$location,$window,$routeParams,ngDialog) {
     
     $scope.objectVoucherJson = {};
+    $scope.date = new Date(2013, 9, 22);
     $scope.objectVoucherJson = {'date':'', 'socialReason':'', 'cuit': '', 'concept':'', 'amount':'', 'billType' : '', 'taxed':'', 'noTaxed':'', 'IIBB':'', 'IVA':''};
+    $scope.objectVoucherJson.date = $scope.date;
     $scope.visible = 'false';
     
     $scope.updateVoucher = function() {
@@ -49,9 +51,7 @@ app.controller('ComprobanteCtrl', function ($http,$scope,$location,$window,$rout
             
         });
         
-    };
-    
-    
+    }
     
   });
 
