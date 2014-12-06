@@ -19,6 +19,7 @@ angular.module('angularApp').controller('CuentasCtrl', function ($http,$scope,$l
     $scope.consolidate = function(){
         $http.get('http://localhost:8080/desapp-grupoa-backend/rest/consolidations/consolidate')
         .success(function() {
+            $location.path('/verConsolidaciones');
             ngDialog.open({template:'Consolidación exitosa',plain:true});
         }).error(function() {
             ngDialog.open({template:'Error del servidor al consolidar cuentas',plain:true});

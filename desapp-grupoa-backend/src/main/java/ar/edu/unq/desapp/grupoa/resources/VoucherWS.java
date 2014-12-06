@@ -18,6 +18,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.model.System.Voucher;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
@@ -49,8 +50,17 @@ public class VoucherWS {
     @GET
     @Path("/delete/{id}")
     public List<Voucher> deleteVoucher(@PathParam("id") final String id) {
-        getVoucherService().deleteVoucher(new Integer(id), getVoucherService());
+        getVoucherService().deleteVoucher(new Integer(id));
         return getVoucherService().retriveAll();
+    }
+    
+    @GET
+    @Path("/modify/{id}/{voucher}")
+    @Produces("application/json")
+    public Response modifyVoucher(@PathParam("id") final int id,
+    @PathParam("voucher") final String voucher) throws Exception {
+        getVoucherService().updateVoucher(id, voucher);
+        return Response.ok().build();
     }
     
     public VoucherService getVoucherService() {

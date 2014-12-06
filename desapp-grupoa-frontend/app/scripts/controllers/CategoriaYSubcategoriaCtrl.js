@@ -31,12 +31,12 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
         ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
     });
     
-    $scope.createCategory = function() {
+    $scope.createCategory = function(path) {
         
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/categories/save/', $scope.objectCategory.name)
         .success(function() {
             ngDialog.open({template:'Categoria "' + $scope.objectCategory.name + '", creada correctamente!!',plain:true});
-            $location.path('/crearOperacion');
+            $location.path(path);
         }).error(function(data,status) {
             if(status === 500){
                 ngDialog.open({template:'Ya existe la categoría',plain:true});
@@ -59,6 +59,15 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
                 ngDialog.open({template:'Error del servidor, al crear la categoría',plain:true});
             }
         });
+    };
+    
+    $scope.verSubcategories = function(subcategories){
+        var subs = '';
+        var sub = ''
+        for(sub in subcategories){
+            subs = subs + ' ' + subcategories[sub];
+        }
+        return subs;
     };
     
     $scope.loadSubcategories = function(category) {
@@ -111,7 +120,7 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
     };
     
     $scope.delete = function(category) {
-        if(confirm('Confirmar operación?')) {
+        if(confirm('¿Esta seguro de eliminar la categoría?')) {
             $http({
                 method : 'GET',
                 url: 'http://localhost:8080/desapp-grupoa-backend/rest/categories/delete/'+ category.id,
@@ -127,7 +136,7 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
     };
     
     $scope.deleteSubcategory = function(subcategory) {
-        if(confirm('Confirmar operación?')) {
+        if(confirm('¿Esta seguro de eliminar la subcategoría?')) {
             $http({
                 method : 'GET',
                 url: 'http://localhost:8080/desapp-grupoa-backend/rest/categories/deleteSubcategory/'+ angular.toJson($scope.category.id) + '/' + subcategory,
@@ -154,9 +163,9 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
 
       $scope.pageCount = function(bool) {
           if(bool) {
-            return Math.ceil($scope.subcategories.length/$scope.itemsPerPage)-1;
+            return Math.ceil($scope.categories.length/$scope.itemsPerPage)-1;
           }else {
-              return Math.ceil($scope.categories.length/$scope.itemsPerPage)-1;
+              return Math.ceil($scope.subcategories.length/$scope.itemsPerPage)-1;
           }
       };
 

@@ -10,7 +10,7 @@ app.controller('ComprobanteCtrl', function ($http,$scope,$location,$window,$rout
     $scope.visible = 'false';
     
     $scope.updateVoucher = function() {
-        if($scope.objectVoucherJson.billType === 'Bill A'){
+        if($scope.objectVoucherJson.billType === 'Tipo A'){
             $scope.visible = 'true';
         }else{
             $scope.visible = 'false';

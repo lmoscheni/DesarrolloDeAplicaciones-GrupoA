@@ -10,27 +10,27 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
     $scope.objectOperationJson = {};
     $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':'', 'concept' : '', 'account' : ''};
     $scope.shifts = ['Mañana', 'Tarde', 'Noche'];
+    $scope.accounts = ['CurrentAccount', 'CashAccount', 'BankAccount'];
 
-    $scope.getCategories = function() {
-        $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
+    $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
         .success(function(data) {
             $scope.categories = data;
-        }).error(function() {
-            ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
-        });
-    };
-    
-    $scope.turno = function(t) {
-        return t === 'MAÑANA' ? "Mañana" : c === 'TARDE' ? "Tarde" : "Noche";  
-    };
-    
-    $scope.getSubcategories = function() {
             for(var i in $scope.categories){
                 if($scope.categories[i].name === $scope.objectOperationJson.category){
                     $scope.subcategories = $scope.categories[i].subcategories;    
                 }
             }
-    };    
+        }).error(function() {
+            ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
+        });
+    
+    $scope.turno = function(t) {
+        return t === 'MAÑANA' ? "Mañana" : c === 'TARDE' ? "Tarde" : "Noche";  
+    };  
+    
+    $scope.cuenta = function(c) {
+        return c === 'BankAccount' ? 'Cuenta bancaria' : c === 'CashAccount' ? 'Cuenta en efectivo' : 'Cuenta corriente';  
+    };
     
     $scope.objectOperationJson.amount = JSON.parse($routeParams.operacion).amount;
     if(JSON.parse($routeParams.operacion).operationType === 'INCOME'){
@@ -55,7 +55,7 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
                 if(status === 501){
                     ngDialog.open({template:'Monto invalido (no negativo)',plain:true});
                 }else{
-                    ngDialog.open({template:'Error del servidor '+status+', al crear la operación',plain:true});
+                    ngDialog.open({template:'Error del servidor '+status+', al editar la operación',plain:true});
                 }
             });
     };

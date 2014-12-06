@@ -14,17 +14,27 @@ public class VoucherService extends GenericService<Voucher>{
 
     @Transactional
     public void saveVoucher(String json) throws Exception{
-        Voucher v = this.parseNewVoucher(json);
+        Voucher v = this.parseNewVoucher(new Voucher(),json);
         save(v);
     }
     
     @Transactional
-    public void deleteVoucher(Integer id, VoucherService VS){
-        Voucher voucher = VS.findById(id);
-        VS.delete(voucher);
+    public void deleteVoucher(Integer id){
+        Voucher voucher = this.findById(id);
+        this.delete(voucher);
     }
     
-    public Voucher parseNewVoucher(String json) throws Exception{
-        return Parser.parseVoucher(new Voucher(),json);
+    @Transactional
+    public void updateVoucher(Integer id, String json) throws Exception{
+        Voucher v = this.findById(id);
+        update(this.parseUpdateVoucher(v, json));
+    }
+    
+    public Voucher parseNewVoucher(Voucher v,String json) throws Exception{
+        return Parser.parseVoucher(v,json);
+    }
+    
+    public Voucher parseUpdateVoucher(Voucher v,String json) throws Exception{
+        return Parser.parseVoucher(v,json);
     }
 }

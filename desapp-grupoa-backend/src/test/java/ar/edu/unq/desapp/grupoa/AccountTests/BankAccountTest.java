@@ -124,7 +124,7 @@ public class BankAccountTest extends TestCase {
         Operation mockOperation = mock(Operation.class);
         
         when(mockOperation.getDateOperation()).thenReturn(mockDateOperation);
-        when(mockDateOperation.getDay()).thenReturn(2);
+        when(mockDateOperation.getDate()).thenReturn(2);
         
         BankAccount account = new BankAccount();
         account.setDelayTime(15);

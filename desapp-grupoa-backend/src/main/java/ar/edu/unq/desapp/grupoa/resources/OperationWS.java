@@ -61,7 +61,7 @@ public class OperationWS {
     @GET
     @Path("/modify/{id}/{operation}")
     @Produces("application/json")
-    public Response saveCategory(@PathParam("id") final int id,
+    public Response modifyOperation(@PathParam("id") final int id,
     @PathParam("operation") final String operation) throws Exception {
             
         Operation o = getOperationService().findById(id);

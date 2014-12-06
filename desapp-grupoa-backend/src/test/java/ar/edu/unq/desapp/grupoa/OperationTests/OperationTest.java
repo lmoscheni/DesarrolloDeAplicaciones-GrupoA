@@ -88,7 +88,7 @@ public class OperationTest extends TestCase {
 
     public void testGetAndSetShift() {
 
-        Shift mockShift = Shift.TARDE;
+        Shift mockShift = Shift.Tarde;
 
         Operation operation = new Operation();
         operation.setShift(mockShift);

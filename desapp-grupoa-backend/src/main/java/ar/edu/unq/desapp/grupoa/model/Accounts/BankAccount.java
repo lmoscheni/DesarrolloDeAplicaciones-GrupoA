@@ -133,7 +133,14 @@ public class BankAccount extends Account {
     }
     
     public void delOperation(Operation operation) {
-        this.operations.remove(operation);
+        
+        List<Operation> newList = new ArrayList<Operation>();
+        for(Operation o : this.operations){
+            if(!o.getId().equals(operation.getId())){
+                newList.add(o);
+            }
+        }
+        this.operations = newList;
         if(operation.getOperationTypeEnum().equals(OperationTypeEnum.INCOME)){
             balance -= operation.getAmount();
         }else{
@@ -145,23 +152,34 @@ public class BankAccount extends Account {
     public boolean theOperationWasConsolidated(Operation operation) {
         Calendar dateNow = Calendar.getInstance();
         Date operationDate = operation.getDateOperation();
-        int daysTheySpent = dateNow.get(Calendar.DATE) - operationDate.getDay();
+        int daysTheySpent =  operationDate.getDate() - dateNow.get(Calendar.DATE);
         return daysTheySpent >= this.getDelayTime();
     }
     
-    public void consolidateOperation(Operation operation) {
+    public void consolidateOperation(Operation operation, List<Operation> removeOperations) {
         if(this.theOperationWasConsolidated(operation)) {
+            removeOperations.add(operation);
             this.balance += operation.getAmount();
             this.accrued -= operation.getAmount();
-            this.pendingOperations.remove(operation);
             this.operations.add(operation);
         }
     }
     
     @Override
     public void updateTheAccountStatus() {
+        List<Operation> removeOperations = new ArrayList<Operation>();
         for(Operation operation : this.pendingOperations) {
-            this.consolidateOperation(operation);
+            this.consolidateOperation(operation, removeOperations);
+        }
+        for(Operation o : removeOperations){
+            
+            List<Operation> newList = new ArrayList<Operation>();
+            for(Operation op : this.pendingOperations){
+                if(!o.getId().equals(op.getId())){
+                    newList.add(o);
+                }
+            }
+            this.pendingOperations = newList;
         }
     }
 }

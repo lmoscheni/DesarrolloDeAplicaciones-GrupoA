@@ -39,6 +39,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         templateUrl: 'views/verComprobantes.html',
         controller: 'VerComprobantesCtrl'
       })
+        .when('/modificarComprobante/:voucher', {
+        templateUrl: 'views/modificarComprobante.html',
+        controller: 'EditarComprobanteCtrl'
+      })
         .when('/registroDeOperacionesYComprobantes', {
         templateUrl: 'views/registroDeOperacionesYComprobantes.html',
         controller: 'RegistroDeOperacionesYComprobantesCtrl'
@@ -136,7 +140,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         ESTADO_CUENTAS : 'Accounts state',
         REPORTES : 'Reports',
         PREVIO : 'Prev',
-        SIGUIENTE : 'Next'
+        SIGUIENTE : 'Next',
+        EXPORTAR_CSV : 'Export csv',
+        CONSOLIDACIONES : 'Consolidations',
+        SYSTEMA : 'System of flow of cash and analysis of expenses by Skalic Julian and Moscheni Leandro | 2014'
     });
     
     $translateProvider.translations('es', {
@@ -192,7 +199,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         ESTADO_CUENTAS : 'Estado de cuentas',
         REPORTES : 'Reportes',
         PREVIO : 'Prev',
-        SIGUIENTE : 'Sig'
+        SIGUIENTE : 'Sig',
+        EXPORTAR_CSV : 'Exportar csv',
+        CONSOLIDACIONES : 'Consolidaciones',
+        SYSTEMA : 'Sistema de control de gastos y flujo de efectivo por Skalic Julian and Moscheni Leandro | 2014'
     });
     $translateProvider.preferredLanguage('es');
     

@@ -24,7 +24,7 @@ public class OperationService extends GenericService<Operation>{
     
     @Transactional
     public void updateOperation(Operation o, String jsonOperation, CategoryService categoryService) throws Exception{
-        update(Parser.parseUpdateOperation(o,jsonOperation,categoryService));
+        update(Parser.parseOperation(o,jsonOperation,categoryService));
     }
     
     @Transactional

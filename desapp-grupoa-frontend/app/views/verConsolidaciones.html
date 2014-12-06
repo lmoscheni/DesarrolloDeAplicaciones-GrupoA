@@ -11,12 +11,24 @@
         </thead>
         
         <tbody>
-            <tr ng-repeat="consolidation in consolidations">
+            <tr ng-repeat="consolidation in consolidations | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
                 <td>{{parse(consolidation.consolidationDate)}}</td>
                 <td sortable="cuenta.balance">{{consolidation.available}}</td>          
                 <td sortable="cuenta.balance">{{consolidation.accrued}}</td>          
             </tr>
   		</tbody>
     </table>
-        
+</div>        
+        <ul  class="pagination pagination-right">
+        <li ng-class="prevPageDisabled()">
+            <a href ng-click="prevPage()">« {{ 'PREVIO' | translate}}</a>
+        </li>
+        <li ng-repeat="n in numberPages()">
+            <a href ng-click="page(n)">{{n+1}}</a>
+        </li>
+        <li ng-class="nextPageDisabled()">
+            <a href ng-click="nextPage()">{{ 'SIGUIENTE' | translate}} »</a>
+        </li>
+    </ul>
+    </br>
 </div>

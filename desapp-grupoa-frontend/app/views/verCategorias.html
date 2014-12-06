@@ -15,7 +15,7 @@
             <tr ng-repeat="category in categories | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
                 <td sortable="name">{{category.name}} </td> 
                 <td>
-                    {{category.subcategories}}
+                    {{verSubcategories(category.subcategories)}}
                 </td>          
                 <td>
                     <a ng-Click="dataModify(category)" data-target="#modalEditarCategoria" data-toggle="modal" class="btn"><span class="glyphicon glyphicon-pencil"> </a>

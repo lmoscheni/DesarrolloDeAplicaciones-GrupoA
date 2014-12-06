@@ -41,36 +41,10 @@ public class Parser {
         return o;
     }
     
-    public static Operation parseUpdateOperation(Operation o,final String jsonOperation, CategoryService categoryService) throws Exception {
-        String[] tokens = getTokens(jsonOperation);
-        
-        o.setAmount(Double.parseDouble(tokens[2]));
-        o.setShift(Shift.create(tokens[4]));
-        Category category = categoryService.findByName(tokens[6]);
-        o.setCategory(category);
-        OperationTypeEnum operationType = null;
-        
-        if(tokens[8].equals("true")){
-            operationType = OperationTypeEnum.INCOME;
-        }else{
-            operationType = OperationTypeEnum.EGRESS;
-        }
-        
-        o.setSubcategory(tokens[10]);
-        o.setOperationTypeEnum(operationType);
-        o.setConcept(tokens[12]);
-        o.setAccount(AccountEnum.create(tokens[14]));
-        return o;
-    }
-    
     @SuppressWarnings("deprecation")
     public static Voucher parseVoucher(Voucher voucher,final String jsonVoucher) throws Exception {
         String[] tokens = getTokens(jsonVoucher);
-        //String[] date = tokens[2].split("-");
         Date d = new Date(tokens[2]);
-//        d.setDate(Integer.parseInt(date[2]));
-//        d.setMonth(Integer.parseInt(date[1]));
-//        d.setYear(Integer.parseInt(date[0]));
         
         voucher.setDateOfIssue(d);
         voucher.setSocialReason(tokens[4]);
@@ -78,7 +52,7 @@ public class Parser {
         voucher.setConcept(tokens[8]);
         voucher.setAmount(Integer.parseInt(tokens[10]));
         
-        if(tokens[12].equals("Bill A")){
+        if(tokens[12].equals("Tipo A")){
             BillA billA = new BillA();
             billA.setTaxed(Integer.parseInt(tokens[14]));
             billA.setNoTaxed(Integer.parseInt(tokens[16]));
@@ -86,19 +60,19 @@ public class Parser {
             billA.setIVA(Integer.parseInt(tokens[20]));
             voucher.setBillType(billA);
         }
-        if(tokens[12].equals("Bill B")){
+        if(tokens[12].equals("Tipo B")){
             BillB billB = new BillB();
             voucher.setBillType(billB);
         }
-        if(tokens[12].equals("Bill C")){
+        if(tokens[12].equals("Tipo C")){
             BillC billC = new BillC();
             voucher.setBillType(billC);
         }
-        if(tokens[12].equals("Bill D")){
+        if(tokens[12].equals("Tipo D")){
             BillD billD = new BillD();
             voucher.setBillType(billD);
         }
-        if(tokens[12].equals("Bill X")){
+        if(tokens[12].equals("Tipo X")){
             BillX billX = new BillX();
             voucher.setBillType(billX);
         }

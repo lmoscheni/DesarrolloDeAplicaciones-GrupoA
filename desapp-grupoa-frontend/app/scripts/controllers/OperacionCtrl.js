@@ -9,6 +9,8 @@ app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeP
     $scope.subcategories = [];
     $scope.objectOperationJson = {};
     $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':'', 'concept' : '', 'account' : ''};
+    $scope.shifts = ['Mañana', 'Tarde', 'Noche'];
+    $scope.accounts = ['Cuenta corriente', 'Cuenta en efectivo', 'Cuenta bancaria'];
     $scope.disableSubcategory = true;
     $scope.d = false;
     
@@ -33,7 +35,7 @@ app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeP
     };    
     
     $scope.delete = function(operation) {
-        if(confirm('Confirmar operación?')) {
+        if(confirm('¿Esta seguro de borrar la operación')) {
             $http({
                 method : 'GET',
                 url: 'http://localhost:8080/desapp-grupoa-backend/rest/operations/deleteOperation/' + operation.id,
