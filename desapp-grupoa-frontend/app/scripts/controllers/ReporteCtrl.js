@@ -13,17 +13,22 @@ var app = angular.module('angularApp');
           link: function($scope, $elm, $attr) {
             // Create the data table.
             
-              $http.get('http://localhost:8080/desapp-grupoa-backend/rest/operations/all')
+              $http.get('http://localhost:8080/desapp-grupoa-backend/rest/reports/distributionExpenses')
         .success(function(dataa) {
             $scope.report = dataa;
- 
+            var list = [];
+            var a = '';
+            var count = 0; 
+            for(a in $scope.report){
+                list.push([a,$scope.report[a]]);
+            }
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Topping');
             data.addColumn('number', 'Slices');
             
-            data.addRows($scope.report);
+            data.addRows(list);
             // Set chart options
-            var options = {'title':'How Much Pizza I Ate Last Night',
+            var options = {'title':'Costos por categoría',
                            'width':400,
                            'height':300};
 

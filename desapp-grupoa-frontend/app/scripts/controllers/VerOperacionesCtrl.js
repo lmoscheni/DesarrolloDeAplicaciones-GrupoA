@@ -33,6 +33,19 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,ngD
         return to === "INCOME" ? 'Ingreso' : 'Egreso';
     };
     
+    $scope.getOperations = function(){
+        var operaciones = [];
+        
+
+        for(op in $scope.operations){
+            var operacion = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':'', 'concept' : '', 'account' : ''};
+            operacion.amount = op.amount;
+            operacion.category = op.category.name;
+            operaciones.push(operacion);
+        };
+        return operaciones;
+    };
+    
     $scope.prevPage = function() {
         if ($scope.currentPage > 0) {
           $scope.currentPage--;

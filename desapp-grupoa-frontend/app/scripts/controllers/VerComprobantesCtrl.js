@@ -35,11 +35,13 @@ app.controller('VerComprobantesCtrl', function ($http,$scope,$location,$route,ng
     $scope.verificar = function(dato){
           if(dato == null){
             return '-'   
+          }else{
+            return dato;  
           };
     };
     
     $scope.comprobanteNombre = function(factura) {
-        return factura === 'BiilA' ? 'Factura A' : factura === 'BillB' ? 'Factura B' : factura === 'BillC' ? 'Factura C' : factura === 'BiilD' ? 'Factura D' : 'Factura X';  
+        return factura === 'BillA' ? 'Factura A' : factura === 'BillB' ? 'Factura B' : factura === 'BillC' ? 'Factura C' : factura === 'BiilD' ? 'Factura D' : 'Factura X';  
     };
     
     $scope.parse = function(date){

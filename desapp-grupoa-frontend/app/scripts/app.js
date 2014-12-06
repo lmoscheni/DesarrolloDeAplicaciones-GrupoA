@@ -75,6 +75,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         templateUrl: 'views/verReportes.html',
         controller: 'ReporteCtrl'
       })
+        .when('/verConsolidaciones', {
+        templateUrl: 'views/verConsolidaciones.html',
+        controller: 'ConsolidacionesCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

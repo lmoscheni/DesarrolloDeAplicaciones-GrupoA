@@ -1,0 +1,22 @@
+<div ng-controller="ConsolidacionesCtrl" class="">
+    <div class="panel panel-default">
+    <div class="panel-heading"><h3><center><b><u>Consolidaciones</u></b></center></h3></div>
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <td><b>{{ 'DIA' | translate}} </b></td>
+                <td><b>Disponible</b></td>
+                <td><b>Devengado</b></td>
+  		    </tr>
+        </thead>
+        
+        <tbody>
+            <tr ng-repeat="consolidation in consolidations">
+                <td>{{parse(consolidation.consolidationDate)}}</td>
+                <td sortable="cuenta.balance">{{consolidation.available}}</td>          
+                <td sortable="cuenta.balance">{{consolidation.accrued}}</td>          
+            </tr>
+  		</tbody>
+    </table>
+        
+</div>
