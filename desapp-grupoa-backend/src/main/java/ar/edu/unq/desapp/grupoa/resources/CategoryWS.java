@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoa.resources;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -47,7 +48,19 @@ public class CategoryWS {
     @Path("/delete/{id}")
     public List<Category> deleteCategory(@PathParam("id") final String id) {
         Category c = getCategoryService().findById(new Integer(id));
-        getCategoryService().delete(c);
+        List<Operation> operations = getOperationService().retriveAll();
+        boolean operationContainsCategory = false;
+        for(Operation o : operations){
+            if(c.getName().equals(o.getCategory().getName())){
+                operationContainsCategory = true;
+            }
+        }
+        
+        if(!operationContainsCategory){
+            getCategoryService().delete(c);
+        }else{
+            return new ArrayList<Category>();
+        }
         return  getCategoryService().retriveAll();
     }
     

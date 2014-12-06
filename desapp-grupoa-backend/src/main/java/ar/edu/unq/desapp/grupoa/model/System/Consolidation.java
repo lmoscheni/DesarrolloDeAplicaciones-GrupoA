@@ -29,6 +29,8 @@ public class Consolidation implements Serializable{
 
     protected Date consolidationDate;
 
+    public Consolidation(){}
+    
     public Consolidation(double available, double accrued, Date consolidationDate) {
         this.available = available;
         this.accrued = accrued;

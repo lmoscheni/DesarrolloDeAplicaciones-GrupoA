@@ -66,14 +66,11 @@ public class Parser {
     @SuppressWarnings("deprecation")
     public static Voucher parseVoucher(Voucher voucher,final String jsonVoucher) throws Exception {
         String[] tokens = getTokens(jsonVoucher);
-        String[] date = tokens[2].split("-");
-        System.out.println(date[0]);
-        System.out.println(date[1]);
-        System.out.println(date[2]);
-        Date d = new Date();
-        d.setDate(Integer.parseInt(date[2]));
-        d.setMonth(Integer.parseInt(date[1]));
-        d.setYear(Integer.parseInt(date[0]));
+        //String[] date = tokens[2].split("-");
+        Date d = new Date(tokens[2]);
+//        d.setDate(Integer.parseInt(date[2]));
+//        d.setMonth(Integer.parseInt(date[1]));
+//        d.setYear(Integer.parseInt(date[0]));
         
         voucher.setDateOfIssue(d);
         voucher.setSocialReason(tokens[4]);

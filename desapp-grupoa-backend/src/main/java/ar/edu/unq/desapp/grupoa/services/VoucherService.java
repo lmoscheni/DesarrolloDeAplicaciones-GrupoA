@@ -18,6 +18,12 @@ public class VoucherService extends GenericService<Voucher>{
         save(v);
     }
     
+    @Transactional
+    public void deleteVoucher(Integer id, VoucherService VS){
+        Voucher voucher = VS.findById(id);
+        VS.delete(voucher);
+    }
+    
     public Voucher parseNewVoucher(String json) throws Exception{
         return Parser.parseVoucher(new Voucher(),json);
     }

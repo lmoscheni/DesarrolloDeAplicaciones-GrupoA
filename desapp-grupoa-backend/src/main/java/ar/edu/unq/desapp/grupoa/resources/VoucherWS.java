@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
@@ -17,6 +18,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.model.System.Voucher;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 import ar.edu.unq.desapp.grupoa.services.VoucherService;
@@ -39,14 +41,18 @@ public class VoucherWS {
     @Path("/save/")
     @Consumes("application/json")
     public Response createVoucher(@Multipart(value = "voucher", type = "application/json") final String jsonVoucher) throws Exception{
-        try{
             getVoucherService().saveVoucher(jsonVoucher);
-        }catch(Exception e){
-            return Response.status(501).build();
-        }
+
             return Response.status(200).build();
     }
 
+    @GET
+    @Path("/delete/{id}")
+    public List<Voucher> deleteVoucher(@PathParam("id") final String id) {
+        getVoucherService().deleteVoucher(new Integer(id), getVoucherService());
+        return getVoucherService().retriveAll();
+    }
+    
     public VoucherService getVoucherService() {
         return voucherService;
     }
