@@ -66,28 +66,59 @@ public class AnalysisAndProjectionOfCosts {
         return operationsCategory;
     }
     
-    public void incomeByShift() {
-        //TODO
+    public Map<String,Double> incomeByShift() {
+    	Map<String,Double> incomesByShift = new HashMap<String, Double>();
+    	this.consolidationAfternoonShift(incomesByShift);
+    	this.consolidationMorningShift(incomesByShift);
+    	this.consolidationNightShift(incomesByShift);
+    	return incomesByShift;
     }
     
     public Map<String,Double> accountDistribution(){
     	Map<String,Double> accountDistribution = new HashMap<String, Double>();
     	for(Account a : this.accounts){
-    		accountDistribution.put(a.getName(), a.getAccrued());
+    		accountDistribution.put(a.getName(), a.getBalance());
     	}
 		return accountDistribution;
     	
     }
     
-    private Double consolidationNightShift(){
-    	return 1.0;
+    private void consolidationNightShift(Map<String,Double> map){
+    	for(Account a : this.accounts){
+    		Double mount = 0.0;
+    		String key = "Noche" + " " + a.getName();
+    		for(Operation o: a.operations){
+    			if(o.getShift().equals("Noche")){
+    				mount += a.getBalance();
+    			}
+    		}
+    		map.put(key, mount);
+    	}
     }
     
-    private Double consolidationMorningShift(){
-    	return 1.0;
+    private void consolidationMorningShift(Map<String,Double> map){
+    	for(Account a : this.accounts){
+    		Double mount = 0.0;
+    		String key = "Mañana" + " " + a.getName();
+    		for(Operation o: a.operations){
+    			if(o.getShift().equals("Noche")){
+    				mount += a.getBalance();
+    			}
+    		}
+    		map.put(key, mount);
+    	}
     }
     
-    private Double consolidationAfternoonShift(){
-    	return 1.0;
+    private void consolidationAfternoonShift(Map<String,Double> map){
+    	for(Account a : this.accounts){
+    		Double mount = 0.0;
+    		String key = "Mañana" + " " + a.getName();
+    		for(Operation o: a.operations){
+    			if(o.getShift().equals("Noche")){
+    				mount += a.getBalance();
+    			}
+    		}
+    		map.put(key, mount);
+    	}
     }
 }
