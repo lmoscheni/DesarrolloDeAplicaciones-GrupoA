@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.sun.org.apache.bcel.internal.generic.ACONST_NULL;
+
+import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 
@@ -13,6 +16,7 @@ public class AnalysisAndProjectionOfCosts {
     public List<Operation> operations;
     public List<Consolidation> consolidations;
     public List<Category> categorys;
+    protected List<Account> accounts;
     
     public AnalysisAndProjectionOfCosts(List<Operation> operations,List<Consolidation> consolidations,List<Category> categorys) {
         this.operations = operations;
@@ -61,13 +65,29 @@ public class AnalysisAndProjectionOfCosts {
         }
         return operationsCategory;
     }
-
-    public Map<String,Double> analysisOfTheMonthlyConsolidation(String month) {
-        //TODO
-        return null;
-    }
     
     public void incomeByShift() {
         //TODO
+    }
+    
+    public Map<String,Double> accountDistribution(){
+    	Map<String,Double> accountDistribution = new HashMap<String, Double>();
+    	for(Account a : this.accounts){
+    		accountDistribution.put(a.getName(), a.getAccrued());
+    	}
+		return accountDistribution;
+    	
+    }
+    
+    private Double consolidationNightShift(){
+    	return 1.0;
+    }
+    
+    private Double consolidationMorningShift(){
+    	return 1.0;
+    }
+    
+    private Double consolidationAfternoonShift(){
+    	return 1.0;
     }
 }
