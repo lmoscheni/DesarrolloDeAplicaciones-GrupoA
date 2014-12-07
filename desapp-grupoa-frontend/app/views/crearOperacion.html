@@ -20,7 +20,7 @@
                     <tr>
                         <td>
                             
-                            <select name="categoria" required ng-model="objectOperationJson.category"  ng-Click="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" ng-class="form-control">
+                            <select name="categoria" required ng-model="objectOperationJson.category"  ng-Click="getCategories()" ng-Change="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" ng-class="form-control">
                                 <option value="">{{ 'SELECCIONAR_CATEGORIA' | translate}}</option>
                             </select>
                             

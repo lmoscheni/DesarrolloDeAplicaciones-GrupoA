@@ -37,11 +37,20 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,ngD
         var operaciones = [];
         
 
-        for(op in $scope.operations){
-            var operacion = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':'', 'concept' : '', 'account' : ''};
-            operacion.amount = op.amount;
-            operacion.category = op.category.name;
+        for(var i=0;i<$scope.operations.length;i++){
+            var operacion = {'id' : '','amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':'', 'concept' : '', 'account' : ''};
+            operacion.id = $scope.operations[i].id + ' ';
+            operacion.amount = angular.toJson($scope.operations[i].amount) + ' ';
+            operacion.shift = $scope.operations[i].shift + ' ';
+            operacion.category = $scope.operations[i].category.name + ' ';
+            operacion.operationType = $scope.tipoOperacion($scope.operations[i].operationType) + ' ';
+            operacion.subcategory = $scope.operations[i].subcategory + ' ';
+            operacion.concept = $scope.operations[i].concept + ' ';
+            operacion.account = $scope.operations[i].account + ' ';
             operaciones.push(operacion);
+            /*var operacion = '';
+            operacion = angular.toJson($scope.operations[i].id) + ' ' + $scope.operations[i].amount + ' ' + $scope.operations[i].shift;
+            operaciones.push(operacion);*/
         };
         return operaciones;
     };

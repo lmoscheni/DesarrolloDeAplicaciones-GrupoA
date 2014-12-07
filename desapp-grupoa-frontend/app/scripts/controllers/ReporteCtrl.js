@@ -51,7 +51,8 @@ var app = angular.module('angularApp');
           restrict: 'A',
           link: function($scope, $elm, $attr) {
             // Create the data table.
-            
+            $scope.categories = ['Hola', 'Chau'];
+              $scope.category = '';
               $http.get('http://localhost:8080/desapp-grupoa-backend/rest/reports/distributionExpenses')
         .success(function(dataa) {
             $scope.report = dataa;

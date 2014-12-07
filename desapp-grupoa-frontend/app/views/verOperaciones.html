@@ -57,7 +57,7 @@
     </div>
     
 
-        <button class="btn btn-warning" type="button" ng-csv="getOperations" filename="operaciones.csv" field-separator=","> {{ 'EXPORTAR_CSV' | translate}} </button>
+        <button class="btn btn-warning" type="button" ng-csv="getOperations()" filename="operaciones.csv" csv-header="['Id ', 'Monto ', 'Turno ', 'Categoría ', 'Tipo_de_operación ', 'Subcategoría ', 'Concepto ', 'Cuenta ']"> {{ 'EXPORTAR_CSV' | translate}} </button>
     </br>
 
 </br>

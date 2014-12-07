@@ -42,6 +42,25 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
     $scope.objectOperationJson.concept = JSON.parse($routeParams.operacion).concept;
     $scope.objectOperationJson.account = JSON.parse($routeParams.operacion).account;
     
+    $scope.getCategories = function() {
+        $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
+        .success(function(data) {
+            $scope.categories = data;
+            $scope.disableSubcategory = false;
+        }).error(function() {
+            ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
+        });
+    };
+       
+    $scope.getSubcategories = function() {
+            
+            for(var i=0;i<$scope.categories.length;i++){
+                if($scope.categories[i].name === $scope.objectOperationJson.category){
+                    $scope.subcategories = $scope.categories[i].subcategories;    
+                }
+            }
+    };  
+    
     $scope.modificar = function() {
         
         $http({

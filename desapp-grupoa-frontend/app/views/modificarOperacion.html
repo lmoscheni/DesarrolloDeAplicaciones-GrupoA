@@ -18,7 +18,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <select name="selectCategory" ng-model="objectOperationJson.category" draggable="true" ng-options="category.name as category.name for category in categories" ng-class="form-control">
+                            <select name="selectCategory" ng-Click="getSubcategories()" ng-model="objectOperationJson.category" draggable="true" ng-options="category.name as category.name for category in categories" ng-class="form-control">
                                 
                             </select>
                         </td>

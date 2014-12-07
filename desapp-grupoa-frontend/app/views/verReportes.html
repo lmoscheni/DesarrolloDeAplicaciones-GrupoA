@@ -1,4 +1,14 @@
 <div ng-controller="ReporteCtrl">
-      <div chart></div>
-    <div chart2></div>
+    <div class="row">  
+        <div class="col-md-4">
+            <div chart></div>
+        </div>
+        <div class="col-md-6">
+            <div chart2></div>
+            <select name="categoria" ng-model="category" draggable="true" ng-options="category for category in categories" ng-class="form-control">
+        </select>
+        {{category}}
+        </div>
+    </div>
+    
 </div>
