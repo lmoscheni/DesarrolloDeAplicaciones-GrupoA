@@ -44,20 +44,20 @@ public class Parser {
     @SuppressWarnings("deprecation")
     public static Voucher parseVoucher(Voucher voucher,final String jsonVoucher) throws Exception {
         String[] tokens = getTokens(jsonVoucher);
-        Date d = new Date(tokens[2]);
+        Date d = new Date(tokens[2].replace('-', '/'));
         
         voucher.setDateOfIssue(d);
         voucher.setSocialReason(tokens[4]);
         voucher.setCuit(tokens[6]);
         voucher.setConcept(tokens[8]);
-        voucher.setAmount(Integer.parseInt(tokens[10]));
+        voucher.setAmount(Double.parseDouble(tokens[10]));
         
         if(tokens[12].equals("Tipo A")){
             BillA billA = new BillA();
-            billA.setTaxed(Integer.parseInt(tokens[14]));
-            billA.setNoTaxed(Integer.parseInt(tokens[16]));
-            billA.setIIBBPerception(Integer.parseInt(tokens[18]));
-            billA.setIVA(Integer.parseInt(tokens[20]));
+            billA.setTaxed(Double.parseDouble(tokens[14]));
+            billA.setNoTaxed(Double.parseDouble(tokens[16]));
+            billA.setIIBBPerception(Double.parseDouble(tokens[18]));
+            billA.setIVA(Double.parseDouble((tokens[20])));
             voucher.setBillType(billA);
         }
         if(tokens[12].equals("Tipo B")){

@@ -26,10 +26,13 @@ app.controller('VerComprobantesCtrl', function ($http,$scope,$location,$route,ng
     };
     
     $scope.calcular = function(voucher) {
-        if (voucher.billType === 'BillA'){
-            
-        }
-        return voucher.amount;
+        if (voucher.billType.name === 'BillA'){
+            var m = 0;
+            m = voucher.amount + voucher.billType.taxed + voucher.billType.noTaxed + voucher.billType.iibbperception + voucher.billType.iva;
+            return m;
+        }else{
+            return voucher.amount;
+        };
     };
     
     $scope.verificar = function(dato){

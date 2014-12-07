@@ -82,7 +82,7 @@ public class BillA extends BillType {
     }
     
     private double calculateTaxes(double amount) {
-        return this.taxed + this.noTaxed + this.IIBBPerception + calculatePorsentaje(amount, this.IVA);
+        return this.taxed + this.noTaxed + this.IIBBPerception + this.IVA;
     }
 
     public double calculateFinalAmount(Voucher voucher) {

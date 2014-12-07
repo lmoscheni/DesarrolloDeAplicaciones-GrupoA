@@ -143,7 +143,8 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         SIGUIENTE : 'Next',
         EXPORTAR_CSV : 'Export csv',
         CONSOLIDACIONES : 'Consolidations',
-        SYSTEMA : 'System of flow of cash and analysis of expenses by Skalic Julian and Moscheni Leandro | 2014'
+        SYSTEMA : 'System of flow of cash and analysis of expenses by Skalic Julian and Moscheni Leandro | 2014',
+        EDITAR_COMPROBANTE : 'Edit voucher'
     });
     
     $translateProvider.translations('es', {
@@ -202,7 +203,8 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         SIGUIENTE : 'Sig',
         EXPORTAR_CSV : 'Exportar csv',
         CONSOLIDACIONES : 'Consolidaciones',
-        SYSTEMA : 'Sistema de control de gastos y flujo de efectivo por Skalic Julian and Moscheni Leandro | 2014'
+        SYSTEMA : 'Sistema de control de gastos y flujo de efectivo por Skalic Julian and Moscheni Leandro | 2014',
+        EDITAR_COMPROBANTE : 'Editar comprobante'
     });
     $translateProvider.preferredLanguage('es');
     

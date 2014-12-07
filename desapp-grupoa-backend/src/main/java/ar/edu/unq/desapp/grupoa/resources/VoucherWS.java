@@ -57,8 +57,9 @@ public class VoucherWS {
     @GET
     @Path("/modify/{id}/{voucher}")
     @Produces("application/json")
-    public Response modifyVoucher(@PathParam("id") final int id,
+    public Response modifyOperation(@PathParam("id") final int id,
     @PathParam("voucher") final String voucher) throws Exception {
+        
         getVoucherService().updateVoucher(id, voucher);
         return Response.ok().build();
     }

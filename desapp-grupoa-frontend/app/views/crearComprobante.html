@@ -7,19 +7,14 @@
         <div class="form-group">
            <div class="input-group">
                 <span class="input-group-addon">></span>
-                <input name="razonSocial" id="razonSocial" type="date" placeholder="aaaa/mm/dd" ng-model="objectVoucherJson.date" ng-class="form-control"></input>
+                <input name="razonSocial" id="razonSocial" type="date" placeholder="aaaa-mm-dd" ng-model="objectVoucherJson.date" ng-class="form-control"></input>
             </div>
         </div>
         
         <div class="form-group">
             <div class="input-group">
-                <select  name="billType" ng-model="objectVoucherJson.billType" draggable="true" ng-class="form-control">
+                <select  name="billType" ng-Click="updateVoucher()" ng-model="objectVoucherJson.billType" draggable="true" ng-class="form-control" ng-options="factura for factura in facturas">
                     <option value="">Seleccionar tipo de pago</option>
-                    <option value="Tipo A" ng-Click="updateVoucher()">Tipo A</option>
-                    <option value="Tipo B" ng-Click="updateVoucher()">Tipo B</option>
-                    <option value="Tipo C" ng-Click="updateVoucher()">Tipo C</option>
-                    <option value="Tipo D" ng-Click="updateVoucher()">Tipo D</option>
-                    <option value="Tipo X" ng-Click="updateVoucher()">Tipo X</option>
                 </select>
             </div>
         </div>
@@ -52,8 +47,8 @@
             </div>
         </div>
     
-        <div class="form-group" ng-show="visible">
-           <div class="input-group" >
+        <div class="form-group" ng-show="visible"> 
+           <div class="input-group">
                 <span class="input-group-addon">></span>
                 <input name="noTaxed" id="noTaxed" type="number" ng-class="form-control" ng-model="objectVoucherJson.noTaxed" placeholder="No Taxed"/>
             </div>
@@ -65,18 +60,25 @@
                 <input name="IIBB" id="IIBB" type="number" ng-class="form-control" ng-model="objectVoucherJson.IIBB" placeholder="IIBB"/>
             </div>
         </div>
-    
-        <div class="form-group" ng-show="visible">
-           <div class="input-group">
-                <span class="input-group-addon">%</span>
-                <input name="IVA" id="IVA" type="number" ng-class="form-control" ng-model="objectVoucherJson.IVA" placeholder="IVA"/>
-            </div>
-        </div>
-    
+
         <div class="form-group">
            <div class="input-group">
                 <span class="input-group-addon">$</span>
-                <input name="monto/amount" id="monto" name="monto" type="number" ng-class="form-control" ng-model="objectVoucherJson.amount" placeholder="{{ 'MONTO' | translate}}" required/>
+                <input ng-Change="calculateAmount()" id="monto" name="monto" type="number" ng-class="form-control" ng-model="objectVoucherJson.amount" placeholder="{{ 'MONTO' | translate}}" required/>
+            </div>
+        </div>
+    
+        <div class="form-group" ng-show="visible">
+           <div class="input-group">
+                <span class="input-group-addon">></span>
+                <input name="IVA" id="IVA" ng-class="form-control" type="number" step="any" ng-Change="calculateIVA()" ng-model="objectVoucherJson.IVA" placeholder="IVA"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <span >Monto final: </span>
+                <span >{{montoFinal}}</span>
             </div>
         </div>
         

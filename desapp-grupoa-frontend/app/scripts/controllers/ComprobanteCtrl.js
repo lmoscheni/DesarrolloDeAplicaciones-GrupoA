@@ -8,13 +8,26 @@ app.controller('ComprobanteCtrl', function ($http,$scope,$location,$window,$rout
     $scope.objectVoucherJson = {};
     $scope.objectVoucherJson = {'date':'', 'socialReason':'', 'cuit': '', 'concept':'', 'amount':'', 'billType' : '', 'taxed':'', 'noTaxed':'', 'IIBB':'', 'IVA':''};
     $scope.visible = 'false';
+    $scope.montoFinal = 0;
+    $scope.facturas = ['Tipo A', 'Tipo B', 'Tipo C', 'Tipo D', 'Tipo X'];
     
     $scope.updateVoucher = function() {
         if($scope.objectVoucherJson.billType === 'Tipo A'){
             $scope.visible = 'true';
+            IVA.disable = false;
         }else{
             $scope.visible = 'false';
         }
+    };
+    
+    $scope.validar = function(){
+        var dateArray = [];
+        dateArray = $scope.objectVoucherJson.date.split("-");
+        if(dateArray[0].length === 4){
+            return true;
+        }else{
+            return false;  
+        };
     };
    
     $scope.delete = function(voucher) {
@@ -36,6 +49,7 @@ app.controller('ComprobanteCtrl', function ($http,$scope,$location,$window,$rout
     
     
     $scope.createVoucher = function() {
+        if($scope.validar()){
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/vouchers/save/',angular.toJson($scope.objectVoucherJson))
         .success(function(data) {
             $scope.operations = data;
@@ -49,8 +63,27 @@ app.controller('ComprobanteCtrl', function ($http,$scope,$location,$window,$rout
             }
             
         });
+        }else{
+            ngDialog.open({template:'Error al ingresar fecha, formato: aaaa-mm-dd',plain:true});
+        };
         
     }
+    
+    $scope.calculateAmount = function(){
+        if($scope.objectVoucherJson.billType === 'Tipo A'){
+            $scope.objectVoucherJson.IVA = $scope.objectVoucherJson.amount + ($scope.objectVoucherJson.amount * 0.21);
+            $scope.montoFinal = $scope.objectVoucherJson.amount + $scope.objectVoucherJson.taxed + $scope.objectVoucherJson.noTaxed + $scope.objectVoucherJson.IIBB + $scope.objectVoucherJson.IVA;   
+        }else{
+            $scope.montoFinal = $scope.objectVoucherJson.amount;   
+        }
+    };
+    
+    $scope.calculateIVA = function(){
+        if($scope.objectVoucherJson.billType === 'Tipo A'){
+            $scope.montoFinal = 0;
+            $scope.montoFinal = $scope.objectVoucherJson.amount + $scope.objectVoucherJson.taxed + $scope.objectVoucherJson.noTaxed + $scope.objectVoucherJson.IIBB + $scope.objectVoucherJson.IVA; 
+        };
+    };
     
   });
 
