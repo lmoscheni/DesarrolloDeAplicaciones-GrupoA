@@ -18,7 +18,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <select name="selectCategory" ng-Click="getSubcategories()" ng-model="objectOperationJson.category" draggable="true" ng-options="category.name as category.name for category in categories" ng-class="form-control">
+                            <select name="selectCategory" ng-Change="getSubcategories()" ng-model="objectOperationJson.category" draggable="true" ng-options="category.name as category.name for category in categories" ng-class="form-control">
                                 
                             </select>
                         </td>
@@ -42,7 +42,7 @@
                             </select>
                         </td>
                         <td>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#/crearOperacion/#modalCrearSubcategoria" data-toggle="modal" class="btn btn-success"> {{ 'CREAR_SUBCATEGORIA' | translate}} <span class="glyphicon glyphicon-ok"></span></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a data-target="#modalCrearSubcategoria" data-toggle="modal" class="btn btn-success"> {{ 'CREAR_SUBCATEGORIA' | translate}} <span class="glyphicon glyphicon-ok"></span></a>
                         </td>
                     </tr>
                 </tbody>

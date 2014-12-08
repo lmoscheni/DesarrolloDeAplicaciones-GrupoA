@@ -15,7 +15,6 @@ app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeP
     $scope.d = false;
     
 
-    $scope.getCategories = function() {
         $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
         .success(function(data) {
             $scope.categories = data;
@@ -23,10 +22,15 @@ app.controller('OperacionCtrl', function ($http,$scope,$location,$window,$routeP
         }).error(function() {
             ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
         });
-    };
        
     $scope.getSubcategories = function() {
-            $scope.getCategories();
+             $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
+        .success(function(data) {
+            $scope.categories = data;
+            $scope.disableSubcategory = false;
+        }).error(function() {
+            ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
+        });
             for(var i in $scope.categories){
                 if($scope.categories[i].name === $scope.objectOperationJson.category){
                     $scope.subcategories = $scope.categories[i].subcategories;    

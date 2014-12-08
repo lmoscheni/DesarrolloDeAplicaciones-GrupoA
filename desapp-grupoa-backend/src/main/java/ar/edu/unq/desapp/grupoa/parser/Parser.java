@@ -21,7 +21,7 @@ public class Parser {
 
     public static Operation parseOperation(Operation o,final String jsonOperation, CategoryService categoryService) throws Exception {
         String[] tokens = getTokens(jsonOperation);
-        
+         
         o.setAmount(Double.parseDouble(tokens[2]));
         o.setShift(Shift.create(tokens[4]));
         Category category = categoryService.findByName(tokens[6]);
@@ -44,6 +44,7 @@ public class Parser {
     @SuppressWarnings("deprecation")
     public static Voucher parseVoucher(Voucher voucher,final String jsonVoucher) throws Exception {
         String[] tokens = getTokens(jsonVoucher);
+        System.out.println(tokens[2].replace('-', '/'));
         Date d = new Date(tokens[2].replace('-', '/'));
         
         voucher.setDateOfIssue(d);

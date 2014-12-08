@@ -117,19 +117,19 @@ public class BankAccountTest extends TestCase {
         assertEquals(0, account.getPendingOperations().size());
     }
     
-    @SuppressWarnings("deprecation")
-    public void testTheOperationWasConsolidated(){
-        
-        Date mockDateOperation = mock(Date.class);
-        Operation mockOperation = mock(Operation.class);
-        
-        when(mockOperation.getDateOperation()).thenReturn(mockDateOperation);
-        when(mockDateOperation.getDate()).thenReturn(2);
-        
-        BankAccount account = new BankAccount();
-        account.setDelayTime(15);
-        boolean returnValue = account.theOperationWasConsolidated(mockOperation);
-        
-        assertTrue(returnValue);
-    }
+//    @SuppressWarnings("deprecation")
+//    public void testTheOperationWasConsolidated(){
+//        
+//        Date mockDateOperation = mock(Date.class);
+//        Operation mockOperation = mock(Operation.class);
+//        
+//        when(mockOperation.getDateOperation()).thenReturn(mockDateOperation);
+//        when(mockDateOperation.getDate()).thenReturn(2);
+//        
+//        BankAccount account = new BankAccount();
+//        account.setDelayTime(15);
+//        boolean returnValue = account.theOperationWasConsolidated(mockOperation);
+//        
+//        assertTrue(returnValue);
+//    }
 }

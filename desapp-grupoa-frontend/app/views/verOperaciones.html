@@ -57,15 +57,14 @@
     </div>
     
     <div>
-    <button class="btn btn-warning" type="button" ng-csv="getOperations()" filename="operaciones.csv" csv-header="['Id ', 'Monto ', 'Turno ', 'Categoría ', 'Tipo_de_operación ', 'Subcategoría ', 'Concepto ', 'Cuenta ']"> {{ 'EXPORTAR_CSV' | translate}} </button>
-    </div>
-    </br>
-    
-    <div >
+        <button class="btn btn-warning" type="button" ng-csv="getOperations()" filename="operaciones.csv" csv-header="['Id ', 'Monto ', 'Turno ', 'Categoría ', 'Tipo_de_operación ', 'Subcategoría ', 'Concepto ', 'Cuenta ']"> {{ 'EXPORTAR_CSV' | translate}} </button></br>
+        
         <span>Importar operaciones: </span>
         <input type="file" name="filename" id="filename"></input>
-        
+
+        <button ng-Click="createOperation()" class="btn btn-warning" type="button" id="boton_crear">Crear</button>
     </div>
+    </br>
 
 </br>
 </div>

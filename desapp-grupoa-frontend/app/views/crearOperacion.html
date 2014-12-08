@@ -20,7 +20,7 @@
                     <tr>
                         <td>
                             
-                            <select name="categoria" required ng-model="objectOperationJson.category"  ng-Click="getCategories()" ng-Change="getCategories()" draggable="true" ng-options="category.name as category.name for category in categories" ng-class="form-control">
+                            <select name="categoria" required ng-model="objectOperationJson.category"  ng-Change="getSubcategories()" draggable="true" ng-options="category.name as category.name for category in categories" ng-class="form-control">
                                 <option value="">{{ 'SELECCIONAR_CATEGORIA' | translate}}</option>
                             </select>
                             
@@ -142,7 +142,7 @@
                     <input ng-model="objectCategory.subcategory" type="text" placeholder="{{ 'NOMBRE' | translate}}" class="form-control" />
                 </div>
                 <div class="modal-footer">
-                    <a href="#" ng-Click="createSubcategory()" data-dismiss="modal" class="btn btn-success">{{ 'ACEPTAR' | translate}}</a>
+                    <a href="#" ng-Click="createSubcategory('/crearOperacion')" data-dismiss="modal" class="btn btn-success">{{ 'ACEPTAR' | translate}}</a>
                     <a href="#" class="btn btn-danger" data-dismiss="modal"> {{ 'CANCELAR' | translate}}</a>
                 </div>
             </div>

@@ -134,4 +134,7 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 
+	<bean id="persistence.dao" class="ar.edu.unq.desapp.grupoa.persistence.DAO" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 </beans>

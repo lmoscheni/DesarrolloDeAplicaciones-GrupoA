@@ -152,7 +152,12 @@ public class BankAccount extends Account {
     public boolean theOperationWasConsolidated(Operation operation) {
         Calendar dateNow = Calendar.getInstance();
         Date operationDate = operation.getDateOperation();
-        int daysTheySpent =  operationDate.getDate() - dateNow.get(Calendar.DATE);
+        int daysTheySpent = 0;
+        if(operationDate.getMonth() == dateNow.get(Calendar.MONTH)){
+            daysTheySpent =  operationDate.getDate() - dateNow.get(Calendar.DATE);
+        }else{
+            daysTheySpent = (30 - operationDate.getDate()) + dateNow.get(Calendar.DATE);
+        }
         return daysTheySpent >= this.getDelayTime();
     }
     
@@ -182,4 +187,5 @@ public class BankAccount extends Account {
             this.pendingOperations = newList;
         }
     }
+    
 }

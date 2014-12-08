@@ -46,11 +46,13 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
         });
     };
     
-    $scope.createSubcategory = function() {
+    $scope.createSubcategory = function(path) {
         $scope.objectCategory.name = $scope.category;
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/categories/saveSubcategory/', $scope.objectCategory)
         .success(function() {
+            
             ngDialog.open({template:'Subcategoría "' + $scope.objectCategory.subcategory + '", creada correctamente!!',plain:true});
+            $location.path(path);
         })
         .error(function(data,status) {
             if(status === 500){

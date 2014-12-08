@@ -15,6 +15,8 @@ public class AnalysisAndProjectionOfCosts {
     public List<Category> categorys;
     protected List<Account> accounts;
     
+    public AnalysisAndProjectionOfCosts(){}
+    
     public AnalysisAndProjectionOfCosts(List<Operation> operations,List<Consolidation> consolidations,List<Category> categorys) {
         this.operations = operations;
         this.consolidations = consolidations;

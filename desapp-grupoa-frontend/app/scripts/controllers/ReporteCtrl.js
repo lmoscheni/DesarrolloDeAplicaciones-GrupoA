@@ -13,7 +13,7 @@ var app = angular.module('angularApp');
           link: function($scope, $elm, $attr) {
             // Create the data table.
             
-              $http.get('http://localhost:8080/desapp-grupoa-backend/rest/reports/distributionExpenses')
+              $http.get('http://localhost:8080/desapp-grupoa-backend/rest/reports/distributionExpensesIncome')
         .success(function(dataa) {
             $scope.report = dataa;
             var list = [];
@@ -39,9 +39,6 @@ var app = angular.module('angularApp');
             /*ngDialog.open({template:'Error del servidor, al obtener los comprobantes',plain:true});*/
         });
             
-            
-
-            
           }
       }
     });
@@ -51,9 +48,8 @@ var app = angular.module('angularApp');
           restrict: 'A',
           link: function($scope, $elm, $attr) {
             // Create the data table.
-            $scope.categories = ['Hola', 'Chau'];
-              $scope.category = '';
-              $http.get('http://localhost:8080/desapp-grupoa-backend/rest/reports/distributionExpenses')
+            
+              $http.get('http://localhost:8080/desapp-grupoa-backend/rest/reports/distributionExpensesEgress')
         .success(function(dataa) {
             $scope.report = dataa;
             var list = [];
@@ -69,6 +65,89 @@ var app = angular.module('angularApp');
             data.addRows(list);
             // Set chart options
             var options = {'title':'Costos por categoría',
+                           'width':400,
+                           'height':300};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart($elm[0]);
+            chart.draw(data, options);
+        }).error(function() {
+            /*ngDialog.open({template:'Error del servidor, al obtener los comprobantes',plain:true});*/
+        });
+            
+          }
+      }
+    });
+
+    app.directive('chart3', function($http) {
+        return {
+          restrict: 'A',
+          link: function($scope, $elm, $attr) {
+            // Create the data table.
+                $scope.categories = [];
+                $scope.category = '';
+                $http.get('http://localhost:8080/desapp-grupoa-backend/rest/categories/all')
+                .success(function(data) {
+                    $scope.categories = data;
+                }).error(function() {
+                    ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
+                }); 
+                
+              $scope.getReport = function(){
+              $http.get('http://localhost:8080/desapp-grupoa-backend/rest/reports/distributionExpensesByCategory/' + $scope.category)
+        .success(function(dataa) {
+            $scope.report = dataa;
+            var list = [];
+            var a = '';
+            var count = 0; 
+            for(a in $scope.report){
+                list.push([a,$scope.report[a]]);
+            }
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            
+            data.addRows(list);
+            // Set chart options
+            var options = {'title':'Costos por subcategorías de categoría ' + $scope.category,
+                           'width':400,
+                           'height':300};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart($elm[0]);
+            chart.draw(data, options);
+        }).error(function() {
+            /*ngDialog.open({template:'Error del servidor, al obtener los comprobantes',plain:true});*/
+        });
+              };
+
+            
+          }
+      }
+    });
+
+    app.directive('chart4', function($http) {
+        return {
+          restrict: 'A',
+          link: function($scope, $elm, $attr) {
+            // Create the data table.
+            
+              $http.get('http://localhost:8080/desapp-grupoa-backend/rest/reports/accountDistribution')
+        .success(function(dataa) {
+            $scope.reportAccount = dataa;
+            var list = [];
+            var a = '';
+            var count = 0; 
+            for(a in $scope.reportAccount){
+                list.push([a,$scope.reportAccount[a]]);
+            }
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            
+            data.addRows(list);
+            // Set chart options
+            var options = {'title':'Distribución de cuentas',
                            'width':400,
                            'height':300};
 

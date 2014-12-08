@@ -89,9 +89,5 @@ public class CategoryTest extends AbstractTransactionalJUnit4SpringContextTests 
     public CategoryService getCategoryService() {
         return categoryService;
     }
-
-    public void setCategoryService(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
     
 }

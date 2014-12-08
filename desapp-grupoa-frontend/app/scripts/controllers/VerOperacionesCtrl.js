@@ -2,12 +2,13 @@
 
 var app = angular.module('angularApp');
 
-app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,ngDialog) {
+app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,$window,ngDialog) {
 
     $scope.operations = [];
     $scope.itemsPerPage = 5;
     $scope.currentPage = 0;
     $scope.report = '';
+
     
     $http.get('http://localhost:8080/desapp-grupoa-backend/rest/operations/all')
         .success(function(data) {
@@ -31,6 +32,10 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,ngD
     
     $scope.tipoOperacion = function(to) {
         return to === "INCOME" ? 'Ingreso' : 'Egreso';
+    };
+    
+    $scope.chequear = function(dato){
+        return dato === 'Ingreso' ? 'true' : dato === 'Egreso' ? 'false' : dato;
     };
     
     $scope.getOperations = function(){
@@ -94,9 +99,11 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,ngD
         return $scope.listPages;
     };
     
+    
+    
     $("#filename").change(function(e) {
     var ext = $("input#filename").val().split(".").pop().toLowerCase();
-
+    $scope.lista = [];
     if($.inArray(ext, ["csv"]) == -1) {
         alert('Upload CSV');
         return false;
@@ -106,15 +113,26 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,ngD
         var reader = new FileReader();
         reader.onload = function(e) {
         var csvval=e.target.result.split("\n");
-        var csvvalue=csvval[0].split(",");
-        var inputrad="";
-        for(var i=0;i<csvvalue.length;i++)
-        {
-            var temp=csvvalue[i];
-            var inputrad=inputrad+" "+temp;
-        }
-        $("#csvimporthint").html(inputrad);
-        $("#csvimporthinttitle").show();
+        for(var j=0;j<csvval.length;j++){  
+            $scope.objectOperationJson = {'amount':'', 'shift':'', 'category': '', 'operationType':'false', 'subcategory':'', 'concept' : '', 'account' : ''};
+            var csvvalue=csvval[j].split(",");
+            var input="";
+            var count = 0;
+            for(var i=0;i<=csvvalue.length;i++)
+            {
+                for(var o in $scope.objectOperationJson){
+                    if(count === i){
+                        $scope.objectOperationJson[o]=$scope.chequear(csvvalue[i].replace(';',''));
+                    };
+                    count = count + 1;
+                };
+                count = 0;
+                var temp = csvvalue[i];
+                var input=input+" "+temp;
+            }
+            $scope.lista.push($scope.objectOperationJson);
+        };
+        
     };
     reader.readAsText(e.target.files.item(0));
 
@@ -123,6 +141,24 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,ngD
     return false;
 
     });
+    
+    $scope.createOperation = function() {
+        for(var i=0;i<$scope.lista.length;i++){
+        $http.post('http://localhost:8080/desapp-grupoa-backend/rest/operations/save/',angular.toJson($scope.lista[i]))
+        .success(function(data) {
+            $scope.operations = data;
+            ngDialog.open({template:'Operación creada con éxito',plain:true});
+            $window.location.reload();
+        }).error(function(data,status) {
+            if(status === 501){
+                ngDialog.open({template:'Monto invalido (no negativo)',plain:true});
+            }else{
+                ngDialog.open({template:'Error del servidor '+status+', al crear la operación',plain:true});
+            }
+            
+        });
+        }
+    };
 });
 
 app.filter('offset', function() {

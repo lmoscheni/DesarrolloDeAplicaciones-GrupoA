@@ -1,14 +1,26 @@
 <div ng-controller="ReporteCtrl">
-    <div class="row">  
-        <div class="col-md-4">
+    
+    <input type="checkbox" ng-model="costos_por_categoria_ingreso">Costos por categoría (Ingresos)</input></br>
+    <input type="checkbox" ng-model="costos_por_categoria_egreso">Costos por categoría (Egresos)</input></br>
+    <input type="checkbox" ng-model="costos_por_subcategoria">Costos por subcategoría segun categoría</input></br>
+<input type="checkbox" ng-model="distribucion_cuentas">Distribución de cuentas</input>
+
+        <div  ng-show="costos_por_categoria_ingreso">
             <div chart></div>
         </div>
-        <div class="col-md-6">
+        
+        <div ng-show="costos_por_categoria_egreso">
             <div chart2></div>
-            <select name="categoria" ng-model="category" draggable="true" ng-options="category for category in categories" ng-class="form-control">
-        </select>
-        {{category}}
         </div>
-    </div>
-    
+
+        <div ng-show="costos_por_subcategoria">
+            <div chart3></div>
+            <select name="categoria" ng-Click="getReport()" ng-model="category" draggable="true" ng-options="category.name as category.name for category in categories" ng-class="form-control">
+                <option value="">Seleccione la categoría</option>
+            </select>
+        </div>
+
+        <div ng-show="distribucion_cuentas">
+            <div chart4></div>
+        </div>
 </div>

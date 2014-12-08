@@ -13,7 +13,7 @@
         
         <div class="form-group">
             <div class="input-group">
-                <select  name="billType" ng-Click="updateVoucher()" ng-model="objectVoucherJson.billType" draggable="true" ng-class="form-control" ng-options="factura for factura in facturas">
+                <select  name="billType" ng-Change="updateVoucher()" ng-model="objectVoucherJson.billType" draggable="true" ng-class="form-control" ng-options="factura for factura in facturas">
                     <option value="">Seleccionar tipo de pago</option>
                 </select>
             </div>
