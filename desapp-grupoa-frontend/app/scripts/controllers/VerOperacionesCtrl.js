@@ -8,7 +8,7 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,$wi
     $scope.itemsPerPage = 5;
     $scope.currentPage = 0;
     $scope.report = '';
-
+    $scope.lista = [];
     
     $http.get('http://localhost:8080/desapp-grupoa-backend/rest/operations/all')
         .success(function(data) {
@@ -132,7 +132,6 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,$wi
             }
             $scope.lista.push($scope.objectOperationJson);
         };
-        
     };
     reader.readAsText(e.target.files.item(0));
 
@@ -143,21 +142,25 @@ app.controller('VerOperacionesCtrl', function ($http,$scope,$location,$route,$wi
     });
     
     $scope.createOperation = function() {
-        for(var i=0;i<$scope.lista.length;i++){
-        $http.post('http://localhost:8080/desapp-grupoa-backend/rest/operations/save/',angular.toJson($scope.lista[i]))
-        .success(function(data) {
-            $scope.operations = data;
-            ngDialog.open({template:'Operación creada con éxito',plain:true});
-            $window.location.reload();
-        }).error(function(data,status) {
-            if(status === 501){
-                ngDialog.open({template:'Monto invalido (no negativo)',plain:true});
-            }else{
-                ngDialog.open({template:'Error del servidor '+status+', al crear la operación',plain:true});
+        if($scope.lista.length === 0){
+            ngDialog.open({template:'Seleccione un archivo .csv',plain:true});
+        }else{
+            for(var i=0;i<$scope.lista.length;i++){
+                $http.post('http://localhost:8080/desapp-grupoa-backend/rest/operations/save/',angular.toJson($scope.lista[i]))
+                .success(function(data) {
+                    $scope.operations = data;
+                    ngDialog.open({template:'Operación creada con éxito',plain:true});
+                    $window.location.reload();
+                }).error(function(data,status) {
+                    if(status === 501){
+                        ngDialog.open({template:'Monto invalido (no negativo)',plain:true});
+                    }else{
+                        ngDialog.open({template:'Error del servidor '+status+', al crear la operación',plain:true});
+                    }
+
+                });
             }
-            
-        });
-        }
+        };
     };
 });
 
