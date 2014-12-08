@@ -118,24 +118,24 @@ public class GenerateExcel {
      * @param args
      *            argumentos de entrada.
      */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-    public static void main(String[] args) {
-        try {
-
-            // Datos a escribir
-            Vector v = new Vector();
-            v.addElement("IDENTIFIC,ID_CODIGO ,ESTADO ,DESCRIPCION");
-            v.addElement("34567,CODIGO_00,Critica,Esto es un texto muy largo \r\n Esto es un texto muy largo");
-            v.addElement("34568,CODIGO_01,Baja,Esto es un texto muy largo \r\n Esto es un texto muy largo");
-            v.addElement("34569,CODIGO_02,Media,Esto es un texto muy largo \r\n Esto es un texto muy largo");
-
-            // Generar el fichero
-            GenerateExcel.crearExcel(v, "Ejemplo", "/home/julian/Escritorio/demo.xls");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    
+//    public static void main(String[] args) {
+//        try {
+//
+//            // Datos a escribir
+//            Vector v = new Vector();
+//            v.addElement("IDENTIFIC,ID_CODIGO ,ESTADO ,DESCRIPCION");
+//            v.addElement("34567,CODIGO_00,Critica,Esto es un texto muy largo \r\n Esto es un texto muy largo");
+//            v.addElement("34568,CODIGO_01,Baja,Esto es un texto muy largo \r\n Esto es un texto muy largo");
+//            v.addElement("34569,CODIGO_02,Media,Esto es un texto muy largo \r\n Esto es un texto muy largo");
+//
+//            // Generar el fichero
+//            GenerateExcel.crearExcel(v, "Ejemplo", "/home/julian/Escritorio/demo.xls");
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
     // ----
 
 }

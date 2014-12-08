@@ -9,13 +9,11 @@ public class ConsolidationDAO extends HibernateGenericDAO<Consolidation> impleme
      */
     private static final long serialVersionUID = 1L;
 
-    @Override
     public Consolidation findByName(String name) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    @Override
     public void saveOrUpdate(Consolidation entity) {
         // TODO Auto-generated method stub
         

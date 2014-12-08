@@ -9,13 +9,11 @@ public class BillTypeDAO extends HibernateGenericDAO<BillType> implements Generi
      */
     private static final long serialVersionUID = 1L;
 
-    @Override
     public BillType findByName(String name) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    @Override
     public void saveOrUpdate(BillType entity) {
         // TODO Auto-generated method stub
         

@@ -107,6 +107,7 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         CANCELAR : 'Cancel',
         SELECCIONAR_PARA_INGRESO : 'Check for income',
         MONTO : 'Amount',
+        MONTO_FINAL : 'Final amount',
         TURNO : 'Shift',
         CATEGORIA : 'Category',
         CATEGORIAS : 'Categories',
@@ -120,10 +121,13 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         MODIFICAR_SUBCATEGORIAS : 'Modify subcategories',
         SELECCIONAR_CATEGORIA : 'Select category',
         SELECCIONAR_SUBCATEGORIA : 'Select subcategory',
+        SELECCIONAR_TIPO_PAGO : 'Select bill type',
         CREAR_OPERACION : 'Create operation',
         EDITAR_OPERACION : 'Edit operation',
         DIA_OPERACION : 'Date operation',
+        DIA_COMPROBANTE : 'Date',
         TIPO_OPERACION : 'Operation type',
+        TIPO_PAGO : 'Bill type',
         ACCION : 'Actions',
         NOMBRE : 'Name',
         VER : 'See',
@@ -144,7 +148,17 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         EXPORTAR_CSV : 'Export csv',
         CONSOLIDACIONES : 'Consolidations',
         SYSTEMA : 'System of flow of cash and analysis of expenses by Skalic Julian and Moscheni Leandro | 2014',
-        EDITAR_COMPROBANTE : 'Edit voucher'
+        EDITAR_COMPROBANTE : 'Edit voucher',
+        CUENTAS : 'Accounts',
+        CONSOLIDAR : 'Consolidate',
+        DIA_CONSOLIDACION : 'Date consolidation',
+        DISPONIBLE : 'Available',
+        DEVENGADO : 'Accrued',
+        COSTOS_CATEGORIA_INGRESOS : 'Costs by category (Income)',
+        COSTOS_CATEGORIA_EGRESOS : 'Costs by category (Egress)',
+        COSTOS_SUBCATEGORIA : 'Costs by subcategory',
+        DISTRIBUCION_CUENTAS : 'Accounts ditribution',
+        INGRESOS_POR_TURNO : 'Income according to shift'
     });
     
     $translateProvider.translations('es', {
@@ -167,6 +181,7 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         CANCELAR : 'Cancelar',
         SELECCIONAR_PARA_INGRESO : 'Seleccionar para un ingreso',
         MONTO : 'Monto',
+        MONTO_FINAL : 'Monto final',
         TURNO : 'Turno',
         CATEGORIA : 'Categoría',
         CATEGORIAS : 'Categorias',
@@ -180,10 +195,13 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         CREAR_SUBCATEGORIA : 'Crear subcategoría',
         SELECCIONAR_CATEGORIA : 'Seleccionar categoría',
         SELECCIONAR_SUBCATEGORIA : 'Seleccionar subcategoría',
+        SELECCIONAR_TIPO_PAGO : 'Seleccionar tipo de pago',
         CREAR_OPERACION : 'Crear operación',
         EDITAR_OPERACION : 'Editar operación',
         DIA_OPERACION : 'Día de la operación',
+        DIA_COMPROBANTE : 'Día',
         TIPO_OPERACION : 'Tipo de operación',
+        TIPO_PAGO : 'Tipo de pago',
         ACCION : 'Acciones',
         NOMBRE : 'Nombre',
         VER : 'Ver',
@@ -204,7 +222,17 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         EXPORTAR_CSV : 'Exportar csv',
         CONSOLIDACIONES : 'Consolidaciones',
         SYSTEMA : 'Sistema de control de gastos y flujo de efectivo por Skalic Julian and Moscheni Leandro | 2014',
-        EDITAR_COMPROBANTE : 'Editar comprobante'
+        EDITAR_COMPROBANTE : 'Editar comprobante',
+        CUENTAS : 'Cuentas',
+        CONSOLIDAR : 'Consolidar',
+        DIA_CONSOLIDACION : 'Día consolidación',
+        DISPONIBLE : 'Disponible',
+        DEVENGADO : 'Devengado',
+        COSTOS_CATEGORIA_INGRESOS : 'Costos por categoría (Ingresos)',
+        COSTOS_CATEGORIA_EGRESOS : 'Costos por categoría (Egresos)',
+        COSTOS_SUBCATEGORIA : 'Costos por subcategoría',
+        DISTRIBUCION_CUENTAS : 'Distribución de cuentas',
+        INGRESOS_POR_TURNO : 'Ingresos segun turno'
     });
     $translateProvider.preferredLanguage('es');
     

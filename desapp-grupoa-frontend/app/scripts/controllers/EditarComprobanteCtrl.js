@@ -80,7 +80,7 @@ app.controller('EditarComprobanteCtrl', function ($http,$scope,$location,$window
     
     $scope.calculateAmount = function(){
         if($scope.objectVoucherJson.billType === 'Tipo A'){
-            $scope.objectVoucherJson.IVA = $scope.objectVoucherJson.amount + ($scope.objectVoucherJson.amount * 0.21);
+            $scope.objectVoucherJson.IVA = ($scope.objectVoucherJson.amount * 0.21);
             $scope.montoFinal = $scope.objectVoucherJson.amount + $scope.objectVoucherJson.taxed + $scope.objectVoucherJson.noTaxed + $scope.objectVoucherJson.IIBB + $scope.objectVoucherJson.IVA;   
         }else{
             $scope.montoFinal = $scope.objectVoucherJson.amount;   

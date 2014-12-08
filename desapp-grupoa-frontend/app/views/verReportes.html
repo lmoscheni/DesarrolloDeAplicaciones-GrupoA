@@ -1,9 +1,10 @@
 <div ng-controller="ReporteCtrl">
     
-    <input type="checkbox" ng-model="costos_por_categoria_ingreso">Costos por categoría (Ingresos)</input></br>
-    <input type="checkbox" ng-model="costos_por_categoria_egreso">Costos por categoría (Egresos)</input></br>
-    <input type="checkbox" ng-model="costos_por_subcategoria">Costos por subcategoría segun categoría</input></br>
-<input type="checkbox" ng-model="distribucion_cuentas">Distribución de cuentas</input>
+    <input type="checkbox" ng-model="costos_por_categoria_ingreso">{{ 'COSTOS_CATEGORIA_INGRESOS' | translate}}</input></br>
+    <input type="checkbox" ng-model="costos_por_categoria_egreso">{{ 'COSTOS_CATEGORIA_EGRESOS' | translate}}</input></br>
+    <input type="checkbox" ng-model="costos_por_subcategoria">{{ 'COSTOS_SUBCATEGORIA' | translate}}</input></br>
+    <input type="checkbox" ng-model="distribucion_cuentas">{{ 'DISTRIBUCION_CUENTAS' | translate}}</input></br>
+    <input type="checkbox" ng-model="ingresos_segun_turno">{{ 'INGRESOS_POR_TURNO' | translate}}</input>
 
         <div  ng-show="costos_por_categoria_ingreso">
             <div chart></div>
@@ -22,5 +23,8 @@
 
         <div ng-show="distribucion_cuentas">
             <div chart4></div>
+        </div>
+        <div ng-show="ingresos_segun_turno">
+            <div chart5></div>
         </div>
 </div>

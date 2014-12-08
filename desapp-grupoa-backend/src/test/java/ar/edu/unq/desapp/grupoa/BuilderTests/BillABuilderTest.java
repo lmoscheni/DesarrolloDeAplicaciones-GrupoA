@@ -41,4 +41,11 @@ public class BillABuilderTest extends TestCase {
 
         assertEquals(10.0, billA.getIVA());
     }
+    
+    public void testBuildVoucherWithName() {
+
+        BillA billA = BillABuilder.aBillA().withName("BillA").build();
+
+        assertEquals("BillA", billA.getName());
+    }
 }

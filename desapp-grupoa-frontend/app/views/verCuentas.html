@@ -1,6 +1,6 @@
 <div ng-controller="CuentasCtrl" class="">
     <div class="panel panel-default">
-    <div class="panel-heading"><h3><center><b><u>Cuentas</u></b></center></h3></div>
+        <div class="panel-heading">{{'CUENTAS' | translate}}</div>
     <table class="table table-bordered table-hover table-condensed">
         <thead>
             <tr>
@@ -29,6 +29,8 @@
         
        
     </div>
-     <a ng-Click="consolidate()" class="btn btn-primary">Consolidar</a>
+    <div>
+     <a ng-Click="consolidate()" class="btn btn-primary">{{'CONSOLIDAR' | translate}}</a>
+    </div>
     </br>
 </div>

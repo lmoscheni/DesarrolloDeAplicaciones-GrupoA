@@ -41,10 +41,13 @@ public class VoucherWS {
     @POST
     @Path("/save/")
     @Consumes("application/json")
-    public Response createVoucher(@Multipart(value = "voucher", type = "application/json") final String jsonVoucher) throws Exception{
+    public Response createVoucher(@Multipart(value = "voucher", type = "application/json") final String jsonVoucher){
+        try{    
             getVoucherService().saveVoucher(jsonVoucher);
-
-            return Response.status(200).build();
+        }catch(Exception e){
+            return Response.status(501).build();
+        }
+        return Response.status(200).build();
     }
 
     @GET

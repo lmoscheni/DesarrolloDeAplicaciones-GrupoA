@@ -76,10 +76,6 @@ public class BillA extends BillType {
     // ******************************************************************************************************
     // Methods of class a invoive
     // ******************************************************************************************************
-
-    private double calculatePorsentaje(double amount, double porsentaje) {
-        return ((porsentaje * amount) / 100.0);
-    }
     
     private double calculateTaxes(double amount) {
         return this.taxed + this.noTaxed + this.IIBBPerception + this.IVA;

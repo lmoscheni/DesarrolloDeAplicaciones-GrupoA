@@ -2,6 +2,7 @@ package ar.edu.unq.desapp.grupoa.BuilderTests;
 
 import junit.framework.TestCase;
 import ar.edu.unq.desapp.grupoa.helpers.builders.OperationBuilder;
+import ar.edu.unq.desapp.grupoa.model.Accounts.AccountEnum;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
@@ -68,5 +69,14 @@ public class OperationBuilderTest extends TestCase {
         Operation operation = OperationBuilder.aOperation().withConcept(concept).build();
 
         assertEquals(concept, operation.getConcept());
+    }
+    
+    public void testBuildVoucherWithAccount() throws Exception {
+
+        AccountEnum ac = AccountEnum.BankAccount;
+        
+        Operation operation = OperationBuilder.aOperation().withAccount(ac).build();
+
+        assertEquals(ac, operation.getAccount());
     }
 }

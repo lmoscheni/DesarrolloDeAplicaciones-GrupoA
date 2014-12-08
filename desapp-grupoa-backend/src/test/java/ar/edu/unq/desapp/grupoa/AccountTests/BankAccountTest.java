@@ -117,6 +117,24 @@ public class BankAccountTest extends TestCase {
         assertEquals(0, account.getPendingOperations().size());
     }
     
+    public void testDeleteOperation(){
+        Operation mockOperation = mock(Operation.class);
+        when(mockOperation.getId()).thenReturn(new Integer(1));
+        when(mockOperation.getOperationTypeEnum()).thenReturn(OperationTypeEnum.INCOME);
+        
+        BankAccount account = new BankAccount();
+        
+        assertEquals(0, account.getPendingOperations().size());
+
+        account.registrateOperation(mockOperation);
+
+        assertEquals(1, account.getPendingOperations().size());
+        
+        account.deleteOperation(mockOperation);
+        
+        assertEquals(0, account.getPendingOperations().size());
+    }
+    
 //    @SuppressWarnings("deprecation")
 //    public void testTheOperationWasConsolidated(){
 //        

@@ -49,7 +49,7 @@ public class OperationWS {
     @POST
     @Path("/save/")
     @Consumes("application/json")
-    public Response createOperation(@Multipart(value = "operation", type = "application/json") final String jsonOperation) throws Exception{
+    public Response createOperation(@Multipart(value = "operation", type = "application/json") final String jsonOperation){
         try{
             getOperationService().saveOperation(jsonOperation, getCategoryService(), getAccountService());
         }catch(Exception monto){
@@ -62,7 +62,7 @@ public class OperationWS {
     @Path("/modify/{id}/{operation}")
     @Produces("application/json")
     public Response modifyOperation(@PathParam("id") final int id,
-    @PathParam("operation") final String operation) throws Exception {
+    @PathParam("operation") final String operation) {
          System.out.println(operation);
         Operation o = getOperationService().findById(id);
         Account a = getAccountService().getAccount(o.getAccount().toString());
@@ -70,7 +70,11 @@ public class OperationWS {
         a.deleteOperation(o);
         getAccountService().update(a);
         
-        getOperationService().updateOperation(o, operation, getCategoryService());
+        try {
+            getOperationService().updateOperation(o, operation, getCategoryService());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         a = getAccountService().getAccount(o.getAccount().toString());
         a.registrateOperation(o);

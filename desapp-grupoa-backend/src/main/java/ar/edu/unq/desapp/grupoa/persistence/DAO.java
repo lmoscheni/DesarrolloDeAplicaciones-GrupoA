@@ -25,14 +25,12 @@ public class DAO extends HibernateGenericDAO<Object> implements GenericDAO<Objec
         }
         return results;
     }
-    
-    @Override
+
     public Object findByName(String name) {
         // TODO Auto-generated method stub
         return null;
     }
-    
-    @Override
+
     public void saveOrUpdate(Object entity) {
         // TODO Auto-generated method stub
         

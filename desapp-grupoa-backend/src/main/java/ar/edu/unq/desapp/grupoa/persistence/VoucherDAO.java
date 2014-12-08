@@ -9,13 +9,12 @@ public class VoucherDAO extends HibernateGenericDAO<Voucher> implements GenericD
      */
     private static final long serialVersionUID = 1L;
 
-    @Override
     public Voucher findByName(String name) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    @Override
+    
     public void saveOrUpdate(Voucher entity) {
         // TODO Auto-generated method stub
         

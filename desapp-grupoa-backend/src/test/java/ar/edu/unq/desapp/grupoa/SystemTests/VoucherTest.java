@@ -49,11 +49,10 @@ public class VoucherTest extends TestCase {
         assertEquals("21-569485-2", voucher.getCuit());
     }
 
-    public void testGetAndSetAmount() {
+    public void testGetAndSetAmount() throws Exception {
 
         Voucher voucher = new Voucher();
         voucher.setAmount(100.0);
-        ;
 
         assertEquals(100.0, voucher.getAmount());
     }

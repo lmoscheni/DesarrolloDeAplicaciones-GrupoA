@@ -95,8 +95,12 @@ public class Voucher implements Serializable{
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setAmount(double amount) throws Exception {
+        if(amount < 0){
+            throw new Exception("Monto invalido");
+        }else{
+            this.amount = amount;
+        }
     }
 
     public BillType getBillType() {

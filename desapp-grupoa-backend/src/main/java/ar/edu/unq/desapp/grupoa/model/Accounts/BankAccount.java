@@ -121,7 +121,6 @@ public class BankAccount extends Account {
         boolean isInPendingOperations = false;
         for(Operation o : this.pendingOperations){
             if(o.getId().equals(operation.getId())){
-                System.out.println("Entre");
                 isInPendingOperations = true;
             }
         }

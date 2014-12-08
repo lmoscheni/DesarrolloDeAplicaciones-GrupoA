@@ -20,6 +20,7 @@ import ar.edu.unq.desapp.grupoa.model.Accounts.Account;
 import ar.edu.unq.desapp.grupoa.model.Category.Category;
 import ar.edu.unq.desapp.grupoa.model.Operation.Operation;
 import ar.edu.unq.desapp.grupoa.model.Operation.OperationTypeEnum;
+import ar.edu.unq.desapp.grupoa.model.System.Shift;
 import ar.edu.unq.desapp.grupoa.services.AccountService;
 import ar.edu.unq.desapp.grupoa.services.CategoryService;
 import ar.edu.unq.desapp.grupoa.services.OperationService;
@@ -64,6 +65,17 @@ public class ReportWS {
         }
       
         return distributionExpenses;
+    }
+    
+    @GET
+    @Path("/incomeByShift")
+    @Produces("application/json")
+    public Map<String,Double> incomeByShift() {
+        Map<String,Double> incomesByShift = new HashMap<String, Double>();
+        this.consolidationAfternoonShift(incomesByShift);
+        this.consolidationMorningShift(incomesByShift);
+        this.consolidationNightShift(incomesByShift);
+        return incomesByShift;
     }
     
     @GET
@@ -113,6 +125,51 @@ public class ReportWS {
             map.put(key, oldValue + operation.getAmount());
         }else { 
             map.put(key,operation.getAmount());
+        }
+    }
+    
+    private void consolidationNightShift(Map<String,Double> map){
+        List<Account> accounts = getAccountService().retriveAll();
+        for(Account a : accounts){
+            Double mount = 0.0;
+            String key = "Noche" + " " + a.getName();
+            for(Operation o: a.operations){
+                if(o.getShift().equals(Shift.Noche) && o.getOperationTypeEnum()
+                        .equals(OperationTypeEnum.INCOME)){
+                    mount += a.getBalance();
+                }
+            }
+            map.put(key, mount);
+        }
+    }
+    
+    private void consolidationMorningShift(Map<String,Double> map){
+        List<Account> accounts = getAccountService().retriveAll();
+        for(Account a : accounts){
+            Double mount = 0.0;
+            String key = "Mañana" + " " + a.getName();
+            for(Operation o: a.operations){
+                if(o.getShift().equals(Shift.Mañana) && o.getOperationTypeEnum()
+                        .equals(OperationTypeEnum.INCOME)){
+                    mount += a.getBalance();
+                }
+            }
+            map.put(key, mount);
+        }
+    }
+    
+    private void consolidationAfternoonShift(Map<String,Double> map){
+        List<Account> accounts = getAccountService().retriveAll();
+        for(Account a : accounts){
+            Double mount = 0.0;
+            String key = "Tarde" + " " + a.getName();
+            for(Operation o: a.operations){
+                if(o.getShift().equals(Shift.Tarde) && o.getOperationTypeEnum()
+                        .equals(OperationTypeEnum.INCOME)){
+                    mount += a.getBalance();
+                }
+            }
+            map.put(key, mount);
         }
     }
     

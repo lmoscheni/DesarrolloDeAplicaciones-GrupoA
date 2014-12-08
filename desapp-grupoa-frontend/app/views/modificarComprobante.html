@@ -1,5 +1,5 @@
 <div ng-controller="EditarComprobanteCtrl">
-   <h2><u>{{ 'CARGAR_COMPROBANTE' | translate}}</u></h2>
+   <h2><u>{{ 'EDITAR_COMPROBANTE' | translate}}</u></h2>
 
     <form id="form" name="form" class="col-md-6 input" navalidate>
 
@@ -13,7 +13,7 @@
         
         <div class="form-group">
             <div class="input-group">
-                <select  name="billType" ng-Click="updateVoucher()" ng-model="objectVoucherJson.billType" draggable="true" ng-class="form-control" ng-options="factura for factura in facturas">
+                <select  required name="billType" ng-Click="updateVoucher()" ng-model="objectVoucherJson.billType" draggable="true" ng-class="form-control" ng-options="factura for factura in facturas">
 
                 </select>
             </div>
