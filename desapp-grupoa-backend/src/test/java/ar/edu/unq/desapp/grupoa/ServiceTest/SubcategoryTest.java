@@ -29,13 +29,31 @@ public class SubcategoryTest extends AbstractTransactionalJUnit4SpringContextTes
         
         assertEquals(1,getCategoryService().findById(category.getId()).subcategories.size());
     }
+    
+    @Test
+    public void testGuardarSubcategoryExistente(){
+        
+        Category category = new Category("Ventass");
+        try {
+            getCategoryService().saveCategory(category);
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        
+        assertEquals(0,getCategoryService().findById(category.getId()).subcategories.size());
+        
+        try{
+            getCategoryService().saveSubcategory("{category:Ventass,subcategory:Alfajor}");
+            getCategoryService().saveSubcategory("{category:Ventass,subcategory:Alfajor}");
+            assertTrue(false);
+        }catch(Exception e){
+            assertTrue(true);
+            assertEquals(1,getCategoryService().findById(category.getId()).subcategories.size());
+        }
+    }
 
     public CategoryService getCategoryService() {
         return categoryService;
-    }
-
-    public void setCategoryService(CategoryService categoryService) {
-        this.categoryService = categoryService;
     }
 }
 

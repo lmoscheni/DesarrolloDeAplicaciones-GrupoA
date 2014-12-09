@@ -19,6 +19,22 @@ public class VoucherTest extends AbstractTransactionalJUnit4SpringContextTests{
     VoucherService voucherService;
     
     @Test
+    public void testGuardarVoucherBillA() throws Exception{
+        
+        String json = "{'date': 06-12-2014, 'socialReason':" + "nada,"+"'cuit':"+"nada,"+"'concept':"+"nada,"+"'amount':"+"200,"+"'billType' :"+ "Tipo A,"+ "'taxed':"+"10.0,"+"'noTaxed':"+"10.0,"+" 'IIBB':"+"10.0,"+ "'IVA':"+"10.0"+"}";
+        getVoucherService().saveVoucher(json);
+        Voucher voucher = getVoucherService().retriveAll().get(getVoucherService().retriveAll().size()-1);
+        
+        assertTrue(voucher.getId() != null);
+
+        assertTrue(voucher.getSocialReason().equals("nada"));
+        assertTrue(voucher.getCuit().equals("nada"));
+        assertTrue(voucher.getConcept().equals("nada"));
+        assertTrue(voucher.getBillType().getName().equals("BillA"));
+        assertTrue(voucher.getAmount() == 200);
+    }
+    
+    @Test
     public void testGuardarVoucherBillB() throws Exception{
         
         String json = "{'date': 06-12-2014, 'socialReason':" + "nada,"+"'cuit':"+"nada,"+"'concept':"+"nada,"+"'amount':"+"200,"+"'billType' :"+ "Tipo B,"+ "'taxed':'', 'noTaxed':'', 'IIBB':'', 'IVA':''}";
@@ -80,6 +96,35 @@ public class VoucherTest extends AbstractTransactionalJUnit4SpringContextTests{
         assertTrue(voucher.getConcept().equals("nada"));
         assertTrue(voucher.getBillType().getName().equals("BillX"));
         assertTrue(voucher.getAmount() == 200);
+    }
+    
+    @Test
+    public void testUpdateVoucher() throws Exception{
+        
+        String json = "{'date': 06-12-2014, 'socialReason':" + "nada,"+"'cuit':"+"nada,"+"'concept':"+"nada,"+"'amount':"+"200,"+"'billType' :"+ "Tipo B,"+ "'taxed':'', 'noTaxed':'', 'IIBB':'', 'IVA':''}";
+        getVoucherService().saveVoucher(json);
+        Voucher voucher = getVoucherService().retriveAll().get(getVoucherService().retriveAll().size()-1);
+        
+        assertTrue(voucher.getSocialReason().equals("nada"));
+        
+        json = "{'date': 06-12-2014, 'socialReason':" + "pepe,"+"'cuit':"+"nada,"+"'concept':"+"nada,"+"'amount':"+"200,"+"'billType' :"+ "Tipo B,"+ "'taxed':'', 'noTaxed':'', 'IIBB':'', 'IVA':''}";
+        getVoucherService().updateVoucher(voucher.id, json);
+        
+        assertTrue(voucher.getSocialReason().equals("pepe"));
+    }
+    
+    @Test
+    public void testDeleteVoucher() throws Exception{
+        
+        String json = "{'date': 06-12-2014, 'socialReason':" + "nada,"+"'cuit':"+"nada,"+"'concept':"+"nada,"+"'amount':"+"200,"+"'billType' :"+ "Tipo B,"+ "'taxed':'', 'noTaxed':'', 'IIBB':'', 'IVA':''}";
+        int numberOfVouchers = getVoucherService().retriveAll().size();
+        Voucher voucher = getVoucherService().retriveAll().get(getVoucherService().retriveAll().size()-1);
+        
+        getVoucherService().saveVoucher(json);
+        assertEquals(numberOfVouchers + 1, getVoucherService().retriveAll().size());
+        
+        getVoucherService().deleteVoucher(voucher.id);
+        assertEquals(numberOfVouchers, getVoucherService().retriveAll().size());
     }
 
     public VoucherService getVoucherService() {

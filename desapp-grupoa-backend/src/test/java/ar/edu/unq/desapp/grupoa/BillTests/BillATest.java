@@ -51,6 +51,58 @@ public class BillATest extends TestCase {
 
         assertEquals(10.0, billA.getIVA());
     }
+    
+    public void testGetAndSetTaxedNegative(){
+
+        BillA billA = new BillA();
+        try{
+            billA.setTaxed(-10.0);
+            assertTrue(false);
+        }catch(Exception e){
+            assertTrue(true);
+        }
+
+        assertEquals(0.0, billA.getTaxed());
+    }
+
+    public void testGetAndSetNoTaxedNegative() {
+
+        BillA billA = new BillA();
+        try {
+            billA.setNoTaxed(-10.0);
+            assertTrue(false);
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+
+        assertEquals(0.0, billA.getNoTaxed());
+    }
+
+    public void testGetAndSetIIBBPerceptionNegative(){
+
+        BillA billA = new BillA();
+        try {
+            billA.setIIBBPerception(-10.0);
+            assertTrue(false);
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+
+        assertEquals(0.0, billA.getIIBBPerception());
+    }
+
+    public void testGetAndSetIVANegative(){
+
+        BillA billA = new BillA();
+        try {
+            billA.setIVA(-10.0);
+            assertTrue(false);
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+
+        assertEquals(0.0, billA.getIVA());
+    }
 
     // *****************************************************************************************************
     // Test of methods
