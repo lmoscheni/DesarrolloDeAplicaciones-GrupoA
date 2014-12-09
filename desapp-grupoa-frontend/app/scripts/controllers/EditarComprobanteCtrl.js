@@ -70,7 +70,11 @@ app.controller('EditarComprobanteCtrl', function ($http,$scope,$location,$window
             }).success(function(){
                 $location.path('/verComprobantes');
             }).error(function(data,status){
-                ngDialog.open({template:'Error del servidor '+status+', al editar el comprobante',plain:true});
+                if(status === 500){
+                    ngDialog.open({template:'Campos con montos negativos',plain:true});
+                }else{
+                    ngDialog.open({template:'Error del servidor '+status+', al editar el comprobante',plain:true});
+                }
             });
         }else{
             ngDialog.open({template:'Error al ingresar fecha, formato: aaaa-mm-dd',plain:true});

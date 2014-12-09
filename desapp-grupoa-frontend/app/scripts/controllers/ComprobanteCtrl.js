@@ -57,7 +57,7 @@ app.controller('ComprobanteCtrl', function ($http,$scope,$location,$window,$rout
             ngDialog.open({template:'Comprobante creado con éxito',plain:true});
         }).error(function(data,status) {
             if(status === 501){
-                ngDialog.open({template:'Monto invalido (no negativo)',plain:true});
+                ngDialog.open({template:'Campos con montos negativos',plain:true});
             }else{
                 ngDialog.open({template:'Error del servidor '+status+', al crear el comprobante',plain:true});
             }

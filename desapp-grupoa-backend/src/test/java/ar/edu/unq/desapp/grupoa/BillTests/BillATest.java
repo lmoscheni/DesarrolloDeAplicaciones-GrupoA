@@ -20,7 +20,7 @@ public class BillATest extends TestCase {
     // Test getters and setters
     // *****************************************************************************************************
 
-    public void testGetAndSetTaxed() {
+    public void testGetAndSetTaxed() throws Exception {
 
         BillA billA = new BillA();
         billA.setTaxed(10.0);
@@ -28,7 +28,7 @@ public class BillATest extends TestCase {
         assertEquals(10.0, billA.getTaxed());
     }
 
-    public void testGetAndSetNoTaxed() {
+    public void testGetAndSetNoTaxed() throws Exception {
 
         BillA billA = new BillA();
         billA.setNoTaxed(10.0);
@@ -36,7 +36,7 @@ public class BillATest extends TestCase {
         assertEquals(10.0, billA.getNoTaxed());
     }
 
-    public void testGetAndSetIIBBPerception() {
+    public void testGetAndSetIIBBPerception() throws Exception {
 
         BillA billA = new BillA();
         billA.setIIBBPerception(10.0);
@@ -44,7 +44,7 @@ public class BillATest extends TestCase {
         assertEquals(10.0, billA.getIIBBPerception());
     }
 
-    public void testGetAndSetIVA() {
+    public void testGetAndSetIVA() throws Exception {
 
         BillA billA = new BillA();
         billA.setIVA(10.0);

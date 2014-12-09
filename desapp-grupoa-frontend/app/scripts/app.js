@@ -158,7 +158,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         COSTOS_CATEGORIA_EGRESOS : 'Costs by category (Egress)',
         COSTOS_SUBCATEGORIA : 'Costs by subcategory',
         DISTRIBUCION_CUENTAS : 'Accounts ditribution',
-        INGRESOS_POR_TURNO : 'Income according to shift'
+        INGRESOS_POR_TURNO : 'Income according to shift',
+        EXPORTAR_OPERACION : 'Export operation',
+        IMPORTAR_OPERACION : 'Import operation',
+        CREAR : 'Create'
     });
     
     $translateProvider.translations('es', {
@@ -232,7 +235,10 @@ app.config(function ($routeProvider, $httpProvider, $translateProvider) {
         COSTOS_CATEGORIA_EGRESOS : 'Costos por categoría (Egresos)',
         COSTOS_SUBCATEGORIA : 'Costos por subcategoría',
         DISTRIBUCION_CUENTAS : 'Distribución de cuentas',
-        INGRESOS_POR_TURNO : 'Ingresos segun turno'
+        INGRESOS_POR_TURNO : 'Ingresos segun turno',
+        EXPORTAR_OPERACION : 'Exportar operación',
+        IMPORTAR_OPERACION : 'Importar operación',
+        CREAR : 'Crear'
     });
     $translateProvider.preferredLanguage('es');
     

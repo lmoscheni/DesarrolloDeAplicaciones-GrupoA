@@ -31,12 +31,11 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
         ngDialog.open({template:'Error del servidor, al obtener las categorias',plain:true});
     });
     
-    $scope.createCategory = function(path) {
+    $scope.createCategory = function() {
         
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/categories/save/', $scope.objectCategory.name)
         .success(function() {
             ngDialog.open({template:'Categoria "' + $scope.objectCategory.name + '", creada correctamente!!',plain:true});
-            $location.path(path);
         }).error(function(data,status) {
             if(status === 500){
                 ngDialog.open({template:'Ya existe la categoría',plain:true});
@@ -46,13 +45,13 @@ app.controller('CategoriaYSubcategoriaCtrl', function ($http,$scope,$location,$r
         });
     };
     
-    $scope.createSubcategory = function(path) {
+    $scope.createSubcategory = function() {
         $scope.objectCategory.name = $scope.category;
         $http.post('http://localhost:8080/desapp-grupoa-backend/rest/categories/saveSubcategory/', $scope.objectCategory)
         .success(function() {
             
             ngDialog.open({template:'Subcategoría "' + $scope.objectCategory.subcategory + '", creada correctamente!!',plain:true});
-            $location.path(path);
+            
         })
         .error(function(data,status) {
             if(status === 500){

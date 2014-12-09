@@ -97,7 +97,7 @@ public class Voucher implements Serializable{
 
     public void setAmount(double amount) throws Exception {
         if(amount < 0){
-            throw new Exception("Monto invalido");
+            throw new Exception("Monto amount no negativo");
         }else{
             this.amount = amount;
         }

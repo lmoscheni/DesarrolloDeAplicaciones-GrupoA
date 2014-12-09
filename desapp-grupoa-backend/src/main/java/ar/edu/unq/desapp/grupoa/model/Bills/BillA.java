@@ -45,32 +45,48 @@ public class BillA extends BillType {
         return taxed;
     }
 
-    public void setTaxed(double taxed) {
-        this.taxed = taxed;
+    public void setTaxed(double taxed) throws Exception {
+        if(taxed <0){
+            throw new Exception("Monto taxed no negativo");
+        }else{
+            this.taxed = taxed;
+        }
     }
 
     public double getNoTaxed() {
         return noTaxed;
     }
 
-    public void setNoTaxed(double noTaxed) {
-        this.noTaxed = noTaxed;
+    public void setNoTaxed(double noTaxed) throws Exception {
+        if(noTaxed <0){
+            throw new Exception("Monto no taxed no negativo");
+        }else{
+            this.noTaxed = noTaxed;
+        }
     }
 
     public double getIIBBPerception() {
         return IIBBPerception;
     }
 
-    public void setIIBBPerception(double iIBBPerception) {
-        IIBBPerception = iIBBPerception;
+    public void setIIBBPerception(double iIBBPerception) throws Exception {
+        if(iIBBPerception < 0){
+            throw new Exception("Monto IIBB no negativo");
+        }else{
+            IIBBPerception = iIBBPerception;    
+        }
     }
 
     public double getIVA() {
         return IVA;
     }
 
-    public void setIVA(double iVA) {
-        IVA = iVA;
+    public void setIVA(double iVA) throws Exception {
+        if(iVA < 0){
+            throw new Exception("Monto IVA no negativo");
+        }else{
+            IVA = iVA;
+        }
     }
 
     // ******************************************************************************************************
