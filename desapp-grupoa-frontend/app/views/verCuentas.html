@@ -12,9 +12,17 @@
         </thead>
         
         <tbody>
-            <tr ng-repeat="cuenta in cuentas">
-                <td>{{cuentaNombre(cuenta.name)}}</td>
-                <td sortable="cuenta.balance">{{stateAmount(cuenta.balance)}}</td>          
+            <tr>
+                <td class="{{stateCash}}">{{cuentaNombre(cuentaCash.name)}}</td>
+                <td class="{{stateCash}}">{{stateAmount(cuentaCash)}}</td>          
+            </tr>
+            <tr>
+                <td class="{{stateCurrent}}">{{cuentaNombre(cuentaCurrent.name)}}</td>
+                <td class="{{stateCurrent}}">{{stateAmount(cuentaCurrent)}}</td>          
+            </tr>
+            <tr>
+                <td class="{{stateBank}}">{{cuentaNombre(cuentaBank.name)}}</td>
+                <td class="{{stateBank}}">{{stateAmount(cuentaBank)}}</td>          
             </tr>
             <tr>
                 <td class="info">Devengado</td>

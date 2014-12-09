@@ -5,13 +5,18 @@
 angular.module('angularApp').controller('CuentasCtrl', function ($http,$scope,$location,ngDialog) {
 
    $scope.cuentas = [];
-   $scope.state = 'danger';
+   $scope.stateCash = 'danger';
+    $scope.stateCurrent = 'danger';
+    $scope.stateBank = 'danger';
     $scope.color = '';
     $scope.total = 0;
     
    $http.get('http://localhost:8080/desapp-grupoa-backend/rest/accounts/all')
         .success(function(data) {
             $scope.cuentas = data;
+            $scope.cuentaCash = $scope.cuentas[0];
+            $scope.cuentaCurrent = $scope.cuentas[1];
+            $scope.cuentaBank = $scope.cuentas[2];
         }).error(function() {
             ngDialog.open({template:'Error del servidor, al obtener las cuentas',plain:true});
     });
@@ -40,13 +45,24 @@ angular.module('angularApp').controller('CuentasCtrl', function ($http,$scope,$l
     
     
     
-    $scope.stateAmount = function(amount) {
-        if(parseInt(amount) >= 0.0){
-            $scope.state = 'success';
-            $scope.color = 'black';
+    $scope.stateAmount = function(cuenta) {
+        if(cuenta.name === 'CashAccount'){
+            if(cuenta.balance > 0){
+                $scope.stateCash = 'success';
+            }
+            return cuenta.balance;
         }else{
-            $scope.state = 'danger';
-            $scope.color = 'red';
+            if(cuenta.name === 'CurrentAccount'){
+                if(cuenta.balance > 0){
+                    $scope.stateCurrent = 'success';
+                }
+                return cuenta.balance;
+            }else{
+                if(cuenta.balance > 0){
+                    $scope.stateBank = 'success';   
+                }
+                return cuenta.balance;
+            }
         }
         /*else{
         if(parseFloat(amount) >= 0.0){
@@ -55,6 +71,6 @@ angular.module('angularApp').controller('CuentasCtrl', function ($http,$scope,$l
             $scope.state = 'success';
         }
         }*/
-        return amount;
+        
     };
 });

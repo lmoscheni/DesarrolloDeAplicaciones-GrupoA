@@ -102,7 +102,9 @@ public class ReportWS {
         Map<String,Double> accountDistribution = new HashMap<String, Double>();
         List<Account> accounts = getAccountService().retriveAll();
         for(Account a : accounts){
-            accountDistribution.put(a.getName(), a.getBalance());
+            if(a.getBalance() >= 0){
+                accountDistribution.put(a.getName(), a.getBalance());
+            }
         }
         return accountDistribution;
         
@@ -136,7 +138,7 @@ public class ReportWS {
             for(Operation o: a.operations){
                 if(o.getShift().equals(Shift.Noche) && o.getOperationTypeEnum()
                         .equals(OperationTypeEnum.INCOME)){
-                    mount += a.getBalance();
+                    mount += o.getAmount();
                 }
             }
             map.put(key, mount);
@@ -151,7 +153,7 @@ public class ReportWS {
             for(Operation o: a.operations){
                 if(o.getShift().equals(Shift.Mañana) && o.getOperationTypeEnum()
                         .equals(OperationTypeEnum.INCOME)){
-                    mount += a.getBalance();
+                    mount += o.getAmount();
                 }
             }
             map.put(key, mount);
@@ -166,7 +168,7 @@ public class ReportWS {
             for(Operation o: a.operations){
                 if(o.getShift().equals(Shift.Tarde) && o.getOperationTypeEnum()
                         .equals(OperationTypeEnum.INCOME)){
-                    mount += a.getBalance();
+                    mount += o.getAmount();
                 }
             }
             map.put(key, mount);

@@ -63,10 +63,8 @@ public class OperationWS {
     @Produces("application/json")
     public Response modifyOperation(@PathParam("id") final int id,
     @PathParam("operation") final String operation) {
-         System.out.println(operation);
         Operation o = getOperationService().findById(id);
         Account a = getAccountService().getAccount(o.getAccount().toString());
-        System.out.println(a.getName());
         a.deleteOperation(o);
         getAccountService().update(a);
         
