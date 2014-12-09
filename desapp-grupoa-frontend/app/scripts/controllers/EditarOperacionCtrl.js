@@ -85,6 +85,7 @@ app.controller('EditarOperacionCtrl', function ($http,$scope,$location,$window,$
                 headers : {'Content-Type' : 'application/json'},
             }).success(function(){
                 $location.path('/verOperaciones');
+                ngDialog.open({template:'Operacion modificada con exito.',plain:true});
             }).error(function(data,status){
                 if(status === 501){
                     ngDialog.open({template:'Monto invalido (no negativo)',plain:true});

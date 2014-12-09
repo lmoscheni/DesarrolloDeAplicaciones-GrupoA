@@ -69,6 +69,7 @@ app.controller('EditarComprobanteCtrl', function ($http,$scope,$location,$window
                 headers : {'Content-Type' : 'application/json'},
             }).success(function(){
                 $location.path('/verComprobantes');
+                ngDialog.open({template:'Comprobante modificado con exito.',plain:true});
             }).error(function(data,status){
                 if(status === 500){
                     ngDialog.open({template:'Campos con montos negativos',plain:true});

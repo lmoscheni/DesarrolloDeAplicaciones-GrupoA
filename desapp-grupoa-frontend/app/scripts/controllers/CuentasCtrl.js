@@ -47,18 +47,18 @@ angular.module('angularApp').controller('CuentasCtrl', function ($http,$scope,$l
     
     $scope.stateAmount = function(cuenta) {
         if(cuenta.name === 'CashAccount'){
-            if(cuenta.balance > 0){
+            if(cuenta.balance >= 0){
                 $scope.stateCash = 'success';
             }
             return cuenta.balance;
         }else{
             if(cuenta.name === 'CurrentAccount'){
-                if(cuenta.balance > 0){
+                if(cuenta.balance >= 0){
                     $scope.stateCurrent = 'success';
                 }
                 return cuenta.balance;
             }else{
-                if(cuenta.balance > 0){
+                if(cuenta.balance >= 0){
                     $scope.stateBank = 'success';   
                 }
                 return cuenta.balance;

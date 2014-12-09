@@ -14,23 +14,23 @@
         <tbody>
             <tr>
                 <td class="{{stateCash}}">{{cuentaNombre(cuentaCash.name)}}</td>
-                <td class="{{stateCash}}">{{stateAmount(cuentaCash)}}</td>          
+                <td class="{{stateCash}}">${{stateAmount(cuentaCash)}}</td>          
             </tr>
             <tr>
                 <td class="{{stateCurrent}}">{{cuentaNombre(cuentaCurrent.name)}}</td>
-                <td class="{{stateCurrent}}">{{stateAmount(cuentaCurrent)}}</td>          
+                <td class="{{stateCurrent}}">${{stateAmount(cuentaCurrent)}}</td>          
             </tr>
             <tr>
                 <td class="{{stateBank}}">{{cuentaNombre(cuentaBank.name)}}</td>
-                <td class="{{stateBank}}">{{stateAmount(cuentaBank)}}</td>          
+                <td class="{{stateBank}}">${{stateAmount(cuentaBank)}}</td>          
             </tr>
             <tr>
                 <td class="info">Devengado</td>
-                <td class="info">{{devengado()}}</td>
+                <td class="info">${{devengado()}}</td>
             </tr>
             <tr>
                 <td class="info"><b>Total:</b></td>
-                <td class="info"><b>{{totalCuentas()}}</b></td>
+                <td class="info"><b>${{totalCuentas()}}</b></td>
             </tr>
   		</tbody>
     </table>
